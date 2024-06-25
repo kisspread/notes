@@ -1,4 +1,5 @@
 title: using macro to define Native Gameplay Tag
+comments:true
 
 !!! note 
     This post base on Aura GAS Course
