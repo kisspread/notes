@@ -1,6 +1,7 @@
 title: using macro to define Native Gameplay Tag
 
-!!! note "This post base on Aura GAS Course"
+!!! note 
+    This post base on Aura GAS Course
 
 ---
 ## GamePlayTag
