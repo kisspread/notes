@@ -7,21 +7,16 @@ tags:
 
 # Page title
 ...
-
-```python title='demo.py'
-def sayhi():
-    return "hi,Python全栈开发" 
-```
  
 ```python title='demo.py'
 def sayhi():
-    return "hi,Python全栈开发" # (1)
+    return "hi,Python" # (1)
 ```
 
-1. 这是我自由注释的内容，欢迎关注我的公众号。
+1. test
 
 !!! note "这是 note 类型的提示框"
-提示：更多精彩内容记得关注我啊
+提示：
 
 
 !!! success "这是 success 类型的提示框"
