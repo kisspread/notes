@@ -12,18 +12,20 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Deploy docs
-      - uses: actions/setup-python@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
           python-version: 3.x
-      - run: pip install mkdocs
-      - run: pip install mkdocs-material
-      - run: pip install mkdocs-git-revision-date-localized-plugin
-      - run: pip install mkdocs-glightbox
-      - run: pip install pymdown-extensions
-      - run: pip install pygments
-      - run: pip install mkdocs-static-i18n
-      - run: pip install mkdocs-codeinclude-plugin
-      - run: pip install mkdocs-video
-      - run: mkdocs gh-deploy --force
-          
+      - name: Install dependencies
+        run: |
+          pip install mkdocs
+          pip install mkdocs-material
+          pip install mkdocs-git-revision-date-localized-plugin
+          pip install mkdocs-glightbox
+          pip install pymdown-extensions
+          pip install pygments
+          pip install mkdocs-static-i18n
+          pip install mkdocs-codeinclude-plugin
+          pip install mkdocs-video
+      - name: Deploy docs
+        run: mkdocs gh-deploy --force
