@@ -1,0 +1,6 @@
+mkdocs-video
+pymdown-extensions
+pygments
+mkdocs-git-revision-date-localized-plugin 
+mkdocs-static-i18n
+mkdocs-codeinclude-plugin 
