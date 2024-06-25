@@ -1,5 +1,5 @@
 Title:How to Setup CommonUI in UE5.4.2
-commenst: true
+comments:true
 
 So far, the documentation for commonUI is very basic and doesn't clearly tell us how to configure it correctly. It took me a long time to figure it out, so I'm going to record the main process here.
 
