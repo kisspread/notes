@@ -10,11 +10,20 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_FILE: mkdocs.yml
-          EXTRA_PACKAGES: build-base 
-          REQUIREMENTS: requirements.txt
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs
+      - run: pip install mkdocs-material
+      - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install mkdocs-glightbox
+      - run: pip install pymdown-extensions
+      - run: pip install pygments
+      - run: pip install mkdocs-static-i18n
+      - run: pip install mkdocs-codeinclude-plugin
+      - run: pip install mkdocs-video
+      - run: mkdocs gh-deploy --force
           
