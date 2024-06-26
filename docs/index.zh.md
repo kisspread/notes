@@ -1,6 +1,7 @@
 ---
 title: About
 summary: About this Site
+comments: true
 ---
 
 **旅行者你好**

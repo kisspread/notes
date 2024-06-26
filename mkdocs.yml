@@ -6,6 +6,9 @@ copyright: Copyright &copy; 2022 - 2024 by <a href="https://github.com/kisspread
 
 
 
+
+
+
 markdown_extensions:
   - attr_list
   - md_in_html
@@ -20,7 +23,16 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
+  - pymdownx.arithmatex:
+      generic: true
+      
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
 plugins:
   - mkdocs-video
   - i18n:
