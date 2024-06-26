@@ -1,7 +1,8 @@
 site_name: Game Dev Notes
 
-site_description: an example blog set up following the tutorial
-site_url: http://www.example.com
+site_description: A collection of notes on game development, programming, and other topics.
+site_url: https://kisspread.github.io/notes/
+repo_url: https://github.com/kisspread
 copyright: Copyright &copy; 2022 - 2024 by <a href="https://github.com/kisspread"><b>Zero Soul</b></a> </br>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.en"> <i>CC-BY-NC-SA 4.0 </i></a> International.
 
 
