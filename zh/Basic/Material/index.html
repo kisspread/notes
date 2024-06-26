@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="http://www.example.com/zh/UI/00/">
+        <link rel="canonical" href="http://www.example.com/zh/Basic/Material/">
       
       
-        <link rel="prev" href="../../PCG/UE5.4PCGWithCPP/">
+        <link rel="prev" href="../00/">
       
       
-        <link rel="next" href="../CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
+        <link rel="next" href="../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>FYI - Game Dev Notes</title>
+        <title>Material - Game Dev Notes</title>
       
     
     
@@ -120,7 +120,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#commomui-startup-link" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FYI
+              Material
             
           </span>
         </div>
@@ -202,7 +202,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../UI/00/" hreflang="en" class="md-select__link">
+            <a href="../../../Basic/Material/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -287,11 +287,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Basic/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../00/" class="md-tabs__link">
           
   
     
@@ -347,13 +349,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../UI/00/" class="md-tabs__link">
           
   
     
@@ -428,8 +428,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -448,19 +450,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -471,7 +476,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basic
@@ -485,7 +490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/00/" class="md-nav__link">
+      <a href="../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -503,10 +508,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Basic/Material/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -515,6 +538,183 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      坐标系
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="坐标系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单坐标系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建标准坐标系
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      画圆
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="画圆">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lerp" class="md-nav__link">
+    <span class="md-ellipsis">
+      lerp 一个
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      减了再乘
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radialgradientexponential" class="md-nav__link">
+    <span class="md-ellipsis">
+      RadialGradientExponential
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spheregradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      SphereGradient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smoothstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      smoothstep
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      画圈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="画圈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      相乘
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dot" class="md-nav__link">
+    <span class="md-ellipsis">
+      dot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      相减
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      动画
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -527,7 +727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -548,7 +748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/ffmpeg/" class="md-nav__link">
+      <a href="../ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -578,17 +778,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -613,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -651,17 +854,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -686,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -909,10 +1115,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -923,22 +1127,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -949,7 +1150,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             UI
@@ -960,28 +1161,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    FYI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../UI/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -990,93 +1173,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commomui-startup-link" class="md-nav__link">
-    <span class="md-ellipsis">
-      CommomUI Startup Link:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CommomUI Startup Link:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-ui-doc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common UI Doc:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#x157-commonui" class="md-nav__link">
-    <span class="md-ellipsis">
-      x157 CommonUI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unrealist" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unrealist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#benui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benui
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-epic-team-using-widgets" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Epic team using widgets
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1098,20 +1194,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1136,7 +1229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+      <a href="../../UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,64 +1283,154 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commomui-startup-link" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      CommomUI Startup Link:
+      坐标系
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="CommomUI Startup Link:">
+    <nav class="md-nav" aria-label="坐标系">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-ui-doc" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Common UI Doc:
+      简单坐标系
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nance" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Nance
+      创建标准坐标系
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      画圆
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="画圆">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lerp" class="md-nav__link">
+    <span class="md-ellipsis">
+      lerp 一个
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#x157-commonui" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      x157 CommonUI
+      减了再乘
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#unrealist" class="md-nav__link">
+  <a href="#radialgradientexponential" class="md-nav__link">
     <span class="md-ellipsis">
-      Unrealist
+      RadialGradientExponential
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#benui" class="md-nav__link">
+  <a href="#spheregradient" class="md-nav__link">
     <span class="md-ellipsis">
-      Benui
+      SphereGradient
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#how-epic-team-using-widgets" class="md-nav__link">
+  <a href="#smoothstep" class="md-nav__link">
     <span class="md-ellipsis">
-      How Epic team using widgets
+      smoothstep
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      画圈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="画圈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      相乘
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dot" class="md-nav__link">
+    <span class="md-ellipsis">
+      dot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      相减
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      动画
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动画">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      简单结合
     </span>
   </a>
   
@@ -1273,27 +1456,61 @@
                   
 
 
-  <h1>FYI</h1>
+  <h1>Material</h1>
 
-<div><h2 id="commomui-startup-link">CommomUI Startup Link:</h2>
-<h3 id="common-ui-doc">Common UI Doc:</h3>
-<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine</a> </p>
-<h3 id="nance">Nance</h3>
-<p>a little project shows how to setup Common UI </p>
-<p>select branch 5.3-EnhanceInput, Nance will tell you how to setup enhanced input with CommonUI, and how <strong>Lyra</strong> using CommonUI.</p>
-<p><a href="https://github.com/NanceDevDiaries/PauseMenu">https://github.com/NanceDevDiaries/PauseMenu</a>  </p>
-<h3 id="x157-commonui">x157 CommonUI</h3>
-<p><a href="https://x157.github.io/UE5/LyraStarterGame/Tutorials/How-to-Take-Control-of-the-Mouse">x157</a> will tell us why we should not using <code>setInputMode</code> When we using CommonUI</p>
-<p><a href="https://x157.github.io/UE5/CommonUI/">https://x157.github.io/UE5/CommonUI/</a></p>
-<h3 id="unrealist">Unrealist</h3>
-<p>how to using Actionbar</p>
-<p><a href="https://unrealist.org/commonui-actionbar/">https://unrealist.org/commonui-actionbar/</a></p>
-<h3 id="benui">Benui</h3>
-<p>intro common ui</p>
-<p><a href="https://benui.ca/unreal/common-ui-intro/">https://benui.ca/unreal/common-ui-intro/</a></p>
-<h3 id="how-epic-team-using-widgets">How Epic team using widgets</h3>
-<p>Stephen(GAS Course Teacher) mentions a talk about Advanced UI Templating Techniques (this not common ui, but help us to know best way to handle widgets.)</p>
-<p><a href="https://www.youtube.com/watch?v=dSTdAToJ7Gg">https://www.youtube.com/watch?v=dSTdAToJ7Gg</a></p></div>
+<div><p>材质函数里画圈圈的几种方式</p>
+<hr>
+<h2 id="_1">坐标系</h2>
+<p>根据喜好，选择你的坐标系</p>
+<h3 id="_2">简单坐标系</h3>
+<p>普通好用，节点少，（-1，-1）在右上角，和书本上的不同有点反直觉，但习惯就好
+<img alt="alt text" src="../../../assets/images/Material_image-1.png"></p>
+<h3 id="_3">创建标准坐标系</h3>
+<p>标准坐标系多了两个步骤，旋转 和交换 XY轴，虽然多了两条指令，但好的坐标系有助于理解
+<img alt="" src="../../../assets/images/Material_image.png"></p>
+<h2 id="_4">画圆</h2>
+<h3 id="lerp">lerp 一个</h3>
+<p>距离场作为比例，对0和-1 插值
+<img alt="alt text" src="../../../assets/images/Material_image-2.png"></p>
+<h3 id="_5">减了再乘</h3>
+<p>小于0.8都是负数，全黑。用乘法控制边缘，只越大越锐利
+<img alt="alt text" src="../../../assets/images/Material_image-3.png"></p>
+<h3 id="radialgradientexponential">RadialGradientExponential</h3>
+<p>使用内置函数，画普通圆用这个不推荐，计算量相对大，上面都是47个指令，而这个要51个。它能生成棉花糖一样的圆
+<img alt="RadialGradientExponential" src="../../../assets/images/Material_image-4.png"></p>
+<p>内部实现也很复杂，不是特别需要这种效果，没必要使用它
+<img alt="alt text" src="../../../assets/images/Material_image-5.png"></p>
+<h3 id="spheregradient">SphereGradient</h3>
+<p>内置函数SphereGradient球形渐变的圆，实现类型下图，利用圆方程实现平滑过渡的效果，普通画圆依然不建议使用
+<img alt="alt text" src="../../../assets/images/Material_image-6.png"></p>
+<h3 id="smoothstep">smoothstep</h3>
+<p>推荐，用它画的圆是最简单的，max =min 就不用处理渐变值，输出值只有纯粹的0-1。值得一提的是，min 和 max对调的话，会反向。不过要方向最好用1-x
+<img alt="alt text" src="../../../assets/images/Material_image-9.png"></p>
+<h2 id="_6">画圈</h2>
+<p>综上所述，使用最简的画出大圆，再画小圆，就可以画出圈的</p>
+<h3 id="_7">相乘</h3>
+<p>两圆，一正一反，重叠的部分是正数，相乘向上取整
+<img alt="alt text" src="../../../assets/images/Material_image-7.png"></p>
+<h3 id="dot">dot</h3>
+<p>两圆点乘
+dot 范围-1 到 1，重叠部分越相似，越接近1
+<img alt="alt text" src="../../../assets/images/Material_image-8.png"></p>
+<h3 id="_8">相减</h3>
+<p>smoothstep 输出纯粹的0和1，非常棒
+<img alt="alt text" src="../../../assets/images/Material_image-10.png"></p>
+<h2 id="_9">动画</h2>
+<p>这里用周期时间驱动
+<img alt="alt text" src="../../../assets/images/Material_image-11.png">
+atan2的取值范围是
+<span class="arithmatex">\(\left[ -\pi,\pi \right]\)</span>
+这里有个妙处，就是除以2π 和 用frac取小数。之所以除以2π不是π是因为：</p>
+<ul>
+<li>除以2π范围变成<span class="arithmatex">\(\left[ -0.5,0.5 \right]\)</span></li>
+<li>frac 对负数的处理是 1-x,比如-0.4，取小数部分0.4，然后1-0.4=0.6</li>
+<li>由于这frac操作值继续上升，直到1, 于是就可以完整走完一圈。  </li>
+</ul>
+<h3 id="_10">简单结合</h3>
+<p><img alt="alt text" src="../../../assets/images/Material_image-12.png"></p></div>
 
 
 
@@ -1302,8 +1519,37 @@
 
 
   
+    
+  
+  
+    
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月26日</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月26日</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
 
