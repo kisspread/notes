@@ -186,9 +186,11 @@ SlateApp.ProcessMouseButtonUpEvent(MouseEvent); //模拟
                 }
 
     ```
+
     变通解法就是，在OnHovered 和 UnHoverd 获取 Action widget 的Enhanced Input，适当的时候手动绑定。和取消绑定。
 
- ## 疑问 2
+## 疑问 2
+
 - 为什么Enhanced Input 作为 Trigger Action的时候，Hold 无法正确生效？
     
     因为缺少HoldMapping，这里必须有HoldMapping，才会执行到for内部
@@ -208,6 +210,7 @@ SlateApp.ProcessMouseButtonUpEvent(MouseEvent); //模拟
      我看到有人依旧提交了相关[Pull Request](https://github.com/EpicGames/UnrealEngine/pull/11985), 他的改动很多，感觉官方没那么快合并。
 
      我实现了一种不用修改源码的办法：
+
     ```cpp
     void UWidgetLibraryHelp::AddHoldBinding(const TSharedPtr<FUIActionBinding>& ActionBinding, UInputAction* BEnhancedInputAction, const ULocalPlayer* LocalPlayer)
 
@@ -234,15 +237,11 @@ SlateApp.ProcessMouseButtonUpEvent(MouseEvent); //模拟
             }
         }
     }
-
     // 调用
     UWidgetLibraryHelp::AddHoldBinding(ActionBinding, YourEnhancedInputAction, GetOwningLocalPlayer());
-  ```
+    ```
+    前提是保证InputSystem->GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。
   
-
-
-
-
 ## 疑问 3
 
 - 为什么 Enhanced trigger 的Pressed和 BaseButton 的 Pressed没有关联？ 也就是键盘 按下的时候，界面里 Button的 Pressed 并没有出现按下的状态？(默认点击按钮除外，face Button A 是构建虚拟鼠标按下)
