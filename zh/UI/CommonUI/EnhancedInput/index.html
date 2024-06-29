@@ -1240,6 +1240,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      疑问 2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     <span class="md-ellipsis">
       疑问 3
@@ -1405,6 +1414,15 @@
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
       疑问 1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      疑问 2
     </span>
   </a>
   
@@ -1604,60 +1622,57 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">                </span><span class="n">InputActionWidget</span><span class="o">-&gt;</span><span class="n">SetEnhancedInputAction</span><span class="p">(</span><span class="n">HoverEnhancedInputAction</span><span class="p">);</span>
 <a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">            </span><span class="p">}</span>
 </code></pre></div>
-变通解法就是，在OnHovered 和 UnHoverd 获取 Action widget 的Enhanced Input，适当的时候手动绑定。和取消绑定。
+<p>变通解法就是，在OnHovered 和 UnHoverd 获取 Action widget 的Enhanced Input，适当的时候手动绑定。和取消绑定。</p>
 </li>
 </ul>
-<p>## 疑问 2
-- 为什么Enhanced Input 作为 Trigger Action的时候，Hold 无法正确生效？</p>
-<div class="codehilite"><pre><span></span><code><span class="n">因为缺少HoldMapping</span><span class="err">，</span><span class="n">这里必须有HoldMapping</span><span class="err">，</span><span class="n">才会执行到for内部</span>
-<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="w"> </span><span class="n">text</span><span class="p">](..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">EnhancedInput_image</span><span class="mf">-16.</span><span class="n">png</span><span class="p">)</span>
-
-<span class="n">然而在处理HoldMapping的时候</span><span class="err">，</span><span class="n">偏偏不处理Enhanced</span><span class="w"> </span><span class="n">Input的</span><span class="err">。</span><span class="n">注释说</span><span class="err">，</span><span class="n">不在这里处理HoldMapping</span><span class="err">，</span><span class="n">但我没发现其他地方有给它设置</span><span class="err">。</span><span class="n">全局搜索都搜不到</span><span class="err">。</span>
-<span class="err">```</span><span class="w"> </span><span class="n">cpp</span><span class="w"> </span><span class="n">title</span><span class="o">=</span><span class="err">'</span><span class="n">UIActionRouterTypes</span><span class="p">.</span><span class="n">cpp</span><span class="err">'</span>
-<span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">BindArgs</span><span class="p">.</span><span class="n">InputAction</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// Nothing else to do if we have an enhanced input action,</span>
-<span class="w">        </span><span class="c1">// the input action itself will be queried against for keys later</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="err">```</span>
-<span class="n">一种解法是</span><span class="err">：</span><span class="n">用UIActionTag来解决</span><span class="err">，</span><span class="n">因为代码里会给有Tag的Action进行HoldMapping绑定</span><span class="err">。</span><span class="n">但Action要定义在这图里的设置里</span><span class="err">。</span><span class="n">而且根本不是enhanced</span><span class="w"> </span><span class="n">input</span><span class="err">。</span>
-<span class="o">!</span><span class="p">[</span><span class="n">alt</span><span class="w"> </span><span class="n">text</span><span class="p">](..</span><span class="o">/</span><span class="p">..</span><span class="o">/</span><span class="n">assets</span><span class="o">/</span><span class="n">images</span><span class="o">/</span><span class="n">EnhancedInput_image</span><span class="mf">-17.</span><span class="n">png</span><span class="p">)</span>
-
-<span class="w"> </span><span class="n">我看到有人依旧提交了相关</span><span class="p">[</span><span class="n">Pull</span><span class="w"> </span><span class="n">Request</span><span class="p">](</span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/EpicGames/UnrealEngine/pull/11985), 他的改动很多，感觉官方没那么快合并。</span>
-
-<span class="w"> </span><span class="n">我实现了一种不用修改源码的办法</span><span class="err">：</span>
-<span class="err">```</span><span class="n">cpp</span>
-<span class="kt">void</span><span class="w"> </span><span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ULocalPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="p">)</span>
-
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">)</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nullptr</span><span class="p">;</span>
-<span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="nf">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">                </span><span class="k">else</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="nf">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">);</span>
-<span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// 调用</span>
-<span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">YourEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">());</span>
+<h2 id="2">疑问 2</h2>
+<ul>
+<li>
+<p>为什么Enhanced Input 作为 Trigger Action的时候，Hold 无法正确生效？</p>
+<p>因为缺少HoldMapping，这里必须有HoldMapping，才会执行到for内部
+<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-16.png"></p>
+<p>然而在处理HoldMapping的时候，偏偏不处理Enhanced Input的。注释说，不在这里处理HoldMapping，但我没发现其他地方有给它设置。全局搜索都搜不到。
+</p><div class="highlight"><span class="filename">UIActionRouterTypes.cpp</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">BindArgs</span><span class="p">.</span><span class="n">InputAction</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="c1">// Nothing else to do if we have an enhanced input action,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="c1">// the input action itself will be queried against for keys later</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-
-<p>```</p>
+一种解法是：用UIActionTag来解决，因为代码里会给有Tag的Action进行HoldMapping绑定。但Action要定义在这图里的设置里。而且根本不是enhanced input。
+<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-17.png">
+<p>我看到有人依旧提交了相关<a href="https://github.com/EpicGames/UnrealEngine/pull/11985">Pull Request</a>, 他的改动很多，感觉官方没那么快合并。</p>
+<p>我实现了一种不用修改源码的办法：</p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UWidgetLibraryHelp::AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ULocalPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                </span><span class="k">else</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">);</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">}</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="c1">// 调用</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">YourEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">());</span>
+</code></pre></div>
+前提是保证InputSystem-&gt;GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。
+</li>
+</ul>
 <h2 id="3">疑问 3</h2>
 <ul>
 <li>为什么 Enhanced trigger 的Pressed和 BaseButton 的 Pressed没有关联？ 也就是键盘 按下的时候，界面里 Button的 Pressed 并没有出现按下的状态？(默认点击按钮除外，face Button A 是构建虚拟鼠标按下)</li>
