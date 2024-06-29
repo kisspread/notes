@@ -16,7 +16,7 @@
         <link rel="prev" href="../../Blueprint/BluePrint/">
       
       
-        <link rel="next" href="../../../GAS/00/">
+        <link rel="next" href="../USubSystem/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>placeholder for c++ - Game Dev Notes</title>
+        <title>UE c++ usage - Game Dev Notes</title>
       
     
     
@@ -119,6 +119,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ue-constants" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -150,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              placeholder for c++
+              UE c++ usage
             
           </span>
         </div>
@@ -644,7 +649,7 @@
         
   
   <span class="md-ellipsis">
-    Placeholder for Blueprint.
+    Blueprint Relevant
   </span>
   
 
@@ -672,6 +677,8 @@
   
     
     
+      
+        
       
         
       
@@ -725,16 +732,92 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UE c++ usage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    placeholder for c++
+    UE c++ usage
   </span>
   
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ue-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      UE constants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USubSystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Subsystem
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1023,6 +1106,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1063,11 +1150,53 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../UI/CommonUI/CommonActionWidget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonActionWidget Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../UI/CommonUI/EnhancedInput/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnhancedInput 和 commonUI 配合的数据配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2
+    How to Setup CommonUI in UE5.4.2 with enhanced input
   </span>
   
 
@@ -1110,6 +1239,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ue-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      UE constants
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1131,9 +1295,52 @@
   
 
 
-  <h1>placeholder for c++</h1>
+  <h1>UE c++ usage</h1>
 
-<p>Placeholder</p>
+<div><h2 id="ue-constants">UE constants</h2>
+<ul>
+<li>
+<p><strong>UE_SMALL_NUMBER</strong> when you need to skip some samll number</p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonButtonBase::NativeOnHoldProgress</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">UE_SMALL_NUMBER</span><span class="p">)</span>
+</code></pre></div>
+and more:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define UE_PI                   (3.1415926535897932f)   </span><span class="cm">/* Extra digits if needed: 3.1415926535897932384626433832795f */</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#define UE_SMALL_NUMBER         (1.e-8f)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#define UE_KINDA_SMALL_NUMBER   (1.e-4f)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#define UE_BIG_NUMBER           (3.4e+38f)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#define UE_EULERS_NUMBER        (2.71828182845904523536f)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cp">#define UE_GOLDEN_RATIO         (1.6180339887498948482045868343656381f) </span><span class="cm">/* Also known as divine proportion, golden mean, or golden section - related to the Fibonacci Sequence = (1 + sqrt(5)) / 2 */</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#define UE_FLOAT_NON_FRACTIONAL (8388608.f) </span><span class="cm">/* All single-precision floating point numbers greater than or equal to this have no fractional value. */</span>
+</code></pre></div>
+</li>
+</ul>
+<h2 id="log">Log</h2>
+<ul>
+<li>
+<p>UE_LOGFMT this very useful for print function name.
+    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="n">UE_LOGFMT</span><span class="p">(</span><span class="n">LogSwitchboard</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="s">"{Func}: EVP_PKEY_derive_init"</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">);</span><span class="w">    </span>
+</code></pre></div>
+</li>
+<li>
+<p>UE_LOGFMT_EX: 更清晰，不如上面实用
+   命名参数使日志消息更加清晰和易读。每个字段都需要用 <code>UE_LOGFMT_FIELD</code> 宏包装，并提供一个字段名。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">UE_LOGFMT_EX</span><span class="p">(</span><span class="n">LogCore</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="s">"Loading '{Name}' failed with error {Error}"</span><span class="p">,</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="n">Package</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Error"</span><span class="p">,</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Flags"</span><span class="p">,</span><span class="w"> </span><span class="n">LoadFlags</span><span class="p">));</span>
+</code></pre></div>
+</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li>widget pool
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">/**</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="cm"> * Gets an instance of a widget of the given class.</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm"> * The underlying slate is stored automatically as well, so the returned widget is fully constructed and GetCachedWidget will return a valid SWidget.</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="cm"> */</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">NewEntryWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryWidgetPool</span><span class="p">.</span><span class="n">GetOrCreateInstance</span><span class="p">(</span><span class="n">InEntryClass</span><span class="p">);</span>
+</code></pre></div></li>
+</ul></div>
 
 
 
@@ -1156,7 +1363,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
   </span>
 
     

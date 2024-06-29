@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -10,26 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/CommonActionWidget/">
       
       
-        <link rel="prev" href="../EnhancedInput/">
+        <link rel="prev" href="../../00/">
       
       
+        <link rel="next" href="../EnhancedInput/">
       
-      <link rel="icon" href="../../../assets/logo.png">
+      
+      <link rel="icon" href="../../../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
-        <title>How to Setup CommonUI in UE5.4.2 with enhanced input - Game Dev Notes</title>
+        <title>CommonActionWidget Usage - Game Dev Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -91,7 +93,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -118,8 +120,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#concept-of-activation" class="md-skip">
-          Skip to content
+        <a href="#held-progress" class="md-skip">
+          跳转至
         </a>
       
     </div>
@@ -133,10 +135,10 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -153,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Setup CommonUI in UE5.4.2 with enhanced input
+              CommonActionWidget Usage
             
           </span>
         </div>
@@ -193,20 +195,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="Select language">
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="./" hreflang="en" class="md-select__link">
+            <a href="../../../../UI/CommonUI/CommonActionWidget/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../../../zh/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" hreflang="zh" class="md-select__link">
+            <a href="./" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -225,16 +227,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -247,7 +249,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -258,7 +260,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -273,7 +275,7 @@
   
     
       
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -282,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../" class="md-tabs__link">
         
   
     
@@ -402,18 +404,18 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     Game Dev Notes
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -433,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -933,7 +935,7 @@
         
   
   <span class="md-ellipsis">
-    A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
+    UE5.4 PCG 自定义节点 C++常用类 浅析
   </span>
   
 
@@ -1079,10 +1081,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../CommonActionWidget/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CommonActionWidget Usage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1091,6 +1111,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#held-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      支持 held progress 动画
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1121,99 +1168,18 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 with enhanced input
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 with enhanced input
+    How to Setup CommonUI in UE5.4.2 结合增强输入
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#concept-of-activation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concept of Activation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concept-of-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concept of Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enhanced-input-and-automatic-button-icon-display" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enhanced Input and Automatic Button Icon Display
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gamepad-navigation-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Gamepad Navigation Configuration
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1247,57 +1213,21 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concept-of-activation" class="md-nav__link">
+  <a href="#held-progress" class="md-nav__link">
     <span class="md-ellipsis">
-      Concept of Activation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#concept-of-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      Concept of Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enhanced-input-and-automatic-button-icon-display" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enhanced Input and Automatic Button Icon Display
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gamepad-navigation-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Gamepad Navigation Configuration
+      支持 held progress 动画
     </span>
   </a>
   
@@ -1318,7 +1248,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/How to setup CommonUI in UE5.4.2.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/CommonActionWidget.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1326,118 +1256,44 @@
   
 
 
-  <h1>How to Setup CommonUI in UE5.4.2 with enhanced input</h1>
+  <h1>CommonActionWidget Usage</h1>
 
-<div><p>So far, the documentation for commonUI is very basic and doesn't clearly tell us how to configure it correctly. It took me a long time to figure it out, so I'm going to record the main process here.</p>
-<hr>
-<h3 id="concept-of-activation">Concept of Activation</h3>
-<p>An Activatable Widget is an important concept in Common UI. It can be simply understood that once activated, it will be displayed, and deactivated means hidden. Additionally:</p>
+<div><h2 id="held-progress">支持 held progress 动画</h2>
+<p>一直没成功，一层层调试，找到了原因。</p>
 <ul>
-<li>Once an activatable widget is activated, it will take over the Input Action, similar to manually calling <code>setInputMode</code> in UE4. This can cause conflicts, and it is not recommended to use the old method in CommonUI. I have tried this, and it led to various issues with Mouse Capture.</li>
-<li>Taking over input action is a thoughtful design because many games need to show the mouse once the menu is displayed. We only need to override GetDesiredInputConfig to decide the various behaviors of the mouse and controls.</li>
-<li>Therefore, we need to configure the default InputAction of the game on a resident HUD and abandon the use of UE4's <code>setInputMode</code>.</li>
-</ul>
-<h3 id="concept-of-stack">Concept of Stack</h3>
-<p>Similar to mobile apps, the stack in CommonUI is the effect of stacking interfaces layer by layer as you enter them, and you can go back layer by layer through the back button.</p>
-<ul>
-<li>You can create this UCommonActivatableWidgetStack in Blueprint or C++ and set the width and height to fill the screen.</li>
-<li>With this stack, the activatable widget can be added into it. Once added, it will be displayed immediately, similar to Android's startActivity.</li>
-<li>You can use a RootLayout to manage the stack. A RootLayout can have multiple stacks. The Lyra project uses two: MenuStack and GameStack.</li>
-<li>The Game Stack is the game's resident HUD.</li>
-<li>The Menu Stack is the stack into which various menus are added.</li>
-<li>Pay attention to the stacking order between stacks. It's best to place the Menu above the Game.</li>
-<li>There is no good communication method between stacks. For example, when the Menu Stack is empty, meaning no menus are displayed on the screen, I want to notify the activated widget in the GameStack to react, such as playing a restore animation. CommonUI does not provide a ready-made method for this. If you know how, please be sure to let me know.</li>
-<li>Code example: You can use Blueprint, but I find C++ more convenient. I also did some hack operations to notify the default widget in the GameStack that the MenuStack has been emptied.
-   <div class="highlight"><span class="filename">YouHUD.cpp</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">YouHUD::InitHudWidgets</span><span class="p">(</span><span class="n">UAttributeSet</span><span class="o">*</span><span class="w"> </span><span class="n">AS</span><span class="p">,</span><span class="w"> </span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">APlayerState</span><span class="o">*</span><span class="w"> </span><span class="n">PS</span><span class="p">,</span><span class="w"> </span><span class="n">APlayerController</span><span class="o">*</span><span class="w"> </span><span class="n">PC</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">     </span><span class="n">checkf</span><span class="p">(</span><span class="n">OverlayWidgetClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a OverlayWidgetClass"</span><span class="p">));</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">     </span><span class="n">checkf</span><span class="p">(</span><span class="n">OverLayWidgetControllerClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a WidgetControllerClass"</span><span class="p">));</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">     </span><span class="n">checkf</span><span class="p">(</span><span class="n">MenuWidgetControllerClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a MenuWidgetControllerClass"</span><span class="p">));</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">     </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">RootLayout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateWidget</span><span class="o">&lt;</span><span class="n">UUserWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">(),</span><span class="w"> </span><span class="n">UCommonUserWidget</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">     </span><span class="n">UOverlay</span><span class="o">*</span><span class="w"> </span><span class="n">OverLay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UOverlay</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UOverlay</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Overlay"</span><span class="p">));</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">     </span><span class="c1">// TSharedRef&lt;SOverlay&gt; RootLayout = SNew(SOverlay);</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">     </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">RootWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OverLay</span><span class="p">;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">     </span><span class="n">GameLayerStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"GameLayerStack"</span><span class="p">));</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">     </span><span class="n">MenuLayerStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"MenuLayerStack"</span><span class="p">));</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">     </span><span class="n">OverLay</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">GameLayerStack</span><span class="p">);</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">     </span><span class="n">OverLay</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">MenuLayerStack</span><span class="p">);</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">     </span><span class="c1">// set horizontal alignment and vertical alignment</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">GameBoxSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UOverlaySlot</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GameLayerStack</span><span class="o">-&gt;</span><span class="n">Slot</span><span class="p">);</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">     </span><span class="n">GameBoxSlot</span><span class="o">-&gt;</span><span class="n">SetHorizontalAlignment</span><span class="p">(</span><span class="n">HAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">     </span><span class="n">GameBoxSlot</span><span class="o">-&gt;</span><span class="n">SetVerticalAlignment</span><span class="p">(</span><span class="n">VAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">MenuBoxSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UOverlaySlot</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MenuLayerStack</span><span class="o">-&gt;</span><span class="n">Slot</span><span class="p">);</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">     </span><span class="n">MenuBoxSlot</span><span class="o">-&gt;</span><span class="n">SetHorizontalAlignment</span><span class="p">(</span><span class="n">HAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">     </span><span class="n">MenuBoxSlot</span><span class="o">-&gt;</span><span class="n">SetVerticalAlignment</span><span class="p">(</span><span class="n">VAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">     </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">AddToViewport</span><span class="p">();</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">     </span><span class="c1">// set up overlay widget</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">     </span><span class="n">OverlayWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateWidget</span><span class="o">&lt;</span><span class="n">UAuraActivatableWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">(),</span><span class="w"> </span><span class="n">OverlayWidgetClass</span><span class="p">);</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">     </span><span class="n">UAuraWidgetController</span><span class="o">*</span><span class="w"> </span><span class="n">OverLayWidController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetWidgetController</span><span class="o">&lt;</span><span class="n">UAuraOverlayWidgetController</span><span class="o">&gt;</span><span class="p">(</span><span class="n">FAuraWidgetControllerParma</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span><span class="w"> </span><span class="n">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">PS</span><span class="p">,</span><span class="w"> </span><span class="n">PC</span><span class="p">));</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">     </span><span class="n">OverlayWidget</span><span class="o">-&gt;</span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">OverLayWidController</span><span class="p">);</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">     </span><span class="c1">// OverlayWidget-&gt;AddToViewport();</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">     </span><span class="n">GameLayerStack</span><span class="o">-&gt;</span><span class="n">AddWidgetInstance</span><span class="p">(</span><span class="o">*</span><span class="n">OverlayWidget</span><span class="p">);</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">     </span><span class="n">MenuLayerStack</span><span class="o">-&gt;</span><span class="n">OnDisplayedWidgetChanged</span><span class="p">().</span><span class="n">AddLambda</span><span class="p">([</span><span class="k">this</span><span class="p">](</span><span class="n">UCommonActivatableWidget</span><span class="o">*</span><span class="w"> </span><span class="n">DisplayedWidget</span><span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">     </span><span class="p">{</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayedWidget</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">         </span><span class="p">{</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">             </span><span class="n">OverlayWidget</span><span class="o">-&gt;</span><span class="n">OnMenuEmpty</span><span class="p">();</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">         </span><span class="p">}</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">     </span><span class="p">});</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">     </span><span class="c1">// set up menu widget</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">     </span><span class="n">OverLayWidController</span><span class="o">-&gt;</span><span class="n">BroadcastInitialValue</span><span class="p">();</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w"> </span><span class="p">}</span>
-</code></pre></div></li>
-</ul>
-<hr>
-<h3 id="prerequisites">Prerequisites</h3>
-<p>some config if not setup correctly, it will not work.</p>
-<ul>
-<li>Player Controller: Make sure "Block Input" is unchecked.
-<img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image.png"></li>
-<li>Create a HUD or Menu widget derived from CommonActivatable Widget.</li>
-<li>Ensure that your HUD or Menu Widget set "supports Activation Focus" to <strong>true</strong>.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-1.png"></li>
-<li>Create a specific UI InputConfig for your menu widget. Avoid using <code>Setup Input Mode Game &amp; UI</code> as it is not suitable for CommonUI!
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-2.png"></li>
-<li>If your game is a TopDown Game and you want to retain Mouse Capture, in your HUD Widget, set the input config Mouse Capture Mode to "Capture Permanently including Initial Mouse Down." Otherwise, your game will require a double-click to trigger a single mouse click.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-3.png"></li>
-</ul>
-<h3 id="enhanced-input-and-automatic-button-icon-display">Enhanced Input and Automatic Button Icon Display</h3>
-<ul>
+<li>require held 和  UIHold Data配置正确
+    <img alt="alt text" src="../../../../assets/images/CommonActionWidget_image.png"></li>
 <li>
-<p>In <code>Game-&gt;CommonInputSetting</code>, add your platform icon data and set "Enable Enhanced Input Support" to true.</p>
-<p><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></p>
+<p>必须是支持 hold 类型的trigger 的action 才支持 绑定 held</p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonActionWidget::IsHeldAction</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnhancedInputAction</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">())</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputTrigger</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EnhancedInputAction</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnumHasAnyFlags</span><span class="p">(</span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">GetSupportedTriggerEvents</span><span class="p">(),</span><span class="w"> </span><span class="n">ETriggerEventsSupported</span><span class="o">::</span><span class="n">Ongoing</span><span class="p">))</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">}</span>
+</code></pre></div>
+否则，用来放动画的progress image 会被隐藏
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>        if (IsHeldAction())
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                    {
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                        MyProgressImage-&gt;SetVisibility(EVisibility::SelfHitTestInvisible);
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                    }
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                    else
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                    {
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                        MyProgressImage-&gt;SetVisibility(EVisibility::Collapsed);
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>                    }
+</code></pre></div>
+所以，打开 对应的InputAction, 增加对Hold的支持：
+<img alt="alt text" src="../../../../assets/images/CommonActionWidget_image-1.png">
 </li>
-<li>
-<p>Create a <code>CommonBaseButton</code>, place a <code>CommonActionWidget</code> inside it, and rename it to <code>InputActionWidget</code>. <strong>It must be named this way, otherwise it will not display.</strong></p>
-</li>
-<li>
-<p>Configure the <code>CommonBaseButton</code> input action, setting an <code>InputAction</code> for it. Here, an 'E' key is set, and the <code>CommonActionWidget</code> inside the button will display the corresponding icon.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></p>
-</li>
-<li>
-<p>If no <code>InputAction</code> is specified for the above <code>CommonBaseButton</code>, the system will automatically set the relevant action icon based on the platform when it is in focus. For example, the Xbox's down button icon is usually the gamepad face button down, so it will display an 'A' icon.</p>
-</li>
-<li>This 'A' icon can be specified through configuring <code>CommonUIInputData</code>.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png"></li>
-<li>You can change the <code>ForwardAction</code> from the 'A' button to the 'X' button. However, this only modifies the icon, as the platform still passes the 'A' button's <code>InputAction</code>. Visually, it will show the 'X' icon, but the key binding remains 'A'. I can only consider this a bug. If you know the correct approach, please let me know.</li>
-</ul>
-<h3 id="gamepad-navigation-configuration">Gamepad Navigation Configuration</h3>
-<p>When using a gamepad, you need to navigate through the menu using the gamepad's directional buttons (up, down, left, right) so that players can select which button to interact with. </p>
-<p>You only need to override <code>GetDesiredFocusTarget</code> to let the system know which Common BaseButton should be focused by default.</p>
-<ul>
-<li>This only works for gamepads; keyboard navigation is very cumbersome now, presumably due to the mouse capture. The Lyra project disables keyboard navigation. If you know simeple way to setup keyboard navigation , please let me konw. :)</li>
-</ul>
-<p><img alt="alt text" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image-1.png"></p></div>
+</ul></div>
 
 
 
@@ -1457,7 +1313,7 @@
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
+    <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
@@ -1467,10 +1323,10 @@
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
+    <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
   </span>
 
     
@@ -1481,60 +1337,6 @@
 
 
 
-
-  <h2 id="__comments">Comments</h2>
-  <script src="https://giscus.app/client.js"
-        data-repo="kisspread/notes"
-        data-repo-id="R_kgDOMNKAqg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMNKAqs4CgVZ_"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="1"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-  </script>
-
-  <!-- Synchronize Giscus theme with palette -->
-  <script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate"
-        ? "transparent_dark"
-        : "light"
-
-      // Instruct Giscus to set theme
-      giscus.setAttribute("data-theme", theme) 
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function() {
-      var ref = document.querySelector("[data-md-component=palette]")
-      ref.addEventListener("change", function() {
-        var palette = __md_get("__palette")
-        if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-          // Instruct Giscus to change theme
-          var frame = document.querySelector(".giscus-frame")
-          frame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme } } },
-            "https://giscus.app"
-          )
-        }
-      })
-    })
-  </script>
 
                 
               </article>
@@ -1547,7 +1349,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -1580,12 +1382,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="../../../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
