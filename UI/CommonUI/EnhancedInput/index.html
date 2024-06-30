@@ -16,7 +16,7 @@
         <link rel="prev" href="../CommonActionWidget/">
       
       
-        <link rel="next" href="../How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
+        <link rel="next" href="../Hold%20Support%20For%20Enhnaced%20Input/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -1041,6 +1041,8 @@
       
         
       
+        
+      
     
     
       
@@ -1088,7 +1090,7 @@
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Use CommonActionWidget
   </span>
   
 
@@ -1261,6 +1263,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Make Enhanced Input Trriger Support "hold"
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1462,8 +1485,7 @@
 
   <h1>EnhancedInput 和 commonUI 配合的数据配置</h1>
 
-<div><p>comments= true</p>
-<p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
+<div><p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
 <hr>
 <h2 id="inputaction">InputAction</h2>
 <p><img alt="usersettting" src="../../../assets/images/EnhancedInput_image.png">
@@ -1641,44 +1663,18 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 一种解法是：用UIActionTag来解决，因为代码里会给有Tag的Action进行HoldMapping绑定。但Action要定义在这图里的设置里。而且根本不是enhanced input。
 <img alt="alt text" src="../../../assets/images/EnhancedInput_image-17.png">
 <p>我看到有人依旧提交了相关<a href="https://github.com/EpicGames/UnrealEngine/pull/11985">Pull Request</a>, 他的改动很多，感觉官方没那么快合并。</p>
-<p>我实现了一种不用修改源码的办法：</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UWidgetLibraryHelp::AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ULocalPlayer</span><span class="o">*</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="p">)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">{</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LocalPlayer</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">)</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">                </span><span class="k">else</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">);</span>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="p">}</span>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="c1">// 调用</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="n">ActionBinding</span><span class="p">,</span><span class="w"> </span><span class="n">YourEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">());</span>
-</code></pre></div>
-前提是保证InputSystem-&gt;GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。
+<p>我实现了一种不用修改源码的办法, <a href="../Hold%20Support%20For%20Enhnaced%20Input/">click here</a></p>
+<p>前提是保证InputSystem-&gt;GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。</p>
 </li>
 </ul>
 <h2 id="3">疑问 3</h2>
 <ul>
-<li>为什么 Enhanced trigger 的Pressed和 BaseButton 的 Pressed没有关联？ 也就是键盘 按下的时候，界面里 Button的 Pressed 并没有出现按下的状态？(默认点击按钮除外，face Button A 是构建虚拟鼠标按下)</li>
-</ul>
+<li>
+<p>为什么 Enhanced trigger 的Pressed和 BaseButton 的 Pressed没有关联？ 也就是键盘 按下的时候，界面里 Button的 Pressed 并没有出现按下的状态？(默认点击按钮除外，face Button A 是构建虚拟鼠标按下)</p>
 <p>因为 它们不是双向关联的，目前的单向的。 我们给界面按钮 设置一个 Enhanced Trigger，我们把这个trigger当作一种快捷键的话，那么这个按钮在构建的时候，就会去绑定绑定这个快捷键的事件。但快捷键按下的时候，激活自身的点击事件。但这个点击事件，并不会激活stale 原始点击。猜测如果激活，可能导致死循环，因为原始点击事件 是用来 触发 按钮自身的点击事件的。
-  目前没有好的办法，一种做法是 在 CommonBaseButton 的子类里，自己实现按住和抬起的 style 切换，比较麻烦。</p></div>
+目前没有好的办法，一种做法是 在 CommonBaseButton 的子类里，自己实现按住和抬起的 style 切换，比较麻烦。</p>
+</li>
+</ul></div>
 
 
 
@@ -1701,7 +1697,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
   </span>
 
     
@@ -1722,6 +1718,60 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 
 
 
+
+  <h2 id="__comments">Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="kisspread/notes"
+        data-repo-id="R_kgDOMNKAqg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMNKAqs4CgVZ_"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

@@ -24,7 +24,7 @@
     
     
       
-        <title>CommonActionWidget Usage - Game Dev Notes</title>
+        <title>How to Use CommonActionWidget - Game Dev Notes</title>
       
     
     
@@ -120,7 +120,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#held-progress" class="md-skip">
+        <a href="#support-for-held-progress-animation" class="md-skip">
           Skip to content
         </a>
       
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CommonActionWidget Usage
+              How to Use CommonActionWidget
             
           </span>
         </div>
@@ -1041,6 +1041,8 @@
       
         
       
+        
+      
     
     
       
@@ -1095,7 +1097,7 @@
           
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Use CommonActionWidget
   </span>
   
 
@@ -1106,7 +1108,7 @@
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Use CommonActionWidget
   </span>
   
 
@@ -1126,9 +1128,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#held-progress" class="md-nav__link">
+  <a href="#support-for-held-progress-animation" class="md-nav__link">
     <span class="md-ellipsis">
-      支持 held progress 动画
+      Support for Held Progress Animation
     </span>
   </a>
   
@@ -1155,6 +1157,27 @@
   
   <span class="md-ellipsis">
     EnhancedInput 和 commonUI 配合的数据配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Make Enhanced Input Trriger Support "hold"
   </span>
   
 
@@ -1225,9 +1248,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#held-progress" class="md-nav__link">
+  <a href="#support-for-held-progress-animation" class="md-nav__link">
     <span class="md-ellipsis">
-      支持 held progress 动画
+      Support for Held Progress Animation
     </span>
   </a>
   
@@ -1256,15 +1279,15 @@
   
 
 
-  <h1>CommonActionWidget Usage</h1>
+  <h1>How to Use CommonActionWidget</h1>
 
-<div><h2 id="held-progress">支持 held progress 动画</h2>
-<p>一直没成功，一层层调试，找到了原因。</p>
+<div><h2 id="support-for-held-progress-animation">Support for Held Progress Animation</h2>
+<p>I have been trying to make it work without success, but after debugging layer by layer, I finally found the reason.</p>
 <ul>
-<li>require held 和  UIHold Data配置正确
+<li>Make sure that "held" and "UIHold Data" are configured correctly.
     <img alt="alt text" src="../../../assets/images/CommonActionWidget_image.png"></li>
 <li>
-<p>必须是支持 hold 类型的trigger 的action 才支持 绑定 held</p>
+<p>Only actions with trigger types that support "held" can bind to the "held" action.</p>
 <p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonActionWidget::IsHeldAction</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnhancedInputAction</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">())</span>
@@ -1279,18 +1302,19 @@
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
-否则，用来放动画的progress image 会被隐藏
+Otherwise, the progress image used for the animation will be hidden.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>        if (IsHeldAction())
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>                    {
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                        MyProgressImage-&gt;SetVisibility(EVisibility::SelfHitTestInvisible);
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                    }
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>                    else
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>                    {
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>                        MyProgressImage-&gt;SetVisibility(EVisibility::Collapsed);
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>                    }
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        {
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            MyProgressImage-&gt;SetVisibility(EVisibility::SelfHitTestInvisible);
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        }
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        else
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        {
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            MyProgressImage-&gt;SetVisibility(EVisibility::Collapsed);
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        }
 </code></pre></div>
-所以，打开 对应的InputAction, 增加对Hold的支持：
+Therefore, open the corresponding InputAction and add support for "Hold":
 <img alt="alt text" src="../../../assets/images/CommonActionWidget_image-1.png">
 </li>
 </ul></div>
@@ -1316,7 +1340,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
   </span>
 
     
@@ -1337,6 +1361,60 @@
 
 
 
+
+  <h2 id="__comments">Comments</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="kisspread/notes"
+        data-repo-id="R_kgDOMNKAqg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMNKAqs4CgVZ_"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>

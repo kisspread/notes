@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="zh" class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/Basic/Material/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/">
       
       
-        <link rel="prev" href="../00/">
+        <link rel="prev" href="../EnhancedInput/">
       
       
-        <link rel="next" href="../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/">
+        <link rel="next" href="../How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Material - Game Dev Notes</title>
+        <title>Make Enhanced Input Trriger Support "hold" - Game Dev Notes</title>
       
     
     
@@ -120,8 +120,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
-          跳转至
+        <a href="#holdsupportbasebuttonh" class="md-skip">
+          Skip to content
         </a>
       
     </div>
@@ -135,8 +135,8 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
   <img src="../../../assets/logo.png" alt="logo">
 
@@ -155,7 +155,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Material
+              Make Enhanced Input Trriger Support "hold"
             
           </span>
         </div>
@@ -195,20 +195,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="选择当前语言">
+    <button class="md-header__button md-icon" aria-label="Select language">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../Basic/Material/" hreflang="en" class="md-select__link">
+            <a href="./" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="./" hreflang="zh" class="md-select__link">
+            <a href="../../../zh/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -227,16 +227,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="查找">
+      <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -249,7 +249,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            正在初始化搜索引擎
+            Initializing search
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -260,7 +260,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -275,7 +275,7 @@
   
     
       
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -284,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -299,13 +299,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../Basic/00/" class="md-tabs__link">
           
   
     
@@ -325,7 +323,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../GAS/00/" class="md-tabs__link">
+        <a href="../../../GAS/00/" class="md-tabs__link">
           
   
     
@@ -345,7 +343,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../PCG/00/" class="md-tabs__link">
+        <a href="../../../PCG/00/" class="md-tabs__link">
           
   
     
@@ -361,11 +359,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../UI/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../00/" class="md-tabs__link">
           
   
     
@@ -404,9 +404,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
   <img src="../../../assets/logo.png" alt="logo">
 
@@ -415,7 +415,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -452,10 +452,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -474,22 +472,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -500,7 +495,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basic
@@ -514,7 +509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
+      <a href="../../../Basic/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -532,28 +527,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Material
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../Basic/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,183 +539,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      坐标系
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="坐标系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      简单坐标系
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建标准坐标系
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      画圆
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="画圆">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lerp" class="md-nav__link">
-    <span class="md-ellipsis">
-      lerp 一个
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      减了再乘
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#radialgradientexponential" class="md-nav__link">
-    <span class="md-ellipsis">
-      RadialGradientExponential
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spheregradient" class="md-nav__link">
-    <span class="md-ellipsis">
-      SphereGradient
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smoothstep" class="md-nav__link">
-    <span class="md-ellipsis">
-      smoothstep
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      画圈
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="画圈">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      相乘
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dot" class="md-nav__link">
-    <span class="md-ellipsis">
-      dot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      相减
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      动画
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="动画">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      简单结合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -751,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -772,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ffmpeg/" class="md-nav__link">
+      <a href="../../../Basic/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -802,20 +602,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
         
           
-          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -840,7 +637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -880,20 +677,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -918,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -939,7 +733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1021,7 +815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/00/" class="md-nav__link">
+      <a href="../../../GAS/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/GamePlayTag/" class="md-nav__link">
+      <a href="../../../GAS/GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1116,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/00/" class="md-nav__link">
+      <a href="../../../PCG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1137,11 +931,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
+      <a href="../../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    UE5.4 PCG 自定义节点 C++常用类 浅析
+    A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
   </span>
   
 
@@ -1162,8 +956,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1174,19 +970,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1197,7 +996,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             UI
@@ -1211,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/00/" class="md-nav__link">
+      <a href="../../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1229,8 +1028,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1246,18 +1047,21 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1268,7 +1072,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
@@ -1282,11 +1086,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/CommonActionWidget/" class="md-nav__link">
+      <a href="../CommonActionWidget/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Use CommonActionWidget
   </span>
   
 
@@ -1303,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/EnhancedInput/" class="md-nav__link">
+      <a href="../EnhancedInput/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1321,10 +1125,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Make Enhanced Input Trriger Support "hold"
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1333,6 +1155,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#holdsupportbasebuttonh" class="md-nav__link">
+    <span class="md-ellipsis">
+      HoldSupportBaseButton.h
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#holdsupportbasebuttoncpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      HoldSupportBaseButton.cpp
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1345,11 +1203,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+      <a href="../How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 结合增强输入
+    How to Setup CommonUI in UE5.4.2 with enhanced input
   </span>
   
 
@@ -1387,173 +1245,32 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#holdsupportbasebuttonh" class="md-nav__link">
     <span class="md-ellipsis">
-      坐标系
+      HoldSupportBaseButton.h
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="坐标系">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      简单坐标系
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      创建标准坐标系
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#holdsupportbasebuttoncpp" class="md-nav__link">
     <span class="md-ellipsis">
-      画圆
+      HoldSupportBaseButton.cpp
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="画圆">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lerp" class="md-nav__link">
-    <span class="md-ellipsis">
-      lerp 一个
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      减了再乘
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#radialgradientexponential" class="md-nav__link">
-    <span class="md-ellipsis">
-      RadialGradientExponential
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spheregradient" class="md-nav__link">
-    <span class="md-ellipsis">
-      SphereGradient
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smoothstep" class="md-nav__link">
-    <span class="md-ellipsis">
-      smoothstep
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      画圈
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="画圈">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      相乘
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dot" class="md-nav__link">
-    <span class="md-ellipsis">
-      dot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      相减
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      动画
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="动画">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      简单结合
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1572,7 +1289,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/Basic/Material.zh.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/Hold Support For Enhnaced Input.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1580,61 +1297,119 @@
   
 
 
-  <h1>Material</h1>
+  <h1>Make Enhanced Input Trriger Support "hold"</h1>
 
-<div><p>材质函数里画圈圈的几种方式</p>
+<div><p>In the last post, I mentioned that the CommonUI <a href="../EnhancedInput/#2">Enhanced Input Trigger does not support the "Hold" action</a>. Here is my solution: create a class derived from "CommonBaseButton" to make the Enhanced Input Trigger support the "Hold" action <strong>without modifying the UE source code.</strong></p>
 <hr>
-<h2 id="_1">坐标系</h2>
-<p>根据喜好，选择你的坐标系</p>
-<h3 id="_2">简单坐标系</h3>
-<p>普通好用，节点少，（-1，-1）在右上角，和书本上的不同有点反直觉，但习惯就好
-<img alt="alt text" src="../../../assets/images/Material_image-1.png"></p>
-<h3 id="_3">创建标准坐标系</h3>
-<p>标准坐标系多了两个步骤，旋转 和交换 XY轴，虽然多了两条指令，但好的坐标系有助于理解
-<img alt="" src="../../../assets/images/Material_image.png"></p>
-<h2 id="_4">画圆</h2>
-<h3 id="lerp">lerp 一个</h3>
-<p>距离场作为比例，对0和-1 插值
-<img alt="alt text" src="../../../assets/images/Material_image-2.png"></p>
-<h3 id="_5">减了再乘</h3>
-<p>小于0.8都是负数，全黑。用乘法控制边缘，只越大越锐利
-<img alt="alt text" src="../../../assets/images/Material_image-3.png"></p>
-<h3 id="radialgradientexponential">RadialGradientExponential</h3>
-<p>使用内置函数，画普通圆用这个不推荐，计算量相对大，上面都是47个指令，而这个要51个。它能生成棉花糖一样的圆
-<img alt="RadialGradientExponential" src="../../../assets/images/Material_image-4.png"></p>
-<p>内部实现也很复杂，不是特别需要这种效果，没必要使用它
-<img alt="alt text" src="../../../assets/images/Material_image-5.png"></p>
-<h3 id="spheregradient">SphereGradient</h3>
-<p>内置函数SphereGradient球形渐变的圆，实现类型下图，利用圆方程实现平滑过渡的效果，普通画圆依然不建议使用
-<img alt="alt text" src="../../../assets/images/Material_image-6.png"></p>
-<h3 id="smoothstep">smoothstep</h3>
-<p>推荐，用它画的圆是最简单的，max =min 就不用处理渐变值，输出值只有纯粹的0-1。值得一提的是，min 和 max对调的话，会反向。不过要方向最好用1-x
-<img alt="alt text" src="../../../assets/images/Material_image-9.png"></p>
-<h2 id="_6">画圈</h2>
-<p>综上所述，使用最简的画出大圆，再画小圆，就可以画出圈的</p>
-<h3 id="_7">相乘</h3>
-<p>两圆，一正一反，重叠的部分是正数，相乘向上取整
-<img alt="alt text" src="../../../assets/images/Material_image-7.png"></p>
-<h3 id="dot">dot</h3>
-<p>两圆点乘
-dot 范围-1 到 1，重叠部分越相似，越接近1
-<img alt="alt text" src="../../../assets/images/Material_image-8.png"></p>
-<h3 id="_8">相减</h3>
-<p>smoothstep 输出纯粹的0和1，非常棒
-<img alt="alt text" src="../../../assets/images/Material_image-10.png"></p>
-<h2 id="_9">动画</h2>
-<p>这里用周期时间驱动
-<img alt="alt text" src="../../../assets/images/Material_image-11.png">
-atan2的取值范围是
-<span class="arithmatex">\(\left[ -\pi,\pi \right]\)</span>
-这里有个妙处，就是除以2π 和 用frac取小数。之所以除以2π不是π是因为：</p>
-<ul>
-<li>除以2π范围变成<span class="arithmatex">\(\left[ -0.5,0.5 \right]\)</span></li>
-<li>frac 对负数的处理是 1-x,比如-0.4，取小数部分0.4，然后1-0.4=0.6</li>
-<li>由于这frac操作值继续上升，直到1, 于是就可以完整走完一圈。  </li>
-</ul>
-<h3 id="_10">简单结合</h3>
-<p><img alt="alt text" src="../../../assets/images/Material_image-12.png"></p></div>
+<h3 id="holdsupportbasebuttonh">HoldSupportBaseButton.h</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#pragma once</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CoreMinimal.h"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CommonButtonBase.h"</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"HoldSupportBaseButton.generated.h"</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">FHoldEventDelegate</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm">/**</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm"> *  Enhanced Input trigger Hold support button</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm"> */</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">UCLASS</span><span class="p">()</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UHoldSupportBaseButton</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCommonButtonBase</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">{</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">protected</span><span class="o">:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">NativeConstruct</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">()</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">EnhancedHoldProgress</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">HoldProgress</span><span class="p">);</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aura|UI"</span><span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnHoldComplete</span><span class="p">();</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">()</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">CheckAndAddHoldBinding</span><span class="p">();</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="n">FDelegateHandle</span><span class="w"> </span><span class="n">HoldSupportHandle</span><span class="p">;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="p">};</span>
+</code></pre></div>
+<h3 id="holdsupportbasebuttoncpp">HoldSupportBaseButton.cpp</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"UI/Widget/HoldSupportBaseButton.h"</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"EnhancedActionKeyMapping.h"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"EnhancedInputSubsystems.h"</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"ICommonInputModule.h"</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/UIActionBinding.h"</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"UI/Widget/AuraActivatableWidget.h"</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UHoldSupportBaseButton::NativeConstruct</span><span class="p">()</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">{</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">NativeConstruct</span><span class="p">();</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">CheckAndAddHoldBinding</span><span class="p">();</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">GetOwningLocalPlayer</span><span class="p">())</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">EnhancedInputSubsystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnhancedInputSubsystem</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="c1">// make sure FEnhancedActionKeyMapping is set up correctly</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">            </span><span class="n">EnhancedInputSubsystem</span><span class="o">-&gt;</span><span class="n">ControlMappingsRebuiltDelegate</span><span class="p">.</span><span class="n">AddUniqueDynamic</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">UHoldSupportBaseButton</span><span class="o">::</span><span class="n">CheckAndAddHoldBinding</span><span class="p">);</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="cm">/*</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="cm"> * I don't want to use bRequiresHold for EnhancedInputAction, I want to use the mapping to determine if it requires hold,</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="cm"> * the bRequiresHold is for Button itself not for a speacific EnhancedInputAction</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="cm"> * if a EnhancedInputAction has a hold mapping, then it requires hold.</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="cm"> * </span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="cm"> */</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UHoldSupportBaseButton::CheckAndAddHoldBinding</span><span class="p">()</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="p">{</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">    </span><span class="c1">// if (!bRequiresHold) return;</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TriggeringEnhancedInputAction</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TriggeringBindingHandle</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUIActionBinding</span><span class="o">::</span><span class="n">FindBinding</span><span class="p">(</span><span class="n">TriggeringBindingHandle</span><span class="p">);</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ActionBinding</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">;</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">    </span><span class="c1">// ActionBinding-&gt;OnHoldActionPressed.AddUObject(this, &amp;UHoldSupportBaseButton::NativeOnPressed);</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">OnHoldActionProgressed</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">HoldSupportHandle</span><span class="p">);</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">    </span><span class="n">HoldSupportHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">OnHoldActionProgressed</span><span class="p">.</span><span class="n">AddUObject</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="o">&amp;</span><span class="n">UHoldSupportBaseButton</span><span class="o">::</span><span class="n">EnhancedHoldProgress</span><span class="p">);</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TriggeringEnhancedInputAction</span><span class="p">)</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">                </span><span class="k">else</span><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldData</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">bRequiresHold</span><span class="p">)</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">UCommonUIHoldData</span><span class="o">*</span><span class="w"> </span><span class="n">CommonUIHoldBehaviorValues</span><span class="w"> </span><span class="o">=</span><span class="n">HoldData</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">();</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">CommonUIHoldBehaviorValues</span><span class="o">-&gt;</span><span class="n">KeyboardAndMouse</span><span class="p">.</span><span class="n">HoldTime</span><span class="p">,</span><span class="w"> </span><span class="n">CommonUIHoldBehaviorValues</span><span class="o">-&gt;</span><span class="n">KeyboardAndMouse</span><span class="p">.</span><span class="n">HoldRollbackTime</span><span class="p">);</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="p">}</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UHoldSupportBaseButton::EnhancedHoldProgress</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">HoldProgress</span><span class="p">)</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="p">{</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldProgress</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">)</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">        </span><span class="n">OnHoldComplete</span><span class="p">();</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="p">}</span>
+</code></pre></div></div>
 
 
 
@@ -1654,20 +1429,20 @@ atan2的取值范围是
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="最后更新">
+    <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月26日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
   </span>
 
     
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="创建日期">
+    <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月26日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
   </span>
 
     
@@ -1679,7 +1454,7 @@ atan2的取值范围是
 
 
 
-  <h2 id="__comments">评论</h2>
+  <h2 id="__comments">Comments</h2>
   <script src="https://giscus.app/client.js"
         data-repo="kisspread/notes"
         data-repo-id="R_kgDOMNKAqg"
@@ -1744,7 +1519,7 @@ atan2的取值范围是
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-  回到页面顶部
+  Back to top
 </button>
         
       </main>
@@ -1777,7 +1552,7 @@ atan2的取值范围是
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
