@@ -1,5 +1,5 @@
 title: EnhancedInput 和 commonUI 配合的数据配置
-comments= true
+comments:true
 
 本篇是记录向，没做阅读优化，慎看，仅供参考。
 
@@ -209,45 +209,16 @@ SlateApp.ProcessMouseButtonUpEvent(MouseEvent); //模拟
 
      我看到有人依旧提交了相关[Pull Request](https://github.com/EpicGames/UnrealEngine/pull/11985), 他的改动很多，感觉官方没那么快合并。
 
-     我实现了一种不用修改源码的办法：
-
-    ```cpp
-    void UWidgetLibraryHelp::AddHoldBinding(const TSharedPtr<FUIActionBinding>& ActionBinding, UInputAction* BEnhancedInputAction, const ULocalPlayer* LocalPlayer)
-
-    {
-        if (const UEnhancedInputLocalPlayerSubsystem* InputSystem = LocalPlayer->GetSubsystem<UEnhancedInputLocalPlayerSubsystem>())
-        {
-            for (const FEnhancedActionKeyMapping& Mapping : InputSystem->GetAllPlayerMappableActionKeyMappings())
-            {
-                if (Mapping.Action == BEnhancedInputAction)
-                {
-                    UInputTriggerHold* Trigger = nullptr;
-                    Mapping.Action->Triggers.FindItemByClass(&Trigger);
-                    if (Trigger)
-                    {
-                        FUIActionKeyMapping KeyMapping(Mapping.Key, Trigger->HoldTimeThreshold, Trigger->HoldTimeThreshold);
-                        ActionBinding->HoldMappings.Add(KeyMapping);
-                    }
-                    else
-                    {
-                        FUIActionKeyMapping KeyMapping(Mapping.Key, 0.75f, 0.75f);
-                        ActionBinding->HoldMappings.Add(KeyMapping);
-                    }
-                }
-            }
-        }
-    }
-    // 调用
-    UWidgetLibraryHelp::AddHoldBinding(ActionBinding, YourEnhancedInputAction, GetOwningLocalPlayer());
-    ```
+     我实现了一种不用修改源码的办法, [click here](./Hold%20Support%20For%20Enhnaced%20Input.md)
+    
     前提是保证InputSystem->GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。
   
 ## 疑问 3
 
 - 为什么 Enhanced trigger 的Pressed和 BaseButton 的 Pressed没有关联？ 也就是键盘 按下的时候，界面里 Button的 Pressed 并没有出现按下的状态？(默认点击按钮除外，face Button A 是构建虚拟鼠标按下)
 
-  因为 它们不是双向关联的，目前的单向的。 我们给界面按钮 设置一个 Enhanced Trigger，我们把这个trigger当作一种快捷键的话，那么这个按钮在构建的时候，就会去绑定绑定这个快捷键的事件。但快捷键按下的时候，激活自身的点击事件。但这个点击事件，并不会激活stale 原始点击。猜测如果激活，可能导致死循环，因为原始点击事件 是用来 触发 按钮自身的点击事件的。
-  目前没有好的办法，一种做法是 在 CommonBaseButton 的子类里，自己实现按住和抬起的 style 切换，比较麻烦。
+    因为 它们不是双向关联的，目前的单向的。 我们给界面按钮 设置一个 Enhanced Trigger，我们把这个trigger当作一种快捷键的话，那么这个按钮在构建的时候，就会去绑定绑定这个快捷键的事件。但快捷键按下的时候，激活自身的点击事件。但这个点击事件，并不会激活stale 原始点击。猜测如果激活，可能导致死循环，因为原始点击事件 是用来 触发 按钮自身的点击事件的。
+    目前没有好的办法，一种做法是 在 CommonBaseButton 的子类里，自己实现按住和抬起的 style 切换，比较麻烦。
 
 
 

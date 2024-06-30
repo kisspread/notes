@@ -1,13 +1,14 @@
-title:CommonActionWidget Usage
+Title: How to Use CommonActionWidget
+Comments:true
 
-## 支持 held progress 动画
-一直没成功，一层层调试，找到了原因。
+## Support for Held Progress Animation
+I have been trying to make it work without success, but after debugging layer by layer, I finally found the reason.
 
-- require held 和  UIHold Data配置正确
+- Make sure that "held" and "UIHold Data" are configured correctly.
     ![alt text](../../assets/images/CommonActionWidget_image.png)
-- 必须是支持 hold 类型的trigger 的action 才支持 绑定 held
+- Only actions with trigger types that support "held" can bind to the "held" action.
 
-    ``` cpp
+    ```cpp
         bool UCommonActionWidget::IsHeldAction() const
         {
             if (EnhancedInputAction && CommonUI::IsEnhancedInputSupportEnabled())
@@ -22,18 +23,18 @@ title:CommonActionWidget Usage
 
                 return false;
             }
+        }
     ```
-    否则，用来放动画的progress image 会被隐藏
+    Otherwise, the progress image used for the animation will be hidden.
     ```
             if (IsHeldAction())
-                        {
-                            MyProgressImage->SetVisibility(EVisibility::SelfHitTestInvisible);
-                        }
-                        else
-                        {
-                            MyProgressImage->SetVisibility(EVisibility::Collapsed);
-                        }
+            {
+                MyProgressImage->SetVisibility(EVisibility::SelfHitTestInvisible);
+            }
+            else
+            {
+                MyProgressImage->SetVisibility(EVisibility::Collapsed);
+            }
     ```
-    所以，打开 对应的InputAction, 增加对Hold的支持：
+    Therefore, open the corresponding InputAction and add support for "Hold":
     ![alt text](../../assets/images/CommonActionWidget_image-1.png)
-    
