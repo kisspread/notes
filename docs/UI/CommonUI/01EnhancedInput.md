@@ -1,7 +1,9 @@
 title: EnhancedInput 和 commonUI 配合的数据配置
 comments:true
 
-本篇是记录向，没做阅读优化，慎看，仅供参考。
+!!! warning 
+    本篇是记录向，没做阅读优化，慎看，仅供参考。
+
 
 ---
 ## InputAction
