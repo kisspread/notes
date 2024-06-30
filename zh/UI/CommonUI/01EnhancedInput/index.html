@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/EnhancedInput/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/01EnhancedInput/">
       
       
-        <link rel="prev" href="../CommonActionWidget/">
+        <link rel="prev" href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
       
       
-        <link rel="next" href="../Hold%20Support%20For%20Enhnaced%20Input/">
+        <link rel="next" href="../02CommonActionWidget/">
       
       
       <link rel="icon" href="../../../../assets/logo.png">
@@ -202,7 +202,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../../UI/CommonUI/EnhancedInput/" hreflang="en" class="md-select__link">
+            <a href="../../../../UI/CommonUI/01EnhancedInput/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -1043,6 +1043,8 @@
       
         
       
+        
+      
     
     
       
@@ -1086,11 +1088,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonActionWidget/" class="md-nav__link">
+      <a href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Setup CommonUI in UE5.4.2 结合增强输入
   </span>
   
 
@@ -1275,7 +1277,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+      <a href="../02CommonActionWidget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonActionWidget Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1296,11 +1319,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+      <a href="../05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 结合增强输入
+    CommonActionWidget ActionBar Support 'Hold'
   </span>
   
 
@@ -1475,7 +1498,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/EnhancedInput.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/01EnhancedInput.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1485,7 +1508,10 @@
 
   <h1>EnhancedInput 和 commonUI 配合的数据配置</h1>
 
-<div><p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
+<div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
+</div>
 <hr>
 <h2 id="inputaction">InputAction</h2>
 <p><img alt="usersettting" src="../../../../assets/images/EnhancedInput_image.png">
@@ -1663,7 +1689,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 一种解法是：用UIActionTag来解决，因为代码里会给有Tag的Action进行HoldMapping绑定。但Action要定义在这图里的设置里。而且根本不是enhanced input。
 <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-17.png">
 <p>我看到有人依旧提交了相关<a href="https://github.com/EpicGames/UnrealEngine/pull/11985">Pull Request</a>, 他的改动很多，感觉官方没那么快合并。</p>
-<p>我实现了一种不用修改源码的办法, <a href="../Hold%20Support%20For%20Enhnaced%20Input/">click here</a></p>
+<p>我实现了一种不用修改源码的办法, <a href="./Hold%20Support%20For%20Enhnaced%20Input.md">click here</a></p>
 <p>前提是保证InputSystem-&gt;GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。</p>
 </li>
 </ul>

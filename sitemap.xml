@@ -92,32 +92,39 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/00/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/UI/CommonUI/CommonActionWidget/</loc>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/CommonActionWidget/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/CommonActionWidget/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/UI/CommonUI/EnhancedInput/</loc>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/01EnhancedInput/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/EnhancedInput/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/EnhancedInput/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/01EnhancedInput/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/01EnhancedInput/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/</loc>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/02CommonActionWidget/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/02CommonActionWidget/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/02CommonActionWidget/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/</loc>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/</loc>
+        <lastmod>2024-06-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
     </url>
     <url>
         <loc>https://kisspread.github.io/notes/zh/</loc>
@@ -211,31 +218,38 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/00/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/CommonActionWidget/</loc>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/CommonActionWidget/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/CommonActionWidget/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/EnhancedInput/</loc>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/01EnhancedInput/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/EnhancedInput/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/EnhancedInput/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/01EnhancedInput/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/01EnhancedInput/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/</loc>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/02CommonActionWidget/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/Hold%20Support%20For%20Enhnaced%20Input/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/02CommonActionWidget/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/02CommonActionWidget/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/</loc>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/</loc>
         <lastmod>2024-06-30</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/</loc>
+        <lastmod>2024-06-30</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
     </url>
 </urlset>

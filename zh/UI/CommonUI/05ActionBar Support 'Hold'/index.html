@@ -10,10 +10,10 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/">
       
       
-        <link rel="prev" href="../Hold%20Support%20For%20Enhnaced%20Input/">
+        <link rel="prev" href="../03Hold%20Support%20For%20Enhnaced%20Input/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>How to Setup CommonUI in UE5.4.2 结合增强输入 - Game Dev Notes</title>
+        <title>CommonActionWidget ActionBar Support 'Hold' - Game Dev Notes</title>
       
     
     
@@ -118,7 +118,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#activate" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -153,7 +153,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Setup CommonUI in UE5.4.2 结合增强输入
+              CommonActionWidget ActionBar Support 'Hold'
             
           </span>
         </div>
@@ -200,7 +200,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../../UI/CommonUI/How%20to%20setup%20CommonUI%20in%20UE5.4.2/" hreflang="en" class="md-select__link">
+            <a href="../../../../UI/CommonUI/05ActionBar%20Support%20%27Hold%27/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -1041,6 +1041,8 @@
       
         
       
+        
+      
     
     
       
@@ -1084,11 +1086,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonActionWidget/" class="md-nav__link">
+      <a href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Setup CommonUI in UE5.4.2 结合增强输入
   </span>
   
 
@@ -1105,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../EnhancedInput/" class="md-nav__link">
+      <a href="../01EnhancedInput/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1126,7 +1128,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+      <a href="../02CommonActionWidget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonActionWidget Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1158,7 +1181,7 @@
           
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 结合增强输入
+    CommonActionWidget ActionBar Support 'Hold'
   </span>
   
 
@@ -1169,7 +1192,7 @@
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 结合增强输入
+    CommonActionWidget ActionBar Support 'Hold'
   </span>
   
 
@@ -1189,27 +1212,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#activate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Activate 的概念
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      stack的概念
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      一些先决条件
+      蓝图配置
     </span>
   </a>
   
@@ -1218,16 +1223,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      增强输入和按钮自动显示图标
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      手柄导航配置
+      代码
     </span>
   </a>
   
@@ -1282,27 +1278,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#activate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Activate 的概念
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      stack的概念
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      一些先决条件
+      蓝图配置
     </span>
   </a>
   
@@ -1311,16 +1289,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      增强输入和按钮自动显示图标
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      手柄导航配置
+      代码
     </span>
   </a>
   
@@ -1341,7 +1310,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/How to setup CommonUI in UE5.4.2.zh.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/05ActionBar Support 'Hold'.zh.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1349,122 +1318,152 @@
   
 
 
-  <h1>How to Setup CommonUI in UE5.4.2 结合增强输入</h1>
+  <h1>CommonActionWidget ActionBar Support 'Hold'</h1>
 
-<div><p>目前为止，commonUI的文档非常简陋，并未明确告诉我们如何正确配置。我花了好长时间才搞明白，在这里把主要过程记录一下。</p>
+<div><p>同样的问题，Enhanced Input 默认情况，不支持ActionBar 里的 BoundButton 通过 Enhanced Trigger 的 Hold 来触发。</p>
+<p>实现了一个控件，支持在蓝图 动态给 ActionBar 添加 Button，并且 支持 选择是否需要Hold。</p>
 <hr>
-<h3 id="activate">Activate 的概念</h3>
-<p>Activatable Widget是 Common UI 的重要概念。 这里可以简单地理解为激活了就会显示，deactivate就是隐藏。还有：</p>
+<p><img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image.png"></p>
+<h3 id="_1">蓝图配置</h3>
 <ul>
-<li>activate widget一旦Activated,就会接管Input Action，类似 UE4里手动调用<code>setInputMode</code>，并且这是冲突的，不推荐在CommonUI里使用旧的方式，我试过会，这导致Mouse Capture 出现各种问题。</li>
-<li>接管 inputAction是一个贴心的设计，因为很多游戏一旦显示菜单，就需要显示鼠标。我们只需要重写GetDesiredInputConfig就可以决定鼠标和控制的各种行为。</li>
-<li>所以，我们需要在常驻的HUD上面配置游戏的默认InputAction，而放弃使用UE4的<code>setInputMode</code></li>
+<li>
+<p>支持一个默认动作：
+    <img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image-1.png"></p>
+</li>
+<li>
+<p>支持动态添加动作：
+    <img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image-2.png"></p>
+</li>
 </ul>
-<h3 id="stack">stack的概念</h3>
-<p>类比手机app，commonUI的stack就是界面一层层进入后堆叠起来的效果，可以通过返回键一层层地回退。</p>
-<ul>
-<li>可以在蓝图或者CPP创建这个UCommonActivatableWidgetStack，并设置宽高沾满屏幕</li>
-<li>有了这个stack，activatable widget 就可以 Add到这里面来。运行时一旦add进来就会立刻显示，类似Android的startActivity</li>
-<li>可以用一个RootLayout来管理stak，一个RootLayout可以有多个stack。Lyra项目的用到了2个: MenuStack和GameStack</li>
-<li>Game Stack 就是游戏常驻的HUD</li>
-<li>Menu Stack 是给各种MenuAdd进来的Stack</li>
-<li>要注意 Stack之间堆叠的顺序，Menu最好在Game的上面。</li>
-<li>Stack之间没有比较好的通信方式，比如当Menu Stack已经清空了，就是没有任何Menu显示在屏幕的时候，我想通知一下GameStack里面的Activated Widget做出一些反应，比如播放还原动画，CommonUI并没有提供现成方法。如果你知道，请务必告诉我。</li>
-<li>代码示例，可以用蓝图。但我觉得C++更方便，而且我做了一些hack操作，通知GameStack的默认widget MenuStack已经清空了
-    <div class="highlight"><span class="filename">YouHUD.cpp</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">YouHUD::InitHudWidgets</span><span class="p">(</span><span class="n">UAttributeSet</span><span class="o">*</span><span class="w"> </span><span class="n">AS</span><span class="p">,</span><span class="w"> </span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">APlayerState</span><span class="o">*</span><span class="w"> </span><span class="n">PS</span><span class="p">,</span><span class="w"> </span><span class="n">APlayerController</span><span class="o">*</span><span class="w"> </span><span class="n">PC</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">checkf</span><span class="p">(</span><span class="n">OverlayWidgetClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a OverlayWidgetClass"</span><span class="p">));</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">checkf</span><span class="p">(</span><span class="n">OverLayWidgetControllerClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a WidgetControllerClass"</span><span class="p">));</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">checkf</span><span class="p">(</span><span class="n">MenuWidgetControllerClass</span><span class="p">,</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"please initial a MenuWidgetControllerClass"</span><span class="p">));</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">RootLayout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateWidget</span><span class="o">&lt;</span><span class="n">UUserWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">(),</span><span class="w"> </span><span class="n">UCommonUserWidget</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">());</span>
+<h3 id="_2">代码</h3>
+<div class="highlight"><span class="filename">UAuraActivatableWidget.h</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">FHoldSupportAction</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input"</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">EnhancedInputAction</span><span class="p">;</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">UOverlay</span><span class="o">*</span><span class="w"> </span><span class="n">OverLay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UOverlay</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UOverlay</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Overlay"</span><span class="p">));</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="c1">// TSharedRef&lt;SOverlay&gt; RootLayout = SNew(SOverlay);</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">RootWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OverLay</span><span class="p">;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input"</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bHoldEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">};</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="n">GameLayerStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"GameLayerStack"</span><span class="p">));</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="n">MenuLayerStack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">WidgetTree</span><span class="o">-&gt;</span><span class="n">ConstructWidget</span><span class="o">&lt;</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UCommonActivatableWidgetStack</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"MenuLayerStack"</span><span class="p">));</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="n">OverLay</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">GameLayerStack</span><span class="p">);</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">OverLay</span><span class="o">-&gt;</span><span class="n">AddChild</span><span class="p">(</span><span class="n">MenuLayerStack</span><span class="p">);</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="c1">// set horizontal alignment and vertical alignment</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">GameBoxSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UOverlaySlot</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GameLayerStack</span><span class="o">-&gt;</span><span class="n">Slot</span><span class="p">);</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">GameBoxSlot</span><span class="o">-&gt;</span><span class="n">SetHorizontalAlignment</span><span class="p">(</span><span class="n">HAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="n">GameBoxSlot</span><span class="o">-&gt;</span><span class="n">SetVerticalAlignment</span><span class="p">(</span><span class="n">VAlign_Fill</span><span class="p">);</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cm">/**</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="cm"> * </span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cm"> */</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">UCLASS</span><span class="p">()</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UAuraActivatableWidget</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCommonActivatableWidget</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">public</span><span class="o">:</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">);</span>
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">MenuBoxSlot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UOverlaySlot</span><span class="o">&gt;</span><span class="p">(</span><span class="n">MenuLayerStack</span><span class="o">-&gt;</span><span class="n">Slot</span><span class="p">);</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="n">MenuBoxSlot</span><span class="o">-&gt;</span><span class="n">SetHorizontalAlignment</span><span class="p">(</span><span class="n">HAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="n">MenuBoxSlot</span><span class="o">-&gt;</span><span class="n">SetVerticalAlignment</span><span class="p">(</span><span class="n">VAlign_Fill</span><span class="p">);</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="n">RootLayout</span><span class="o">-&gt;</span><span class="n">AddToViewport</span><span class="p">();</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">HandleDefaultActionPress</span><span class="p">();</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aura|UI"</span><span class="p">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">RegisterEnhancedActionToActionBar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FHoldSupportAction</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="c1">// set up overlay widget</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">OverlayWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateWidget</span><span class="o">&lt;</span><span class="n">UAuraActivatableWidget</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GetWorld</span><span class="p">(),</span><span class="w"> </span><span class="n">OverlayWidgetClass</span><span class="p">);</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="n">UAuraWidgetController</span><span class="o">*</span><span class="w"> </span><span class="n">OverLayWidController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetWidgetController</span><span class="o">&lt;</span><span class="n">UAuraOverlayWidgetController</span><span class="o">&gt;</span><span class="p">(</span><span class="n">FAuraWidgetControllerParma</span><span class="p">(</span><span class="n">AS</span><span class="p">,</span><span class="w"> </span><span class="n">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">PS</span><span class="p">,</span><span class="w"> </span><span class="n">PC</span><span class="p">));</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="n">OverlayWidget</span><span class="o">-&gt;</span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">OverLayWidController</span><span class="p">);</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="c1">// OverlayWidget-&gt;AddToViewport();</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="n">GameLayerStack</span><span class="o">-&gt;</span><span class="n">AddWidgetInstance</span><span class="p">(</span><span class="o">*</span><span class="n">OverlayWidget</span><span class="p">);</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="n">MenuLayerStack</span><span class="o">-&gt;</span><span class="n">OnDisplayedWidgetChanged</span><span class="p">().</span><span class="n">AddLambda</span><span class="p">([</span><span class="k">this</span><span class="p">](</span><span class="n">UCommonActivatableWidget</span><span class="o">*</span><span class="w"> </span><span class="n">DisplayedWidget</span><span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayedWidget</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">            </span><span class="n">OverlayWidget</span><span class="o">-&gt;</span><span class="n">OnMenuEmpty</span><span class="p">();</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="p">});</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnMenuEmpty</span><span class="p">();</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">protected</span><span class="o">:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">NativeOnInitialized</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aura|UI"</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">DefaultHoldComplete</span><span class="p">();</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AuraWidgetController</span><span class="p">;</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
 <a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="c1">// set up menu widget</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="n">OverLayWidController</span><span class="o">-&gt;</span><span class="n">BroadcastInitialValue</span><span class="p">();</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="p">}</span>
-</code></pre></div></li>
-</ul>
-<h3 id="_1">一些先决条件</h3>
-<p>如果未设置，会导致失败</p>
-<ul>
-<li>
-<p>参考官方文档 <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-quickstart-guide-for-unreal-engine">开启commonUI</a></p>
-</li>
-<li>
-<p>玩家控制器：确保“block input”未被选中。
-<img alt="image" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image.png"></p>
-</li>
-<li>创建一个从CommonActivatable Widget派生的HUD或Menu Widget。</li>
-<li>确保您的HUD或Menu Widget将“Support Activation Focus”设置为<strong>true</strong>。
-<img alt="image" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-1.png"></li>
-<li>为Menu Widget创建特定的UI输入配置。避免使用<code>设置输入模式为游戏和UI</code>，因为这对CommonUI不适用！
-<img alt="image" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-2.png"></li>
-<li>如果您的游戏是Top Down 类型的游戏，并且希望保留鼠标捕获，请在HUD widget中将InputConfig的鼠标捕获模式设置为“永久捕获，包括初始鼠标按下”。否则，您的游戏将需要双击才能触发单击鼠标。
-<img alt="image" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-3.png"></li>
-</ul>
-<h3 id="_2">增强输入和按钮自动显示图标</h3>
-<ul>
-<li>在Game-&gt;CommonInputSetting中，添加您的平台图标数据。并将“启用增强输入支持”设置为true。</li>
-</ul>
-<p><img alt="image" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></p>
-<ul>
-<li>
-<p>创建一个CommonBaseButton，在里面放置一个CommonActionWidget，<strong>并且重命名为InputActionWidget，必须是这个名字，否则不显示。</strong></p>
-</li>
-<li>
-<p>配置CommonBaseButton输入操作，给他设置一个InputAction。这里设置了按键E，按钮里的CommonActionWidget就会显示对应的图标。
-<img alt="alt text" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></p>
-</li>
-<li>
-<p>不给上面的CommonBaseButton指定InputAction，系统就会自动在它<strong>focus</strong>的时候，根据平台自动给它设置相关操作的图标。比如Xbox的按下图标通常是gamepad face button down, 就会显示一个A图标</p>
-</li>
-<li>这个A的图标可以通过配置CommonUIInputData来指定
-  <img alt="alt text" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png"></li>
-<li>可以把ForwardAction 从A键 改成 X键。但这只能修改图标，因为平台的传递过来的还是A键的InputAction。表现上看就是，显示的图标是X，但按键绑定的依然是A。我只能把它当作一个bug，如果你知道正确做法，请告诉我。</li>
-</ul>
-<h3 id="_3">手柄导航配置</h3>
-<p>当使用手柄的时候，菜单弹出来后需要用手柄的上下左右来进行导航，让玩家能够选择和哪个button进行操作。
-只需重写<code>GetDesiredFocusTarget</code>，让系统知道默认哪个Common BaseButon需要focus即可。</p>
-<ul>
-<li>以上只针对手柄有效，键盘导航很麻烦，猜测是因为鼠标的存在。Lyra项目是禁用键盘导航的。如果你知道简单的方式，请告诉我。:)
- <img alt="alt text" src="../../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image-1.png"></li>
-</ul></div>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnWidgetControllerSet</span><span class="p">();</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled"</span><span class="p">,</span><span class="w"> </span><span class="n">EditConditionHides</span><span class="p">))</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="n">FHoldSupportAction</span><span class="w"> </span><span class="n">DefaultEnhancedInputAction</span><span class="p">;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="k">private</span><span class="o">:</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">    </span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">DefaultActionHandle</span><span class="p">;</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="p">};</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">UAuraActivatableWidget.cpp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::SetWidgetController</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InWidgetController</span><span class="p">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">AuraWidgetController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">OnWidgetControllerSet</span><span class="p">();</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">InWidgetController</span><span class="p">,</span><span class="w"> </span><span class="n">WidgetTree</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">{</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">GetOwningLocalPlayer</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">BEnhancedInputAction</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUIActionBinding</span><span class="o">::</span><span class="n">FindBinding</span><span class="p">(</span><span class="n">ActionBindingHandle</span><span class="p">);</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ActionBinding</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">OnHoldActionProgressed</span><span class="p">.</span><span class="n">AddLambda</span><span class="p">([</span><span class="n">HoldEventDelegate</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">HoldProgress</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldProgress</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">            </span><span class="n">HoldEventDelegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">();</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="p">});</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">)</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">                </span><span class="k">else</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">);</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="p">}</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::RegisterEnhancedActionToActionBar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FHoldSupportAction</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">)</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="p">{</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegisterUIActionBinding</span><span class="p">(</span><span class="n">FBindUIActionArgs</span><span class="p">(</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">EnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">                                                                                                 </span><span class="n">FSimpleDelegate</span><span class="o">::</span><span class="n">CreateLambda</span><span class="p">([</span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="n">HoldEventDelegate</span><span class="p">]()</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">                                                                                                 </span><span class="p">{</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                                                                                                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">bHoldEnabled</span><span class="p">)</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                                                                                                     </span><span class="p">{</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">                                                                                                         </span><span class="n">HoldEventDelegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">();</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">                                                                                                     </span><span class="p">}</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">                                                                                                 </span><span class="p">})));</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">bHoldEnabled</span><span class="p">)</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">        </span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">EnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="p">}</span>
+</code></pre></div></div>
 
 
 
@@ -1487,7 +1486,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月29日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月30日</span>
   </span>
 
     
@@ -1497,7 +1496,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月30日</span>
   </span>
 
     
