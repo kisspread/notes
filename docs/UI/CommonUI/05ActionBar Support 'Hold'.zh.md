@@ -4,7 +4,7 @@ Comments:true
 
 同样的问题，Enhanced Input 默认情况，不支持ActionBar 里的 BoundButton 通过 Enhanced Trigger 的 Hold 来触发。
 
-实现了一个控件，支持在蓝图 动态给 ActionBar 添加 Button，并且 支持 选择是否需要Hold。
+于是我实现了一个控件，支持在蓝图 动态给 ActionBar 添加 Button，并且 支持 选择是否需要Hold。
 
 
 ---

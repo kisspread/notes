@@ -1,6 +1,41 @@
 Title: UE c++ usage
 comments: true
 
+## 集合
+RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后继续找下一个。这种方式不考虑元素的顺序，数组不会整个重排，对比RemoveAt效率高。RemoveSingleSwap是单个的版本。
+``` cpp
+	/**
+	 * Removes all instances of a given item from the array.
+	 *
+	 * This version is much more efficient, because it uses RemoveAtSwap
+	 * internally which is O(Count) instead of RemoveAt which is O(ArrayNum),
+	 * but does not preserve the order.
+	 *
+	 * @param Item The item to remove
+	 * @param AllowShrinking Tell if this function can shrink the memory in-use if suitable.
+	 *
+	 * @returns Number of elements removed.
+	 * @see Add, Insert, Remove, RemoveAll, RemoveAllSwap
+	 */
+	SizeType RemoveSwap(const ElementType& Item, EAllowShrinking AllowShrinking = EAllowShrinking::Yes)
+```
+
+
+## 各种Delegate和Event
+普通无参Delegate 和函数绑定，使用 BindDynamic
+`UDELEGATE()
+DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
+![alt text](../../assets/images/C++_image.png)
+
+多播Delegate 和函数绑定, 使用 AddDynamic 
+`DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMontageWaitSimpleDelegate);`
+![alt text](../../assets/images/C++_image-1.png)
+本质区别就是 多订阅者 和 唯一回调，它们都能传递给蓝图使用
+
+而`DECLARE_EVENT(MyClass, FMyEvent)`，是回调，不能传递给蓝图，第一个参数要指定给哪个类使用。
+![alt text](../../assets/images/C++_image-2.png)
+由于没那么“动态”，event是用 内联函数实现 (inline),而delegates 是用Marco封装了一层。
+![alt text](../../assets/images/C++_image-3.png)，event不是订阅者模式，这是和delegate的本质区别，但回调也支持多个，所以也有各种addFunction.
 
 ## UE constants
 
@@ -46,4 +81,16 @@ comments: true
 	 * The underlying slate is stored automatically as well, so the returned widget is fully constructed and GetCachedWidget will return a valid SWidget.
 	 */
     UUserWidget* NewEntryWidget = EntryWidgetPool.GetOrCreateInstance(InEntryClass);
+    
     ```
+## Macro
+
+- AddUniqueDynamic 像函数一样使用的Marco
+    ```cpp
+    EnhancedInputSubsystem->ControlMappingsRebuiltDelegate.AddUniqueDynamic(this, &UAuraBaseButton::CheckAndAddHoldBinding);
+
+   //展开后的效果 
+    EnhancedInputSubsystem->ControlMappingsRebuiltDelegate.__Internal_AddUniqueDynamic( this, &UAuraBaseButton::CheckAndAddHoldBinding, UE::Delegates::Private::GetTrimmedMemberFunctionName(L"&UAuraBaseButton::CheckAndAddHoldBinding") );
+
+    ```
+    
