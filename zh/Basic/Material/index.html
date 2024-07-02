@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -101,7 +101,16 @@
     
     
 
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1171,6 +1180,8 @@
       
         
       
+        
+      
     
     
       
@@ -1231,6 +1242,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../UI/WidgetPool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Engine built-in Widget Pool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1256,10 +1288,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1270,8 +1302,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
           </label>
@@ -1611,43 +1643,43 @@
 <p>根据喜好，选择你的坐标系</p>
 <h3 id="_2">简单坐标系</h3>
 <p>普通好用，节点少，（-1，-1）在右上角，和书本上的不同有点反直觉，但习惯就好
-<img alt="alt text" src="../../../assets/images/Material_image-1.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-1.png"></a></p>
 <h3 id="_3">创建标准坐标系</h3>
 <p>标准坐标系多了两个步骤，旋转 和交换 XY轴，虽然多了两条指令，但好的坐标系有助于理解
-<img alt="" src="../../../assets/images/Material_image.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/Material_image.png"></a></p>
 <h2 id="_4">画圆</h2>
 <h3 id="lerp">lerp 一个</h3>
 <p>距离场作为比例，对0和-1 插值
-<img alt="alt text" src="../../../assets/images/Material_image-2.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-2.png"></a></p>
 <h3 id="_5">减了再乘</h3>
 <p>小于0.8都是负数，全黑。用乘法控制边缘，只越大越锐利
-<img alt="alt text" src="../../../assets/images/Material_image-3.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-3.png"></a></p>
 <h3 id="radialgradientexponential">RadialGradientExponential</h3>
 <p>使用内置函数，画普通圆用这个不推荐，计算量相对大，上面都是47个指令，而这个要51个。它能生成棉花糖一样的圆
-<img alt="RadialGradientExponential" src="../../../assets/images/Material_image-4.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="RadialGradientExponential" src="../../../assets/images/Material_image-4.png"></a></p>
 <p>内部实现也很复杂，不是特别需要这种效果，没必要使用它
-<img alt="alt text" src="../../../assets/images/Material_image-5.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-5.png"></a></p>
 <h3 id="spheregradient">SphereGradient</h3>
 <p>内置函数SphereGradient球形渐变的圆，实现类型下图，利用圆方程实现平滑过渡的效果，普通画圆依然不建议使用
-<img alt="alt text" src="../../../assets/images/Material_image-6.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-6.png"></a></p>
 <h3 id="smoothstep">smoothstep</h3>
 <p>推荐，用它画的圆是最简单的，max =min 就不用处理渐变值，输出值只有纯粹的0-1。值得一提的是，min 和 max对调的话，会反向。不过要方向最好用1-x
-<img alt="alt text" src="../../../assets/images/Material_image-9.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-9.png"></a></p>
 <h2 id="_6">画圈</h2>
 <p>综上所述，使用最简的画出大圆，再画小圆，就可以画出圈的</p>
 <h3 id="_7">相乘</h3>
 <p>两圆，一正一反，重叠的部分是正数，相乘向上取整
-<img alt="alt text" src="../../../assets/images/Material_image-7.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-7.png"></a></p>
 <h3 id="dot">dot</h3>
 <p>两圆点乘
 dot 范围-1 到 1，重叠部分越相似，越接近1
-<img alt="alt text" src="../../../assets/images/Material_image-8.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-8.png"></a></p>
 <h3 id="_8">相减</h3>
 <p>smoothstep 输出纯粹的0和1，非常棒
-<img alt="alt text" src="../../../assets/images/Material_image-10.png"></p>
+<a class="glightbox" href="../../../assets/images/Material_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-10.png"></a></p>
 <h2 id="_9">动画</h2>
 <p>这里用周期时间驱动
-<img alt="alt text" src="../../../assets/images/Material_image-11.png">
+<a class="glightbox" href="../../../assets/images/Material_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-11.png"></a>
 atan2的取值范围是
 <span class="arithmatex">\(\left[ -\pi,\pi \right]\)</span>
 这里有个妙处，就是除以2π 和 用frac取小数。之所以除以2π不是π是因为：</p>
@@ -1657,7 +1689,7 @@ atan2的取值范围是
 <li>由于这frac操作值继续上升，直到1, 于是就可以完整走完一圈。  </li>
 </ul>
 <h3 id="_10">简单结合</h3>
-<p><img alt="alt text" src="../../../assets/images/Material_image-12.png"></p></div>
+<p><a class="glightbox" href="../../../assets/images/Material_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-12.png"></a></p></div>
 
 
 
@@ -1803,7 +1835,7 @@ atan2的取值范围是
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../../javascripts/katex.js"></script>
       
@@ -1812,5 +1844,7 @@ atan2的取值范围是
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="zh" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/UI/CommonUI/02CommonActionWidget/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/WidgetPool/">
       
       
-        <link rel="prev" href="../01EnhancedInput/">
+        <link rel="prev" href="../00/">
       
       
-        <link rel="next" href="../03Hold%20Support%20For%20Enhnaced%20Input/">
+        <link rel="next" href="../CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>How to Use CommonActionWidget - Game Dev Notes</title>
+        <title>Using Engine built-in Widget Pool - Game Dev Notes</title>
       
     
     
@@ -129,8 +129,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#support-for-held-progress-animation" class="md-skip">
-          Skip to content
+        <a href="#scenario" class="md-skip">
+          跳转至
         </a>
       
     </div>
@@ -144,8 +144,8 @@
   
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
   <img src="../../../assets/logo.png" alt="logo">
 
@@ -164,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to Use CommonActionWidget
+              Using Engine built-in Widget Pool
             
           </span>
         </div>
@@ -204,20 +204,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="Select language">
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="./" hreflang="en" class="md-select__link">
+            <a href="../../../UI/WidgetPool/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="../../../zh/UI/CommonUI/02CommonActionWidget/" hreflang="zh" class="md-select__link">
+            <a href="./" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -236,16 +236,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="Search">
+      <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
@@ -258,7 +258,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            正在初始化搜索引擎
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -269,7 +269,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -284,7 +284,7 @@
   
     
       
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -293,7 +293,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../" class="md-tabs__link">
         
   
     
@@ -312,7 +312,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../Basic/00/" class="md-tabs__link">
+        <a href="../../Basic/00/" class="md-tabs__link">
           
   
     
@@ -332,7 +332,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../GAS/00/" class="md-tabs__link">
+        <a href="../../GAS/00/" class="md-tabs__link">
           
   
     
@@ -352,7 +352,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../PCG/00/" class="md-tabs__link">
+        <a href="../../PCG/00/" class="md-tabs__link">
           
   
     
@@ -374,7 +374,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../00/" class="md-tabs__link">
+        <a href="../00/" class="md-tabs__link">
           
   
     
@@ -413,9 +413,9 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
   <img src="../../../assets/logo.png" alt="logo">
 
@@ -424,7 +424,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
@@ -444,7 +444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/00/" class="md-nav__link">
+      <a href="../../Basic/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -539,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/Material/" class="md-nav__link">
+      <a href="../../Basic/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -560,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/ffmpeg/" class="md-nav__link">
+      <a href="../../Basic/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -646,7 +646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -721,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -742,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -824,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GAS/00/" class="md-nav__link">
+      <a href="../../GAS/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GAS/GamePlayTag/" class="md-nav__link">
+      <a href="../../GAS/GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -919,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PCG/00/" class="md-nav__link">
+      <a href="../../PCG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -940,11 +940,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
+      <a href="../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
+    UE5.4 PCG 自定义节点 C++常用类 浅析
   </span>
   
 
@@ -1021,131 +1021,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../00/" class="md-nav__link">
+      <a href="../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     FYI
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../WidgetPool/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Using Engine built-in Widget Pool
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
-            
-  
-  <span class="md-ellipsis">
-    CommonUI
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            CommonUI
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 with enhanced input
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01EnhancedInput/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EnhancedInput 和 commonUI 配合的数据配置
   </span>
   
 
@@ -1173,7 +1053,7 @@
           
   
   <span class="md-ellipsis">
-    How to Use CommonActionWidget
+    Using Engine built-in Widget Pool
   </span>
   
 
@@ -1184,7 +1064,7 @@
         
   
   <span class="md-ellipsis">
-    How to Use CommonActionWidget
+    Using Engine built-in Widget Pool
   </span>
   
 
@@ -1192,21 +1072,66 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#support-for-held-progress-animation" class="md-nav__link">
+  <a href="#scenario" class="md-nav__link">
     <span class="md-ellipsis">
-      Support for Held Progress Animation
+      Scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blueprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blueprint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other
     </span>
   </a>
   
@@ -1227,8 +1152,126 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CommonUI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            CommonUI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+      <a href="../CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Setup CommonUI in UE5.4.2 结合增强输入
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommonUI/01EnhancedInput/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EnhancedInput 和 commonUI 配合的数据配置
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommonUI/02CommonActionWidget/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonActionWidget Usage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1249,7 +1292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
+      <a href="../CommonUI/05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1291,21 +1334,66 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+<nav class="md-nav md-nav--secondary" aria-label="目录">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      目录
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#support-for-held-progress-animation" class="md-nav__link">
+  <a href="#scenario" class="md-nav__link">
     <span class="md-ellipsis">
-      Support for Held Progress Animation
+      Scenario
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#main-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#blueprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blueprint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other
     </span>
   </a>
   
@@ -1326,7 +1414,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/02CommonActionWidget.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/WidgetPool.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1334,45 +1422,67 @@
   
 
 
-  <h1>How to Use CommonActionWidget</h1>
+  <h1>Using Engine built-in Widget Pool</h1>
 
-<div><h2 id="support-for-held-progress-animation">Support for Held Progress Animation</h2>
-<p>I have been trying to make it work without success, but after debugging layer by layer, I finally found the reason.</p>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>this post is base on Aura GAS Course</p>
+</div>
+<hr>
+<p><a class="glightbox" href="../../../assets/images/WidgetPool_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image.png"></a></p>
+<p>I found a built-in widget pool in the UE source code, so I think we can use it for the <strong>Aura Damage Floating Tex</strong>. Because in some scenarios, characters may create a lot of floating widgets and then just remove them, which could cause a slight performance loss.</p>
+<p>（Widget pool may offer minimal performance improvement, making it challenging to provide a quantitative comparison. Please carefully consider whether you need to utilize it.）</p>
+<h3 id="scenario">Scenario</h3>
+<p>Too many floating texts are being created and destroyed at the same time.</p>
+<p><a class="glightbox" href="../../../assets/video/floating_text.mp4" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><div class="video-container"><iframe src="../../../assets/video/floating_text.mp4" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></a></p>
+<h3 id="main-functions">Main Functions</h3>
+<p>DynamicEntryBox(5.2-5.4)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">NewEntryWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryWidgetPool</span><span class="p">.</span><span class="n">GetOrCreateInstance</span><span class="p">(</span><span class="n">InEntryClass</span><span class="p">);</span>
+</code></pre></div>
+<p>This is a piece of code from UDynamicEntryBox, showing us how to use a widget pool. We can use UDynamicEntryBox in Blueprint directly, without writing any C++. UDynamicEntryBox provides these two main functions to create and release widget entities:</p>
 <ul>
-<li>Make sure that "held" and "UIHold Data" are configured correctly.
-    <a class="glightbox" href="../../../assets/images/CommonActionWidget_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/CommonActionWidget_image.png"></a></li>
+<li>BP_CreateEntry: Retrieves or creates a widget entity.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicEntryBox</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DisplayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Create Entry"</span><span class="p">,</span><span class="w"> </span><span class="n">AllowPrivateAccess</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">UMG_API</span><span class="w"> </span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">BP_CreateEntry</span><span class="p">();</span>
+</code></pre></div></li>
+<li>RemoveEntry: Releases the entity when not in use, removes it from the parent, but caches it for re-use.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DynamicEntryBox</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">UMG_API</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">RemoveEntry</span><span class="p">(</span><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">EntryWidget</span><span class="p">);</span>
+</code></pre></div></li>
+</ul>
+<h3 id="blueprint">Blueprint</h3>
+<ul>
 <li>
-<p>Only actions with trigger types that support "held" can bind to the "held" action.</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonActionWidget::IsHeldAction</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnhancedInputAction</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">())</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputTrigger</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">EnhancedInputAction</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">)</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">EnumHasAnyFlags</span><span class="p">(</span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">GetSupportedTriggerEvents</span><span class="p">(),</span><span class="w"> </span><span class="n">ETriggerEventsSupported</span><span class="o">::</span><span class="n">Ongoing</span><span class="p">))</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="p">}</span>
-</code></pre></div>
-Otherwise, the progress image used for the animation will be hidden.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>        if (IsHeldAction())
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        {
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>            MyProgressImage-&gt;SetVisibility(EVisibility::SelfHitTestInvisible);
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        }
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        else
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        {
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>            MyProgressImage-&gt;SetVisibility(EVisibility::Collapsed);
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>        }
-</code></pre></div>
-Therefore, open the corresponding InputAction and add support for "Hold":
-<a class="glightbox" href="../../../assets/images/CommonActionWidget_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/CommonActionWidget_image-1.png"></a>
+<p>create a UserWdiget, place a DynamicEntryWidget
+<a class="glightbox" href="../../../assets/images/WidgetPool_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-2.png"></a></p>
 </li>
-</ul></div>
+<li>
+<p>set the box type to overlay
+<a class="glightbox" href="../../../assets/images/WidgetPool_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-3.png"></a></p>
+</li>
+<li>set the aura floating text widget class
+<a class="glightbox" href="../../../assets/images/WidgetPool_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-4.png"></a></li>
+</ul>
+<h3 id="cpp">CPP</h3>
+<ul>
+<li>
+<p>Update AuraPlayerController, Update AuraPlayerController, no need to create and remove WidgetComponent anymore.
+<a class="glightbox" href="../../../assets/images/WidgetPool_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-1.png"></a></p>
+</li>
+<li>
+<p>Since it's difficult to notify DynamicBox to release the widget after the animation ends in Blueprint, I tried but found it challenging, so I switched to implementing it in C++ . I <strong>Update UDamageTextComponent</strong> like so:
+ <a class="glightbox" href="../../../assets/images/WidgetPool_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-5.png"></a>
+  Make sure the log doesn't keep increasing in size. If it does, then the configuration is correct. Otherwise, it means new entries are being created continuously.</p>
+</li>
+<li>
+<p>Attention, the instances of DynamicBox will be automatically destroyed when the reference count drops to 0 upon the death of the character. If you have other references to the floating widget elsewhere, you may need to manually clean them up.</p>
+</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p><a class="glightbox" href="../../../assets/images/WidgetPool_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-6.png"></a></p>
+<h3 id="other">Other</h3>
+<p>The DynamicBox has some other interesting features, such as radial.
+<a class="glightbox" href="../../../assets/images/WidgetPool_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/WidgetPool_image-7.png"></a></p></div>
 
 
 
@@ -1392,20 +1502,20 @@ Therefore, open the corresponding InputAction and add support for "Hold":
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="Last update">
+    <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 2, 2024</span>
   </span>
 
     
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="Created">
+    <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 2, 2024</span>
   </span>
 
     
@@ -1417,7 +1527,7 @@ Therefore, open the corresponding InputAction and add support for "Hold":
 
 
 
-  <h2 id="__comments">Comments</h2>
+  <h2 id="__comments">评论</h2>
   <script src="https://giscus.app/client.js"
         data-repo="kisspread/notes"
         data-repo-id="R_kgDOMNKAqg"
@@ -1482,7 +1592,7 @@ Therefore, open the corresponding InputAction and add support for "Hold":
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-  Back to top
+  回到页面顶部
 </button>
         
       </main>
@@ -1515,7 +1625,7 @@ Therefore, open the corresponding InputAction and add support for "Hold":
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>

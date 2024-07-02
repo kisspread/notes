@@ -13,14 +13,14 @@
         <link rel="canonical" href="https://kisspread.github.io/notes/UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
       
       
-        <link rel="prev" href="../../00/">
+        <link rel="prev" href="../../WidgetPool/">
       
       
         <link rel="next" href="../01EnhancedInput/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -101,7 +101,16 @@
     
     
 
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -967,6 +976,8 @@
       
         
       
+        
+      
     
     
       
@@ -1028,6 +1039,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WidgetPool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Engine built-in Widget Pool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1060,10 +1092,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1074,8 +1106,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
           </label>
@@ -1450,33 +1482,33 @@
 <p>some config if not setup correctly, it will not work.</p>
 <ul>
 <li>Player Controller: Make sure "Block Input" is unchecked.
-<img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image.png"></li>
+<a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image.png"></a></li>
 <li>Create a HUD or Menu widget derived from CommonActivatable Widget.</li>
 <li>Ensure that your HUD or Menu Widget set "supports Activation Focus" to <strong>true</strong>.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-1.png"></li>
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-1.png"></a></li>
 <li>Create a specific UI InputConfig for your menu widget. Avoid using <code>Setup Input Mode Game &amp; UI</code> as it is not suitable for CommonUI!
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-2.png"></li>
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-2.png"></a></li>
 <li>If your game is a TopDown Game and you want to retain Mouse Capture, in your HUD Widget, set the input config Mouse Capture Mode to "Capture Permanently including Initial Mouse Down." Otherwise, your game will require a double-click to trigger a single mouse click.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-3.png"></li>
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-3.png"></a></li>
 </ul>
 <h3 id="enhanced-input-and-automatic-button-icon-display">Enhanced Input and Automatic Button Icon Display</h3>
 <ul>
 <li>
 <p>In <code>Game-&gt;CommonInputSetting</code>, add your platform icon data and set "Enable Enhanced Input Support" to true.</p>
-<p><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></p>
+<p><a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></a></p>
 </li>
 <li>
 <p>Create a <code>CommonBaseButton</code>, place a <code>CommonActionWidget</code> inside it, and rename it to <code>InputActionWidget</code>. <strong>It must be named this way, otherwise it will not display.</strong></p>
 </li>
 <li>
 <p>Configure the <code>CommonBaseButton</code> input action, setting an <code>InputAction</code> for it. Here, an 'E' key is set, and the <code>CommonActionWidget</code> inside the button will display the corresponding icon.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></p>
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></a></p>
 </li>
 <li>
 <p>If no <code>InputAction</code> is specified for the above <code>CommonBaseButton</code>, the system will automatically set the relevant action icon based on the platform when it is in focus. For example, the Xbox's down button icon is usually the gamepad face button down, so it will display an 'A' icon.</p>
 </li>
 <li>This 'A' icon can be specified through configuring <code>CommonUIInputData</code>.
-  <img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png"></li>
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png"></a></li>
 <li>You can change the <code>ForwardAction</code> from the 'A' button to the 'X' button. However, this only modifies the icon, as the platform still passes the 'A' button's <code>InputAction</code>. Visually, it will show the 'X' icon, but the key binding remains 'A'. I can only consider this a bug. If you know the correct approach, please let me know.</li>
 </ul>
 <h3 id="gamepad-navigation-configuration">Gamepad Navigation Configuration</h3>
@@ -1485,7 +1517,7 @@
 <ul>
 <li>This only works for gamepads; keyboard navigation is very cumbersome now, presumably due to the mouse capture. The Lyra project disables keyboard navigation. If you know simeple way to setup keyboard navigation , please let me konw. :)</li>
 </ul>
-<p><img alt="alt text" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image-1.png"></p></div>
+<p><a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image-1.png"></a></p></div>
 
 
 
@@ -1631,7 +1663,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../../javascripts/katex.js"></script>
       
@@ -1640,5 +1672,7 @@
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -101,7 +101,16 @@
     
     
 
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -967,6 +976,8 @@
       
         
       
+        
+      
     
     
       
@@ -1028,6 +1039,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WidgetPool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Engine built-in Widget Pool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1060,10 +1092,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1074,8 +1106,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
           </label>
@@ -1514,7 +1546,7 @@
 </div>
 <hr>
 <h2 id="inputaction">InputAction</h2>
-<p><img alt="usersettting" src="../../../../assets/images/EnhancedInput_image.png">
+<p><a class="glightbox" href="../../../../assets/images/EnhancedInput_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="usersettting" src="../../../../assets/images/EnhancedInput_image.png"></a>
 这里可以配置Metadata，作为输入的“元数据”</p>
 <p>默认的“元数据” 只有两个字段，NavBarPriority 和 bIsGenericInputAction
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">COMMONUI_API</span><span class="w"> </span><span class="n">UCommonInputMetadata</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UObject</span>
@@ -1543,11 +1575,11 @@
 <h3 id="metadata">默认metadata的作用</h3>
 <ul>
 <li>NavBarPriority 用于ActionBar的排序，Router会收集所有活动的Action，然后通知<code>UCommonBoundActionBar::HandleDeferredDisplayUpdate()</code>进行更新
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-1.png"> </li>
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-1.png"></a> </li>
 <li>bIsGenericInputAction 如果是通用输入，则不会注入 enhanced input的逻辑，具体代码在 <code>auto TryConsumeInput = [&amp;](const FKey&amp; InKey, const UInputAction* InInputAction)</code>
-    <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-2.png">
+    <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-2.png"></a>
     也就是widget里 自定义的enhanced input action不会被系统触发。
-    <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-6.png"></li>
+    <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-6.png"></a></li>
 </ul>
 <p>综上，使用ActionBar 和 EnhancedInput 配置上面这两个字段还是非常重要的。 
 bIsGenericInputAction默认值是true，会导致widget里普通的enhanced input 不绑定。</p>
@@ -1556,11 +1588,11 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <h3 id="input">input 的来源</h3>
 <ul>
 <li>键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-3.png"></li>
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-3.png"></a></li>
 <li>鼠标输入：大致相同
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-4.png"></li>
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-4.png"></a></li>
 <li>手柄输入：
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></li>
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></li>
 </ul>
 <h3 id="_1">开始处理</h3>
 <p>系统传给ActionRouter 的input是 KEY 和 InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
@@ -1574,9 +1606,9 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">};</span>
 </code></pre></div>
 <p>ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-8.png"></p>
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-8.png"></a></p>
 <p>另外，CommonBaseButton 可以对自身绑定的Input进行覆盖
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-7.png"></p>
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-7.png"></a></p>
 <p>可以看到，处理输入时，是根据当前InputMode是否匹配，才会进行处理。如果输入不起作用，很可能是Mode没有设置正确。</p>
 <p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">EProcessHoldActionResult</span><span class="w"> </span><span class="nf">FActionRouterBindingCollection::ProcessHoldInput</span><span class="p">(</span><span class="n">ECommonInputMode</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="p">,</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">EInputEvent</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
@@ -1587,14 +1619,14 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ECommonInputMode</span><span class="o">::</span><span class="n">All</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Binding</span><span class="o">-&gt;</span><span class="n">InputMode</span><span class="p">)</span>
 </code></pre></div>
 每当 ActionRouter Tick的时候，会判断是否有pending Widget 需要注册事件。支持 CommonInputAction的widget 都会在创建的时候，注册需要绑定的事件, 供ActionRouter在tick的时候进行绑定。
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-9.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-9.png"></a>
 按下按键的时候，由ViewPort接受事件，调用ActionRouter进行处理 <code>UCommonGameViewportClient::HandleRerouteInput</code>
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-12.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-12.png"></a>
 绑定的事件，最终在Process Input细分，优先处理HoldInput，然后才是normal Input， 逐层handle，逐层消费。
 PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是一个FActivatableTreeNode : public FActionRouterBindingCollection）,接着是domain，这个不是enhanced input，不讨论。
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-11.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-11.png"></a>
 <p>Press和 Release的Input Action 大体上相同，只是入口不一样，下图是Pressed 和 Relased最开始的地方。调用ProcessKeyDownEvent 和 ProcessKeyUpEvent 分别处理。
-<img alt="FSlateApplication::OnControllerButtonPressed" src="../../../../assets/images/EnhancedInput_image-13.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="FSlateApplication::OnControllerButtonPressed" src="../../../../assets/images/EnhancedInput_image-13.png"></a>
 不同之处在于，Release阶段 还有后续处理，依旧是用ProcessInput 细分处理。
 <code>ActionRouter.ProcessInput(InKeyEvent.GetKey(), IE_Released) == ERouteUIInputResult::Handled</code>。如果结果是没有任何widget handle action，就会调用<code>FAnalogCursor::HandleKeyUpEvent(SlateApp, InKeyEvent);</code>构建虚拟鼠标事件。</p>
 <h3 id="hold-threshold">Hold Threshold</h3>
@@ -1633,7 +1665,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 </code></pre></div>
 经过上面的分析得知，当Input（抬起key）没有任何 Widget 去Care的时候，会执行默认行为：
 其中box手柄的 face button Bottom ，也就是A按钮，会构造一个鼠标左键行为（按下或者按住）。
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-10.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-10.png"></a>
 所以，如果想要屏蔽默认的A键点击动作，有两个办法
 - 处理这个A键，绑定它
 - 改个isRepeat = true给它。
@@ -1644,12 +1676,12 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <h2 id="1">疑问 1</h2>
 <ul>
 <li>为什么修改了Enhance default Click Action ，只有图标改变，Action 还是 Faceb Button Bottom ? 
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-14.png">
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-14.png"></a>
   因为 首先默认 GetGamepadAcceptKey 是写死的A，其次并没有显式注册  default Click Action</li>
 <li>
 <p>为什么图标更新了？这不是说明能拿到 default Click Action吗？
   因为 图标是CommonActionWidget 设置的，在CommonBaseButton Hovered的时候，会获取<code>HoverEnhancedInputAction = ICommonInputModule::GetSettings().GetEnhancedInputClickAction();</code>
-  <img alt="alt text" src="../../../../assets/images/EnhancedInput_image-15.png">
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-15.png"></a>
   这里只是为了设置Icon，并没有把绑定事件给Button</p>
 <p>BaseButton代码显示，它是通过判断IsHovered，来决定是否创建HoverEnhancedInputAction
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">HoverEnhancedInputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
@@ -1678,7 +1710,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <li>
 <p>为什么Enhanced Input 作为 Trigger Action的时候，Hold 无法正确生效？</p>
 <p>因为缺少HoldMapping，这里必须有HoldMapping，才会执行到for内部
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-16.png"></p>
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-16.png"></a></p>
 <p>然而在处理HoldMapping的时候，偏偏不处理Enhanced Input的。注释说，不在这里处理HoldMapping，但我没发现其他地方有给它设置。全局搜索都搜不到。
 </p><div class="highlight"><span class="filename">UIActionRouterTypes.cpp</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">BindArgs</span><span class="p">.</span><span class="n">InputAction</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="p">{</span>
@@ -1687,7 +1719,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 一种解法是：用UIActionTag来解决，因为代码里会给有Tag的Action进行HoldMapping绑定。但Action要定义在这图里的设置里。而且根本不是enhanced input。
-<img alt="alt text" src="../../../../assets/images/EnhancedInput_image-17.png">
+<a class="glightbox" href="../../../../assets/images/EnhancedInput_image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-17.png"></a>
 <p>我看到有人依旧提交了相关<a href="https://github.com/EpicGames/UnrealEngine/pull/11985">Pull Request</a>, 他的改动很多，感觉官方没那么快合并。</p>
 <p>我实现了一种不用修改源码的办法, <a href="./Hold%20Support%20For%20Enhnaced%20Input.md">click here</a></p>
 <p>前提是保证InputSystem-&gt;GetAllPlayerMappableActionKeyMappings() 已经有值，调用顺序不能错。</p>
@@ -1846,7 +1878,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../../../javascripts/katex.js"></script>
       
@@ -1855,5 +1887,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

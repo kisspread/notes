@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -101,7 +101,16 @@
     
     
 
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -120,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ue-constants" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -767,6 +776,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegateevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      各种Delegate和Event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ue-constants" class="md-nav__link">
     <span class="md-ellipsis">
       UE constants
@@ -788,6 +815,15 @@
   <a href="#tools" class="md-nav__link">
     <span class="md-ellipsis">
       Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macro
     </span>
   </a>
   
@@ -1041,6 +1077,8 @@
       
         
       
+        
+      
     
     
       
@@ -1101,6 +1139,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../UI/WidgetPool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Engine built-in Widget Pool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1126,10 +1185,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1140,8 +1199,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
           </label>
@@ -1292,6 +1351,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegateevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      各种Delegate和Event
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ue-constants" class="md-nav__link">
     <span class="md-ellipsis">
       UE constants
@@ -1313,6 +1390,15 @@
   <a href="#tools" class="md-nav__link">
     <span class="md-ellipsis">
       Tools
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Macro
     </span>
   </a>
   
@@ -1343,22 +1429,52 @@
 
   <h1>UE c++ usage</h1>
 
-<div><h2 id="ue-constants">UE constants</h2>
+<div><h2 id="_1">集合</h2>
+<p>RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后继续找下一个。这种方式不考虑元素的顺序，数组不会整个重排，对比RemoveAt效率高。RemoveSingleSwap是单个的版本。
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm">     * Removes all instances of a given item from the array.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">     *</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm">     * This version is much more efficient, because it uses RemoveAtSwap</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm">     * internally which is O(Count) instead of RemoveAt which is O(ArrayNum),</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm">     * but does not preserve the order.</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm">     *</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm">     * @param Item The item to remove</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm">     * @param AllowShrinking Tell if this function can shrink the memory in-use if suitable.</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm">     *</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cm">     * @returns Number of elements removed.</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cm">     * @see Add, Insert, Remove, RemoveAll, RemoveAllSwap</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="cm">     */</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">SizeType</span><span class="w"> </span><span class="n">RemoveSwap</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Item</span><span class="p">,</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="w"> </span><span class="n">AllowShrinking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="o">::</span><span class="n">Yes</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="delegateevent">各种Delegate和Event</h2>
+<p>普通无参Delegate 和函数绑定，使用 BindDynamic
+<code>UDELEGATE()
+DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);</code>
+<a class="glightbox" href="../../../assets/images/C%2B%2B_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/C%2B%2B_image.png"></a></p>
+<p>多播Delegate 和函数绑定, 使用 AddDynamic 
+<code>DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMontageWaitSimpleDelegate);</code>
+<a class="glightbox" href="../../../assets/images/C%2B%2B_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/C%2B%2B_image-1.png"></a>
+本质区别就是 多订阅者 和 唯一回调，它们都能传递给蓝图使用</p>
+<p>而<code>DECLARE_EVENT(MyClass, FMyEvent)</code>，是回调，不能传递给蓝图，第一个参数要指定给哪个类使用。
+<a class="glightbox" href="../../../assets/images/C%2B%2B_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/C%2B%2B_image-2.png"></a>
+由于没那么“动态”，event是用 内联函数实现 (inline),而delegates 是用Marco封装了一层。
+<a class="glightbox" href="../../../assets/images/C%2B%2B_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/C%2B%2B_image-3.png"></a>，event不是订阅者模式，这是和delegate的本质区别，但回调也支持多个，所以也有各种addFunction.</p>
+<h2 id="ue-constants">UE constants</h2>
 <ul>
 <li>
 <p><strong>UE_SMALL_NUMBER</strong> when you need to skip some samll number</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonButtonBase::NativeOnHoldProgress</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">UE_SMALL_NUMBER</span><span class="p">)</span>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">UCommonButtonBase::NativeOnHoldProgress</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">DeltaTime</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldTime</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">UE_SMALL_NUMBER</span><span class="p">)</span>
 </code></pre></div>
 and more:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define UE_PI                   (3.1415926535897932f)   </span><span class="cm">/* Extra digits if needed: 3.1415926535897932384626433832795f */</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#define UE_SMALL_NUMBER         (1.e-8f)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#define UE_KINDA_SMALL_NUMBER   (1.e-4f)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#define UE_BIG_NUMBER           (3.4e+38f)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#define UE_EULERS_NUMBER        (2.71828182845904523536f)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cp">#define UE_GOLDEN_RATIO         (1.6180339887498948482045868343656381f) </span><span class="cm">/* Also known as divine proportion, golden mean, or golden section - related to the Fibonacci Sequence = (1 + sqrt(5)) / 2 */</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cp">#define UE_FLOAT_NON_FRACTIONAL (8388608.f) </span><span class="cm">/* All single-precision floating point numbers greater than or equal to this have no fractional value. */</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#define UE_PI                   (3.1415926535897932f)   </span><span class="cm">/* Extra digits if needed: 3.1415926535897932384626433832795f */</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#define UE_SMALL_NUMBER         (1.e-8f)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#define UE_KINDA_SMALL_NUMBER   (1.e-4f)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#define UE_BIG_NUMBER           (3.4e+38f)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cp">#define UE_EULERS_NUMBER        (2.71828182845904523536f)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cp">#define UE_GOLDEN_RATIO         (1.6180339887498948482045868343656381f) </span><span class="cm">/* Also known as divine proportion, golden mean, or golden section - related to the Fibonacci Sequence = (1 + sqrt(5)) / 2 */</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="cp">#define UE_FLOAT_NON_FRACTIONAL (8388608.f) </span><span class="cm">/* All single-precision floating point numbers greater than or equal to this have no fractional value. */</span>
 </code></pre></div>
 </li>
 </ul>
@@ -1366,27 +1482,37 @@ and more:
 <ul>
 <li>
 <p>UE_LOGFMT this very useful for print function name.
-    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="n">UE_LOGFMT</span><span class="p">(</span><span class="n">LogSwitchboard</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="s">"{Func}: EVP_PKEY_derive_init"</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">);</span><span class="w">    </span>
+    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">UE_LOGFMT</span><span class="p">(</span><span class="n">LogSwitchboard</span><span class="p">,</span><span class="w"> </span><span class="n">Error</span><span class="p">,</span><span class="w"> </span><span class="s">"{Func}: EVP_PKEY_derive_init"</span><span class="p">,</span><span class="w"> </span><span class="n">__FUNCTION__</span><span class="p">);</span><span class="w">    </span>
 </code></pre></div>
 </li>
 <li>
 <p>UE_LOGFMT_EX: 更清晰，不如上面实用
    命名参数使日志消息更加清晰和易读。每个字段都需要用 <code>UE_LOGFMT_FIELD</code> 宏包装，并提供一个字段名。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">UE_LOGFMT_EX</span><span class="p">(</span><span class="n">LogCore</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="s">"Loading '{Name}' failed with error {Error}"</span><span class="p">,</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="n">Package</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Error"</span><span class="p">,</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Flags"</span><span class="p">,</span><span class="w"> </span><span class="n">LoadFlags</span><span class="p">));</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">UE_LOGFMT_EX</span><span class="p">(</span><span class="n">LogCore</span><span class="p">,</span><span class="w"> </span><span class="n">Warning</span><span class="p">,</span><span class="w"> </span><span class="s">"Loading '{Name}' failed with error {Error}"</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Name"</span><span class="p">,</span><span class="w"> </span><span class="n">Package</span><span class="o">-&gt;</span><span class="n">GetName</span><span class="p">()),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Error"</span><span class="p">,</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">),</span><span class="w"> </span><span class="n">UE_LOGFMT_FIELD</span><span class="p">(</span><span class="s">"Flags"</span><span class="p">,</span><span class="w"> </span><span class="n">LoadFlags</span><span class="p">));</span>
 </code></pre></div>
 </li>
 </ul>
 <h2 id="tools">Tools</h2>
 <ul>
 <li>widget pool
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">/**</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="cm"> * Gets an instance of a widget of the given class.</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm"> * The underlying slate is stored automatically as well, so the returned widget is fully constructed and GetCachedWidget will return a valid SWidget.</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="cm"> */</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">NewEntryWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryWidgetPool</span><span class="p">.</span><span class="n">GetOrCreateInstance</span><span class="p">(</span><span class="n">InEntryClass</span><span class="p">);</span>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/**</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cm"> * Gets an instance of a widget of the given class.</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cm"> * The underlying slate is stored automatically as well, so the returned widget is fully constructed and GetCachedWidget will return a valid SWidget.</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm"> */</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">UUserWidget</span><span class="o">*</span><span class="w"> </span><span class="n">NewEntryWidget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryWidgetPool</span><span class="p">.</span><span class="n">GetOrCreateInstance</span><span class="p">(</span><span class="n">InEntryClass</span><span class="p">);</span>
 </code></pre></div></li>
-</ul></div>
+</ul>
+<h2 id="macro">Macro</h2>
+<ul>
+<li>AddUniqueDynamic 像函数一样使用的Marco
+    ```cpp
+    EnhancedInputSubsystem-&gt;ControlMappingsRebuiltDelegate.AddUniqueDynamic(this, &amp;UAuraBaseButton::CheckAndAddHoldBinding);</li>
+</ul>
+<p>//展开后的效果 
+    EnhancedInputSubsystem-&gt;ControlMappingsRebuiltDelegate.__Internal_AddUniqueDynamic( this, &amp;UAuraBaseButton::CheckAndAddHoldBinding, UE::Delegates::Private::GetTrimmedMemberFunctionName(L"&amp;UAuraBaseButton::CheckAndAddHoldBinding") );</p>
+<div class="codehilite"><pre><span></span><code>```
+</code></pre></div></div>
 
 
 
@@ -1409,7 +1535,7 @@ and more:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 2, 2024</span>
   </span>
 
     
@@ -1532,7 +1658,7 @@ and more:
     <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../../javascripts/katex.js"></script>
       
@@ -1541,5 +1667,7 @@ and more:
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

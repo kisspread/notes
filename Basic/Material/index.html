@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -101,7 +101,16 @@
     
     
 
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1171,6 +1180,8 @@
       
         
       
+        
+      
     
     
       
@@ -1231,6 +1242,27 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../UI/WidgetPool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Engine built-in Widget Pool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
@@ -1256,10 +1288,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1270,8 +1302,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
           </label>
@@ -1610,42 +1642,42 @@
 <p>Choose your coordinate system based on preference.</p>
 <h3 id="simple-coordinate-system">Simple Coordinate System</h3>
 <p>Simple and easy to use, with few nodes. The point (-1, -1) is in the top right corner, which may feel counterintuitive at first compared to what's shown in textbooks, but you'll get used to it.
-<img alt="alt text" src="../../assets/images/Material_image-1.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-1.png"></a></p>
 <h3 id="standard-coordinate-system">Standard Coordinate System</h3>
 <p>The standard coordinate system involves two additional steps: rotation and swapping the XY axes. Although it requires two more instructions, a good coordinate system aids in understanding.
-<img alt="" src="../../assets/images/Material_image.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../assets/images/Material_image.png"></a></p>
 <h2 id="drawing-circles">Drawing Circles</h2>
 <h3 id="lerp-one">Lerp One</h3>
 <p>Interpolate between 0 and -1 based on the distance field as a ratio.
-<img alt="alt text" src="../../assets/images/Material_image-2.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-2.png"></a></p>
 <h3 id="subtract-and-multiply">Subtract and Multiply</h3>
 <p>Values below 0.8 are negative, resulting in a fully black circle. Multiplication is used to control the edges, making them sharper as the value increases.
-<img alt="alt text" src="../../assets/images/Material_image-3.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-3.png"></a></p>
 <h3 id="radialgradientexponential">RadialGradientExponential</h3>
 <p>This built-in function is not recommended for drawing regular circles as it involves a relatively high computational load. While the previous methods required 47 instructions, this one needs 51. It can generate a cotton candy-like circle.
-<img alt="RadialGradientExponential" src="../../assets/images/Material_image-4.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="RadialGradientExponential" src="../../assets/images/Material_image-4.png"></a></p>
 <p>The internal implementation is complex, and unless you specifically need this effect, it's not necessary to use it.
-<img alt="alt text" src="../../assets/images/Material_image-5.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-5.png"></a></p>
 <h3 id="spheregradient">SphereGradient</h3>
 <p>The built-in function SphereGradient creates a circular gradient similar to the image below. It uses the circle equation to achieve a smooth transition effect. It is still not recommended for drawing standard circles.
-<img alt="alt text" src="../../assets/images/Material_image-6.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-6.png"></a></p>
 <h3 id="smoothstep">smoothstep</h3>
 <p>Highly recommended for drawing the simplest circles. When max equals min, there's no need to handle gradient values, and the output values range purely from 0 to 1. It's worth mentioning that if you swap min and max, it will reverse. For consistent direction, it's better to use 1-x.
-<img alt="alt text" src="../../assets/images/Material_image-9.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-9.png"></a></p>
 <h2 id="drawing-rings">Drawing Rings</h2>
 <p>Based on the above methods, drawing a large circle first and then a smaller one can create rings.</p>
 <h3 id="multiplication">Multiplication</h3>
 <p>Two circles, one positive and one negative. The overlapping area is positive, and rounding up the product.
-<img alt="alt text" src="../../assets/images/Material_image-7.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-7.png"></a></p>
 <h3 id="dot-product">Dot Product</h3>
 <p>Dot product of two circles ranges from -1 to 1. The more similar the overlapping parts, the closer to 1.
-<img alt="alt text" src="../../assets/images/Material_image-8.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-8.png"></a></p>
 <h3 id="subtraction">Subtraction</h3>
 <p>Using smoothstep produces pure 0s and 1s, which is excellent.
-<img alt="alt text" src="../../assets/images/Material_image-10.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-10.png"></a></p>
 <h2 id="animation">Animation</h2>
 <p>Here, the animation is driven by periodic time.
-<img alt="alt text" src="../../assets/images/Material_image-11.png"></p>
+<a class="glightbox" href="../../assets/images/Material_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-11.png"></a></p>
 <p>The range of atan2 is <span class="arithmatex">\(\left[ -\pi, \pi \right]\)</span>. Dividing by 2π and using frac for decimal values is explained here:</p>
 <ul>
 <li>Dividing by 2π narrows the range to <span class="arithmatex">\(\left[ -0.5, 0.5 \right]\)</span>.</li>
@@ -1653,7 +1685,7 @@
 <li>As the frac operation continues to increase, it reaches 1, allowing a complete rotation.</li>
 </ul>
 <h3 id="simple-combination">Simple Combination</h3>
-<p><img alt="alt text" src="../../assets/images/Material_image-12.png"></p></div>
+<p><a class="glightbox" href="../../assets/images/Material_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Material_image-12.png"></a></p></div>
 
 
 
@@ -1799,7 +1831,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../../javascripts/katex.js"></script>
       
@@ -1808,5 +1840,7 @@
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
