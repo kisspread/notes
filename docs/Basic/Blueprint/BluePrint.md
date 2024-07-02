@@ -3,9 +3,34 @@ comments: true
 
 不限于蓝图，C++也有。记录一下
 
+## 蓝图陷阱
+
+### Event的变量覆盖
+当一个eventA 里面有延时节点的时候，要特别小心。如果延时节点要获取eventA 设置进来的参数，这个参数很可能被 多次调用的 eventA 覆盖，导致延时节点获得的值永远都是最新值。
+
+![alt text](../../assets/images/BluePrint_image.png)
+多次调用时这里New Param 永远是最新值，旧的被覆盖，导致后续的节点获取的值出错。
+
+![alt text](../../assets/images/BluePrint_image-1.png)
+这里也是错的，蓝图不是代码，没有像lambda那样 “捕获变量”，这里的New Param依旧会被新来的覆盖，对习惯代码的人来说非常反直觉。（这里还会导致多次bind的问题）
+
 
 ## Meta记录
 
+### MustImplement
+限制实现接口
+``` cpp
+UPROPERTY(EditAnywhere, Category = EntryLayout, meta=(MustImplement = "/Script/CommonUI.CommonBoundActionButtonInterface"))
+	TSubclassOf<UCommonButtonBase> ActionButtonClass;
+
+```
+### DefaultToSelf
+把self 设置为当前调用者
+``` cpp
+	UFUNCTION(BlueprintCallable, Category = "Ability|Tasks", meta = (DefaultToSelf = "TargetActor", BlueprintInternalUseOnly = "TRUE"))
+	static UAbilityAsync_WaitAttributeChanged* WaitForAttributeChanged(AActor* TargetActor, FGameplayAttribute Attribute, bool OnlyTriggerOnce = false)
+
+```
 ### EditCondition
 
 可以用来隐藏feature，支持的时候，才显示。可以是上下文相关
