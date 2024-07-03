@@ -22,7 +22,23 @@ RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后
 
 
 ## 各种Delegate和Event
-普通无参Delegate 和函数绑定，使用 BindDynamic
+### Delegate 和 Event 
+Delegate就是回调， Event是订阅者-观察者模型，支持多个观察者。
+- 只能在C++ 使用
+- 不能序列化
+- 开销小
+### dynamic 前缀的Delegate 和 Event 
+动态就是蓝图也可以调用，支持两种绑定方式，BindUFunction 和 BindDynamic，其中BindDynamic是一个macro
+- 蓝图可以用
+- 可序列化
+- 开销大
+
+### MULTICAST 前缀的Delegate
+多播delegate 就是另一个版本的 Event，Event本身就是多播的，所以没有这个前缀。和Event的区别是，Event需要声明在哪个类里面使用，而多播delegate是全局通用的。MULTICAST前缀让Delegate也变成了订阅者-观察者模型
+
+### 引擎内部用例
+
+普通无参动态Delegate 和函数绑定，使用 BindDynamic
 `UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
 ![alt text](../../assets/images/C++_image.png)
@@ -30,12 +46,10 @@ DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
 多播Delegate 和函数绑定, 使用 AddDynamic 
 `DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMontageWaitSimpleDelegate);`
 ![alt text](../../assets/images/C++_image-1.png)
-本质区别就是 多订阅者 和 唯一回调，它们都能传递给蓝图使用
 
-而`DECLARE_EVENT(MyClass, FMyEvent)`，是回调，不能传递给蓝图，第一个参数要指定给哪个类使用。
+`DECLARE_EVENT(MyClass, FMyEvent)`，第一个参数要指定给哪个类使用
 ![alt text](../../assets/images/C++_image-2.png)
-由于没那么“动态”，event是用 内联函数实现 (inline),而delegates 是用Marco封装了一层。
-![alt text](../../assets/images/C++_image-3.png)，event不是订阅者模式，这是和delegate的本质区别，但回调也支持多个，所以也有各种addFunction.
+
 
 ## UE constants
 
