@@ -8,7 +8,7 @@ comments:true
 
  ![alt text](../assets/images/WidgetPool_image.png)
 
-I found a built-in widget pool in the UE source code, so I think we can use it for the **Aura Damage Floating Tex**. Because in some scenarios, characters may create a lot of floating widgets and then just remove them, which could cause a slight performance loss.
+I found a built-in widget pool in the UE source code, so I think we can use it for the **Aura Damage Floating Text**. Because in some scenarios, characters may create a lot of floating widgets and then just remove them, which could cause a slight performance loss.
 
 （Widget pool may offer minimal performance improvement, making it challenging to provide a quantitative comparison. Please carefully consider whether you need to utilize it.）
 
