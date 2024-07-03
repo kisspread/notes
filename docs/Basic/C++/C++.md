@@ -22,13 +22,16 @@ RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后
 
 
 ## 各种Delegate和Event
+更多可以参考这个：[https://www.cnblogs.com/kekec/p/10678905.html](https://www.cnblogs.com/kekec/p/10678905.html)
 ### Delegate 和 Event 
 Delegate就是回调， Event是订阅者-观察者模型，支持多个观察者。
+
 - 只能在C++ 使用
 - 不能序列化
 - 开销小
 ### dynamic 前缀的Delegate 和 Event 
 动态就是蓝图也可以调用，支持两种绑定方式，BindUFunction 和 BindDynamic，其中BindDynamic是一个macro
+
 - 蓝图可以用
 - 可序列化
 - 开销大
@@ -38,7 +41,7 @@ Delegate就是回调， Event是订阅者-观察者模型，支持多个观察�
 
 ### 引擎内部用例
 
-普通无参动态Delegate 和函数绑定，使用 BindDynamic
+普通无参动态Delegate 和函数绑定，使用 BindDynamic，当作回调用
 `UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
 ![alt text](../../assets/images/C++_image.png)
