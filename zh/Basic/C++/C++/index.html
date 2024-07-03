@@ -814,6 +814,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="各种Delegate和Event">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delegate-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegate 和 Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-delegate-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic 前缀的Delegate 和 Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multicast-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      MULTICAST 前缀的Delegate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引擎内部用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1389,6 +1431,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="各种Delegate和Event">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delegate-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delegate 和 Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-delegate-event" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic 前缀的Delegate 和 Event
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multicast-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      MULTICAST 前缀的Delegate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      引擎内部用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1470,18 +1554,28 @@
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">SizeType</span><span class="w"> </span><span class="n">RemoveSwap</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Item</span><span class="p">,</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="w"> </span><span class="n">AllowShrinking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="o">::</span><span class="n">Yes</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="delegateevent">各种Delegate和Event</h2>
-<p>普通无参Delegate 和函数绑定，使用 BindDynamic
+<h3 id="delegate-event">Delegate 和 Event</h3>
+<p>Delegate就是回调， Event是订阅者-观察者模型，支持多个观察者。
+- 只能在C++ 使用
+- 不能序列化
+- 开销小</p>
+<h3 id="dynamic-delegate-event">dynamic 前缀的Delegate 和 Event</h3>
+<p>动态就是蓝图也可以调用，支持两种绑定方式，BindUFunction 和 BindDynamic，其中BindDynamic是一个macro
+- 蓝图可以用
+- 可序列化
+- 开销大</p>
+<h3 id="multicast-delegate">MULTICAST 前缀的Delegate</h3>
+<p>多播delegate 就是另一个版本的 Event，Event本身就是多播的，所以没有这个前缀。和Event的区别是，Event需要声明在哪个类里面使用，而多播delegate是全局通用的。MULTICAST前缀让Delegate也变成了订阅者-观察者模型</p>
+<h3 id="_2">引擎内部用例</h3>
+<p>普通无参动态Delegate 和函数绑定，使用 BindDynamic
 <code>UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);</code>
 <a class="glightbox" href="../../../../assets/images/C%2B%2B_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image.png"></a></p>
 <p>多播Delegate 和函数绑定, 使用 AddDynamic 
 <code>DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMontageWaitSimpleDelegate);</code>
-<a class="glightbox" href="../../../../assets/images/C%2B%2B_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image-1.png"></a>
-本质区别就是 多订阅者 和 唯一回调，它们都能传递给蓝图使用</p>
-<p>而<code>DECLARE_EVENT(MyClass, FMyEvent)</code>，是回调，不能传递给蓝图，第一个参数要指定给哪个类使用。
-<a class="glightbox" href="../../../../assets/images/C%2B%2B_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image-2.png"></a>
-由于没那么“动态”，event是用 内联函数实现 (inline),而delegates 是用Marco封装了一层。
-<a class="glightbox" href="../../../../assets/images/C%2B%2B_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image-3.png"></a>，event不是订阅者模式，这是和delegate的本质区别，但回调也支持多个，所以也有各种addFunction.</p>
+<a class="glightbox" href="../../../../assets/images/C%2B%2B_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image-1.png"></a></p>
+<p><code>DECLARE_EVENT(MyClass, FMyEvent)</code>，第一个参数要指定给哪个类使用
+<a class="glightbox" href="../../../../assets/images/C%2B%2B_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/C%2B%2B_image-2.png"></a></p>
 <h2 id="ue-constants">UE constants</h2>
 <ul>
 <li>
@@ -1558,7 +1652,7 @@ and more:
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 2, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
   </span>
 
     
