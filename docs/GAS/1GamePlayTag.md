@@ -1,4 +1,4 @@
-title: using macro to define Native Gameplay Tag
+title: Using macro to define Native Gameplay Tag
 comments:true
 
 !!! note 
