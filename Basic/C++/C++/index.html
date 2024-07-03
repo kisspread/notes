@@ -1013,11 +1013,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GAS/GamePlayTag/" class="md-nav__link">
+      <a href="../../../GAS/1GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    using macro to define Native Gameplay Tag
+    Using macro to define Native Gameplay Tag
   </span>
   
 
@@ -1554,20 +1554,25 @@
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="n">SizeType</span><span class="w"> </span><span class="n">RemoveSwap</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ElementType</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Item</span><span class="p">,</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="w"> </span><span class="n">AllowShrinking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EAllowShrinking</span><span class="o">::</span><span class="n">Yes</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="delegateevent">各种Delegate和Event</h2>
+<p>更多可以参考这个：<a href="https://www.cnblogs.com/kekec/p/10678905.html">https://www.cnblogs.com/kekec/p/10678905.html</a></p>
 <h3 id="delegate-event">Delegate 和 Event</h3>
-<p>Delegate就是回调， Event是订阅者-观察者模型，支持多个观察者。
-- 只能在C++ 使用
-- 不能序列化
-- 开销小</p>
+<p>Delegate就是回调， Event是订阅者-观察者模型，支持多个观察者。</p>
+<ul>
+<li>只能在C++ 使用</li>
+<li>不能序列化</li>
+<li>开销小</li>
+</ul>
 <h3 id="dynamic-delegate-event">dynamic 前缀的Delegate 和 Event</h3>
-<p>动态就是蓝图也可以调用，支持两种绑定方式，BindUFunction 和 BindDynamic，其中BindDynamic是一个macro
-- 蓝图可以用
-- 可序列化
-- 开销大</p>
+<p>动态就是蓝图也可以调用，支持两种绑定方式，BindUFunction 和 BindDynamic，其中BindDynamic是一个macro</p>
+<ul>
+<li>蓝图可以用</li>
+<li>可序列化</li>
+<li>开销大</li>
+</ul>
 <h3 id="multicast-delegate">MULTICAST 前缀的Delegate</h3>
 <p>多播delegate 就是另一个版本的 Event，Event本身就是多播的，所以没有这个前缀。和Event的区别是，Event需要声明在哪个类里面使用，而多播delegate是全局通用的。MULTICAST前缀让Delegate也变成了订阅者-观察者模型</p>
 <h3 id="_2">引擎内部用例</h3>
-<p>普通无参动态Delegate 和函数绑定，使用 BindDynamic
+<p>普通无参动态Delegate 和函数绑定，使用 BindDynamic，当作回调用
 <code>UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);</code>
 <a class="glightbox" href="../../../assets/images/C%2B%2B_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/C%2B%2B_image.png"></a></p>
