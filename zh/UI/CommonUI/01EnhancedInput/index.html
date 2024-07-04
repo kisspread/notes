@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inputaction" class="md-skip">
+        <a href="#enhancedinput" class="md-skip">
           跳转至
         </a>
       
@@ -1206,6 +1206,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#enhancedinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnhancedInput
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#inputaction" class="md-nav__link">
     <span class="md-ellipsis">
       InputAction
@@ -1261,6 +1270,15 @@
   <a href="#hold-threshold" class="md-nav__link">
     <span class="md-ellipsis">
       Hold Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hold-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hold Support
     </span>
   </a>
   
@@ -1428,6 +1446,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#enhancedinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnhancedInput
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#inputaction" class="md-nav__link">
     <span class="md-ellipsis">
       InputAction
@@ -1483,6 +1510,15 @@
   <a href="#hold-threshold" class="md-nav__link">
     <span class="md-ellipsis">
       Hold Threshold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hold-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hold Support
     </span>
   </a>
   
@@ -1568,6 +1604,12 @@
 <p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
 </div>
 <hr>
+<h2 id="enhancedinput">EnhancedInput</h2>
+<p>蓝图里，默认注册的 EnhancedInput 只对 InputMode 包含 “Game Mode” 时生效，如图：
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image.png"></a></p>
+<p>当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
+利用这个特性，就可以在菜单显示的时候，并屏蔽掉默认的游戏 Input。
+被屏蔽，是为了更好地支持 CommonUI 对EnhancedInput，CommonUI 通过一类叫做RegisterUIActionBinding的方法来绑定输入。</p>
 <h2 id="inputaction">InputAction</h2>
 <p><a class="glightbox" href="../../../../assets/images/EnhancedInput_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="usersettting" src="../../../../assets/images/EnhancedInput_image.png"></a>
 这里可以配置Metadata，作为输入的“元数据”</p>
@@ -1618,7 +1660,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></li>
 </ul>
 <h3 id="_1">开始处理</h3>
-<p>系统传给ActionRouter 的input是 KEY 和 InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
+<p>系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ECommonInputMode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Menu</span><span class="w">    </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by the UI only"</span><span class="p">),</span>
@@ -1630,7 +1672,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 </code></pre></div>
 <p>ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-8.png"></a></p>
-<p>另外，CommonBaseButton 可以对自身绑定的Input进行覆盖
+<p>另外，CommonBaseButton 可以对自身绑定的InputMode进行覆盖
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-7.png"></a></p>
 <p>可以看到，处理输入时，是根据当前InputMode是否匹配，才会进行处理。如果输入不起作用，很可能是Mode没有设置正确。</p>
 <p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">EProcessHoldActionResult</span><span class="w"> </span><span class="nf">FActionRouterBindingCollection::ProcessHoldInput</span><span class="p">(</span><span class="n">ECommonInputMode</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="p">,</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">EInputEvent</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
@@ -1660,6 +1702,9 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">ProcessResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EProcessHoldActionResult</span><span class="o">::</span><span class="n">GeneratePress</span><span class="p">;</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
 </code></pre></div>
+<h3 id="hold-support">Hold Support</h3>
+<p>目前的代码，并不支持 Enhanced Input的Hold Action，
+我这里进行的额外的<a href="../03Hold%20Support%20For%20Enhnaced%20Input/">支持</a></p>
 <h3 id="analogcursor">AnalogCursor 处理</h3>
 <p>这是一个模拟鼠标点击的工具
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::HandleKeyUpEvent</span><span class="p">(</span><span class="n">FSlateApplication</span><span class="o">&amp;</span><span class="w"> </span><span class="n">SlateApp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InKeyEvent</span><span class="p">)</span>
@@ -1778,7 +1823,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 30, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
   </span>
 
     
