@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/GAS/2DataAssetsAuto/">
       
       
-        <link rel="prev" href="../Math/">
+        <link rel="prev" href="../1GamePlayTag/">
       
       
-        <link rel="next" href="../ffmpeg/">
+        <link rel="next" href="../../PCG/00/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Python Script in Editor - Game Dev Notes</title>
+        <title>Make DataAsset setup with Default Values - Game Dev Notes</title>
       
     
     
@@ -128,6 +128,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#auto-collect-all-attributes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -159,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python Script in Editor
+              Make DataAsset setup with Default Values
             
           </span>
         </div>
@@ -212,7 +217,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" hreflang="zh" class="md-select__link">
+            <a href="../../zh/GAS/2DataAssetsAuto/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -303,13 +308,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Basic/00/" class="md-tabs__link">
           
   
     
@@ -325,11 +328,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../GAS/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../00/" class="md-tabs__link">
           
   
     
@@ -456,10 +461,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -480,22 +483,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -506,7 +506,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basic
@@ -520,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
+      <a href="../../Basic/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Material/" class="md-nav__link">
+      <a href="../../Basic/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Math/" class="md-nav__link">
+      <a href="../../Basic/Math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -580,17 +580,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -599,7 +592,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -612,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ffmpeg/" class="md-nav__link">
+      <a href="../../Basic/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -642,20 +634,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
         
           
-          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -680,7 +669,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -720,20 +709,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -758,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -779,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -812,8 +798,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -826,19 +814,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -849,7 +840,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             GAS
@@ -863,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/00/" class="md-nav__link">
+      <a href="../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -884,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/1GamePlayTag/" class="md-nav__link">
+      <a href="../1GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -902,10 +893,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../GAS/2DataAssetsAuto/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Make DataAsset setup with Default Values
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -914,6 +923,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auto-collect-all-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Collect All Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-collect-all-offensive-abilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Collect All Offensive Abilities
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1301,6 +1346,32 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#auto-collect-all-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Collect All Attributes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-collect-all-offensive-abilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Auto Collect All Offensive Abilities
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1314,7 +1385,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/Basic/Using Python Script to Place StaicMesh into Level Editor.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/GAS/2DataAssetsAuto.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1322,78 +1393,82 @@
   
 
 
-  <h1>Python Script in Editor</h1>
+  <h1>Make DataAsset setup with Default Values</h1>
 
-<div><div class="highlight"><span class="filename">demo.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">unreal</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Constants</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">WALL_MESH_PATH</span> <span class="o">=</span> <span class="s2">"/Game/Assets/Dungeon/SM_Wall_4x2"</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">WALL_SPACING</span> <span class="o">=</span> <span class="mi">800</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">WALL_HEIGHT</span> <span class="o">=</span> <span class="mi">220</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span> <span class="nf">create_wall</span><span class="p">():</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1"># Get the editor utility library</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">editor_util</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorLevelLibrary</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># Before creating the wall, delete all the walls</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">world</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">get_editor_world</span><span class="p">()</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">actors</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">GameplayStatics</span><span class="o">.</span><span class="n">get_all_actors_of_class</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="o">.</span><span class="n">static_class</span><span class="p">())</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">for</span> <span class="n">actor</span> <span class="ow">in</span> <span class="n">actors</span><span class="p">:</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">if</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_label</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Wall"</span><span class="p">):</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">editor_util</span><span class="o">.</span><span class="n">destroy_actor</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="c1"># Define wall segments</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">wall_segments</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Up"</span><span class="p">},</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Down"</span><span class="p">},</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Left"</span><span class="p">},</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Right"</span><span class="p">},</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="p">]</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># Create walls</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">wall_segments</span><span class="p">:</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="n">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"start"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"end"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"rotation"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="c1"># Log a message</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">unreal</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Walls created"</span><span class="p">)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">def</span> <span class="nf">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="c1"># Calculate the number of walls needed</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">distance</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">num_walls</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_walls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">direction</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">location</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">direction</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="n">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">def</span> <span class="nf">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">actor</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">spawn_actor_from_class</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_rotation</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Rotator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rotation</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="c1"># Load the static mesh</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorAssetLibrary</span><span class="o">.</span><span class="n">load_asset</span><span class="p">(</span><span class="n">WALL_MESH_PATH</span><span class="p">)</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMesh</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="c1"># Set the static mesh</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">static_mesh_component</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">static_mesh_component</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="n">static_mesh_component</span><span class="o">.</span><span class="n">set_static_mesh</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="c1"># Set the actor's label and folder</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_folder_path</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">"/Walls"</span><span class="p">))</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="c1"># Select the actor</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="n">actors_to_select</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Actor</span><span class="p">)</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">actors_to_select</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>    <span class="n">editor_util</span><span class="o">.</span><span class="n">set_selected_level_actors</span><span class="p">(</span><span class="n">actors_to_select</span><span class="o">=</span><span class="n">actors_to_select</span><span class="p">)</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>    <span class="n">create_wall</span><span class="p">()</span>    
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This post base on Aura GAS Course</p>
+</div>
+<hr>
+<p>In the Aura Course, we have to manually input all the RPG Attribute Items into the DataAsset, which is pretty boring and repetitive. So, I believe we can generate default values based on the existing information, eliminating the need for manual input and achieving semi-automation.   </p>
+<h2 id="auto-collect-all-attributes">Auto Collect All Attributes</h2>
+<ul>
+<li>Utilize <code>UGameplayTagsManager.RequestGameplayTagChildren</code> to locate all the Sub Tags.</li>
+<li>Utilize <code>FindFieldChecked&lt;FProperty&gt;(UAuraAttributeSet::StaticClass(), AttributeName)</code> to retrieve the AttributeGetter and store it in DataAssets for future use.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">UAuraAttributeDataAsset</span><span class="o">::</span><span class="n">UAuraAttributeDataAsset</span><span class="p">()</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// init default attributes from tag manager with parent tag is "Attribute.*"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">PrimaryTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Primary"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">SecondaryTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Secondary"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">ResistanceTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Resistance"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">PrimaryTags</span><span class="p">);</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">SecondaryTags</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">ResistanceTags</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kt">void</span><span class="w"> </span><span class="n">UAuraAttributeDataAsset</span><span class="o">::</span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tags</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsResistance</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Tags</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="n">FAttributeInfo</span><span class="w"> </span><span class="n">Attribute</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="p">;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="c1">// split tag name by '.' and get the last part, tag example: "Attribute.Primary.Intelligence", we only need "Intelligence"</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="n">FString</span><span class="w"> </span><span class="n">TagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">int32</span><span class="w"> </span><span class="n">LastDotIndex</span><span class="p">;</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TagName</span><span class="p">.</span><span class="n">FindLastChar</span><span class="p">(</span><span class="sc">'.'</span><span class="p">,</span><span class="w"> </span><span class="n">LastDotIndex</span><span class="p">))</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">            </span><span class="n">TagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TagName</span><span class="p">.</span><span class="n">Mid</span><span class="p">(</span><span class="n">LastDotIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="n">bIsResistance</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">TagName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" Resistance"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">TagName</span><span class="p">);</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="cp">#if WITH_EDITORONLY_DATA</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">FindTagNode</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Primary_Intelligence</span><span class="p">).</span><span class="n">Get</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDevComment</span><span class="p">());</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="cp">#endif</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">AttributeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bIsResistance</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="s">"Resistance"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TagName</span><span class="p">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="n">TagName</span><span class="p">);</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindFieldChecked</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">AttributeName</span><span class="p">);</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="n">Attributes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Attribute</span><span class="p">);</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="p">}</span>
 </code></pre></div>
-<p><a class="glightbox" href="../../assets/img/output_filename.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" loading="lazy" src="../../assets/img/output_filename.webp"></a></p></div>
+<h2 id="auto-collect-all-offensive-abilities">Auto Collect All Offensive Abilities</h2>
+<p>In the Aura Course, all the offensive abilities have an Input Tag, so we can leverage this to identify all offensive spells.</p>
+<ul>
+<li>Use <code>GetDerivedClasses</code> to obtain all subclasses of UGameplayAbility.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UAuraAbilitiesDataAsset</span><span class="o">::</span><span class="n">UAuraAbilitiesDataAsset</span><span class="p">()</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">TArray</span><span class="o">&lt;</span><span class="n">UClass</span><span class="o">*&gt;</span><span class="w"> </span><span class="n">AbilityClasses</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">GetDerivedClasses</span><span class="p">(</span><span class="n">UAuraGameplayAbility</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">AbilityClasses</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">AbilityClass</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">AbilityClasses</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">UAuraGameplayAbility</span><span class="o">*</span><span class="w"> </span><span class="n">Ability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UAuraGameplayAbility</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AbilityClass</span><span class="o">-&gt;</span><span class="n">GetDefaultObject</span><span class="p">());</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="c1">// has a press key tag means it's a player triggered spell</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ability</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">Ability</span><span class="o">-&gt;</span><span class="n">PlayerKeyPressTag</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">            </span><span class="n">FAbilityInfo</span><span class="w"> </span><span class="n">Info</span><span class="p">;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">            </span><span class="n">Info</span><span class="p">.</span><span class="n">InputTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ability</span><span class="o">-&gt;</span><span class="n">PlayerKeyPressTag</span><span class="p">;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ability</span><span class="o">-&gt;</span><span class="n">AbilityTags</span><span class="p">.</span><span class="n">Num</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                </span><span class="n">Info</span><span class="p">.</span><span class="n">AbilityTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ability</span><span class="o">-&gt;</span><span class="n">AbilityTags</span><span class="p">.</span><span class="n">First</span><span class="p">();</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">            </span><span class="n">Info</span><span class="p">.</span><span class="n">Ability</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AbilityClass</span><span class="p">;</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="n">AbilityInformation</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Info</span><span class="p">);</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
+</code></pre></div></div>
 
 
 
@@ -1416,7 +1491,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
   </span>
 
     
@@ -1426,7 +1501,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
   </span>
 
     
