@@ -6,6 +6,15 @@ comments:true
 
 
 ---
+
+## EnhancedInput
+蓝图里，默认注册的 EnhancedInput 只对 InputMode 包含 “Game Mode” 时生效，如图：
+![alt text](../../assets/images/01EnhancedInput_image.png)
+
+当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
+利用这个特性，就可以在菜单显示的时候，并屏蔽掉默认的游戏 Input。
+被屏蔽，是为了更好地支持 CommonUI 对EnhancedInput，CommonUI 通过一类叫做RegisterUIActionBinding的方法来绑定输入。
+
 ## InputAction
 
 ![usersettting](../../assets/images/EnhancedInput_image.png)
@@ -59,7 +68,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
   ![alt text](../../assets/images/EnhancedInput_image-5.png)
 
 ### 开始处理
-系统传给ActionRouter 的input是 KEY 和 InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。
+系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。
 
 ```cpp
 enum class ECommonInputMode : uint8
@@ -75,7 +84,7 @@ enum class ECommonInputMode : uint8
 ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。
 ![alt text](../../assets/images/EnhancedInput_image-8.png)
 
-另外，CommonBaseButton 可以对自身绑定的Input进行覆盖
+另外，CommonBaseButton 可以对自身绑定的InputMode进行覆盖
 ![alt text](../../assets/images/EnhancedInput_image-7.png)
 
 可以看到，处理输入时，是根据当前InputMode是否匹配，才会进行处理。如果输入不起作用，很可能是Mode没有设置正确。
@@ -114,6 +123,9 @@ if (SecondsHeld <= PressToHoldThreshold && SecondsHeld < HoldMapping.HoldTime)
 }
 
 ```
+### Hold Support
+目前的代码，并不支持 Enhanced Input的Hold Action，
+我这里进行的额外的[支持](./03Hold%20Support%20For%20Enhnaced%20Input.md)
 
 
 ### AnalogCursor 处理
