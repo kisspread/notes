@@ -6,7 +6,11 @@ comments:true
 
 ---
 
-In the Aura Course, we have to manually input all the RPG Attribute Items into the DataAsset, which is pretty boring and repetitive. So, I believe we can generate default values based on the existing information, eliminating the need for manual input and achieving semi-automation.   
+In the Aura Course, we have to manually input all the RPG Attribute Items into the DataAsset, which is pretty boring and repetitive. So, I believe we can generate default values based on the existing information, eliminating the need for manual input and achieving semi-automation.
+
+## TLDR
+- Utilize `FindFieldChecked<FProperty>(UAuraAttributeSet::StaticClass(), AttributeName)` to save FGameplayAttribute in DataAsset
+- Use `GetDerivedClasses` to obtain all subclasses of UGameplayAbility.
 
 ## Auto Collect All Attributes
 - Utilize `UGameplayTagsManager.RequestGameplayTagChildren` to locate all the Sub Tags.
