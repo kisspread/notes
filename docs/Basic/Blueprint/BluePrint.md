@@ -17,6 +17,12 @@ comments: true
 
 ## Meta记录
 
+
+### BlueprintInternalUseOnly
+`meta = (BlueprintInternalUseOnly = "true")`
+1. **防止直接创建蓝图节点**：`BlueprintInternalUseOnly` 标记防止引擎直接为这个函数创建蓝图节点，因为直接调用这个函数可能不会按预期工作。
+2. **异步节点需求**：尽管函数需要被标记为 `BlueprintCallable` 以便被特殊的异步节点使用，但我们并不希望它被直接暴露给蓝图用户。这个标记告诉引擎跳过创建直接调用这个函数的蓝图节点。
+
 ### MustImplement
 限制实现接口
 ``` cpp
