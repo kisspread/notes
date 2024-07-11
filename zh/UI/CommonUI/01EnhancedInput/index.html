@@ -1169,6 +1169,8 @@
       
         
       
+        
+      
     
     
       
@@ -1308,6 +1310,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#factivatabletreenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      FActivatableTreeNode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FActivatableTreeNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leafmostnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      LeafmostNode 最叶节点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#process-input" class="md-nav__link">
     <span class="md-ellipsis">
       Process Input
@@ -1320,14 +1355,14 @@
           <li class="md-nav__item">
   <a href="#input" class="md-nav__link">
     <span class="md-ellipsis">
-      input 的来源
+      Input 的来源
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1475,6 +1510,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06HandleInputChange/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonUI Gamepad Mouse Missing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1548,6 +1604,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#factivatabletreenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      FActivatableTreeNode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FActivatableTreeNode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建节点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leafmostnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      LeafmostNode 最叶节点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#process-input" class="md-nav__link">
     <span class="md-ellipsis">
       Process Input
@@ -1560,14 +1649,14 @@
           <li class="md-nav__item">
   <a href="#input" class="md-nav__link">
     <span class="md-ellipsis">
-      input 的来源
+      Input 的来源
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1717,9 +1806,39 @@
 </ul>
 <p>综上，使用ActionBar 和 EnhancedInput 配置上面这两个字段还是非常重要的。 
 bIsGenericInputAction默认值是true，会导致widget里普通的enhanced input 不绑定。</p>
+<h2 id="factivatabletreenode">FActivatableTreeNode</h2>
+<blockquote>
+<p>Activatable Widgets are abstracted as nodes in a tree using FActivatableRootNode. Nodes are arranged in a hierarchy based on the hierarchy of Activatable Widgets in the UI's widget tree. Parent nodes act as root nodes, while their children are considered child or leaf nodes. Refer to the CommonUI Overview for more information.</p>
+</blockquote>
+<p>根据官方描述，所有Activatable Widgets会被抽象为树结构，进行节点排列。</p>
+<p>相关继承关系如下：
+<code>FActivatableTreeRoot -&gt; FActivatableTreeNode -&gt; FActionRouterBindingCollection</code></p>
+<h3 id="_1">创建节点</h3>
+<p>UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIActionBinding，就会查找FActivatableTreeNode，把action绑定进该node, 并让UCommonActivatableWidget持有这个节点的引用。 RegisterUIActionBinding是利用这个树结构查找node
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-2.png"></a>
+那么这些Node是何时创建的？
+是在ProcessRebuiltWidgets里创建的，没有创建的，会在下一帧创建：</p>
+<p><code>UCommonUIActionRouterBase::ProcessRebuiltWidgets()</code></p>
+<ul>
+<li>
+<p>tree 根构造
+  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-4.png"></a></p>
+</li>
+<li>
+<p>tree添加子节点
+  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-5.png"></a></p>
+</li>
+</ul>
+<h3 id="leafmostnode">LeafmostNode 最叶节点</h3>
+<p>从代码上看，最叶节点，可以是本身（没有child），也可以是最边缘的节点。在视觉和逻辑层次上最靠近叶子节点的节点。通过 GetLastPaintLayer 来判断节点的层次，层次越大表示越靠近叶子节点 <br>
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-6.png"></a>  </p>
+<p>根据Node改变FUIInputConfig,node 的input config 在这里切换
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-7.png"></a></p>
 <h2 id="process-input">Process Input</h2>
-<p>上面提到的TryConsumeInput是<code>FActionRouterBindingCollection::ProcessNormalInput</code>的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解</p>
-<h3 id="input">input 的来源</h3>
+<p>处理输入，就是通过节点树来处理的，只有激活的才有资格处理。
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-3.png"></a>
+上面提到的TryConsumeInput是<code>FActionRouterBindingCollection::ProcessNormalInput</code>的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解</p>
+<h3 id="input">Input 的来源</h3>
 <ul>
 <li>键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-3.png"></a></li>
@@ -1728,7 +1847,9 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <li>手柄输入：
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></li>
 </ul>
-<h3 id="_1">开始处理</h3>
+<p>参考官方图，简化流程：
+  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-1.png"></a></p>
+<h3 id="_2">开始处理</h3>
 <p>系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ECommonInputMode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
@@ -1892,7 +2013,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 4, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
   </span>
 
     

@@ -162,6 +162,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
     </url>
     <url>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/06HandleInputChange/</loc>
+        <lastmod>2024-07-11</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/06HandleInputChange/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/06HandleInputChange/"/>
+    </url>
+    <url>
         <loc>https://kisspread.github.io/notes/zh/</loc>
         <lastmod>2024-07-11</lastmod>
         <changefreq>daily</changefreq>
@@ -321,5 +328,12 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/06HandleInputChange/</loc>
+        <lastmod>2024-07-11</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/06HandleInputChange/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/06HandleInputChange/"/>
     </url>
 </urlset>
