@@ -57,15 +57,52 @@ public:
 综上，使用ActionBar 和 EnhancedInput 配置上面这两个字段还是非常重要的。 
 bIsGenericInputAction默认值是true，会导致widget里普通的enhanced input 不绑定。
 
+## FActivatableTreeNode
+> Activatable Widgets are abstracted as nodes in a tree using FActivatableRootNode. Nodes are arranged in a hierarchy based on the hierarchy of Activatable Widgets in the UI's widget tree. Parent nodes act as root nodes, while their children are considered child or leaf nodes. Refer to the CommonUI Overview for more information.
+
+根据官方描述，所有Activatable Widgets会被抽象为树结构，进行节点排列。
+
+相关继承关系如下：
+`FActivatableTreeRoot -> FActivatableTreeNode -> FActionRouterBindingCollection`
+
+### 创建节点
+UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIActionBinding，就会查找FActivatableTreeNode，把action绑定进该node, 并让UCommonActivatableWidget持有这个节点的引用。 RegisterUIActionBinding是利用这个树结构查找node
+![alt text](../../assets/images/01EnhancedInput_image-2.png)
+那么这些Node是何时创建的？
+是在ProcessRebuiltWidgets里创建的，没有创建的，会在下一帧创建：
+
+`UCommonUIActionRouterBase::ProcessRebuiltWidgets()`
+
+- tree 根构造
+  ![alt text](../../assets/images/01EnhancedInput_image-4.png)
+
+
+- tree添加子节点
+  ![alt text](../../assets/images/01EnhancedInput_image-5.png)
+ 
+### LeafmostNode 最叶节点
+
+   从代码上看，最叶节点，可以是本身（没有child），也可以是最边缘的节点。在视觉和逻辑层次上最靠近叶子节点的节点。通过 GetLastPaintLayer 来判断节点的层次，层次越大表示越靠近叶子节点   
+   ![alt text](../../assets/images/01EnhancedInput_image-6.png)  
+
+根据Node改变FUIInputConfig,node 的input config 在这里切换
+![alt text](../../assets/images/01EnhancedInput_image-7.png)
+
 ## Process Input
+处理输入，就是通过节点树来处理的，只有激活的才有资格处理。
+![alt text](../../assets/images/01EnhancedInput_image-3.png)
 上面提到的TryConsumeInput是`FActionRouterBindingCollection::ProcessNormalInput`的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解
-### input 的来源
+### Input 的来源
 - 键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
   ![alt text](../../assets/images/EnhancedInput_image-3.png)
 - 鼠标输入：大致相同
   ![alt text](../../assets/images/EnhancedInput_image-4.png)
 - 手柄输入：
   ![alt text](../../assets/images/EnhancedInput_image-5.png)
+
+  参考官方图，简化流程：
+  ![alt text](../../assets/images/01EnhancedInput_image-1.png)
+
 
 ### 开始处理
 系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。
