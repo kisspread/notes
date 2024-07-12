@@ -2,7 +2,7 @@ title: EnhancedInput 和 commonUI 配合的数据配置
 comments:true
 
 !!! warning 
-    本篇是记录向，没做阅读优化，慎看，仅供参考。
+    本篇是记录向，没做阅读优化，排版的时间顺序有点乱，慎看，仅供参考。
 
 ---
 
@@ -68,6 +68,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 知道了Metadata的作用，尝试和commonUI结合。
 ### UI优先级更高
 先试试我比较在意的一种情况，同一个InputAction，都设置绑定的情况下，谁的优先级高？于是我准备这个例子：
+
  - 一个是CommonBaseButton的（代表Menu模式，可配置覆盖）
  - 一个是直接蓝图里的绑定，代表Game模式。 
 
@@ -81,23 +82,29 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 ![alt text](../../assets/images/01EnhancedInput_image-11.png)
 保持默认行为，不要单独配置按钮的模式如下图。保持默认行为好理解，不然一套规则的排列组合下来，还是挺烦人的。
 ![alt text](../../assets/images/01EnhancedInput_image-12.png)
-所以我的建议是“启用”默认还是打勾好，并且**遵从默认行为**：：
+
+所以我的建议是“启用”默认还是打勾好，并且**遵从默认行为**：
+
  - 将直接在蓝图或者C++ 里绑定的Input Action，都视为Game Input
  - 将通过CommonUI 注册的 Input Action，都是视为Menu Input
  - 把默认HUD设置为ALL，让UI按键和游戏都能响应输入事件
  - 各种弹出菜单后，输入模式设置为Menu，屏蔽掉game输入。
 
 ### 占用问题
-不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不占用的，都会执行：
+不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不会占用的，都会执行：
 例子,这两个IA都绑定了E 键：
 ![alt text](../../assets/images/01EnhancedInput_image-14.png)
 ![alt text](../../assets/images/01EnhancedInput_image-13.png)
 它们都能输出。
 
 但是，**一旦CommonUI注册了，就会直接占用该“KEY”**，假如此时新增一个IA_E2,也绑定“E”，并注册到一个按钮里，那么ALL模式下，这“E”键，就被UI完全占用了。
+
 即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+
 即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。 
+
 即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+
 此时虽然绑定了三个不同的IA，但按下E，什么都不会发生，就像E键被扣掉了一样。  
 
 
@@ -140,6 +147,10 @@ UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIAct
 ![alt text](../../assets/images/01EnhancedInput_image-3.png)
 上面提到的TryConsumeInput是`FActionRouterBindingCollection::ProcessNormalInput`的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解
 ### Input 的来源
+
+Enhanced 默认调用链：
+![alt text](../../assets/images/01EnhancedInput_image-15.png)
+完全不同，UI事件注册的：
 - 键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
   ![alt text](../../assets/images/EnhancedInput_image-3.png)
 - 鼠标输入：大致相同
@@ -150,9 +161,40 @@ UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIAct
   参考官方图，简化流程：
   ![alt text](../../assets/images/01EnhancedInput_image-1.png)
 
+## 输入预处理器
+发现AnalogCursor的预处理权限很高，比如在Input Mode是Game的时候，手柄点击A按钮，会触发模拟的鼠标左键效果。这在TopDown类型的Game里面，非常没有必要。最好是只有InputMode是Menu是的时候，才模拟左键点击，才是合理的。
+
+盲猜预处理各种Handle，返回true就是消费该事件，方法false就是让下一个预处理接管。
+
+
+### AnalogCursor
+默认的注册priority 是 2，在Project->Plugin-> CommonUI -> Analog 可用修改
+![alt text](../../assets/images/01EnhancedInput_image-16.png)
+
+### EnhancedInput 
+hard coding -1， 这个是EnhancedInputWorldSubsystem，我的测试里，它没有调用。
+![alt text](../../assets/images/01EnhancedInput_image-17.png)
+
+### CommonInput 
+hard coding 0，CommonInput内部会通过`Collection.InitializeDependency<UEnhancedInputLocalPlayerSubsystem>();`来初始化EnhancedInput，但EnhancedInput似乎并没有预处理器。
+![alt text](../../assets/images/01EnhancedInput_image-18.png)
+
+### AnalogCursor 自定义
+发现确实AnalogCursor接管了 手柄的A按键。看样子，只能重写这个函数：
+
+```cpp title='FCommonAnalogCursor.cpp'
+bool FCommonAnalogCursor::IsRelevantInput(const FKeyEvent& KeyEvent) const
+{
+	return IsUsingGamepad() && FAnalogCursor::IsRelevantInput(KeyEvent) && (IsGameViewportInFocusPathWithoutCapture() || (KeyEvent.GetKey() == EKeys::Virtual_Accept && CanReleaseMouseCapture()));
+}
+```
+篇幅太长，[详见](./07CustomAnalogCursor.md)
+
+---
 
 ### 开始处理
-系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。
+
+系统传给ActionRouter 的input是 KEY 值 和 InputEvent类型（按下，释放）， ActionRouter会结合当前的 ActiveMode（输入模式）进行处理。输入模式目前定义了3+1 种。
 
 ```cpp
 enum class ECommonInputMode : uint8
@@ -165,7 +207,7 @@ enum class ECommonInputMode : uint8
 };
 ```
 
-ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。
+ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。参考[最叶节点](#leafmostnode-最叶节点)
 ![alt text](../../assets/images/EnhancedInput_image-8.png)
 
 另外，CommonBaseButton 可以对自身绑定的InputMode进行覆盖
