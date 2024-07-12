@@ -4,18 +4,22 @@ comments:true
 !!! warning 
     本篇是记录向，没做阅读优化，慎看，仅供参考。
 
-
 ---
 
 ## EnhancedInput
-蓝图里，默认注册的 EnhancedInput 只对 InputMode 包含 “Game Mode” 时生效，如图：
+蓝图里注册的EnhancedInput，默认情况下只在 InputMode 包含 “Game Mode” 时生效，如图：
 ![alt text](../../assets/images/01EnhancedInput_image.png)
 
-当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
+如蓝图提示，当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
 利用这个特性，就可以在菜单显示的时候，并屏蔽掉默认的游戏 Input。
 被屏蔽，是为了更好地支持 CommonUI 对EnhancedInput，CommonUI 通过一类叫做RegisterUIActionBinding的方法来绑定输入。
 
+!!! note 
+    不过，这个行为，在CommonUI加入进来，是可以修改的！即使是Menu模式，依然触发输入
+
+
 ## InputAction
+每个InputAction的配置里，有一项Player Mappable Key Setting. 这是提供给CommonUI修改配置的地方。
 
 ![usersettting](../../assets/images/EnhancedInput_image.png)
 这里可以配置Metadata，作为输入的“元数据”
@@ -49,13 +53,56 @@ public:
 ### 默认metadata的作用
 - NavBarPriority 用于ActionBar的排序，Router会收集所有活动的Action，然后通知`UCommonBoundActionBar::HandleDeferredDisplayUpdate()`进行更新
   ![alt text](../../assets/images/EnhancedInput_image-1.png) 
-- bIsGenericInputAction 如果是通用输入，则不会注入 enhanced input的逻辑，具体代码在 `auto TryConsumeInput = [&](const FKey& InKey, const UInputAction* InInputAction)`
+- bIsGenericInputAction 如果是通用输入，则不会注入 普通enhanced input的逻辑，具体代码在 `auto TryConsumeInput = [&](const FKey& InKey, const UInputAction* InInputAction)`
     ![alt text](../../assets/images/EnhancedInput_image-2.png)
     也就是widget里 自定义的enhanced input action不会被系统触发。
     ![alt text](../../assets/images/EnhancedInput_image-6.png)
 
+- 这里还有配置全局的默认值，也是非常重要不指定的话，就会采用默认值的设定：
+  ![alt text](../../assets/images/01EnhancedInput_image-8.png)
+
 综上，使用ActionBar 和 EnhancedInput 配置上面这两个字段还是非常重要的。 
 bIsGenericInputAction默认值是true，会导致widget里普通的enhanced input 不绑定。
+
+## 结合CommonUI 使用
+知道了Metadata的作用，尝试和commonUI结合。
+### UI优先级更高
+先试试我比较在意的一种情况，同一个InputAction，都设置绑定的情况下，谁的优先级高？于是我准备这个例子：
+ - 一个是CommonBaseButton的（代表Menu模式，可配置覆盖）
+ - 一个是直接蓝图里的绑定，代表Game模式。 
+
+把全局bIsGenericInputAction设置为false：
+![alt text](../../assets/images/01EnhancedInput_image-10.png)
+
+测试结果如图，即使是当前输入模式是Menu模式，因为该action的绑定没有“启用”，不会执行，当它会把控制权交给game模式执行，让原本game模式下的事件绑定，得到执行的机会。
+![alt text](../../assets/images/01EnhancedInput_image-9.png)
+**而如果是“启用”，并且是All模式或者Menu，那么UI优先，而Game那个绑定被忽略**。所以在All模式下，其实也可用把这里的“UI启用”，理解为“**UI占用**”。
+（上面的调试信息，是通过控制台打开的。这两个都要设置为true）
+![alt text](../../assets/images/01EnhancedInput_image-11.png)
+保持默认行为，不要单独配置按钮的模式如下图。保持默认行为好理解，不然一套规则的排列组合下来，还是挺烦人的。
+![alt text](../../assets/images/01EnhancedInput_image-12.png)
+所以我的建议是“启用”默认还是打勾好，并且**遵从默认行为**：：
+ - 将直接在蓝图或者C++ 里绑定的Input Action，都视为Game Input
+ - 将通过CommonUI 注册的 Input Action，都是视为Menu Input
+ - 把默认HUD设置为ALL，让UI按键和游戏都能响应输入事件
+ - 各种弹出菜单后，输入模式设置为Menu，屏蔽掉game输入。
+
+### 占用问题
+不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不占用的，都会执行：
+例子,这两个IA都绑定了E 键：
+![alt text](../../assets/images/01EnhancedInput_image-14.png)
+![alt text](../../assets/images/01EnhancedInput_image-13.png)
+它们都能输出。
+
+但是，**一旦CommonUI注册了，就会直接占用该“KEY”**，假如此时新增一个IA_E2,也绑定“E”，并注册到一个按钮里，那么ALL模式下，这“E”键，就被UI完全占用了。
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。 
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+此时虽然绑定了三个不同的IA，但按下E，什么都不会发生，就像E键被扣掉了一样。  
+
+
+---
+部分源码研究 
 
 ## FActivatableTreeNode
 > Activatable Widgets are abstracted as nodes in a tree using FActivatableRootNode. Nodes are arranged in a hierarchy based on the hierarchy of Activatable Widgets in the UI's widget tree. Parent nodes act as root nodes, while their children are considered child or leaf nodes. Refer to the CommonUI Overview for more information.
