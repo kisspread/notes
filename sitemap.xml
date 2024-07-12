@@ -169,6 +169,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/06HandleInputChange/"/>
     </url>
     <url>
+        <loc>https://kisspread.github.io/notes/UI/CommonUI/07CustomAnalogCursor/</loc>
+        <lastmod>2024-07-12</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/07CustomAnalogCursor/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/07CustomAnalogCursor/"/>
+    </url>
+    <url>
         <loc>https://kisspread.github.io/notes/zh/</loc>
         <lastmod>2024-07-12</lastmod>
         <changefreq>daily</changefreq>
@@ -335,5 +342,12 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/06HandleInputChange/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/06HandleInputChange/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/zh/UI/CommonUI/07CustomAnalogCursor/</loc>
+        <lastmod>2024-07-12</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/UI/CommonUI/07CustomAnalogCursor/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/UI/CommonUI/07CustomAnalogCursor/"/>
     </url>
 </urlset>

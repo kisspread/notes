@@ -1171,6 +1171,8 @@
       
         
       
+        
+      
     
     
       
@@ -1394,8 +1396,59 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入预处理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="输入预处理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogcursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnalogCursor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancedinput_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnhancedInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commoninput" class="md-nav__link">
+    <span class="md-ellipsis">
+      CommonInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogcursor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnalogCursor 自定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1422,7 +1475,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analogcursor" class="md-nav__link">
+  <a href="#analogcursor_2" class="md-nav__link">
     <span class="md-ellipsis">
       AnalogCursor 处理
     </span>
@@ -1555,6 +1608,27 @@
   
   <span class="md-ellipsis">
     CommonUI Gamepad Mouse Missing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07CustomAnalogCursor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The CommonUI Gamepad FaceButton-Bottom is already taken.
   </span>
   
 
@@ -1721,8 +1795,59 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入预处理器
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="输入预处理器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogcursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnalogCursor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancedinput_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnhancedInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commoninput" class="md-nav__link">
+    <span class="md-ellipsis">
+      CommonInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analogcursor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      AnalogCursor 自定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1749,7 +1874,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analogcursor" class="md-nav__link">
+  <a href="#analogcursor_2" class="md-nav__link">
     <span class="md-ellipsis">
       AnalogCursor 处理
     </span>
@@ -1825,7 +1950,7 @@
 
 <div><div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>本篇是记录向，没做阅读优化，慎看，仅供参考。</p>
+<p>本篇是记录向，没做阅读优化，排版的时间顺序有点乱，慎看，仅供参考。</p>
 </div>
 <hr>
 <h2 id="enhancedinput">EnhancedInput</h2>
@@ -1886,9 +2011,11 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <h2 id="commonui">结合CommonUI 使用</h2>
 <p>知道了Metadata的作用，尝试和commonUI结合。</p>
 <h3 id="ui">UI优先级更高</h3>
-<p>先试试我比较在意的一种情况，同一个InputAction，都设置绑定的情况下，谁的优先级高？于是我准备这个例子：
- - 一个是CommonBaseButton的（代表Menu模式，可配置覆盖）
- - 一个是直接蓝图里的绑定，代表Game模式。 </p>
+<p>先试试我比较在意的一种情况，同一个InputAction，都设置绑定的情况下，谁的优先级高？于是我准备这个例子：</p>
+<ul>
+<li>一个是CommonBaseButton的（代表Menu模式，可配置覆盖）</li>
+<li>一个是直接蓝图里的绑定，代表Game模式。 </li>
+</ul>
 <p>把全局bIsGenericInputAction设置为false：
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-10.png"></a></p>
 <p>测试结果如图，即使是当前输入模式是Menu模式，因为该action的绑定没有“启用”，不会执行，当它会把控制权交给game模式执行，让原本game模式下的事件绑定，得到执行的机会。
@@ -1897,23 +2024,25 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 （上面的调试信息，是通过控制台打开的。这两个都要设置为true）
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-11.png"></a>
 保持默认行为，不要单独配置按钮的模式如下图。保持默认行为好理解，不然一套规则的排列组合下来，还是挺烦人的。
-<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-12.png"></a>
-所以我的建议是“启用”默认还是打勾好，并且<strong>遵从默认行为</strong>：：
- - 将直接在蓝图或者C++ 里绑定的Input Action，都视为Game Input
- - 将通过CommonUI 注册的 Input Action，都是视为Menu Input
- - 把默认HUD设置为ALL，让UI按键和游戏都能响应输入事件
- - 各种弹出菜单后，输入模式设置为Menu，屏蔽掉game输入。</p>
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-12.png"></a></p>
+<p>所以我的建议是“启用”默认还是打勾好，并且<strong>遵从默认行为</strong>：</p>
+<ul>
+<li>将直接在蓝图或者C++ 里绑定的Input Action，都视为Game Input</li>
+<li>将通过CommonUI 注册的 Input Action，都是视为Menu Input</li>
+<li>把默认HUD设置为ALL，让UI按键和游戏都能响应输入事件</li>
+<li>各种弹出菜单后，输入模式设置为Menu，屏蔽掉game输入。</li>
+</ul>
 <h3 id="_1">占用问题</h3>
-<p>不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不占用的，都会执行：
+<p>不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不会占用的，都会执行：
 例子,这两个IA都绑定了E 键：
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-14.png"></a>
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-13.png"></a>
 它们都能输出。</p>
-<p>但是，<strong>一旦CommonUI注册了，就会直接占用该“KEY”</strong>，假如此时新增一个IA_E2,也绑定“E”，并注册到一个按钮里，那么ALL模式下，这“E”键，就被UI完全占用了。
-即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
-即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。 
-即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
-此时虽然绑定了三个不同的IA，但按下E，什么都不会发生，就像E键被扣掉了一样。  </p>
+<p>但是，<strong>一旦CommonUI注册了，就会直接占用该“KEY”</strong>，假如此时新增一个IA_E2,也绑定“E”，并注册到一个按钮里，那么ALL模式下，这“E”键，就被UI完全占用了。</p>
+<p>即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。</p>
+<p>即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。 </p>
+<p>即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。</p>
+<p>此时虽然绑定了三个不同的IA，但按下E，什么都不会发生，就像E键被扣掉了一样。  </p>
 <hr>
 <p>部分源码研究 </p>
 <h2 id="factivatabletreenode">FActivatableTreeNode</h2>
@@ -1949,39 +2078,61 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-3.png"></a>
 上面提到的TryConsumeInput是<code>FActionRouterBindingCollection::ProcessNormalInput</code>的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解</p>
 <h3 id="input">Input 的来源</h3>
-<ul>
-<li>键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
-  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-3.png"></a></li>
-<li>鼠标输入：大致相同
-  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-4.png"></a></li>
-<li>手柄输入：
-  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></li>
-</ul>
+<p>Enhanced 默认调用链：
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-15.png"></a>
+完全不同，UI事件注册的：
+- 键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-3.png"></a>
+- 鼠标输入：大致相同
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-4.png"></a>
+- 手柄输入：
+  <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></p>
 <p>参考官方图，简化流程：
   <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-1.png"></a></p>
-<h3 id="_3">开始处理</h3>
-<p>系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ECommonInputMode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
+<h2 id="_3">输入预处理器</h2>
+<p>发现AnalogCursor的预处理权限很高，比如在Input Mode是Game的时候，手柄点击A按钮，会触发模拟的鼠标左键效果。这在TopDown类型的Game里面，非常没有必要。最好是只有InputMode是Menu是的时候，才模拟左键点击，才是合理的。</p>
+<p>盲猜预处理各种Handle，返回true就是消费该事件，方法false就是让下一个预处理接管。</p>
+<h3 id="analogcursor">AnalogCursor</h3>
+<p>默认的注册priority 是 2，在Project-&gt;Plugin-&gt; CommonUI -&gt; Analog 可用修改
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-16.png"></a></p>
+<h3 id="enhancedinput_1">EnhancedInput</h3>
+<p>hard coding -1， 这个是EnhancedInputWorldSubsystem，我的测试里，它没有调用。
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-17.png"></a></p>
+<h3 id="commoninput">CommonInput</h3>
+<p>hard coding 0，CommonInput内部会通过<code>Collection.InitializeDependency&lt;UEnhancedInputLocalPlayerSubsystem&gt;();</code>来初始化EnhancedInput，但EnhancedInput似乎并没有预处理器。
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-18.png"></a></p>
+<h3 id="analogcursor_1">AnalogCursor 自定义</h3>
+<p>发现确实AnalogCursor接管了 手柄的A按键。看样子，只能重写这个函数：</p>
+<p></p><div class="highlight"><span class="filename">FCommonAnalogCursor.cpp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Menu</span><span class="w">    </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by the UI only"</span><span class="p">),</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Game</span><span class="w">    </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by the Game only"</span><span class="p">),</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">All</span><span class="w">     </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by UI and the Game"</span><span class="p">),</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="n">MAX</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Hidden</span><span class="p">)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">};</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">IsUsingGamepad</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FAnalogCursor</span><span class="o">::</span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">IsGameViewportInFocusPathWithoutCapture</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">.</span><span class="n">GetKey</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Virtual_Accept</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CanReleaseMouseCapture</span><span class="p">()));</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">}</span>
 </code></pre></div>
-<p>ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。
+篇幅太长，<a href="../07CustomAnalogCursor/">详见</a>
+<hr>
+<h3 id="_4">开始处理</h3>
+<p>系统传给ActionRouter 的input是 KEY 值 和 InputEvent类型（按下，释放）， ActionRouter会结合当前的 ActiveMode（输入模式）进行处理。输入模式目前定义了3+1 种。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ECommonInputMode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Menu</span><span class="w">    </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by the UI only"</span><span class="p">),</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Game</span><span class="w">    </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by the Game only"</span><span class="p">),</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">All</span><span class="w">     </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Tooltip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input is received by UI and the Game"</span><span class="p">),</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">MAX</span><span class="w"> </span><span class="n">UMETA</span><span class="p">(</span><span class="n">Hidden</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">};</span>
+</code></pre></div>
+<p>ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。参考<a href="#leafmostnode-%E6%9C%80%E5%8F%B6%E8%8A%82%E7%82%B9">最叶节点</a>
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-8.png"></a></p>
 <p>另外，CommonBaseButton 可以对自身绑定的InputMode进行覆盖
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-7.png"></a></p>
 <p>可以看到，处理输入时，是根据当前InputMode是否匹配，才会进行处理。如果输入不起作用，很可能是Mode没有设置正确。</p>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">EProcessHoldActionResult</span><span class="w"> </span><span class="nf">FActionRouterBindingCollection::ProcessHoldInput</span><span class="p">(</span><span class="n">ECommonInputMode</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="p">,</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">EInputEvent</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">BindingHandle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ActionBindings</span><span class="p">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUIActionBinding</span><span class="o">::</span><span class="n">FindBinding</span><span class="p">(</span><span class="n">BindingHandle</span><span class="p">))</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ECommonInputMode</span><span class="o">::</span><span class="n">All</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Binding</span><span class="o">-&gt;</span><span class="n">InputMode</span><span class="p">)</span>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">EProcessHoldActionResult</span><span class="w"> </span><span class="nf">FActionRouterBindingCollection::ProcessHoldInput</span><span class="p">(</span><span class="n">ECommonInputMode</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="p">,</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">EInputEvent</span><span class="w"> </span><span class="n">InputEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">BindingHandle</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ActionBindings</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Binding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUIActionBinding</span><span class="o">::</span><span class="n">FindBinding</span><span class="p">(</span><span class="n">BindingHandle</span><span class="p">))</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ECommonInputMode</span><span class="o">::</span><span class="n">All</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ActiveInputMode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Binding</span><span class="o">-&gt;</span><span class="n">InputMode</span><span class="p">)</span>
 </code></pre></div>
 每当 ActionRouter Tick的时候，会判断是否有pending Widget 需要注册事件。支持 CommonInputAction的widget 都会在创建的时候，注册需要绑定的事件, 供ActionRouter在tick的时候进行绑定。
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-9.png"></a>
@@ -1996,40 +2147,40 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <code>ActionRouter.ProcessInput(InKeyEvent.GetKey(), IE_Released) == ERouteUIInputResult::Handled</code>。如果结果是没有任何widget handle action，就会调用<code>FAnalogCursor::HandleKeyUpEvent(SlateApp, InKeyEvent);</code>构建虚拟鼠标事件。</p>
 <h3 id="hold-threshold">Hold Threshold</h3>
 <p>按住有个最小时间的设定，是写死的，默认是四分之一秒,否则就会要求下一步生成一个Press 事件</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">PressToHoldThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25f</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SecondsHeld</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PressToHoldThreshold</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">SecondsHeld</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HoldMapping</span><span class="p">.</span><span class="n">HoldTime</span><span class="p">)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">ProcessResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EProcessHoldActionResult</span><span class="o">::</span><span class="n">GeneratePress</span><span class="p">;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">PressToHoldThreshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.25f</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SecondsHeld</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">PressToHoldThreshold</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">SecondsHeld</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">HoldMapping</span><span class="p">.</span><span class="n">HoldTime</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">ProcessResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EProcessHoldActionResult</span><span class="o">::</span><span class="n">GeneratePress</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="hold-support">Hold Support</h3>
 <p>目前的代码，并不支持 Enhanced Input的Hold Action，
 我这里进行的额外的<a href="../03Hold%20Support%20For%20Enhnaced%20Input/">支持</a></p>
-<h3 id="analogcursor">AnalogCursor 处理</h3>
+<h3 id="analogcursor_2">AnalogCursor 处理</h3>
 <p>这是一个模拟鼠标点击的工具
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::HandleKeyUpEvent</span><span class="p">(</span><span class="n">FSlateApplication</span><span class="o">&amp;</span><span class="w"> </span><span class="n">SlateApp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InKeyEvent</span><span class="p">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">//最终通过</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">SlateApp</span><span class="p">.</span><span class="n">ProcessMouseButtonUpEvent</span><span class="p">(</span><span class="n">MouseEvent</span><span class="p">);</span><span class="w"> </span><span class="c1">//模拟</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::HandleKeyUpEvent</span><span class="p">(</span><span class="n">FSlateApplication</span><span class="o">&amp;</span><span class="w"> </span><span class="n">SlateApp</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InKeyEvent</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">//最终通过</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">SlateApp</span><span class="p">.</span><span class="n">ProcessMouseButtonUpEvent</span><span class="p">(</span><span class="n">MouseEvent</span><span class="p">);</span><span class="w"> </span><span class="c1">//模拟</span>
 </code></pre></div>
 <h2 id="key">默认KEY</h2>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">/** Remap a given key to something else if necessary. */</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">FORCEINLINE</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">RemapKey</span><span class="p">(</span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Key</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetGamepadAcceptKey</span><span class="p">()</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Gamepad_FaceButton_Bottom</span><span class="p">;</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetGamepadBackKey</span><span class="p">()</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Gamepad_FaceButton_Right</span><span class="p">;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetPlatformDeleteKey</span><span class="p">()</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Delete</span><span class="p">;</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="p">}</span>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">/** Remap a given key to something else if necessary. */</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">FORCEINLINE</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">RemapKey</span><span class="p">(</span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Key</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetGamepadAcceptKey</span><span class="p">()</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Gamepad_FaceButton_Bottom</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetGamepadBackKey</span><span class="p">()</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Gamepad_FaceButton_Right</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">GetPlatformDeleteKey</span><span class="p">()</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Delete</span><span class="p">;</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 经过上面的分析得知，当Input（抬起key）没有任何 Widget 去Care的时候，会执行默认行为：
 其中box手柄的 face button Bottom ，也就是A按钮，会构造一个鼠标左键行为（按下或者按住）。
@@ -2038,8 +2189,8 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 - 处理这个A键，绑定它
 - 改个isRepeat = true给它。
 - 看起来可以 remap key, 但还没实现，知道的大佬分享一下：
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">/** Remap a given key to something else if necessary. */</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">FORCEINLINE</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">RemapKey</span><span class="p">(</span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Key</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">/** Remap a given key to something else if necessary. */</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">FORCEINLINE</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">FKey</span><span class="w"> </span><span class="n">RemapKey</span><span class="p">(</span><span class="n">FKey</span><span class="w"> </span><span class="n">Key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Key</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <h2 id="1">疑问 1</h2>
 <ul>
@@ -2052,23 +2203,23 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-15.png"></a>
   这里只是为了设置Icon，并没有把绑定事件给Button</p>
 <p>BaseButton代码显示，它是通过判断IsHovered，来决定是否创建HoverEnhancedInputAction
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">HoverEnhancedInputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsHovered</span><span class="p">())</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsEnhancedInputSupportEnabled</span><span class="p">)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">                    </span><span class="n">HoverEnhancedInputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ICommonInputModule</span><span class="o">::</span><span class="n">GetSettings</span><span class="p">().</span><span class="n">GetEnhancedInputClickAction</span><span class="p">();</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">                </span><span class="k">else</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">                    </span><span class="n">HoverStateHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ICommonInputModule</span><span class="o">::</span><span class="n">GetSettings</span><span class="p">().</span><span class="n">GetDefaultClickAction</span><span class="p">();</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">            </span><span class="c1">//并设置给Icon Widget</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsEnhancedInputSupportEnabled</span><span class="p">)</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">                </span><span class="n">InputActionWidget</span><span class="o">-&gt;</span><span class="n">SetEnhancedInputAction</span><span class="p">(</span><span class="n">HoverEnhancedInputAction</span><span class="p">);</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">            </span><span class="p">}</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">HoverEnhancedInputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsHovered</span><span class="p">())</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsEnhancedInputSupportEnabled</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">                    </span><span class="n">HoverEnhancedInputAction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ICommonInputModule</span><span class="o">::</span><span class="n">GetSettings</span><span class="p">().</span><span class="n">GetEnhancedInputClickAction</span><span class="p">();</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">                </span><span class="k">else</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">                </span><span class="p">{</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">                    </span><span class="n">HoverStateHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ICommonInputModule</span><span class="o">::</span><span class="n">GetSettings</span><span class="p">().</span><span class="n">GetDefaultClickAction</span><span class="p">();</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">            </span><span class="c1">//并设置给Icon Widget</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bIsEnhancedInputSupportEnabled</span><span class="p">)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">                </span><span class="n">InputActionWidget</span><span class="o">-&gt;</span><span class="n">SetEnhancedInputAction</span><span class="p">(</span><span class="n">HoverEnhancedInputAction</span><span class="p">);</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">            </span><span class="p">}</span>
 </code></pre></div>
 <p>变通解法就是，在OnHovered 和 UnHoverd 获取 Action widget 的Enhanced Input，适当的时候手动绑定。和取消绑定。</p>
 </li>
@@ -2080,11 +2231,11 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
 <p>因为缺少HoldMapping，这里必须有HoldMapping，才会执行到for内部
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-16.png"></a></p>
 <p>然而在处理HoldMapping的时候，偏偏不处理Enhanced Input的。注释说，不在这里处理HoldMapping，但我没发现其他地方有给它设置。全局搜索都搜不到。
-</p><div class="highlight"><span class="filename">UIActionRouterTypes.cpp</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">BindArgs</span><span class="p">.</span><span class="n">InputAction</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="c1">// Nothing else to do if we have an enhanced input action,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="c1">// the input action itself will be queried against for keys later</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="p">}</span>
+</p><div class="highlight"><span class="filename">UIActionRouterTypes.cpp</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">CommonUI</span><span class="o">::</span><span class="n">IsEnhancedInputSupportEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">BindArgs</span><span class="p">.</span><span class="n">InputAction</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="c1">// Nothing else to do if we have an enhanced input action,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="c1">// the input action itself will be queried against for keys later</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p">}</span>
 </code></pre></div>
 一种解法是：用UIActionTag来解决，因为代码里会给有Tag的Action进行HoldMapping绑定。但Action要定义在这图里的设置里。而且根本不是enhanced input。
 <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-17.png"></a>
