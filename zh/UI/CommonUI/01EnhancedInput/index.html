@@ -1310,6 +1310,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#commonui" class="md-nav__link">
+    <span class="md-ellipsis">
+      结合CommonUI 使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="结合CommonUI 使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI优先级更高
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      占用问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#factivatabletreenode" class="md-nav__link">
     <span class="md-ellipsis">
       FActivatableTreeNode
@@ -1320,7 +1353,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       创建节点
     </span>
@@ -1362,7 +1395,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1604,6 +1637,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#commonui" class="md-nav__link">
+    <span class="md-ellipsis">
+      结合CommonUI 使用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="结合CommonUI 使用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI优先级更高
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      占用问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#factivatabletreenode" class="md-nav__link">
     <span class="md-ellipsis">
       FActivatableTreeNode
@@ -1614,7 +1680,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       创建节点
     </span>
@@ -1656,7 +1722,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       开始处理
     </span>
@@ -1763,12 +1829,17 @@
 </div>
 <hr>
 <h2 id="enhancedinput">EnhancedInput</h2>
-<p>蓝图里，默认注册的 EnhancedInput 只对 InputMode 包含 “Game Mode” 时生效，如图：
+<p>蓝图里注册的EnhancedInput，默认情况下只在 InputMode 包含 “Game Mode” 时生效，如图：
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image.png"></a></p>
-<p>当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
+<p>如蓝图提示，当InputMode 设置Menu时，上述EnhancedInput将不会调用，直到InputMode 重新包含 “Game”。
 利用这个特性，就可以在菜单显示的时候，并屏蔽掉默认的游戏 Input。
 被屏蔽，是为了更好地支持 CommonUI 对EnhancedInput，CommonUI 通过一类叫做RegisterUIActionBinding的方法来绑定输入。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>不过，这个行为，在CommonUI加入进来，是可以修改的！即使是Menu模式，依然触发输入</p>
+</div>
 <h2 id="inputaction">InputAction</h2>
+<p>每个InputAction的配置里，有一项Player Mappable Key Setting. 这是提供给CommonUI修改配置的地方。</p>
 <p><a class="glightbox" href="../../../../assets/images/EnhancedInput_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="usersettting" src="../../../../assets/images/EnhancedInput_image.png"></a>
 这里可以配置Metadata，作为输入的“元数据”</p>
 <p>默认的“元数据” 只有两个字段，NavBarPriority 和 bIsGenericInputAction
@@ -1799,13 +1870,52 @@
 <ul>
 <li>NavBarPriority 用于ActionBar的排序，Router会收集所有活动的Action，然后通知<code>UCommonBoundActionBar::HandleDeferredDisplayUpdate()</code>进行更新
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-1.png"></a> </li>
-<li>bIsGenericInputAction 如果是通用输入，则不会注入 enhanced input的逻辑，具体代码在 <code>auto TryConsumeInput = [&amp;](const FKey&amp; InKey, const UInputAction* InInputAction)</code>
+<li>
+<p>bIsGenericInputAction 如果是通用输入，则不会注入 普通enhanced input的逻辑，具体代码在 <code>auto TryConsumeInput = [&amp;](const FKey&amp; InKey, const UInputAction* InInputAction)</code>
     <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-2.png"></a>
     也就是widget里 自定义的enhanced input action不会被系统触发。
-    <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-6.png"></a></li>
+    <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-6.png"></a></p>
+</li>
+<li>
+<p>这里还有配置全局的默认值，也是非常重要不指定的话，就会采用默认值的设定：
+  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-8.png"></a></p>
+</li>
 </ul>
 <p>综上，使用ActionBar 和 EnhancedInput 配置上面这两个字段还是非常重要的。 
 bIsGenericInputAction默认值是true，会导致widget里普通的enhanced input 不绑定。</p>
+<h2 id="commonui">结合CommonUI 使用</h2>
+<p>知道了Metadata的作用，尝试和commonUI结合。</p>
+<h3 id="ui">UI优先级更高</h3>
+<p>先试试我比较在意的一种情况，同一个InputAction，都设置绑定的情况下，谁的优先级高？于是我准备这个例子：
+ - 一个是CommonBaseButton的（代表Menu模式，可配置覆盖）
+ - 一个是直接蓝图里的绑定，代表Game模式。 </p>
+<p>把全局bIsGenericInputAction设置为false：
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-10.png"></a></p>
+<p>测试结果如图，即使是当前输入模式是Menu模式，因为该action的绑定没有“启用”，不会执行，当它会把控制权交给game模式执行，让原本game模式下的事件绑定，得到执行的机会。
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-9.png"></a>
+<strong>而如果是“启用”，并且是All模式或者Menu，那么UI优先，而Game那个绑定被忽略</strong>。所以在All模式下，其实也可用把这里的“UI启用”，理解为“<strong>UI占用</strong>”。
+（上面的调试信息，是通过控制台打开的。这两个都要设置为true）
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-11.png"></a>
+保持默认行为，不要单独配置按钮的模式如下图。保持默认行为好理解，不然一套规则的排列组合下来，还是挺烦人的。
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-12.png"></a>
+所以我的建议是“启用”默认还是打勾好，并且<strong>遵从默认行为</strong>：：
+ - 将直接在蓝图或者C++ 里绑定的Input Action，都视为Game Input
+ - 将通过CommonUI 注册的 Input Action，都是视为Menu Input
+ - 把默认HUD设置为ALL，让UI按键和游戏都能响应输入事件
+ - 各种弹出菜单后，输入模式设置为Menu，屏蔽掉game输入。</p>
+<h3 id="_1">占用问题</h3>
+<p>不同InputAction 可绑定相同的按键（KEY），Enhanced Input默认是不占用的，都会执行：
+例子,这两个IA都绑定了E 键：
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-14.png"></a>
+<a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-13.png"></a>
+它们都能输出。</p>
+<p>但是，<strong>一旦CommonUI注册了，就会直接占用该“KEY”</strong>，假如此时新增一个IA_E2,也绑定“E”，并注册到一个按钮里，那么ALL模式下，这“E”键，就被UI完全占用了。
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。 
+即使是bIsGenericInputAction没有启用, 也会完全占用“E”键。
+此时虽然绑定了三个不同的IA，但按下E，什么都不会发生，就像E键被扣掉了一样。  </p>
+<hr>
+<p>部分源码研究 </p>
 <h2 id="factivatabletreenode">FActivatableTreeNode</h2>
 <blockquote>
 <p>Activatable Widgets are abstracted as nodes in a tree using FActivatableRootNode. Nodes are arranged in a hierarchy based on the hierarchy of Activatable Widgets in the UI's widget tree. Parent nodes act as root nodes, while their children are considered child or leaf nodes. Refer to the CommonUI Overview for more information.</p>
@@ -1813,7 +1923,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <p>根据官方描述，所有Activatable Widgets会被抽象为树结构，进行节点排列。</p>
 <p>相关继承关系如下：
 <code>FActivatableTreeRoot -&gt; FActivatableTreeNode -&gt; FActionRouterBindingCollection</code></p>
-<h3 id="_1">创建节点</h3>
+<h3 id="_2">创建节点</h3>
 <p>UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIActionBinding，就会查找FActivatableTreeNode，把action绑定进该node, 并让UCommonActivatableWidget持有这个节点的引用。 RegisterUIActionBinding是利用这个树结构查找node
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-2.png"></a>
 那么这些Node是何时创建的？
@@ -1849,7 +1959,7 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 </ul>
 <p>参考官方图，简化流程：
   <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-1.png"></a></p>
-<h3 id="_2">开始处理</h3>
+<h3 id="_3">开始处理</h3>
 <p>系统传给ActionRouter 的input是 KEY + InputEvet（按下，释放）， ActionRouter会结合当前的 ActiveMode进行处理。目前定义了2+1 种。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">enum</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ECommonInputMode</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">uint8</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
@@ -2013,7 +2123,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 12, 2024</span>
   </span>
 
     
