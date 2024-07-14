@@ -6,6 +6,16 @@ comments:true
 
 ---
 
+## TurnOn
+![alt text](../../assets/images/08CropoutSample_image-5.png)
+Project->Game->Common Input Settings:
+这3个没打勾的，最好全部打勾。
+ - Enable Enhanced Input Support 必须打勾
+ - Enable Default InputConfig 每次active，如没配置InputConfig，使用默认输入模式的配置
+ - Allow Out Of Fucas Device Input 字面意思，感觉打勾比较好。
+
+
+
 ## EnhancedInput
 蓝图里注册的EnhancedInput，默认情况下只在 InputMode 包含 “Game Mode” 时生效，如图：
 ![alt text](../../assets/images/01EnhancedInput_image.png)
@@ -134,7 +144,8 @@ UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIAct
 - tree添加子节点
   ![alt text](../../assets/images/01EnhancedInput_image-5.png)
  
-### LeafmostNode 最叶节点
+### LeafmostNode 
+最叶节点
 
    从代码上看，最叶节点，可以是本身（没有child），也可以是最边缘的节点。在视觉和逻辑层次上最靠近叶子节点的节点。通过 GetLastPaintLayer 来判断节点的层次，层次越大表示越靠近叶子节点   
    ![alt text](../../assets/images/01EnhancedInput_image-6.png)  
@@ -143,14 +154,18 @@ UCommonActivatableWidget 的任意一个子widget，只要调用的RegisterUIAct
 ![alt text](../../assets/images/01EnhancedInput_image-7.png)
 
 ## Process Input
+
 处理输入，就是通过节点树来处理的，只有激活的才有资格处理。
 ![alt text](../../assets/images/01EnhancedInput_image-3.png)
 上面提到的TryConsumeInput是`FActionRouterBindingCollection::ProcessNormalInput`的临时内部函数，这里的处理比较复杂，尝试记录一下我的理解
+
 ### Input 的来源
 
 Enhanced 默认调用链：
 ![alt text](../../assets/images/01EnhancedInput_image-15.png)
-完全不同，UI事件注册的：
+
+通过CommonUI注册的，调用链完全不同，[预处理器](#analogcursor)：
+
 - 键盘输入：从application 一路去到 GameViewPort Client, 最终由 ActionRouter 进行最后的分发
   ![alt text](../../assets/images/EnhancedInput_image-3.png)
 - 鼠标输入：大致相同
@@ -207,7 +222,7 @@ enum class ECommonInputMode : uint8
 };
 ```
 
-ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。参考[最叶节点](#leafmostnode-最叶节点)
+ActivatableWidget（通常是各种菜单的最外层）可以对InputConfig进行配置：这里配置的InputMode就是ECommonInputMode，从而影响 ActionRouter对事件的分发。参考[最叶节点](#leafmostnode)
 ![alt text](../../assets/images/EnhancedInput_image-8.png)
 
 另外，CommonBaseButton 可以对自身绑定的InputMode进行覆盖
