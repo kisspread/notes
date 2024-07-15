@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/05ActionBar%20Support%20%27Hold%27/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/08CropoutSample/">
       
       
-        <link rel="prev" href="../03Hold%20Support%20For%20Enhnaced%20Input/">
+        <link rel="prev" href="../07CustomAnalogCursor/">
       
-      
-        <link rel="next" href="../06HandleInputChange/">
       
       
       <link rel="icon" href="../../../../assets/logo.png">
@@ -24,7 +22,7 @@
     
     
       
-        <title>CommonActionWidget ActionBar Support 'Hold' - Game Dev Notes</title>
+        <title>CommonUI In Cropout Demo - Game Dev Notes</title>
       
     
     
@@ -129,7 +127,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#layer" class="md-skip">
           跳转至
         </a>
       
@@ -164,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CommonActionWidget ActionBar Support 'Hold'
+              CommonUI In Cropout Demo
             
           </span>
         </div>
@@ -211,7 +209,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../../UI/CommonUI/05ActionBar%20Support%20%27Hold%27/" hreflang="en" class="md-select__link">
+            <a href="../../../../UI/CommonUI/08CropoutSample/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -1299,28 +1297,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    CommonActionWidget ActionBar Support 'Hold'
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1329,42 +1309,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      蓝图配置
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      代码
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1416,10 +1360,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../08CropoutSample/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CommonUI In Cropout Demo
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1428,6 +1390,84 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Layer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Input
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanceinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      让它支持EnhanceInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      用新feature解决
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facebutton-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      FaceButton Bottom
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1473,18 +1513,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#layer" class="md-nav__link">
     <span class="md-ellipsis">
-      蓝图配置
+      Layer
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#common-input" class="md-nav__link">
     <span class="md-ellipsis">
-      代码
+      Common Input
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanceinput" class="md-nav__link">
+    <span class="md-ellipsis">
+      让它支持EnhanceInput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      用新feature解决
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facebutton-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      FaceButton Bottom
     </span>
   </a>
   
@@ -1505,7 +1587,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/05ActionBar Support 'Hold'.zh.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/08CropoutSample.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1513,152 +1595,97 @@
   
 
 
-  <h1>CommonActionWidget ActionBar Support 'Hold'</h1>
+  <h1>CommonUI In Cropout Demo</h1>
 
-<div><p>同样的问题，Enhanced Input 默认情况，不支持ActionBar 里的 BoundButton 通过 Enhanced Trigger 的 Hold 来触发。</p>
-<p>于是我实现了一个控件，支持在蓝图 动态给 ActionBar 添加 Button，并且 支持 选择是否需要Hold。</p>
+<div><p>Cropout是虚幻官方开源的一个类似的RTS的游戏，和Lyra 一样使用了CommonUI，而Cropout是相对简单的纯蓝图项目。</p>
+<p>官网:<a href="https://www.unrealengine.com/en-US/blog/cropout-casual-rts-game-sample-project">https://www.unrealengine.com/en-US/blog/cropout-casual-rts-game-sample-project</a></p>
 <hr>
-<p><a class="glightbox" href="../../../../assets/images/ActionBar%20Support%20Hold_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image.png"></a></p>
-<h3 id="_1">蓝图配置</h3>
+<h2 id="layer">Layer</h2>
+<p>Cropout 和 Lyra 最大的区别，没有将 Game Stack 和 Menu Stack 放在同一个 Root Widget 里，它们分别在互相独立关卡里面。</p>
 <ul>
 <li>
-<p>支持一个默认动作：
-    <a class="glightbox" href="../../../../assets/images/ActionBar%20Support%20Hold_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image-1.png"></a></p>
+<p>GameLayer 通过BP_GM 创建和激活
+<a class="glightbox" href="../../../../assets/images/08CropoutSample_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image.png"></a></p>
 </li>
 <li>
-<p>支持动态添加动作：
-    <a class="glightbox" href="../../../../assets/images/ActionBar%20Support%20Hold_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/ActionBar%20Support%20Hold_image-2.png"></a></p>
+<p>MenuLayer 通过 BP_MainMenuGM 创建激活
+<a class="glightbox" href="../../../../assets/images/08CropoutSample_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-1.png"></a></p>
 </li>
 </ul>
-<h3 id="_2">代码</h3>
-<div class="highlight"><span class="filename">UAuraActivatableWidget.h</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">FHoldSupportAction</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">{</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input"</span><span class="p">)</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">EnhancedInputAction</span><span class="p">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input"</span><span class="p">)</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bHoldEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">};</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="cm">/**</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="cm"> * </span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="cm"> */</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">UCLASS</span><span class="p">()</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UAuraActivatableWidget</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCommonActivatableWidget</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">{</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">public</span><span class="o">:</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">)</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">);</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">HandleDefaultActionPress</span><span class="p">();</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aura|UI"</span><span class="p">)</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">RegisterEnhancedActionToActionBar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FHoldSupportAction</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnMenuEmpty</span><span class="p">();</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">protected</span><span class="o">:</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">NativeOnInitialized</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Aura|UI"</span><span class="p">)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">DefaultHoldComplete</span><span class="p">();</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UObject</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AuraWidgetController</span><span class="p">;</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintImplementableEvent</span><span class="p">)</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">OnWidgetControllerSet</span><span class="p">();</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled"</span><span class="p">,</span><span class="w"> </span><span class="n">EditConditionHides</span><span class="p">))</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">    </span><span class="n">FHoldSupportAction</span><span class="w"> </span><span class="n">DefaultEnhancedInputAction</span><span class="p">;</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="k">private</span><span class="o">:</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">    </span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">DefaultActionHandle</span><span class="p">;</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="p">};</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">UAuraActivatableWidget.cpp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::SetWidgetController</span><span class="p">(</span><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">InWidgetController</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">AuraWidgetController</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">InWidgetController</span><span class="p">;</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">OnWidgetControllerSet</span><span class="p">();</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">UWidgetLibraryHelp</span><span class="o">::</span><span class="n">SetWidgetController</span><span class="p">(</span><span class="n">InWidgetController</span><span class="p">,</span><span class="w"> </span><span class="n">WidgetTree</span><span class="p">);</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::AddHoldBinding</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">UInputAction</span><span class="o">*</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">)</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">{</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">GetOwningLocalPlayer</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">BEnhancedInputAction</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FUIActionBinding</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActionBinding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FUIActionBinding</span><span class="o">::</span><span class="n">FindBinding</span><span class="p">(</span><span class="n">ActionBindingHandle</span><span class="p">);</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ActionBinding</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">OnHoldActionProgressed</span><span class="p">.</span><span class="n">AddLambda</span><span class="p">([</span><span class="n">HoldEventDelegate</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">HoldProgress</span><span class="p">)</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldProgress</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0f</span><span class="p">)</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">            </span><span class="n">HoldEventDelegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">();</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="p">});</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">*</span><span class="w"> </span><span class="n">InputSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetOwningLocalPlayer</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetSubsystem</span><span class="o">&lt;</span><span class="n">UEnhancedInputLocalPlayerSubsystem</span><span class="o">&gt;</span><span class="p">())</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FEnhancedActionKeyMapping</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Mapping</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">InputSystem</span><span class="o">-&gt;</span><span class="n">GetAllPlayerMappableActionKeyMappings</span><span class="p">())</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">BEnhancedInputAction</span><span class="p">)</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">                </span><span class="n">UInputTriggerHold</span><span class="o">*</span><span class="w"> </span><span class="n">Trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">                </span><span class="n">Mapping</span><span class="p">.</span><span class="n">Action</span><span class="o">-&gt;</span><span class="n">Triggers</span><span class="p">.</span><span class="n">FindItemByClass</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Trigger</span><span class="p">);</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Trigger</span><span class="p">)</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">,</span><span class="w"> </span><span class="n">Trigger</span><span class="o">-&gt;</span><span class="n">HoldTimeThreshold</span><span class="p">);</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">                </span><span class="k">else</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">                </span><span class="p">{</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">                    </span><span class="n">FUIActionKeyMapping</span><span class="w"> </span><span class="n">KeyMapping</span><span class="p">(</span><span class="n">Mapping</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">);</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">                    </span><span class="n">ActionBinding</span><span class="o">-&gt;</span><span class="n">HoldMappings</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">KeyMapping</span><span class="p">);</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">                </span><span class="p">}</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="p">}</span>
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="kt">void</span><span class="w"> </span><span class="nf">UAuraActivatableWidget::RegisterEnhancedActionToActionBar</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FHoldSupportAction</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FSupportEventDelegate</span><span class="o">&amp;</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">)</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="p">{</span>
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FUIActionBindingHandle</span><span class="w"> </span><span class="n">ActionBindingHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RegisterUIActionBinding</span><span class="p">(</span><span class="n">FBindUIActionArgs</span><span class="p">(</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">EnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span>
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">                                                                                                 </span><span class="n">FSimpleDelegate</span><span class="o">::</span><span class="n">CreateLambda</span><span class="p">([</span><span class="n">HoldSupportAction</span><span class="p">,</span><span class="n">HoldEventDelegate</span><span class="p">]()</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">                                                                                                 </span><span class="p">{</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">                                                                                                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">bHoldEnabled</span><span class="p">)</span>
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                                                                                                     </span><span class="p">{</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">                                                                                                         </span><span class="n">HoldEventDelegate</span><span class="p">.</span><span class="n">ExecuteIfBound</span><span class="p">();</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">                                                                                                     </span><span class="p">}</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">                                                                                                 </span><span class="p">})));</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">bHoldEnabled</span><span class="p">)</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">        </span><span class="n">AddHoldBinding</span><span class="p">(</span><span class="n">ActionBindingHandle</span><span class="p">,</span><span class="w"> </span><span class="n">HoldSupportAction</span><span class="p">.</span><span class="n">EnhancedInputAction</span><span class="p">,</span><span class="w"> </span><span class="n">HoldEventDelegate</span><span class="p">);</span>
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="p">}</span>
-</code></pre></div></div>
+<p>个人认为，主关卡应该像Lara那样，同时支持两个Stack，不过lyra也是通过蓝图来创建Stack，考虑到stack的结构是几乎不会去改变的，我觉得应该放在C++ 层去实现，分配好Game 和 Menu两个 stack，提供给蓝图使用，减少蓝图使用的复杂度。</p>
+<ul>
+<li>我的实现：
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-2.png"></a></li>
+</ul>
+<p>更多请参考<a href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/">这里</a></p>
+<h2 id="common-input">Common Input</h2>
+<p>Cropout 的commonUI没有使用5.4提供的Enhanced Input支持，落后一个版本。</p>
+<ul>
+<li>
+<p>Project-&gt;Game-&gt;Common Input Settings:
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-5.png"></a></p>
+</li>
+<li>
+<p>需要DataTable来配置输入数据, 这里显示手柄的确认按钮是A
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-3.png"></a></p>
+</li>
+<li>
+<p>新的不需要dataTable,只需简单配置UI对应的Action：
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-4.png"></a></p>
+</li>
+</ul>
+<p>虽然配置相对麻烦写，但更稳定，没有启用 Enhanced Input Support 后 手柄A键 被吃掉的问题。</p>
+<h3 id="enhanceinput">让它支持EnhanceInput</h3>
+<p>虽然不需要DataTable，但需要配置一个DataAsset：
+- 新建 DataAsset-&gt;Common Mapping Context MetaData
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-6.png"></a></p>
+<ul>
+<li>
+<p>配置全局默认，和单独指定。<a href="../01EnhancedInput/#inputaction">更多</a>
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-7.png"></a></p>
+</li>
+<li>
+<p>根据表格的定义的action，新建enhance input action 
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-9.png"></a>
+  类似：
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-8.png"></a></p>
+</li>
+<li>
+<p>找到父布局，把Mapping 设置好</p>
+</li>
+<li>
+<p>最后，找到对应的BaseButton，Input-&gt; 加入对应的Action即可</p>
+</li>
+</ul>
+<h3 id="bug">Bug</h3>
+<ul>
+<li>
+<p>Cropout 是基于5.2-5.3的，依旧使用 SetInputMode 的方式来切换输入方式。可能会有鼠标控制错乱的bug，详细见<a href="https://www.youtube.com/watch?v=A9dp3cmCFtQ">xist的说明</a>
+<a class="glightbox" href="../../../../assets/images/08CropoutSample_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-10.png"></a></p>
+</li>
+<li>
+<p>Cropout到处都是 setinput mode 的切换管理， 特别繁琐
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-11.png"></a></p>
+</li>
+</ul>
+<h3 id="feature">用新feature解决</h3>
+<ul>
+<li>
+<p>搜索全部 SetInputMode,删掉或者不执行</p>
+</li>
+<li>
+<p>设置 对应的 Desired InputConfig</p>
+</li>
+<li>
+<p>Game Layer: 设置 支持可激活 <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/08CropoutSample_image-13.png"></a></p>
+</li>
+<li>
+<p>效果：InputConfig会自动激活了
+  <a class="glightbox" href="../../../../assets/images/08CropoutSample_image-12.mp4" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><div class="video-container"><iframe src="../../../../assets/images/08CropoutSample_image-12.mp4" style="position:relative;width:100%;height:22.172vw" frameborder="0" allowfullscreen alt="type:video"></iframe></div></a></p>
+</li>
+</ul>
+<h2 id="facebutton-bottom">FaceButton Bottom</h2>
+<p>它的 Xbox手柄 A键 没有被 模拟成 左键点击，不知道是怎么设置的，暂时没发现具体原因。</p></div>
 
 
 
@@ -1681,7 +1708,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年7月2日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 15, 2024</span>
   </span>
 
     
@@ -1691,7 +1718,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月30日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 15, 2024</span>
   </span>
 
     
