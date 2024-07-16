@@ -59,7 +59,7 @@ Cropout 的commonUI没有使用5.4提供的Enhanced Input支持，落后一个�
  - 找到父布局，把Mapping 设置好
 
  - 最后，找到对应的BaseButton，Input-> 加入对应的Action即可
-
+ 
 ### Bug
 - Cropout 是基于5.2-5.3的，依旧使用 SetInputMode 的方式来切换输入方式。可能会有鼠标控制错乱的bug，详细见[xist的说明](https://www.youtube.com/watch?v=A9dp3cmCFtQ)
 ![alt text](../../assets/images/08CropoutSample_image-10.png)
