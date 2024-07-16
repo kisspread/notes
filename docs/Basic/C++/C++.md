@@ -1,4 +1,4 @@
-Title: UE c++ usage
+Title: UE C++ Usage
 comments: true
 
 ## 集合
@@ -100,14 +100,14 @@ DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
     UUserWidget* NewEntryWidget = EntryWidgetPool.GetOrCreateInstance(InEntryClass);
     
     ```
+
 ## Macro
 
 - AddUniqueDynamic 像函数一样使用的Marco
-    ```cpp
+  ```cpp
     EnhancedInputSubsystem->ControlMappingsRebuiltDelegate.AddUniqueDynamic(this, &UAuraBaseButton::CheckAndAddHoldBinding);
 
    //展开后的效果 
     EnhancedInputSubsystem->ControlMappingsRebuiltDelegate.__Internal_AddUniqueDynamic( this, &UAuraBaseButton::CheckAndAddHoldBinding, UE::Delegates::Private::GetTrimmedMemberFunctionName(L"&UAuraBaseButton::CheckAndAddHoldBinding") );
-
-    ```
+  ```
     
