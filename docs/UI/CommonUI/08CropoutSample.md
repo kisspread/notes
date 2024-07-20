@@ -79,5 +79,7 @@ Cropout 的commonUI没有使用5.4提供的Enhanced Input支持，落后一个�
   ![type:video](../../assets/images/08CropoutSample_image-12.mp4)
 
 ## FaceButton Bottom
+由于原项目使用的是 SetInputMode 来设置 输入模式，所以
+它的 Xbox手柄 A键 没有被 模拟成 左键点击。
 
-它的 Xbox手柄 A键 没有被 模拟成 左键点击，不知道是怎么设置的，暂时没发现具体原因。
+改用新 feature后，成功复现 FaceButton Bottom 被 CommonUI占用的问题。目前是用C++ [重写父类判断的方法来解决](./07CustomAnalogCursor.md)
