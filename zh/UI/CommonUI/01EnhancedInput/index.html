@@ -16,7 +16,7 @@
         <link rel="prev" href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/">
       
       
-        <link rel="next" href="../02CommonActionWidget/">
+        <link rel="next" href="../01Focus/">
       
       
       <link rel="icon" href="../../../../assets/logo.png">
@@ -1198,6 +1198,8 @@
       
         
       
+        
+      
     
     
       
@@ -1562,6 +1564,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01Focus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CommonUI 的Focus 导致的问题
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2162,10 +2185,12 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
   <a class="glightbox" href="../../../../assets/images/EnhancedInput_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/EnhancedInput_image-5.png"></a></li>
 </ul>
 <p>参考官方图，简化流程：
-  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-1.png"></a></p>
+  <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-1.png"></a>
+  这图告诉我们， 手柄模拟鼠标点击的一般流程。</p>
 <h2 id="_3">输入预处理器</h2>
 <p>发现AnalogCursor的预处理权限很高，比如在Input Mode是Game的时候，手柄点击A按钮，会触发模拟的鼠标左键效果。这在TopDown类型的Game里面，非常没有必要。最好是只有InputMode是Menu是的时候，才模拟左键点击，才是合理的。</p>
 <p>盲猜预处理各种Handle，返回true就是消费该事件，方法false就是让下一个预处理接管。</p>
+<p>常见的预处理有这3个，我比较关系它们处理输入的优先级。</p>
 <h3 id="analogcursor">AnalogCursor</h3>
 <p>默认的注册priority 是 2，在Project-&gt;Plugin-&gt; CommonUI -&gt; Analog 可用修改
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-16.png"></a></p>
@@ -2176,7 +2201,11 @@ bIsGenericInputAction默认值是true，会导致widget里普通的enhanced inpu
 <p>hard coding 0，CommonInput内部会通过<code>Collection.InitializeDependency&lt;UEnhancedInputLocalPlayerSubsystem&gt;();</code>来初始化EnhancedInput，但EnhancedInput似乎并没有预处理器。
 <a class="glightbox" href="../../../../assets/images/01EnhancedInput_image-18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01EnhancedInput_image-18.png"></a></p>
 <h3 id="analogcursor_1">AnalogCursor 自定义</h3>
-<p>发现确实AnalogCursor接管了 手柄的A按键。看样子，只能重写这个函数：</p>
+<blockquote>
+<p>FCommonAnalogCursor does not handle the input for standard 'Accept' actions on the gamepad that aren't captured by Bound Actions on the current widget. Instead it forwards the input to FAnalogCursor::HandleKeyDownEvent. FAnalogCursor then creates a synthetic mouse click event for the FSlateApplication to process.</p>
+</blockquote>
+<p>这段话其实是说，当一个widget没有特别地处理当前输入的事件的时候，虚拟光标就在当前widget上面会生成一个点击事件。</p>
+<p>根据这函数，手柄模式的时候，CommonUI的AnalogCursor接管手柄的A按键。看样子，只能重写这个函数：</p>
 <p></p><div class="highlight"><span class="filename">FCommonAnalogCursor.cpp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">{</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">IsUsingGamepad</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FAnalogCursor</span><span class="o">::</span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">IsGameViewportInFocusPathWithoutCapture</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">.</span><span class="n">GetKey</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Virtual_Accept</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CanReleaseMouseCapture</span><span class="p">()));</span>
@@ -2348,7 +2377,7 @@ PersistentActions的处理优先级最高，然后才是ActiveRootNode（它是�
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 20, 2024</span>
   </span>
 
     
