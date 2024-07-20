@@ -175,13 +175,16 @@ Enhanced 默认调用链：
 
   参考官方图，简化流程：
   ![alt text](../../assets/images/01EnhancedInput_image-1.png)
+  这图告诉我们， 手柄模拟鼠标点击的一般流程。
 
 ## 输入预处理器
+
+
 发现AnalogCursor的预处理权限很高，比如在Input Mode是Game的时候，手柄点击A按钮，会触发模拟的鼠标左键效果。这在TopDown类型的Game里面，非常没有必要。最好是只有InputMode是Menu是的时候，才模拟左键点击，才是合理的。
 
 盲猜预处理各种Handle，返回true就是消费该事件，方法false就是让下一个预处理接管。
 
-
+常见的预处理有这3个，我比较关系它们处理输入的优先级。
 ### AnalogCursor
 默认的注册priority 是 2，在Project->Plugin-> CommonUI -> Analog 可用修改
 ![alt text](../../assets/images/01EnhancedInput_image-16.png)
@@ -195,7 +198,12 @@ hard coding 0，CommonInput内部会通过`Collection.InitializeDependency<UEnha
 ![alt text](../../assets/images/01EnhancedInput_image-18.png)
 
 ### AnalogCursor 自定义
-发现确实AnalogCursor接管了 手柄的A按键。看样子，只能重写这个函数：
+
+> FCommonAnalogCursor does not handle the input for standard 'Accept' actions on the gamepad that aren't captured by Bound Actions on the current widget. Instead it forwards the input to FAnalogCursor::HandleKeyDownEvent. FAnalogCursor then creates a synthetic mouse click event for the FSlateApplication to process.
+
+这段话其实是说，当一个widget没有特别地处理当前输入的事件的时候，虚拟光标就在当前widget上面会生成一个点击事件。
+
+根据这函数，手柄模式的时候，CommonUI的AnalogCursor接管手柄的A按键。看样子，只能重写这个函数：
 
 ```cpp title='FCommonAnalogCursor.cpp'
 bool FCommonAnalogCursor::IsRelevantInput(const FKeyEvent& KeyEvent) const

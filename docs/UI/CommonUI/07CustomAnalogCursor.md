@@ -85,3 +85,7 @@ Here is my solution:
 ## Other Problem
 
 At this moment, the FaceButton-Bottom doesn't simulate a Left Mouse Click in "Game Input Mode". However, if the FaceButton-Bottom doesn't handle your custom event properly, try opening the console and typing `showdebug EnhancedInput`. It's possible that some other Input-Action is overriding it, so you may need to adjust the Mapping priority. Or there could be another issue to consider. Please refer to [Priority](./01EnhancedInput.md/#commonui).
+
+## Doc
+文档还告诉我们，光标的可见性，是否居中，都可以重写这个类来自定义自己要的行为。
+![alt text](../../assets/images/07CustomAnalogCursor_image-2.png)

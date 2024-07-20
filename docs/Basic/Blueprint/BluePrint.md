@@ -15,11 +15,23 @@ comments: true
 这里也是错的，蓝图不是代码，没有像lambda那样 “捕获变量”，这里的New Param依旧会被新来的覆盖，对习惯代码的人来说非常反直觉。（这里还会导致多次bind的问题）
 
 
+### actorcomponent 无限递归导致栈溢出
+修改actorcomponent，HotLoad后，详情面板无法查看，于是改个名字，重写编译。正常进入引擎，再次去查看该窗口，结果立即崩溃，显示栈溢出。
+无奈，从git里面还原该蓝图的二进制文件。重新编译，正常了。
+后来，突然又再次出现这种情况，这次，直接修改父类，再重新该回来，正常了。只是一些配置数据会丢失。
+
+据说这个插件可以修复类似的问题。没试过，以后试试。
+（居然是一年多没修复的bug）
+https://github.com/rweber89/BPCorruptionFix
+
+
 ## Meta记录
 
 
 ### BlueprintInternalUseOnly
+
 `meta = (BlueprintInternalUseOnly = "true")`
+
 1. **防止直接创建蓝图节点**：`BlueprintInternalUseOnly` 标记防止引擎直接为这个函数创建蓝图节点，因为直接调用这个函数可能不会按预期工作。
 2. **异步节点需求**：尽管函数需要被标记为 `BlueprintCallable` 以便被特殊的异步节点使用，但我们并不希望它被直接暴露给蓝图用户。这个标记告诉引擎跳过创建直接调用这个函数的蓝图节点。
 
