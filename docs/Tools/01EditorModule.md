@@ -23,6 +23,7 @@ Since asset operations are frequent, this belongs to the Editor Module, so we ne
   ![alt text](../assets/images/01EditorModule_image.png)
 
 - Add dependencies.
+  ![alt text](../assets/images/01EditorModule_image-5.png)
 
 ### Custom AssetDefinition
 Originally, I used `UAssetDefinitionDefault` to implement the asset action, but comments indicated that this class is deprecated, and we need to use `AssetDefinition`.
