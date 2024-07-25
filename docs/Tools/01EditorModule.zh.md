@@ -22,7 +22,8 @@ comments:true
 - 使用Rider可以很好地帮我们创建
   ![alt text](../assets/images/01EditorModule_image.png)
 
-- 添加依赖
+- 添加依赖 (private 还是 public 写的过程中Rider自动添加我没去管)
+  ![alt text](../assets/images/01EditorModule.zh_image.png)
 
 ### 自定义AssetDefinition
  原本是使用 UAssetDefinitionDefault 来实现 asset action的，但注释提示说，这个类已经过时了，需要用AssetDefinition
