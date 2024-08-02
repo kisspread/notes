@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/GAS/1GamePlayTag/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/GAS/6GE_Calculation/">
       
       
-        <link rel="prev" href="../00/">
+        <link rel="prev" href="../5CooldownGE/">
       
       
-        <link rel="next" href="../2DataAssetsAuto/">
+        <link rel="next" href="../../PCG/00/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Using macro to define Native Gameplay Tag - Game Dev Notes</title>
+        <title>GAS GE Custom Calculation - Game Dev Notes</title>
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gameplaytag" class="md-skip">
+        <a href="#_1" class="md-skip">
           跳转至
         </a>
       
@@ -164,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using macro to define Native Gameplay Tag
+              GAS GE Custom Calculation
             
           </span>
         </div>
@@ -211,7 +211,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../GAS/1GamePlayTag/" hreflang="en" class="md-select__link">
+            <a href="../../../GAS/6GE_Calculation/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -923,28 +923,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Using macro to define Native Gameplay Tag
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../1GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,51 +935,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gameplaytag" class="md-nav__link">
-    <span class="md-ellipsis">
-      GamePlayTag
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove-tagstoattributes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remove TagsToAttributes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-look-like" class="md-nav__link">
-    <span class="md-ellipsis">
-      How it look like
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1091,10 +1028,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../6GE_Calculation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GAS GE Custom Calculation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1103,6 +1058,156 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ugameplaymodmagnitudecalculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayModMagnitudeCalculation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ugameplayeffectexecutioncalculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayEffectExecutionCalculation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      理解为何是这样设计
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="理解为何是这样设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      实际样子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ue" class="md-nav__link">
+    <span class="md-ellipsis">
+      UE里实现的捕获
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UE里实现的捕获">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayeffectattributecapturedefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayEffectAttributeCaptureDefinition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      快照（Snapshot）的概念：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uattributesetgetxxxattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAttributeSet::GetXXXAttribute()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#def" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何创建 Def
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributetocapture" class="md-nav__link">
+    <span class="md-ellipsis">
+      是怎么根据AttributeToCapture 来捕获值的？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="是怎么根据AttributeToCapture 来捕获值的？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattribute-fgameplayattributedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttribute 和 FGameplayAttributeData
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1684,29 +1789,134 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gameplaytag" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      GamePlayTag
+      使用方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ugameplaymodmagnitudecalculation" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayModMagnitudeCalculation
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#remove-tagstoattributes" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#ugameplayeffectexecutioncalculation" class="md-nav__link">
     <span class="md-ellipsis">
-      Remove TagsToAttributes
+      UGameplayEffectExecutionCalculation
     </span>
   </a>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#how-it-look-like" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      How it look like
+      理解为何是这样设计
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="理解为何是这样设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      实际样子
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ue" class="md-nav__link">
+    <span class="md-ellipsis">
+      UE里实现的捕获
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UE里实现的捕获">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayeffectattributecapturedefinition" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayEffectAttributeCaptureDefinition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      快照（Snapshot）的概念：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uattributesetgetxxxattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAttributeSet::GetXXXAttribute()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#def" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何创建 Def
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attributetocapture" class="md-nav__link">
+    <span class="md-ellipsis">
+      是怎么根据AttributeToCapture 来捕获值的？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="是怎么根据AttributeToCapture 来捕获值的？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattribute-fgameplayattributedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttribute 和 FGameplayAttributeData
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1725,7 +1935,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/GAS/1GamePlayTag.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/GAS/6GE_Calculation.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1733,172 +1943,139 @@
   
 
 
-  <h1>Using macro to define Native Gameplay Tag</h1>
+  <h1>GAS GE Custom Calculation</h1>
 
-<div><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This post base on Aura GAS Course</p>
-</div>
-<hr>
-<h2 id="gameplaytag">GamePlayTag</h2>
-<p>Instead of using an object instance to hold all of the gameplay tags, it's better to use a macro. This is how Lyra did it:</p>
-<div class="highlight"><span class="filename">Tags.h</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">namespace</span><span class="w"> </span><span class="nn">AuraGameplayTags</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">Attribute_Primary_Intelligence</span><span class="p">);</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">Attribute_Primary_Strength</span><span class="p">);</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">Attribute_Primary_Vigor</span><span class="p">);</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="n">UE_DECLARE_GAMEPLAY_TAG_EXTERN</span><span class="p">(</span><span class="n">Attribute_Primary_Resilience</span><span class="p">);</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
+<div><h3 id="_1">使用方式</h3>
+<ul>
+<li>简单计算，继承 <code>UGameplayModMagnitudeCalculation</code></li>
+<li>复杂计算，继承 <code>UGameplayEffectExecutionCalculation</code></li>
+</ul>
+<h4 id="ugameplaymodmagnitudecalculation">UGameplayModMagnitudeCalculation</h4>
+<ul>
+<li>CalculateBaseMagnitude：用于设置基础值计算规则， base value,也就是说最终值是由基础值和pre/post系数计算出来的。<blockquote>
+<p>coeffecient and pre/post multiply adds
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm">     * Calculate the base magnitude of the gameplay effect modifier, given the specified spec. Note that the owning spec def can still modify this base value</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">     * with a coeffecient and pre/post multiply adds. see FCustomCalculationBasedFloat::CalculateMagnitude for details.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm">     * </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm">     * @param Spec  Gameplay effect spec to use to calculate the magnitude with</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm">     * </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="cm">     * @return Computed magnitude of the modifier</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="cm">     */</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintNativeEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"Calculation"</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">CalculateBaseMagnitude</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpec</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Spec</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><span class="filename">Tags.cpp</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="k">namespace</span><span class="w"> </span><span class="nn">AuraGameplayTags</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">      </span><span class="n">UE_DEFINE_GAMEPLAY_TAG_COMMENT</span><span class="p">(</span><span class="n">Attribute_Primary_Intelligence</span><span class="p">,</span><span class="w"> </span><span class="s">"Attribute.Primary.Intelligence"</span><span class="p">,</span><span class="w"> </span><span class="s">"Increase spell damage"</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">      </span><span class="n">UE_DEFINE_GAMEPLAY_TAG_COMMENT</span><span class="p">(</span><span class="n">Attribute_Primary_Strength</span><span class="p">,</span><span class="w"> </span><span class="s">"Attribute.Primary.Strength"</span><span class="p">,</span><span class="w"> </span><span class="s">"Increase Physical damage"</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="n">UE_DEFINE_GAMEPLAY_TAG_COMMENT</span><span class="p">(</span><span class="n">Attribute_Primary_Vigor</span><span class="p">,</span><span class="w"> </span><span class="s">"Attribute.Primary.Vigor"</span><span class="p">,</span><span class="w"> </span><span class="s">"Increase max health"</span><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="n">UE_DEFINE_GAMEPLAY_TAG_COMMENT</span><span class="p">(</span><span class="n">Attribute_Primary_Resilience</span><span class="p">,</span><span class="w"> </span><span class="s">"Attribute.Primary.Resilience"</span><span class="p">,</span><span class="w"> </span><span class="s">"Increase armor and armor penetration"</span><span class="p">)</span>
+</blockquote>
+</li>
+<li>GetExternalModifierDependencyMulticast: 如果计算结果依赖于游戏代码特定的条件，可以重写这个方法提供一个多播委托，当依赖条件改变时触发重新计算。</li>
+</ul>
+<h4 id="ugameplayeffectexecutioncalculation">UGameplayEffectExecutionCalculation</h4>
+<p>该类提供了高度的灵活性，可以处理几乎所有你能想到的与游戏效果相关的逻辑。
+ 基本上蓝图配置 GE 各种 modified，都可以直接在 继承该C++类 实现。</p>
+<ul>
+<li>使用ExecutionParams 的AttemptCalculateCapturedAttributeMagnitude来捕获值
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">TargetArmor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">ExecutionParams</span><span class="p">.</span><span class="n">AttemptCalculateCapturedAttributeMagnitude</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ArmorDef</span><span class="p">,</span><span class="w"> </span><span class="n">EvaluationParameters</span><span class="p">,</span><span class="w"> </span><span class="n">TargetArmor</span><span class="p">);</span>
+</code></pre></div></li>
+<li>系数也是自己设定，最终输出的是一个修改器，里面包含的值就是最终值。
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Damage</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">EffectiveArmor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">EffectiveArmorCoefficient</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayModifierEvaluatedData</span><span class="w"> </span><span class="nf">DamageData</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">GetIncomingDamageAttribute</span><span class="p">(),</span><span class="w"> </span><span class="n">EGameplayModOp</span><span class="o">::</span><span class="n">Additive</span><span class="p">,</span><span class="w"> </span><span class="n">Damage</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">OutExecutionOutput</span><span class="p">.</span><span class="n">AddOutputModifier</span><span class="p">(</span><span class="n">DamageData</span><span class="p">);</span>
+</code></pre></div></li>
+</ul>
+<h3 id="_2">理解为何是这样设计</h3>
+<p>GE是的数值游戏，GE可以看成是一个数值计算函数。比如<code>GE_FireDamage(A,B)</code>,必然有参与的双方A和B，其中A是源属性，B是目标属性。那么计算过程就要获得A的火属性伤害，和B的火属性防御。</p>
+<h4 id="_3">实际样子</h4>
+<p>出于性能考虑，这个函数最好不要把A和B的整个AttributeSet 传进来。
+所以，这个函数应该是类似这样的：
+<code>GE_FireDamage(FireDamgeFromARef,FireResistanceFromBRef)</code></p>
+<p>这里FireDamgeFromARef的形式，就类似“捕获”。也可以理解成路径。</p>
+<h3 id="ue">UE里实现的捕获</h3>
+<p>由于不想操作整个AttributeSet，所以就得知道这个函数需要用到哪些属性，运行过程中读取出来，供后续去使用。这个过程就叫做捕获。</p>
+<p>先看样例代码
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeToCapture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">GetVigorAttribute</span><span class="p">();</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EGameplayEffectAttributeCaptureSource</span><span class="o">::</span><span class="n">Target</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">VigorDef</span><span class="p">.</span><span class="n">bSnapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">VigorDef</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="remove-tagstoattributes">Remove TagsToAttributes</h2>
-<p>we don't need this mapping now. The magic is</p>
-<p><code>Attribute.AttributeGetter = FindFieldChecked&lt;FProperty&gt;(UAuraAttributeSet::StaticClass(), AttributeName);</code></p>
-<p>we can save attributeGet in Our DataAsset:
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">USTRUCT</span><span class="p">(</span><span class="n">BlueprintType</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">FAttributeInfo</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">{</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">AttributeTag</span><span class="p">;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">FText</span><span class="w"> </span><span class="n">AttributeName</span><span class="p">;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="n">FText</span><span class="w"> </span><span class="n">AttributeDescription</span><span class="p">;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="k">mutable</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">AttributeValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">)</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="n">FGameplayAttribute</span><span class="w">  </span><span class="n">AttributeGetter</span><span class="p">;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">};</span>
+VigorDef是一个<code>FGameplayEffectAttributeCaptureDefinition</code>
+<h4 id="fgameplayeffectattributecapturedefinition">FGameplayEffectAttributeCaptureDefinition</h4>
+<p>用于描述GAS属性捕获定义，包含捕获源和目标属性，以及是否使用快照。
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="cm">/** Gameplay attribute to capture */</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="n">Capture</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">FGameplayAttribute</span><span class="w"> </span><span class="n">AttributeToCapture</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="cm">/** Source of the gameplay attribute */</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="n">Capture</span><span class="p">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">EGameplayEffectAttributeCaptureSource</span><span class="w"> </span><span class="n">AttributeSource</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="cm">/** Whether the attribute should be snapshotted or not */</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditDefaultsOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="n">Capture</span><span class="p">)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">bSnapshot</span><span class="p">;</span>
 </code></pre></div>
-<p><code>TMap&lt;FGameplayTag,TAttrFunctionPrt&lt;FGameplayAttribute()&gt;&gt; TagsToAttributes;</code></p>
-<p>then, auto init all data  row, like so:
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">UAuraAttributeDataAsset</span><span class="o">::</span><span class="n">UAuraAttributeDataAsset</span><span class="p">()</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="c1">// init default attributes from tag manager with parent tag is "Attribute.*"</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">PrimaryTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Primary"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">SecondaryTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Secondary"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="w"> </span><span class="n">ResistanceTags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">RequestGameplayTagChildren</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="o">::</span><span class="n">RequestGameplayTag</span><span class="p">(</span><span class="s">"Attribute.Resistance"</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">));</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">PrimaryTags</span><span class="p">);</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">SecondaryTags</span><span class="p">);</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="n">ResistanceTags</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">}</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="kt">void</span><span class="w"> </span><span class="n">UAuraAttributeDataAsset</span><span class="o">::</span><span class="n">AddDefaultAttributeInfos</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTagContainer</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tags</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">bIsResistance</span><span class="p">)</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">{</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Tag</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Tags</span><span class="p">)</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">        </span><span class="n">FAttributeInfo</span><span class="w"> </span><span class="n">Attribute</span><span class="p">;</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="p">;</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="c1">// split tag name by '.' and get the last part, tag example: "Attribute.Primary.Intelligence", we only need "Intelligence"</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="n">FString</span><span class="w"> </span><span class="n">TagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tag</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="n">int32</span><span class="w"> </span><span class="n">LastDotIndex</span><span class="p">;</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TagName</span><span class="p">.</span><span class="n">FindLastChar</span><span class="p">(</span><span class="sc">'.'</span><span class="p">,</span><span class="w"> </span><span class="n">LastDotIndex</span><span class="p">))</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">            </span><span class="n">TagName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TagName</span><span class="p">.</span><span class="n">Mid</span><span class="p">(</span><span class="n">LastDotIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="n">bIsResistance</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">TagName</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" Resistance"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">TagName</span><span class="p">);</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="cp">#if WITH_EDITORONLY_DATA</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FText</span><span class="o">::</span><span class="n">FromString</span><span class="p">(</span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">FindTagNode</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Primary_Intelligence</span><span class="p">).</span><span class="n">Get</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetDevComment</span><span class="p">());</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="cp">#endif</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">AttributeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bIsResistance</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="s">"Resistance"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TagName</span><span class="p">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="n">TagName</span><span class="p">);</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">        </span><span class="n">Attribute</span><span class="p">.</span><span class="n">AttributeGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindFieldChecked</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">AttributeName</span><span class="p">);</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">        </span><span class="n">Attributes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">Attribute</span><span class="p">);</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="p">}</span>
+<h4 id="snapshot">快照（Snapshot）的概念：</h4>
+<p>快照决定了我们是使用效果应用时的属性值，还是随时间变化的当前值。就是说：捕获的属性值是否“定格”在破获时那一刻。</p>
+<p>for example:</p>
+<p>想象一个角色有一个"力量"属性，初始值为10。现在我们要创建一个持续30秒的增强效果，增加该角色50%的伤害。</p>
+<ul>
+<li>
+<p>情况1：不使用快照（bSnapshot = false）</p>
+<p>效果开始时，角色力量为10，伤害增加50%，即15。
+如果在效果持续期间，角色的力量提升到20，伤害会随之增加到30。
+效果会始终使用当前的力量值来计算伤害。</p>
+</li>
+<li>
+<p>情况2：使用快照（bSnapshot = true）</p>
+<p>效果开始时，角色力量为10，伤害增加50%，即15。
+即使在效果持续期间角色的力量提升到20，伤害仍然保持在15。
+效果会使用应用时捕获的力量值（10）来计算伤害，不受后续力量变化的影响。</p>
+</li>
+</ul>
+<h4 id="uattributesetgetxxxattribute">UAttributeSet::GetXXXAttribute()</h4>
+<p>GetXXXAttribute 实际上返回的 FProperty指针，是UE反射机制里的 对象字段元数据。
+例子里<code>VigorDef.AttributeToCapture = UAuraAttributeSet::GetVigorAttribute();</code>这个复制操作，实际上的调用了<code>FGameplayAttribute(FProperty *NewProperty)</code>构造函数。</p>
+<p>Def里面有了这个元数据，就相当于知道了该字段的“路径”。可在后续拿到相应的AttributeSet实例后，根据理解查找到想要的值。</p>
+<h4 id="def">如何创建 Def</h4>
+<p>除了上面的手动创建，引擎还提供了相关的宏：
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// -------------------------------------------------------------------------</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">//  Helper macros for declaring attribute captures </span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// -------------------------------------------------------------------------</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="cp">#define DECLARE_ATTRIBUTE_CAPTUREDEF(P) \</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="cp">    FProperty* P##Property; \</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="cp">    FGameplayEffectAttributeCaptureDefinition P##Def; \</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="cp">#define DEFINE_ATTRIBUTE_CAPTUREDEF(S, P, T, B) \</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="cp">{ \</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="cp">    P##Property = FindFieldChecked&lt;FProperty&gt;(S::StaticClass(), GET_MEMBER_NAME_CHECKED(S, P)); \</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="cp">    P##Def = FGameplayEffectAttributeCaptureDefinition(P##Property, EGameplayEffectAttributeCaptureSource::T, B); \</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="cp">}</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1">// 使用</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ResistanceFire</span><span class="p">);</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceFire</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="how-it-look-like">How it look like</h2>
-<p>let me share my use cases:</p>
-<div class="highlight"><span class="filename">UExecCalc_Damage.cpp</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">struct</span><span class="w"> </span><span class="nc">DamageStatics</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">Armor</span><span class="p">);</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ArmorPenetration</span><span class="p">);</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">BlockChance</span><span class="p">);</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">CriticalHitChance</span><span class="p">);</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">CriticalHitDamage</span><span class="p">);</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">CriticalHitResistance</span><span class="p">);</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ResistanceFire</span><span class="p">);</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ResistanceLightning</span><span class="p">);</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ResistanceArcane</span><span class="p">);</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">DECLARE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">ResistancePhysical</span><span class="p">);</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayEffectAttributeCaptureDefinition</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TagsToCaptures</span><span class="p">;</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="n">DamageStatics</span><span class="p">()</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">Armor</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ArmorPenetration</span><span class="p">,</span><span class="w"> </span><span class="n">Source</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">BlockChance</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitChance</span><span class="p">,</span><span class="w"> </span><span class="n">Source</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitDamage</span><span class="p">,</span><span class="w"> </span><span class="n">Source</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitResistance</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceFire</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceLightning</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceArcane</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">        </span><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistancePhysical</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>
-<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_Armor</span><span class="p">,</span><span class="w"> </span><span class="n">ArmorDef</span><span class="p">);</span>
-<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_ArmorPenetration</span><span class="p">,</span><span class="w"> </span><span class="n">ArmorPenetrationDef</span><span class="p">);</span>
-<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_BlockChance</span><span class="p">,</span><span class="w"> </span><span class="n">BlockChanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_CriticalHitChance</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitChanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_CriticalHitDamage</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitDamageDef</span><span class="p">);</span>
-<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Secondary_CriticalHitResistance</span><span class="p">,</span><span class="w"> </span><span class="n">CriticalHitResistanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
-<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Fire</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceFireDef</span><span class="p">);</span>
-<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Lightning</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceLightningDef</span><span class="p">);</span>
-<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Arcane</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceArcaneDef</span><span class="p">);</span>
-<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="w">        </span><span class="n">TagsToCaptures</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Physical</span><span class="p">,</span><span class="w"> </span><span class="n">ResistancePhysicalDef</span><span class="p">);</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="p">};</span>
-<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>
-<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="n">UExecCalc_Damage</span><span class="o">::</span><span class="n">UExecCalc_Damage</span><span class="p">()</span>
-<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="p">{</span>
-<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ArmorDef</span><span class="p">);</span>
-<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ArmorPenetrationDef</span><span class="p">);</span>
-<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">BlockChanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>
-<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">CriticalHitChanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">CriticalHitDamageDef</span><span class="p">);</span>
-<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">CriticalHitResistanceDef</span><span class="p">);</span>
-<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>
-<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ResistanceFireDef</span><span class="p">);</span>
-<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ResistanceLightningDef</span><span class="p">);</span>
-<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ResistanceArcaneDef</span><span class="p">);</span>
-<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">    </span><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">ResistancePhysicalDef</span><span class="p">);</span>
-<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="p">}</span>
+<h3 id="attributetocapture">是怎么根据AttributeToCapture 来捕获值的？</h3>
+<p>AttributeToCapture 是FGameplayAttribute，是我们定义 AttributeSet时的最小单元。</p>
+<h4 id="fgameplayattribute-fgameplayattributedata">FGameplayAttribute 和 FGameplayAttributeData</h4>
+<p>通过上述分析，实际上 FGameplayAttribute也只是包装了FProperty指针而已，内部字段并没有包含真正的属性值。查看源码发现FGameplayAttributeData 才是真正的属性值。</p>
+<p>该函数通过反射机制，很神奇地变成了FGameplayAttributeData，里面的baseValeu和CurrentValue就是真正的值。 过程过于复杂不敢再深究，了解即可。
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttributeData</span><span class="o">*</span><span class="w"> </span><span class="nf">FGameplayAttribute::GetGameplayAttributeData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UAttributeSet</span><span class="o">*</span><span class="w"> </span><span class="n">Src</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Src</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">IsGameplayAttributeDataProperty</span><span class="p">(</span><span class="n">Attribute</span><span class="p">.</span><span class="n">Get</span><span class="p">()))</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">FStructProperty</span><span class="o">*</span><span class="w"> </span><span class="n">StructProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CastField</span><span class="o">&lt;</span><span class="n">FStructProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Attribute</span><span class="p">.</span><span class="n">Get</span><span class="p">());</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="n">check</span><span class="p">(</span><span class="n">StructProperty</span><span class="p">);</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="n">MARK_PROPERTY_DIRTY</span><span class="p">(</span><span class="n">Src</span><span class="p">,</span><span class="w"> </span><span class="n">StructProperty</span><span class="p">);</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">StructProperty</span><span class="o">-&gt;</span><span class="n">ContainerPtrToValuePtr</span><span class="o">&lt;</span><span class="n">FGameplayAttributeData</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Src</span><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="p">}</span>
 </code></pre></div>
-<p>a Tag Mapping Helper Function:
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="w">    </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">GetDamageTypeToResistanceMap</span><span class="p">()</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="k">static</span><span class="w"> </span><span class="n">TMap</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="o">&gt;</span><span class="w"> </span><span class="n">DamageTypeToResistanceMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">            </span><span class="p">{</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Damage_Fire</span><span class="p">,</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Fire</span><span class="p">},</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">            </span><span class="p">{</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Damage_Lightning</span><span class="p">,</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Lightning</span><span class="p">},</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">            </span><span class="p">{</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Damage_Arcane</span><span class="p">,</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Arcane</span><span class="p">},</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">            </span><span class="p">{</span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Damage_Physical</span><span class="p">,</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">Attribute_Resistance_Physical</span><span class="p">}</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="p">};</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DamageTypeToResistanceMap</span><span class="p">;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">}</span>
-</code></pre></div></div>
+总得来说，<code>AttributeToCapture</code> 是一个包装了 <code>FProperty</code> 指针的 <code>FGameplayAttribute</code>，它描述了属性的元数据。在实际使用时，通过 <code>Spec</code> 找到具体的 <code>AttributeSet</code> 实例，然后根据 <code>FProperty</code> 指针，从 <code>AttributeSet</code> 实例中查找并获取属性的实际值。</div>
 
 
 
@@ -1921,7 +2098,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 2, 2024</span>
   </span>
 
     
@@ -1931,7 +2108,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 2, 2024</span>
   </span>
 
     
