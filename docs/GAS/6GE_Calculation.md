@@ -104,7 +104,7 @@ for example:
 #### UAttributeSet::GetXXXAttribute()
 
 GetXXXAttribute 实际上返回的 FProperty指针，是UE反射机制里的 对象字段元数据。
-例子里`VigorDef.AttributeToCapture = UAuraAttributeSet::GetVigorAttribute();`这个复制操作，实际上的调用了`FGameplayAttribute(FProperty *NewProperty)`构造函数。
+例子里`VigorDef.AttributeToCapture = UAuraAttributeSet::GetVigorAttribute();`这个赋值操作，实际上的调用了`FGameplayAttribute(FProperty *NewProperty)`构造函数。
 
 Def里面有了这个元数据，就相当于知道了该字段的“路径”。可在后续拿到相应的AttributeSet实例后，根据理解查找到想要的值。
 
