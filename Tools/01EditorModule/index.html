@@ -906,6 +906,8 @@
       
         
       
+        
+      
     
     
       
@@ -967,7 +969,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/1GamePlayTag/" class="md-nav__link">
+      <a href="../../GAS/01GAS_MyUnderstand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    My Understanding of GAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAS/02GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1942,7 +1965,7 @@
 </div>
 <p>In the Gameplay Ability, define a cooldown time field, then right-click to find a custom action to automatically create a GE. In addition to creating the GE itself, a corresponding cooldown tag will also be created.</p>
 <h3 id="editor-module">Editor Module</h3>
-<p>Since asset operations are frequent, this belongs to the Editor Module, so we need to create an Editor Module first.</p>
+<p>Since asset operations belong to the Editor Module, we need to create the Editor Module first.</p>
 <ul>
 <li>
 <p>Using Rider can greatly assist us in creating this.
@@ -1955,7 +1978,7 @@
 </ul>
 <h3 id="custom-assetdefinition">Custom AssetDefinition</h3>
 <p>Originally, I used <code>UAssetDefinitionDefault</code> to implement the asset action, but comments indicated that this class is deprecated, and we need to use <code>AssetDefinition</code>.</p>
-<p>At first, I directly used <code>UGameplayAbility</code> to create the AssetDefinition, but I found that <code>UGameplayAbility</code> is actually a blueprint asset, and blueprint assets are already implemented internally by the engine. Creating my own would override the internal implementation, which complicates things. Fortunately, I saw internal examples indicating that an AssetDefinition does not necessarily need to be implemented. You can refer to the implementation of [<strong>GameplayAbilityAudit</strong>].</p>
+<p>At first, I directly used <code>UGameplayAbility</code>(Type) to create the AssetDefinition for it, but I found that <code>UGameplayAbility</code>(Assets Type) is actually a blueprint asset type, and blueprint assets are already implemented internally by the engine. Creating my own would override the internal implementation, which complicates things. Fortunately, I saw internal examples indicating that an AssetDefinition does not necessarily need to be implemented. You can refer to the implementation of [<strong>GameplayAbilityAudit</strong>].</p>
 <h3 id="custom-menuextension_xxx">Custom MenuExtension_xxx</h3>
 <p><code>namespace MenuExtension_YourActions</code></p>
 <p>In this namespace, you only need to implement a method called <strong>Delayed Registration</strong>.</p>
@@ -1965,41 +1988,41 @@
 - Creating the GE blueprint asset.
 - Creating a GameplayTag and saving it to an .ini file.</p>
 <h4 id="creating-ge">Creating GE</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FAssetToolsModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">AssetToolsModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">GetModuleChecked</span><span class="o">&lt;</span><span class="n">FAssetToolsModule</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"AssetTools"</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FAssetToolsModule</span><span class="o">&amp;</span><span class="w"> </span><span class="n">AssetToolsModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FModuleManager</span><span class="o">::</span><span class="n">GetModuleChecked</span><span class="o">&lt;</span><span class="n">FAssetToolsModule</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"AssetTools"</span><span class="p">);</span>
+</span></code></pre></div>
 <p>First, obtain the AssetToolsModule.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UBlueprintFactory</span><span class="o">*</span><span class="w"> </span><span class="n">BlueprintFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UBlueprintFactory</span><span class="o">&gt;</span><span class="p">();</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">BlueprintFactory</span><span class="o">-&gt;</span><span class="n">ParentClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayEffect</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// do not use GE directly</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// UGameplayEffect* NewGE = Cast&lt;UGameplayEffect&gt;(AssetToolsModule.Get().CreateAsset(CooldownGEName, NewGEPath, UGameplayEffect::StaticClass(), nullptr));</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">CreatedAsset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AssetToolsModule</span><span class="p">.</span><span class="n">Get</span><span class="p">().</span><span class="n">CreateAsset</span><span class="p">(</span><span class="n">CooldownGEName</span><span class="p">,</span><span class="w"> </span><span class="n">NewGEPath</span><span class="p">,</span><span class="w"> </span><span class="n">UBlueprint</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">BlueprintFactory</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UBlueprintFactory</span><span class="o">*</span><span class="w"> </span><span class="n">BlueprintFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UBlueprintFactory</span><span class="o">&gt;</span><span class="p">();</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">BlueprintFactory</span><span class="o">-&gt;</span><span class="n">ParentClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayEffect</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">();</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// do not use GE directly</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// UGameplayEffect* NewGE = Cast&lt;UGameplayEffect&gt;(AssetToolsModule.Get().CreateAsset(CooldownGEName, NewGEPath, UGameplayEffect::StaticClass(), nullptr));</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">UObject</span><span class="o">*</span><span class="w"> </span><span class="n">CreatedAsset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AssetToolsModule</span><span class="p">.</span><span class="n">Get</span><span class="p">().</span><span class="n">CreateAsset</span><span class="p">(</span><span class="n">CooldownGEName</span><span class="p">,</span><span class="w"> </span><span class="n">NewGEPath</span><span class="p">,</span><span class="w"> </span><span class="n">UBlueprint</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">BlueprintFactory</span><span class="p">);</span>
+</span></code></pre></div>
 <p>Create the GE blueprint asset; here, you need to use <code>BlueprintFactory</code> instead of directly using <code>UGameplayEffect</code>. Otherwise, you'll only get the default type of <code>UGameplayEffect</code> instead of its blueprint asset.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// GE Blueprint Asset Class</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">GeneratedClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GE_Blueprint</span><span class="o">-&gt;</span><span class="n">GeneratedClass</span><span class="p">;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// use the CDO, not New Object</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">UGameplayEffect</span><span class="o">*</span><span class="w"> </span><span class="n">NewGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UGameplayEffect</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GeneratedClass</span><span class="o">-&gt;</span><span class="n">GetDefaultObject</span><span class="p">());</span>
-</code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// GE Blueprint Asset Class</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">UClass</span><span class="o">*</span><span class="w"> </span><span class="n">GeneratedClass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GE_Blueprint</span><span class="o">-&gt;</span><span class="n">GeneratedClass</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">// use the CDO, not New Object</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">UGameplayEffect</span><span class="o">*</span><span class="w"> </span><span class="n">NewGE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Cast</span><span class="o">&lt;</span><span class="n">UGameplayEffect</span><span class="o">&gt;</span><span class="p">(</span><span class="n">GeneratedClass</span><span class="o">-&gt;</span><span class="n">GetDefaultObject</span><span class="p">());</span>
+</span></code></pre></div>
 <p>Next, obtain the <code>GeneratedClass</code> from the blueprint and its CDO to assign values to it using code.</p>
 <h4 id="creating-gameplaytag">Creating GameplayTag</h4>
 <p>You need to use <code>IGameplayTagsEditorModule</code>, so you must add dependencies. The usage is quite simple:</p>
 <ul>
 <li>Check if the project allows creating GameplayTags via ini files.
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// Only support adding tags via ini file</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Manager</span><span class="p">.</span><span class="n">ShouldImportTagsFromINI</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
-</code></pre></div></li>
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayTagsManager</span><span class="o">::</span><span class="n">Get</span><span class="p">();</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// Only support adding tags via ini file</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Manager</span><span class="p">.</span><span class="n">ShouldImportTagsFromINI</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">{</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</span></code></pre></div></li>
 <li>Create a GameplayTag, with the default filename temporarily set to <code>DefaultGameplayTags.ini</code>.
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FGameplayTagNode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TagNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">FindTagNode</span><span class="p">(</span><span class="n">CooldownTagName</span><span class="p">);</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TagNode</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">{</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">TagComment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Auto Gen Cooldown Tag for {0}"</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="n">TagName</span><span class="p">});</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">IGameplayTagsEditorModule</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">AddNewGameplayTagToINI</span><span class="p">(</span><span class="n">TagName</span><span class="p">,</span><span class="w"> </span><span class="n">TagComment</span><span class="p">,</span><span class="w"> </span><span class="n">DefaultTagINI</span><span class="p">);</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
-</code></pre></div></li>
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">const</span><span class="w"> </span><span class="n">TSharedPtr</span><span class="o">&lt;</span><span class="n">FGameplayTagNode</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TagNode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Manager</span><span class="p">.</span><span class="n">FindTagNode</span><span class="p">(</span><span class="n">CooldownTagName</span><span class="p">);</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">TagNode</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">{</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FString</span><span class="w"> </span><span class="n">TagComment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FString</span><span class="o">::</span><span class="n">Format</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Auto Gen Cooldown Tag for {0}"</span><span class="p">),</span><span class="w"> </span><span class="p">{</span><span class="n">TagName</span><span class="p">});</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">IGameplayTagsEditorModule</span><span class="o">::</span><span class="n">Get</span><span class="p">().</span><span class="n">AddNewGameplayTagToINI</span><span class="p">(</span><span class="n">TagName</span><span class="p">,</span><span class="w"> </span><span class="n">TagComment</span><span class="p">,</span><span class="w"> </span><span class="n">DefaultTagINI</span><span class="p">);</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">}</span>
+</span></code></pre></div></li>
 </ul>
 <h4 id="complete-code">Complete Code</h4>
 <p><a href="https://github.com/kisspread/notes/blob/main/sample%20code/CustomAssesAction/GamePlayAbilityGenCooldownGE.cpp">GamePlayAbilityGenCooldownGE</a></p>
@@ -2030,7 +2053,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 25, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
   </span>
 
     

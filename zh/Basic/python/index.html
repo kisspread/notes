@@ -1004,6 +1004,8 @@
       
         
       
+        
+      
     
     
       
@@ -1065,7 +1067,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/1GamePlayTag/" class="md-nav__link">
+      <a href="../../GAS/01GAS_MyUnderstand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    My Understanding of GAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GAS/02GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1837,20 +1860,20 @@
 
 <div><h2 id="cuda">CUDA</h2>
 <h4 id="check-cuda-version">check cuda version:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nvcc<span class="w"> </span>--version
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nvcc<span class="w"> </span>--version
+</span></code></pre></div>
 <h4 id="check-cudnn-version">check cudnn version:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.backends.cudnn.version())"</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.backends.cudnn.version())"</span>
+</span></code></pre></div>
 <h4 id="check-cuda-torch-is-installed">check cuda torch is installed:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.version.cuda)"</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch; print(torch.version.cuda)"</span>
+</span></code></pre></div>
 <h4 id="check-onnxruntime-is-installed">check onnxruntime is installed:</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import onnxruntime; print(onnxruntime.__version__)"</span>
-</code></pre></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import onnxruntime; print(onnxruntime.__version__)"</span>
+</span></code></pre></div>
 <p>or</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>show<span class="w"> </span>onnxruntime-gpu
-</code></pre></div></div>
+<div class="language-sh highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>pip<span class="w"> </span>show<span class="w"> </span>onnxruntime-gpu
+</span></code></pre></div></div>
 
 
 

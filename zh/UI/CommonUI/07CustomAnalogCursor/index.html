@@ -906,6 +906,8 @@
       
         
       
+        
+      
     
     
       
@@ -967,7 +969,28 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../GAS/1GamePlayTag/" class="md-nav__link">
+      <a href="../../../GAS/01GAS_MyUnderstand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    My Understanding of GAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GAS/02GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1791,11 +1814,11 @@
 <h2 id="custom-fcommonanalogcursor">Custom FCommonAnalogCursor</h2>
 <p>The FCommonAnalogCursor is an InputAction pre-processor. When an input action is consumed by this pre-processor, the EnhancedInput Subsystem won't receive this input action.</p>
 <p>I discovered that this function in FCommonAnalogCursor is intercepting our original InputAction. So, we just need to override it to prevent FCommonAnalogCursor from handling the InputAction of FaceButton-Bottom.</p>
-<div class="highlight"><span class="filename">FCommonAnalogCursor.cpp</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">IsUsingGamepad</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FAnalogCursor</span><span class="o">::</span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">IsGameViewportInFocusPathWithoutCapture</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">.</span><span class="n">GetKey</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Virtual_Accept</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CanReleaseMouseCapture</span><span class="p">()));</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
-</code></pre></div>
+<div class="language-cpp highlight"><span class="filename">FCommonAnalogCursor.cpp</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">FCommonAnalogCursor::IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">IsUsingGamepad</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">FAnalogCursor</span><span class="o">::</span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">IsGameViewportInFocusPathWithoutCapture</span><span class="p">()</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">KeyEvent</span><span class="p">.</span><span class="n">GetKey</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EKeys</span><span class="o">::</span><span class="n">Virtual_Accept</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">CanReleaseMouseCapture</span><span class="p">()));</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Here is my solution: </p>
 <ul>
 <li>
@@ -1805,49 +1828,49 @@
 <li>
 <p>like so:</p>
 <p>(UCommonUIActionRouterBase not need to manually call, the SubSystem will handle it, <a href="../../../Basic/C%2B%2B/USubSystem/">Subsystem</a>)</p>
-<div class="highlight"><span class="filename">UAuraUIActionRouterBase</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#pragma once</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CoreMinimal.h"</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonUIActionRouterBase.h"</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraUIActionRouterBase.generated.h"</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">UCLASS</span><span class="p">()</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UAuraUIActionRouterBase</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCommonUIActionRouterBase</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">{</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">protected</span><span class="o">:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FCommonAnalogCursor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MakeAnalogCursor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">};</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraUIActionRouterBase.h"</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraAnalogCursor.h"</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonAnalogCursor.h"</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FCommonAnalogCursor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UAuraUIActionRouterBase</span><span class="o">::</span><span class="n">MakeAnalogCursor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">{</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span><span class="o">::</span><span class="n">CreateAnalogCursor</span><span class="o">&lt;</span><span class="n">FAuraAnalogCursor</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
-</code></pre></div>
-<div class="highlight"><span class="filename">FAuraAnalogCursor.h</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#pragma once</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonAnalogCursor.h"</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">FAuraAnalogCursor</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">{</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">public</span><span class="o">:</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">FAuraAnalogCursor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UCommonUIActionRouterBase</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InActionRouter</span><span class="p">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span><span class="p">(</span><span class="n">InActionRouter</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">protected</span><span class="o">:</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">};</span>
-</code></pre></div>
+<div class="language-cpp highlight"><span class="filename">UAuraUIActionRouterBase</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#pragma once</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CoreMinimal.h"</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonUIActionRouterBase.h"</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraUIActionRouterBase.generated.h"</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">UCLASS</span><span class="p">()</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UAuraUIActionRouterBase</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UCommonUIActionRouterBase</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FCommonAnalogCursor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MakeAnalogCursor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="p">};</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraUIActionRouterBase.h"</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AuraAnalogCursor.h"</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonAnalogCursor.h"</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">TSharedRef</span><span class="o">&lt;</span><span class="n">FCommonAnalogCursor</span><span class="o">&gt;</span><span class="w"> </span><span class="n">UAuraUIActionRouterBase</span><span class="o">::</span><span class="n">MakeAnalogCursor</span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="p">{</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span><span class="o">::</span><span class="n">CreateAnalogCursor</span><span class="o">&lt;</span><span class="n">FAuraAnalogCursor</span><span class="o">&gt;</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><span class="filename">FAuraAnalogCursor.h</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cp">#pragma once</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Input/CommonAnalogCursor.h"</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">class</span><span class="w"> </span><span class="nc">FAuraAnalogCursor</span><span class="w"> </span><span class="k">final</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">{</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">explicit</span><span class="w"> </span><span class="n">FAuraAnalogCursor</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UCommonUIActionRouterBase</span><span class="o">&amp;</span><span class="w"> </span><span class="n">InActionRouter</span><span class="p">)</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">FCommonAnalogCursor</span><span class="p">(</span><span class="n">InActionRouter</span><span class="p">)</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="k">protected</span><span class="o">:</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">IsRelevantInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FKeyEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">KeyEvent</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">};</span>
+</span></code></pre></div>
 </li>
 <li>
 <p>Only when the Active Input Mode is Menu Mode, should it simulate the Mouse Left Click.

@@ -92,11 +92,18 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/00/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/GAS/1GamePlayTag/</loc>
+        <loc>https://kisspread.github.io/notes/GAS/01GAS_MyUnderstand/</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/1GamePlayTag/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/1GamePlayTag/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/01GAS_MyUnderstand/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/01GAS_MyUnderstand/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/GAS/02GamePlayTag/</loc>
+        <lastmod>2024-08-07</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/02GamePlayTag/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/02GamePlayTag/"/>
     </url>
     <url>
         <loc>https://kisspread.github.io/notes/GAS/2DataAssetsAuto/</loc>
@@ -330,11 +337,18 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/00/"/>
     </url>
     <url>
-        <loc>https://kisspread.github.io/notes/zh/GAS/1GamePlayTag/</loc>
+        <loc>https://kisspread.github.io/notes/zh/GAS/01GAS_MyUnderstand/</loc>
         <lastmod>2024-08-07</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/1GamePlayTag/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/1GamePlayTag/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/01GAS_MyUnderstand/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/01GAS_MyUnderstand/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/zh/GAS/02GamePlayTag/</loc>
+        <lastmod>2024-08-07</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/GAS/02GamePlayTag/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/GAS/02GamePlayTag/"/>
     </url>
     <url>
         <loc>https://kisspread.github.io/notes/zh/GAS/2DataAssetsAuto/</loc>

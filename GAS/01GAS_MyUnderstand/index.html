@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/GAS/4GAS%20Trap/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/GAS/01GAS_MyUnderstand/">
       
       
-        <link rel="prev" href="../3AbilityAsync/">
+        <link rel="prev" href="../00/">
       
       
-        <link rel="next" href="../5CooldownGE/">
+        <link rel="next" href="../02GamePlayTag/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Gas Common Pitfalls - Game Dev Notes</title>
+        <title>My Understanding of GAS - Game Dev Notes</title>
       
     
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gascomponent" class="md-skip">
+        <a href="#gameplay-ability-system" class="md-skip">
           Skip to content
         </a>
       
@@ -164,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gas Common Pitfalls
+              My Understanding of GAS
             
           </span>
         </div>
@@ -217,7 +217,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/GAS/4GAS%20Trap/" hreflang="zh" class="md-select__link">
+            <a href="../../zh/GAS/01GAS_MyUnderstand/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -971,10 +971,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../01GAS_MyUnderstand/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    My Understanding of GAS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -983,6 +1001,141 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gameplay-ability-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gameplay Ability System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gameplay Ability System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gas3" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAS有3大核心：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gas" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAS的调味品：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uattributeset" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAttributeSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UAttributeSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattributedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttributeData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttribute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性访问器的使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributeset" class="md-nav__link">
+    <span class="md-ellipsis">
+      AttributeSet几个重要函数回调
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ugameplayeffect" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayEffect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UGameplayEffect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      蓝图配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ugameplayeffec-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayEffec C++里的使用方式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1055,28 +1208,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Gas Common Pitfalls
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../4GAS%20Trap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1085,48 +1220,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#gascomponent" class="md-nav__link">
-    <span class="md-ellipsis">
-      GASComponent
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GASComponent">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gameplaytag-gameplay-effect-replication-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      gameplaytag 和 gameplay effect 的 replication policy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1750,19 +1843,112 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#gascomponent" class="md-nav__link">
+  <a href="#gameplay-ability-system" class="md-nav__link">
     <span class="md-ellipsis">
-      GASComponent
+      Gameplay Ability System
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="GASComponent">
+    <nav class="md-nav" aria-label="Gameplay Ability System">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gameplaytag-gameplay-effect-replication-policy" class="md-nav__link">
+  <a href="#gas3" class="md-nav__link">
     <span class="md-ellipsis">
-      gameplaytag 和 gameplay effect 的 replication policy
+      GAS有3大核心：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gas" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAS的调味品：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uattributeset" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAttributeSet
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UAttributeSet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattributedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttributeData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fgameplayattribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      FGameplayAttribute
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性访问器的使用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attributeset" class="md-nav__link">
+    <span class="md-ellipsis">
+      AttributeSet几个重要函数回调
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ugameplayeffect" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayEffect
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UGameplayEffect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      蓝图配置
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ugameplayeffec-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayEffec C++里的使用方式
     </span>
   </a>
   
@@ -1788,7 +1974,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/GAS/4GAS Trap.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/GAS/01GAS_MyUnderstand.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1796,28 +1982,227 @@
   
 
 
-  <h1>Gas Common Pitfalls</h1>
+  <h1>My Understanding of GAS</h1>
 
-<div><h2 id="gascomponent">GASComponent</h2>
-<h3 id="gameplaytag-gameplay-effect-replication-policy">gameplaytag 和 gameplay effect 的 replication policy</h3>
+<div><p>GAS 就是Gameplay Ability System，但Gameplay是个很难翻译的单词，
+它在这里更多表示的是： <strong>在程序里的游戏逻辑，设定，机制等</strong>。
+很多人翻译成“玩法”，但玩法在中文里的意思是偏向游戏内容而不是游戏制作过程。</p>
+<p>中文是一个上下文强关联的语言，“游戏”本身 就不只是“Game”的意思，所以 “Gameplay” 可以直接翻译为 “游戏”</p>
+<p>GAS 可以翻译为 <strong>游戏赋能系统</strong></p>
+<hr>
+<h2 id="gameplay-ability-system">Gameplay Ability System</h2>
+<p>GAS代码量非常多，但开发过程主要接触的不算多，根据开发过程遇到的，我总结了以下的概念：</p>
+<h3 id="gas3">GAS有3大核心：</h3>
+<p>UAttributeSet，UGameplayAbility和UGameplayEffect<strong>分别代表数据，行为和过程</strong>，设计理念是data-driven。</p>
+<p><strong>UAttributeSet</strong>：数据的载体，在这里定义具体的数据字段，并提供各种数据变化的回调。
+<strong>UGameplayAbility</strong>：行为，在这里定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类。
+<strong>UGameplayEffect</strong>：过程，每个GE都是一组数据的计算方法，可以是赋值，也可以是逻辑运算。</p>
+<div class="admonition info data-driven">
+<p class="admonition-title">Info</p>
+<ul>
+<li>数据的变化通过应用UGameplayEffect来驱动，它规定了数据的计算规则。</li>
+<li>通过行为来使用各种规格的 UGameplayEffect，以此为基础实现data-driven。</li>
+</ul>
+</div>
+<h3 id="gas">GAS的调味品：</h3>
+<ul>
+<li><strong>UAbilitySystemComponent</strong>：Actor组件，让actor拥有GAS接口。</li>
+<li><strong>UGameplayCue</strong>: 方便特效在多人游戏里执行，比手动写NetMulticast易用。</li>
+</ul>
+<hr>
+<h2 id="uattributeset">UAttributeSet</h2>
+<p>数据的<strong>载体</strong>，在这里定义具体的数据字段，并提供各种数据变化的回调</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>初次接触这个类的源码，感觉是比较难理解的，主要它用到了UE的反射机制。</p>
+</div>
+<h3 id="fgameplayattributedata">FGameplayAttributeData</h3>
+<p>FGameplayAttributeData就是GAS数据的最小单元，它包含BaseValue和CurrentValue两个float变量，用来保存属性的数值。</p>
+<p></p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">ReplicatedUsing</span><span class="o">=</span><span class="n">OnRep_Strength</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"Primary Attribute"</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">FGameplayAttributeData</span><span class="w"> </span><span class="n">Strength</span><span class="p">;</span>
+</span></code></pre></div>
+以上就定义了一个最基础的属性字段。
+<h3 id="fgameplayattribute">FGameplayAttribute</h3>
+<blockquote>
+<p>Describes a FGameplayAttributeData or float property inside an attribute set. Using this provides editor UI and helper functions</p>
+</blockquote>
+<p>有了上面的数据字段还不够，<strong>为了更多灵活的操作</strong>，UE还需要我们给他创建一个描述字段FGameplayAttribute。</p>
+<p>FGameplayAttribute是用来描述单个属性的结构体，内部保存了一个<code>TFieldPath&lt;FProperty&gt; Attribute</code>，这是一个反射字段，最终返回它所描述的<strong>FGameplayAttributeData</strong></p>
+<p>定义FGameplayAttribute比较麻烦，UE提供了macro来简化这个过程。
+</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">    GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)</span>
+</span></code></pre></div>
+- 第一个宏通过反射来生成FGameplayAttribute，保存了属性字段的指针
+- 第二个宏是生成属性访问器的帮助宏
+- 第三个宏是生成属性设置器的帮助宏
+- 第四个宏是生成属性初始化器的帮助宏
+  <a class="glightbox" href="../../assets/images/01GAS_MyUnderstand_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/01GAS_MyUnderstand_image.png"></a>
+<p>最终定义一个属性差不多是这样：
+</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">ReplicatedUsing</span><span class="o">=</span><span class="n">OnRep_Strength</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"Primary Attribute"</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">FGameplayAttributeData</span><span class="w"> </span><span class="n">Strength</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ATTRIBUTE_ACCESSORS</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">Strength</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">UFUNCTION</span><span class="p">()</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kt">void</span><span class="w"> </span><span class="n">OnRep_Strength</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttributeData</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Old</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="p">;</span>
+</span></code></pre></div>
+<h3 id="_1">属性访问器的使用</h3>
+<p>有了属性访问器，就可以把它用在任意实例的AttributeSet上，获得想要的值。</p>
+<ol>
+<li>直接使用
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">FGameplayAttribute</span><span class="w">  </span><span class="n">AttributeGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">GetResilienceAttribute</span><span class="p">();</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">AttributeGetter</span><span class="p">.</span><span class="n">GetNumericValue</span><span class="p">(</span><span class="n">AttributeSet</span><span class="p">);</span><span class="w"> </span><span class="c1">//获得该实例的Resilience属性</span>
+</span></code></pre></div>
+    同时，属性访问器还是监听属性变化的KEY
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">AuraASC</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">GetGameplayAttributeValueChangeDelegate</span><span class="p">(</span><span class="n">AttributeInfo</span><span class="p">.</span><span class="n">AttributeGetter</span><span class="p">).</span><span class="n">AddLambda</span><span class="p">([</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="n">AttributeInfo</span><span class="p">](</span><span class="k">const</span><span class="w"> </span><span class="n">FOnAttributeChangeData</span><span class="o">&amp;</span><span class="w"> </span><span class="n">OnAttributeChangeData</span><span class="p">)</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">            </span><span class="n">BroadcastInfo</span><span class="p">(</span><span class="n">AttributeInfo</span><span class="p">.</span><span class="n">AttributeTag</span><span class="p">,</span><span class="w"> </span><span class="n">AttributeInfo</span><span class="p">.</span><span class="n">AttributeGetter</span><span class="p">);</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">);</span>
+</span></code></pre></div></li>
+<li>动态使用，仿照上面第一个macro的内部写法
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FName</span><span class="w"> </span><span class="n">AttributeName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bIsResistance</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="s">"Resistance"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TagName</span><span class="p">))</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">FName</span><span class="p">(</span><span class="o">*</span><span class="n">TagName</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">FGameplayAttribute</span><span class="w">  </span><span class="n">AttributeGetter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindFieldChecked</span><span class="o">&lt;</span><span class="n">FProperty</span><span class="o">&gt;</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">StaticClass</span><span class="p">(),</span><span class="w"> </span><span class="n">AttributeName</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">AttributeGetter</span><span class="p">.</span><span class="n">GetNumericValue</span><span class="p">(</span><span class="n">AttributeSet</span><span class="p">);</span><span class="w"> </span>
+</span></code></pre></div></li>
+<li>
+<p>直接遍历 通过UAttributeSet::GetAttributesFromSetClass 获得所有属性，遍历可能会有性能问题
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FGameplayAttribute</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Attributes</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">UAttributeSet</span><span class="o">::</span><span class="n">GetAttributesFromSetClass</span><span class="p">(</span><span class="n">Set</span><span class="o">-&gt;</span><span class="n">GetClass</span><span class="p">(),</span><span class="w"> </span><span class="n">Attributes</span><span class="p">);</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttribute</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Attributes</span><span class="p">)</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Attribute</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">       </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetNumericAttribute</span><span class="p">(</span><span class="n">Attribute</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="p">}</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>在UGameplayModMagnitudeCalculation 里使用
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// 定义捕获</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">FGameplayEffectAttributeCaptureDefinition</span><span class="w"> </span><span class="n">VigorDef</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1">//AttributeToCapture 是一个FGameplayAttribute属性访问器</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeToCapture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">GetVigorAttribute</span><span class="p">();</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EGameplayEffectAttributeCaptureSource</span><span class="o">::</span><span class="n">Target</span><span class="p">;</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">VigorDef</span><span class="p">.</span><span class="n">bSnapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">RelevantAttributesToCapture</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">VigorDef</span><span class="p">);</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1">// 获取属性值</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="kt">float</span><span class="w"> </span><span class="n">Vigor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">GetCapturedAttributeMagnitude</span><span class="p">(</span><span class="n">VigorDef</span><span class="p">,</span><span class="w"> </span><span class="n">Spec</span><span class="p">,</span><span class="w"> </span><span class="n">EvaluationParameters</span><span class="p">,</span><span class="w"> </span><span class="n">Vigor</span><span class="p">);</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>在UGameplayEffectExecutionCalculation里使用</p>
+<p><code>DEFINE_ATTRIBUTE_CAPTUREDEF</code> 宏创建属性访问器 和 属性捕获定义
+<a class="glightbox" href="../../assets/images/01GAS_MyUnderstand_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/01GAS_MyUnderstand_image-1.png"></a></p>
+</li>
+</ol>
+<h3 id="attributeset">AttributeSet几个重要函数回调</h3>
 <ul>
 <li>
-<p><strong>过早调用<code>waitGameplayTag</code>会导致注册失败</strong>：The initialization of GASComponent is after <code>BeginPlay</code>. If a node like <code>WaitGameplay</code> is called after <code>BeginPlay</code>, it usually can't register events to GAS because the GAS Component is null. This applies to both the server and client. 所有应该在on commponent created 之后调用。
-   <a class="glightbox" href="../../assets/images/4GAS%20Trap_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/4GAS%20Trap_image.png"></a></p>
+<p>当GE执行后
+  </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w"> </span><span class="cm">/**</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cm">   *  Called just after a GameplayEffect is executed to modify the base value of an attribute. No more changes can be made.</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="cm">   *  Note this is only called during an 'execute'. E.g., a modification to the 'base value' of an attribute. It is not called during an application of a GameplayEffect, such as a 5 ssecond +10 movement speed buff.</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="cm">   */</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PostGameplayEffectExecute</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FGameplayEffectModCallbackData</span><span class="w"> </span><span class="o">&amp;</span><span class="n">Data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+  既GE的执行后，属性被修改后，会调用这个函数。参数里的Data.EvaluatedData.Attribute是一个属性访问器，可以得知当前哪个属性被修改了。
+  理论上，找个回调函数是最先执行的，然后才是 属性相关的回调。
+  用途：从data里获得上下文，发起方和目标方。从而确认是否升级，是否击杀怪物，是否获得经验值，进而触发相对应的事件。
 </li>
 <li>
-<p><code>WaitGameplay</code>, the event "WaitGameplay" will be register to all roles: ROLE_Authority (server), ROLE_AutonomousProxy (your character),So, always pay attention to which role the current code is running under. 由于gameplaytag 是多端复制的，所以只要监听正确，所有端都能接受到 waitgampeplay event.如果NPC不需要这个回调，要当心。</p>
+<p>当属性改变后
+  </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w">  </span><span class="cm">/** Called just after any modification happens to an attribute. */</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PostAttributeChange</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttribute</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Attribute</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">OldValue</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">NewValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+  当属性改变后，会调用这个函数。不管是base value 还是 current value，都会调用这个函数。
+  用途：有些场景是需要在属性改变后进行的，比如最大生命值改变了，回满生命值就需要知道当前的最大生命值是多少。 
 </li>
 <li>
-<p>多人游戏里，如果角色在不同client的视角里表现不一致（<strong>自己能看到，别人看不到</strong>），可能是对GE网络复制的理解错误，导致写出了错误的逻辑:
-  In a multiple player game, the Player's GE Replicate Mode is Mixed, while NPC is set to Minimal. 这说明，“当前玩家”的GE只复制到“当前玩家”的电脑上，同时玩家电脑里的NPC不会接受到任何GE网络复制。
-   <a class="glightbox" href="../../assets/images/4GAS%20Trap_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/4GAS%20Trap_image-1.png"></a>
-  so the ROLE_SimulatedProxy (your game partner) will not have any Active Effects because the server does not replicate GE to them. So in this case, the node <code>Get Active Effects with All Tags</code> will always return an empty array. The same goes for NPCs.也就是说，你无法通过这个方法来获取到其他玩家（或者NPC）的Active Gameplay Effects。它只能获得当前玩家active GEs.</p>
+<p>当属性被改变前
+  ```cpp
+    /**</p>
+<ul>
+<li>Called just before any modification happens to an attribute. This is lower level than PreAttributeModify/PostAttribute modify.</li>
+<li>There is no additional context provided here since anything can trigger this. Executed effects, duration based effects, effects being removed, immunity being applied, stacking rules changing, etc.</li>
+<li>This function is meant to enforce things like "Health = Clamp(Health, 0, MaxHealth)" and NOT things like "trigger this extra thing if damage is applied, etc".</li>
+<li>
+<li>NewValue is a mutable reference so you are able to clamp the newly applied value as well.
+ */
+virtual void PreAttributeChange(const FGameplayAttribute&amp; Attribute, float&amp; NewValue) { }
+```
+用途：限制即将设置进来的属性值的范围，提前把它钳制在合理的区间内。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="ugameplayeffect">UGameplayEffect</h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>UGameplayEffect是GAS的<strong>过程</strong>，它定义了<strong>数据计算方法</strong>，可以是赋值，也可以是逻辑运算。</p>
+</div>
+<p>实践中，并没有发现需要给UGameplayEffect定义C++ 子类，把它当成纯蓝图数据类来使用即可。</p>
+<h3 id="_2">蓝图配置</h3>
+<p>参考Aura课程。这里省略</p>
+<h3 id="ugameplayeffec-c">UGameplayEffec C++里的使用方式</h3>
+<p>GE是另外两大核心的桥梁，所以会看到好几个不同的handle。这里通过使用方式来介绍。</p>
+<p>GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包含执行上下文还有 规格等级。</p>
+<ol>
+<li>通过CDO创建GE Spec
+   <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">EffectCtxHandle</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="c1">// trace source obj</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpec</span><span class="w"> </span><span class="nf">Spec</span><span class="p">(</span><span class="n">GE_Class</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">(),</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="p">,</span><span class="w"> </span><span class="n">ActorLevel</span><span class="p">);</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">const</span><span class="w"> </span><span class="n">FActiveGameplayEffectHandle</span><span class="w"> </span><span class="n">ActiveHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectSpecToSelf</span><span class="p">(</span><span class="n">Spec</span><span class="p">);</span>
+</span></code></pre></div>
+   FGameplayEffectContextHandle 是GE执行的上下文，谁对谁执行，携带自定义数据等。</li>
+</ol>
+<p>FActiveGameplayEffectHandle 是应用GE后的handle，用于管理和引用 GameplayEffect 实例的生命周期。它是一个轻量级的句柄，可以用于后续对效果的查询、修改或移除。比如：
+   ```cpp
+   // Assuming you have stored the handle somewhere
+    FActiveGameplayEffectHandle MyEffectHandle = ...</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Remove the effect using the handle</span>
+<span class="n">AbilitySystemComponent</span><span class="o">-&gt;</span><span class="n">RemoveActiveGameplayEffect</span><span class="p">(</span><span class="n">MyEffectHandle</span><span class="p">);</span>
+```
+</code></pre></div>
+
+<ol>
+<li>
+<p>通过ASC提供的ApplyGameplayEffectToSelf在内部创建GE Spec 
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UGameplayEffect</span><span class="o">*</span><span class="w"> </span><span class="n">PrimaryEffect</span><span class="o">=</span><span class="w"> </span><span class="n">InfoItem</span><span class="p">.</span><span class="n">PrimaryGameplayEffect</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">();</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">PrimaryEffectContext</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">GetAvatarActor</span><span class="p">());</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectToSelf</span><span class="p">(</span><span class="n">PrimaryEffect</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">,</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="p">);</span>
+</span></code></pre></div>
 </li>
 <li>
-<p>总结，通过GameplayTag来判断某个角色是否有激活的GE是最妥当的，因为它是多端复制的，而无法通过actor 是否有激活的GE来判断。</p>
+<p>通过Class来创建，使用 ASC-&gt;MakeOutgoingSpec 来创建GE Spec<br>
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SourceASC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">GetAbilitySystemComponent</span><span class="p">(</span><span class="n">GetOwningActorFromActorInfo</span><span class="p">());</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeOutgoingSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">(),</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">());</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">Damage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Damage</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">GetAbilityLevel</span><span class="p">());</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">SpecHandle</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Get</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetSetByCallerMagnitude</span><span class="p">(</span><span class="n">Damage</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="p">);</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
+</span></code></pre></div>
 </li>
-</ul></div>
+<li>在GameplayAbility里使用， 通过MakeOutgoingGameplayEffectSpec来创建GE Spec
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeOutgoingGameplayEffectSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">);</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TTuple</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FScalableFloat</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="n">FScalableFloat</span><span class="w"> </span><span class="n">DamageAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">();</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="c1">// SpecHandle.Data.Get()-&gt;SetSetByCallerMagnitude(Pair.Key, DamageAmount.GetValueAtLevel(level));</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">AssignTagSetByCallerMagnitude</span><span class="p">(</span><span class="n">SpecHandle</span><span class="p">,</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">DamageAmount</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">level</span><span class="p">));</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="p">}</span>
+</span></code></pre></div></li>
+</ol></div>
 
 
 
@@ -1840,7 +2225,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 5, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
   </span>
 
     
@@ -1850,7 +2235,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 16, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
   </span>
 
     
