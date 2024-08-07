@@ -17,7 +17,7 @@ In the Gameplay Ability, define a cooldown time field, then right-click to find 
 
 ### Editor Module
 
-Since asset operations are frequent, this belongs to the Editor Module, so we need to create an Editor Module first.
+Since asset operations belong to the Editor Module, we need to create the Editor Module first.
 
 - Using Rider can greatly assist us in creating this.
   ![alt text](../assets/images/01EditorModule_image.png)
@@ -28,7 +28,7 @@ Since asset operations are frequent, this belongs to the Editor Module, so we ne
 ### Custom AssetDefinition
 Originally, I used `UAssetDefinitionDefault` to implement the asset action, but comments indicated that this class is deprecated, and we need to use `AssetDefinition`.
 
-At first, I directly used `UGameplayAbility` to create the AssetDefinition, but I found that `UGameplayAbility` is actually a blueprint asset, and blueprint assets are already implemented internally by the engine. Creating my own would override the internal implementation, which complicates things. Fortunately, I saw internal examples indicating that an AssetDefinition does not necessarily need to be implemented. You can refer to the implementation of [**GameplayAbilityAudit**].
+At first, I directly used `UGameplayAbility`(Type) to create the AssetDefinition for it, but I found that `UGameplayAbility`(Assets Type) is actually a blueprint asset type, and blueprint assets are already implemented internally by the engine. Creating my own would override the internal implementation, which complicates things. Fortunately, I saw internal examples indicating that an AssetDefinition does not necessarily need to be implemented. You can refer to the implementation of [**GameplayAbilityAudit**].
 
 ### Custom MenuExtension_xxx
 
