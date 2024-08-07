@@ -46,14 +46,14 @@ comments:true
 GE是的数值游戏，GE可以看成是一个数值计算函数。比如`GE_FireDamage(A,B)`,必然有参与的双方A和B，其中A是源属性，B是目标属性。那么计算过程就要获得A的火属性伤害，和B的火属性防御。
 
 #### 实际样子
-出于性能考虑，这个函数最好不要把A和B的整个AttributeSet 传进来。
-所以，这个函数应该是类似这样的：
+UE不传递AttributeSet本身，而是传递字段的引用。
+所以，这个函数在UE里是类似这样的：
 `GE_FireDamage(FireDamgeFromARef,FireResistanceFromBRef)`
 
 这里FireDamgeFromARef的形式，就类似“捕获”。也可以理解成路径。
 
 ### UE里实现的捕获
-由于不想操作整个AttributeSet，所以就得知道这个函数需要用到哪些属性，运行过程中读取出来，供后续去使用。这个过程就叫做捕获。
+为了更灵活地获取属性值，在运行过程中读取出来，供后续去使用。这个过程就叫做捕获。
 
 先看样例代码
 ```cpp
@@ -136,11 +136,11 @@ DEFINE_ATTRIBUTE_CAPTUREDEF(UAuraAttributeSet, ResistanceFire, Target, false);
 
 
 ###  是怎么根据AttributeToCapture 来捕获值的？
-AttributeToCapture 是FGameplayAttribute，是我们定义 AttributeSet时的最小单元。
+AttributeToCapture 是FGameplayAttribute，是我们定义 AttributeSet时的用macro自动生成的该属性描述。
 #### FGameplayAttribute 和 FGameplayAttributeData
-通过上述分析，实际上 FGameplayAttribute也只是包装了FProperty指针而已，内部字段并没有包含真正的属性值。查看源码发现FGameplayAttributeData 才是真正的属性值。
+通过上述分析，FGameplayAttribute包装了FProperty指针，这个指针指向我们定义的FGameplayAttributeData。
 
-该函数通过反射机制，很神奇地变成了FGameplayAttributeData，里面的baseValeu和CurrentValue就是真正的值。 过程过于复杂不敢再深究，了解即可。
+FGameplayAttribute还提供帮助函数，该函数通过反射机制，找个它所描述的那个FGameplayAttributeData
 ```cpp
 const FGameplayAttributeData* FGameplayAttribute::GetGameplayAttributeData(const UAttributeSet* Src) const
 {
