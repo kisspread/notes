@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/UI/00/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/Basic/Blueprint/0dontdothis/">
       
       
-        <link rel="prev" href="../../Tools/01EditorModule/">
+        <link rel="prev" href="../../python/">
       
       
-        <link rel="next" href="../WidgetPool/">
+        <link rel="next" href="../BluePrint/">
       
       
-      <link rel="icon" href="../../assets/logo.png">
+      <link rel="icon" href="../../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
-        <title>FYI - Game Dev Notes</title>
+        <title>虚幻引擎编辑器各种bug操作记录 - Game Dev Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -93,7 +93,7 @@
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -101,7 +101,7 @@
     
     
 
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -110,7 +110,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -129,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#umg-slate" class="md-skip">
+        <a href="#blueprint" class="md-skip">
           Skip to content
         </a>
       
@@ -145,9 +145,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -164,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FYI
+              虚幻引擎编辑器各种bug操作记录
             
           </span>
         </div>
@@ -217,7 +217,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/UI/00/" hreflang="zh" class="md-select__link">
+            <a href="../../../zh/Basic/Blueprint/0dontdothis/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -293,7 +293,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -308,11 +308,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Basic/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../00/" class="md-tabs__link">
           
   
     
@@ -332,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../GAS/00/" class="md-tabs__link">
+        <a href="../../../GAS/00/" class="md-tabs__link">
           
   
     
@@ -352,7 +354,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../PCG/00/" class="md-tabs__link">
+        <a href="../../../PCG/00/" class="md-tabs__link">
           
   
     
@@ -372,7 +374,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Tools/00/" class="md-tabs__link">
+        <a href="../../../Tools/00/" class="md-tabs__link">
           
   
     
@@ -388,13 +390,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../UI/00/" class="md-tabs__link">
           
   
     
@@ -435,9 +435,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../../../assets/logo.png" alt="logo">
 
     </a>
     Game Dev Notes
@@ -464,7 +464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -481,8 +481,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -505,19 +507,22 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -528,7 +533,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basic
@@ -542,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/00/" class="md-nav__link">
+      <a href="../../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Material/" class="md-nav__link">
+      <a href="../../Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Math/" class="md-nav__link">
+      <a href="../../Math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -605,7 +610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -626,7 +631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/ffmpeg/" class="md-nav__link">
+      <a href="../../ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -647,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/python/" class="md-nav__link">
+      <a href="../../python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -665,8 +670,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -680,18 +687,21 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -702,7 +712,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_7">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
@@ -713,10 +723,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/0dontdothis/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    虚幻引擎编辑器各种bug操作记录
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -725,6 +753,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#blueprint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blueprint
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Blueprint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#actor-component-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      热加载后，actor component detail 界面空白
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      热加载后运行时蓝图出错不要接着改
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Widget
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Widget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI 蓝图不要直接重设父类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -737,7 +840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -758,7 +861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/MontageSection/" class="md-nav__link">
+      <a href="../MontageSection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -798,17 +901,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -833,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -854,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -946,7 +1052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/00/" class="md-nav__link">
+      <a href="../../../GAS/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/1GamePlayTag/" class="md-nav__link">
+      <a href="../../../GAS/1GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -988,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/2DataAssetsAuto/" class="md-nav__link">
+      <a href="../../../GAS/2DataAssetsAuto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1009,7 +1115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/3AbilityAsync/" class="md-nav__link">
+      <a href="../../../GAS/3AbilityAsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,7 +1136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/4GAS%20Trap/" class="md-nav__link">
+      <a href="../../../GAS/4GAS%20Trap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/5CooldownGE/" class="md-nav__link">
+      <a href="../../../GAS/5CooldownGE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GAS/6GE_Calculation/" class="md-nav__link">
+      <a href="../../../GAS/6GE_Calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1146,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/00/" class="md-nav__link">
+      <a href="../../../PCG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1167,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
+      <a href="../../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1241,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/00/" class="md-nav__link">
+      <a href="../../../Tools/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/01EditorModule/" class="md-nav__link">
+      <a href="../../../Tools/01EditorModule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1287,10 +1393,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1303,22 +1407,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1329,7 +1430,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             UI
@@ -1340,28 +1441,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    FYI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../UI/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1370,111 +1453,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#umg-slate" class="md-nav__link">
-    <span class="md-ellipsis">
-      UMG- Slate
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commomui-startup-link" class="md-nav__link">
-    <span class="md-ellipsis">
-      CommomUI Startup Link:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CommomUI Startup Link:">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-ui-doc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common UI Doc:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Nance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#x157-commonui" class="md-nav__link">
-    <span class="md-ellipsis">
-      x157 CommonUI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unrealist" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unrealist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#benui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benui
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-epic-team-using-widgets" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Epic team using widgets
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#alternative" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternative
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1487,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../WidgetPool/" class="md-nav__link">
+      <a href="../../../UI/WidgetPool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1533,20 +1511,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
         
           
-          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1571,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1592,7 +1567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/01EnhancedInput/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/01EnhancedInput/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1613,7 +1588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/01Focus/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/01Focus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1634,7 +1609,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/02CommonActionWidget/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/02CommonActionWidget/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1655,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1676,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,7 +1672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/06HandleInputChange/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/06HandleInputChange/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1718,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/07CustomAnalogCursor/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/07CustomAnalogCursor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1739,7 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CommonUI/08CropoutSample/" class="md-nav__link">
+      <a href="../../../UI/CommonUI/08CropoutSample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1793,73 +1768,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#umg-slate" class="md-nav__link">
+  <a href="#blueprint" class="md-nav__link">
     <span class="md-ellipsis">
-      UMG- Slate
+      Blueprint
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#commomui-startup-link" class="md-nav__link">
-    <span class="md-ellipsis">
-      CommomUI Startup Link:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="CommomUI Startup Link:">
+    <nav class="md-nav" aria-label="Blueprint">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#common-ui-doc" class="md-nav__link">
+  <a href="#actor-component-detail" class="md-nav__link">
     <span class="md-ellipsis">
-      Common UI Doc:
+      热加载后，actor component detail 界面空白
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#nance" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Nance
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#x157-commonui" class="md-nav__link">
-    <span class="md-ellipsis">
-      x157 CommonUI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#unrealist" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unrealist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#benui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Benui
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#how-epic-team-using-widgets" class="md-nav__link">
-    <span class="md-ellipsis">
-      How Epic team using widgets
+      热加载后运行时蓝图出错不要接着改
     </span>
   </a>
   
@@ -1871,11 +1801,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#alternative" class="md-nav__link">
+  <a href="#user-widget" class="md-nav__link">
     <span class="md-ellipsis">
-      Alternative
+      User Widget
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="User Widget">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI 蓝图不要直接重设父类
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1894,7 +1839,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/UI/00.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/Basic/Blueprint/0dontdothis.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -1902,44 +1847,42 @@
   
 
 
-  <h1>FYI</h1>
+  <h1>虚幻引擎编辑器各种bug操作记录</h1>
 
-<div><h2 id="umg-slate">UMG- Slate</h2>
+<div><hr>
+<h3 id="blueprint">Blueprint</h3>
+<h4 id="actor-component-detail">热加载后，actor component detail 界面空白</h4>
 <ul>
-<li>
-<p>UMG documents:
-https://github.com/YawLighthouse/UMG-Slate-Compendium</p>
-</li>
-<li>
-<p>quabqi 大佬的UI优化，推荐观看
-https://github.com/quabqi/UITest
-https://www.bilibili.com/video/BV1Wt4y1N7qg/</p>
-</li>
+<li>reload该蓝图，尝试恢复。</li>
+<li>已保存到硬盘的话，先复制一份备份。</li>
+<li>然后随便重设一个父类，再改回来。</li>
+<li>丢失的内容，去备份里一个一个找回来。</li>
 </ul>
-<h2 id="commomui-startup-link">CommomUI Startup Link:</h2>
-<p>After researching for these few days, it's best not to use CommonUI unless you have a strong ability to read source code, especially if you are not making a game similar to Lyra.</p>
-<h3 id="common-ui-doc">Common UI Doc:</h3>
-<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine</a> </p>
-<p><strong>Input Technical Guide</strong> C++ recommend</p>
-<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/commonui-input-technical-guide-for-unreal-engine#changehowwidgetsrespondtoinput">https://dev.epicgames.com/documentation/en-us/unreal-engine/commonui-input-technical-guide-for-unreal-engine#changehowwidgetsrespondtoinput</a></p>
-<h3 id="nance">Nance</h3>
-<p>a little project shows how to setup Common UI </p>
-<p>select branch 5.3-EnhanceInput, Nance will tell you how to setup enhanced input with CommonUI, and how <strong>Lyra</strong> using CommonUI.</p>
-<p><a href="https://github.com/NanceDevDiaries/PauseMenu">https://github.com/NanceDevDiaries/PauseMenu</a>  </p>
-<h3 id="x157-commonui">x157 CommonUI</h3>
-<p><a href="https://x157.github.io/UE5/LyraStarterGame/Tutorials/How-to-Take-Control-of-the-Mouse">x157</a> will tell us why we should not using <code>setInputMode</code> When we using CommonUI</p>
-<p><a href="https://x157.github.io/UE5/CommonUI/">https://x157.github.io/UE5/CommonUI/</a></p>
-<h3 id="unrealist">Unrealist</h3>
-<p>how to using Actionbar</p>
-<p><a href="https://unrealist.org/commonui-actionbar/">https://unrealist.org/commonui-actionbar/</a></p>
-<h3 id="benui">Benui</h3>
-<p>intro common ui</p>
-<p><a href="https://benui.ca/unreal/common-ui-intro/">https://benui.ca/unreal/common-ui-intro/</a></p>
-<h3 id="how-epic-team-using-widgets">How Epic team using widgets</h3>
-<p>Stephen(GAS Course Teacher) mentions a talk about Advanced UI Templating Techniques (this not common ui, but help us to know best way to handle widgets.)</p>
-<p><a href="https://www.youtube.com/watch?v=dSTdAToJ7Gg">https://www.youtube.com/watch?v=dSTdAToJ7Gg</a></p>
-<h2 id="alternative">Alternative</h2>
-<p>free plugin: <a href="https://www.unrealengine.com/marketplace/en-US/product/ui-navigation-3">Ui-navigation3</a></p></div>
+<h4 id="_1">热加载后运行时蓝图出错不要接着改</h4>
+<ul>
+<li>即使改好了，容易保存到奇怪的东西，很难根除。</li>
+<li>如果热加载后，蓝图出错或者运行时变量空，直接关闭编辑器重新编译运行是最佳选择。</li>
+</ul>
+<h3 id="user-widget">User Widget</h3>
+<h4 id="ui">UI 蓝图不要直接重设父类</h4>
+<ul>
+<li>直接重设父类，会存在“野指针”，之前的控件变量会停留在变量栏里，占据位置。</li>
+<li>如果保存（保存到硬盘）了，这些变量会一直无法删除。</li>
+<li>同时也无法重命名，永久占用了这个名字。如果其他地方使用了这些变量，修改起来非常烦人。</li>
+</ul>
+<p>正确重设父类的步骤：
+ - control-d 复制一份该UI蓝图备用
+ - 进入要重设父类的UI蓝图，删除所有控件。
+ - 此时，再重设父类
+ - 去复制好的UI蓝图，把原来的控件粘贴到要重设父类的UI蓝图里。
+ - 此时，就可以删除备用的UI蓝图了。</p>
+<p>已经存在“野指针”的解决方法：
+ - 前提是有git备份, 没有git备份，就只能一步一步重写了。这里体现出做功能阶段性git commit的重要性。
+ - 复制一份该蓝图，备用。
+ - 在git里还原出错的蓝图，去编辑器点击reload 该蓝图，一切都会变回原来的版本。
+ - 此时，删除全部控件，再执行
+ - 在备份蓝图里，把新增的内容粘贴到该蓝图里。
+ - 运行测试没保存的话，就保存到硬盘，建议立即对该文件进行git commit。</p></div>
 
 
 
@@ -1948,8 +1891,37 @@ https://www.bilibili.com/video/BV1Wt4y1N7qg/</p>
 
 
   
+    
+  
+  
+    
   
 
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
 
@@ -2053,12 +2025,12 @@ https://www.bilibili.com/video/BV1Wt4y1N7qg/</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
