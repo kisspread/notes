@@ -2033,12 +2033,12 @@
 <h3 id="_2">理解为何是这样设计</h3>
 <p>GE是的数值游戏，GE可以看成是一个数值计算函数。比如<code>GE_FireDamage(A,B)</code>,必然有参与的双方A和B，其中A是源属性，B是目标属性。那么计算过程就要获得A的火属性伤害，和B的火属性防御。</p>
 <h4 id="_3">实际样子</h4>
-<p>出于性能考虑，这个函数最好不要把A和B的整个AttributeSet 传进来。
-所以，这个函数应该是类似这样的：
+<p>UE不传递AttributeSet本身，而是传递字段的引用。
+所以，这个函数在UE里是类似这样的：
 <code>GE_FireDamage(FireDamgeFromARef,FireResistanceFromBRef)</code></p>
 <p>这里FireDamgeFromARef的形式，就类似“捕获”。也可以理解成路径。</p>
 <h3 id="ue">UE里实现的捕获</h3>
-<p>由于不想操作整个AttributeSet，所以就得知道这个函数需要用到哪些属性，运行过程中读取出来，供后续去使用。这个过程就叫做捕获。</p>
+<p>为了更灵活地获取属性值，在运行过程中读取出来，供后续去使用。这个过程就叫做捕获。</p>
 <p>先看样例代码
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeToCapture</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAuraAttributeSet</span><span class="o">::</span><span class="n">GetVigorAttribute</span><span class="p">();</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">VigorDef</span><span class="p">.</span><span class="n">AttributeSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EGameplayEffectAttributeCaptureSource</span><span class="o">::</span><span class="n">Target</span><span class="p">;</span>
@@ -2104,10 +2104,10 @@ VigorDef是一个<code>FGameplayEffectAttributeCaptureDefinition</code>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="n">DEFINE_ATTRIBUTE_CAPTUREDEF</span><span class="p">(</span><span class="n">UAuraAttributeSet</span><span class="p">,</span><span class="w"> </span><span class="n">ResistanceFire</span><span class="p">,</span><span class="w"> </span><span class="n">Target</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
 </code></pre></div>
 <h3 id="attributetocapture">是怎么根据AttributeToCapture 来捕获值的？</h3>
-<p>AttributeToCapture 是FGameplayAttribute，是我们定义 AttributeSet时的最小单元。</p>
+<p>AttributeToCapture 是FGameplayAttribute，是我们定义 AttributeSet时的用macro自动生成的该属性描述。</p>
 <h4 id="fgameplayattribute-fgameplayattributedata">FGameplayAttribute 和 FGameplayAttributeData</h4>
-<p>通过上述分析，实际上 FGameplayAttribute也只是包装了FProperty指针而已，内部字段并没有包含真正的属性值。查看源码发现FGameplayAttributeData 才是真正的属性值。</p>
-<p>该函数通过反射机制，很神奇地变成了FGameplayAttributeData，里面的baseValeu和CurrentValue就是真正的值。 过程过于复杂不敢再深究，了解即可。
+<p>通过上述分析，FGameplayAttribute包装了FProperty指针，这个指针指向我们定义的FGameplayAttributeData。</p>
+<p>FGameplayAttribute还提供帮助函数，该函数通过反射机制，找个它所描述的那个FGameplayAttributeData
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttributeData</span><span class="o">*</span><span class="w"> </span><span class="nf">FGameplayAttribute::GetGameplayAttributeData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UAttributeSet</span><span class="o">*</span><span class="w"> </span><span class="n">Src</span><span class="p">)</span><span class="w"> </span><span class="k">const</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">{</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Src</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">IsGameplayAttributeDataProperty</span><span class="p">(</span><span class="n">Attribute</span><span class="p">.</span><span class="n">Get</span><span class="p">()))</span>
@@ -2144,7 +2144,7 @@ VigorDef是一个<code>FGameplayEffectAttributeCaptureDefinition</code>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
   </span>
 
     
