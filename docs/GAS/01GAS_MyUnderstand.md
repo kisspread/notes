@@ -20,7 +20,9 @@ GAS代码量非常多，但开发过程主要接触的不算多，根据开发�
 UAttributeSet，UGameplayAbility和UGameplayEffect**分别代表数据，行为和过程**，设计理念是data-driven。
 
 **UAttributeSet**：数据的载体，在这里定义具体的数据字段，并提供各种数据变化的回调。
+
 **UGameplayAbility**：行为，在这里定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类。
+
 **UGameplayEffect**：过程，每个GE都是一组数据的计算方法，可以是赋值，也可以是逻辑运算。
 
 !!! info Data-Driven
@@ -234,6 +236,8 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
 		SpecHandle.Data.Get()->SetSetByCallerMagnitude(Damage.Key, ScaledDamage);
 	}
     ```
+    这里还使用了SetSetByCallerMagnitude，GE允许在运行时动态配置某个内置修改器的强度值，前提是在蓝图里先配置号，多个修改器的强度值是通过Gameplay Tag来区分。
+
 1. 在GameplayAbility里使用， 通过MakeOutgoingGameplayEffectSpec来创建GE Spec
     ```cpp
     const FGameplayEffectSpecHandle SpecHandle = MakeOutgoingGameplayEffectSpec(DamageEffectClass, 1.f);
@@ -246,8 +250,30 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
 		UAbilitySystemBlueprintLibrary::AssignTagSetByCallerMagnitude(SpecHandle, Pair.Key, DamageAmount.GetValueAtLevel(level));
 	}
     ```
+    除了使用GE实例提供的SetSetByCallerMagnitude，还可以使用GAS函数库提供的AssignTagSetByCallerMagnitude来设置。
     
-
+1. 遍历的方式来获取SetByCallerMagnitude
+    ```cpp
+    // get the magnitude of the damage from "set by caller"  
+	float Damage = 0.f;
+	for (const TTuple<FGameplayTag, float>& Pair : Spec.SetByCallerTagMagnitudes)
+	{
+		float DamageValue = Spec.GetSetByCallerMagnitude(Pair.Key);
+		const FGameplayTag AttributeTag = AuraGameplayTags::GetDamageTypeToResistanceMap()[Pair.Key];
+		if (!AttributeTag.IsValid())
+		{
+			AuraPrint::Error(GetOuter(), TEXT("Invalid Damage Type Tag: %s"), *Pair.Key.ToString());
+			return;
+		}
+		if (DamageValue == 0.f) continue;
+		float CaptureValue = 0.f;
+		ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().TagsToCaptures[AttributeTag], EvaluationParameters, CaptureValue);
+		CaptureValue = FMath::Clamp<float>(CaptureValue, 0.f, 100.f);
+		DamageValue *= (100 - CaptureValue) / 100;
+		Damage += DamageValue;
+	}
+    ```
+    通过Spec.SetByCallerTagMagnitudes获取出全部SetByCallerMagnitude，这里是遍历出全部伤害数值，然后获得对各种伤害类型的抗性，计算出最终伤害数值。
 
     
 
