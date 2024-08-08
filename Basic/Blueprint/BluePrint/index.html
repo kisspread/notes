@@ -86,12 +86,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC+-+local:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC - local";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -120,7 +126,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -141,9 +147,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
@@ -177,7 +181,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -282,8 +286,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -410,13 +420,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -510,8 +514,6 @@
         
         
       
-      
-        
       
     
     
@@ -687,21 +689,16 @@
     
       
       
-        
-          
-          
-        
-      
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -945,21 +942,18 @@
     
       
       
-        
-          
-          
-        
-      
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1063,15 +1057,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1284,15 +1278,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1379,15 +1373,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1476,15 +1470,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1578,15 +1572,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1976,7 +1970,7 @@
 后来，突然又再次出现这种情况，这次，直接修改父类，再重新该回来，正常了。只是一些配置数据会丢失。</p>
 <p>据说这个插件可以修复类似的问题。没试过，以后试试。
 （居然是一年多没修复的bug）
-https://github.com/rweber89/BPCorruptionFix</p>
+<a href="https://github.com/rweber89/BPCorruptionFix">https://github.com/rweber89/BPCorruptionFix</a></p>
 <h2 id="meta">Meta记录</h2>
 <h3 id="blueprintinternaluseonly">BlueprintInternalUseOnly</h3>
 <p><code>meta = (BlueprintInternalUseOnly = "true")</code></p>
@@ -1986,41 +1980,41 @@ https://github.com/rweber89/BPCorruptionFix</p>
 </ol>
 <h3 id="mustimplement">MustImplement</h3>
 <p>限制实现接口
-</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryLayout</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">MustImplement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/Script/CommonUI.CommonBoundActionButtonInterface"</span><span class="p">))</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UCommonButtonBase</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActionButtonClass</span><span class="p">;</span>
-</span></code></pre></div>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EntryLayout</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="o">=</span><span class="p">(</span><span class="n">MustImplement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"/Script/CommonUI.CommonBoundActionButtonInterface"</span><span class="p">))</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UCommonButtonBase</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ActionButtonClass</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="defaulttoself">DefaultToSelf</h3>
 <p>把self 设置为当前调用者
-</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ability|Tasks"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultToSelf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TargetActor"</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintInternalUseOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TRUE"</span><span class="p">))</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UAbilityAsync_WaitAttributeChanged</span><span class="o">*</span><span class="w"> </span><span class="n">WaitForAttributeChanged</span><span class="p">(</span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">TargetActor</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayAttribute</span><span class="w"> </span><span class="n">Attribute</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">OnlyTriggerOnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
-</span></code></pre></div>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ability|Tasks"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">DefaultToSelf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TargetActor"</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintInternalUseOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"TRUE"</span><span class="p">))</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UAbilityAsync_WaitAttributeChanged</span><span class="o">*</span><span class="w"> </span><span class="n">WaitForAttributeChanged</span><span class="p">(</span><span class="n">AActor</span><span class="o">*</span><span class="w"> </span><span class="n">TargetActor</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayAttribute</span><span class="w"> </span><span class="n">Attribute</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">OnlyTriggerOnce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="editcondition">EditCondition</h3>
 <p>可以用来隐藏feature，支持的时候，才显示。可以是上下文相关
-</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="cm">/** </span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm">     *  The enhanced input action that is bound to this button. The common input manager will trigger this button to </span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">     *  click if the action was pressed </span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm">     */</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled"</span><span class="p">,</span><span class="w"> </span><span class="n">EditConditionHides</span><span class="p">))</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TriggeringEnhancedInputAction</span><span class="p">;</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="cm">/** Press and Hold values used for Keyboard and Mouse, Gamepad and Touch, depending on the current input type */</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input|Hold"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="o">=</span><span class="s">"bRequiresHold"</span><span class="p">,</span><span class="w"> </span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UCommonUIHoldData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">HoldData</span><span class="p">;</span>
-</span></code></pre></div>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="cm">/** </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm">     *  The enhanced input action that is bound to this button. The common input manager will trigger this button to </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm">     *  click if the action was pressed </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm">     */</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Input</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled"</span><span class="p">,</span><span class="w"> </span><span class="n">EditConditionHides</span><span class="p">))</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UInputAction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TriggeringEnhancedInputAction</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="cm">/** Press and Hold values used for Keyboard and Mouse, Gamepad and Touch, depending on the current input type */</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Input|Hold"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">EditCondition</span><span class="o">=</span><span class="s">"bRequiresHold"</span><span class="p">,</span><span class="w"> </span><span class="n">ExposeOnSpawn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">))</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="n">TSubclassOf</span><span class="o">&lt;</span><span class="n">UCommonUIHoldData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">HoldData</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="camp">Camp</h3>
 <p>限制数值, 其中UIMin UIMax 只是显示效果，不影响实际代码
-</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"VisualLogger"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClampMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span><span class="w"> </span><span class="n">ClampMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1000"</span><span class="p">,</span><span class="w"> </span><span class="n">UIMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span><span class="w"> </span><span class="n">UIMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1000"</span><span class="p">))</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">DefaultCameraDistance</span><span class="p">;</span>
-</span></code></pre></div>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">EditAnywhere</span><span class="p">,</span><span class="w"> </span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"VisualLogger"</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ClampMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span><span class="w"> </span><span class="n">ClampMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1000"</span><span class="p">,</span><span class="w"> </span><span class="n">UIMin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span><span class="w"> </span><span class="n">UIMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"1000"</span><span class="p">))</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">DefaultCameraDistance</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="_2">属性标记（注解）</h2>
 <ol>
 <li>
 <p><strong><code>Transient</code></strong></p>
 <ul>
 <li>Transient是一个属性标记，用于指示特定变量不应被序列化或者保存到磁盘上。这意味着当你标记一个变量为Transient时，它的值不会在游戏保存时被保留，也不会在编辑器关闭和重新打开后被恢复。这个标记通常用于运行时的临时数据。
-    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Transient</span><span class="p">)</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UMaterialInstanceDynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ProgressDynamicMaterial</span><span class="p">;</span>
-</span></code></pre></div></li>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">Transient</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UMaterialInstanceDynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ProgressDynamicMaterial</span><span class="p">;</span>
+</code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -2028,45 +2022,45 @@ https://github.com/rweber89/BPCorruptionFix</p>
 </li>
 <li>
 <p>这个标记用于指示属性在非PIE（Play In Editor）场景中不应被复制。通常用于避免在编辑器模式下不必要的数据复制。</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">NonPIEDuplicateTransient</span><span class="p">)</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UMaterialInstanceDynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MyMaterial</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">NonPIEDuplicateTransient</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UMaterialInstanceDynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MyMaterial</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong><code>DuplicateTransient</code></strong>：</p>
 </li>
 <li>
 <p>属性在对象被复制时不会被复制。通常用于指示运行时的临时数据。</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">DuplicateTransient</span><span class="p">)</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UTexture</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RuntimeTexture</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">DuplicateTransient</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">TObjectPtr</span><span class="o">&lt;</span><span class="n">UTexture</span><span class="o">&gt;</span><span class="w"> </span><span class="n">RuntimeTexture</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong><code>TextExportTransient</code></strong>：</p>
 </li>
 <li>
 <p>属性在文本导出过程中不会被导出。通常用于数据不需要在文本格式中保存的场景。</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">TextExportTransient</span><span class="p">)</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">int32</span><span class="w"> </span><span class="n">TemporaryData</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">TextExportTransient</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">int32</span><span class="w"> </span><span class="n">TemporaryData</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong><code>SkipSerialization</code></strong>：</p>
 </li>
 <li>
 <p>完全跳过序列化过程，属性不会被序列化或反序列化。</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">SkipSerialization</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">FString</span><span class="w"> </span><span class="n">SecretData</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">SkipSerialization</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">FString</span><span class="w"> </span><span class="n">SecretData</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
 <p><strong><code>AssetRegistrySearchable</code></strong>：</p>
 </li>
 <li>
 <p>属性会被添加到资产注册表中，允许通过资产注册表进行搜索。通常用于需要在内容浏览器中快速找到特定资产的场景。</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">AssetRegistrySearchable</span><span class="p">)</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">FString</span><span class="w"> </span><span class="n">AssetTag</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">AssetRegistrySearchable</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">FString</span><span class="w"> </span><span class="n">AssetTag</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ol></div>
 
@@ -2211,7 +2205,7 @@ https://github.com/rweber89/BPCorruptionFix</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>

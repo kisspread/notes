@@ -86,12 +86,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC+-+local:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC - local";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -120,7 +126,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -141,9 +147,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
@@ -177,7 +181,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -282,8 +286,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -410,13 +420,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -506,15 +510,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -680,15 +684,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
         
           
           <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
@@ -797,15 +801,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
         
           
           <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
@@ -912,15 +916,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1138,8 +1142,6 @@
         
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
@@ -1347,15 +1349,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1444,15 +1446,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1546,15 +1548,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1936,14 +1938,14 @@
 <li>有个数据字段<code>TObjectPtr&lt;const UPCGData&gt; Data</code>，可以根据自己的需要，cast 成自己要的派生类</li>
 <li>
 <p>输入数据 需要用 <code>Outputs.Add_GetRef(Input)</code> 关联一下 input</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">//step1 从执行的上下文里获得Outputs</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGTaggedData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Context</span><span class="o">-&gt;</span><span class="n">OutputData</span><span class="p">.</span><span class="n">TaggedData</span><span class="p">;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">//step2 关联Input</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">FPCGTaggedData</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ChosenTaggedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Outputs</span><span class="p">.</span><span class="n">Add_GetRef</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">//step3 完成配置</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCGRandomChoiceSettings</span><span class="o">::</span><span class="n">ChosenPointsLabel</span><span class="p">;</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">//step1 从执行的上下文里获得Outputs</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGTaggedData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Context</span><span class="o">-&gt;</span><span class="n">OutputData</span><span class="p">.</span><span class="n">TaggedData</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">//step2 关联Input</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">FPCGTaggedData</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ChosenTaggedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Outputs</span><span class="p">.</span><span class="n">Add_GetRef</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">//step3 完成配置</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="p">;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCGRandomChoiceSettings</span><span class="o">::</span><span class="n">ChosenPointsLabel</span><span class="p">;</span>
+</code></pre></div>
 </li>
 </ul>
 </li>
@@ -1953,25 +1955,25 @@
 <li>Point类型的包装类，继承于UPCGData，包装了FPCGPoint</li>
 <li>FPCGTaggedData 的Data 类型选项之一</li>
 <li>创建后通常要用Input PointData 来InitializeFromData它,因为 进来的PointData包含了一些上下文不能丢失
-    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UPCGPointData</span><span class="o">*</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGPointData</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">InitializeFromData</span><span class="p">(</span><span class="n">PointData</span><span class="p">);</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGPoint</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ChosenPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">GetMutablePoints</span><span class="p">();</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">//分配内存空间大小</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ChosenPoints</span><span class="p">.</span><span class="n">Reserve</span><span class="p">(</span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
-</span></code></pre></div></li>
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UPCGPointData</span><span class="o">*</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGPointData</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">InitializeFromData</span><span class="p">(</span><span class="n">PointData</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGPoint</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ChosenPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">GetMutablePoints</span><span class="p">();</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">//分配内存空间大小</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ChosenPoints</span><span class="p">.</span><span class="n">Reserve</span><span class="p">(</span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
+</code></pre></div></li>
 </ul>
 <h2 id="upcgparamdata"><strong>UPCGParamData</strong></h2>
 <ul>
 <li>是蓝图里的Attribute Set类型, 也是FPCGTaggedData 的Data 类型选项之一</li>
 <li>
 <p>创建一个int32 类型 代码示例，形式有点像Key-Value</p>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="c1">// Create Attribute set</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">UPCGParamData</span><span class="o">*</span><span class="w"> </span><span class="n">ParamData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGParamData</span><span class="o">&gt;</span><span class="p">();</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">//通过CreateAttribute创建 int32, </span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">FPCGMetadataAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">CreateAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"ChosenPointsNum"</span><span class="p">),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">//赋值</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">Attribute</span><span class="o">-&gt;</span><span class="n">SetValue</span><span class="p">(</span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
-</span></code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="c1">// Create Attribute set</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">UPCGParamData</span><span class="o">*</span><span class="w"> </span><span class="n">ParamData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGParamData</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">//通过CreateAttribute创建 int32, </span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">FPCGMetadataAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">CreateAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"ChosenPointsNum"</span><span class="p">),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">//赋值</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">Attribute</span><span class="o">-&gt;</span><span class="n">SetValue</span><span class="p">(</span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
+</code></pre></div>
 </li>
 </ul></div>
 
@@ -2116,7 +2118,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>

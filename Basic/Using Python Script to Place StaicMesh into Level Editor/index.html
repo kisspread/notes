@@ -86,12 +86,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC+-+local:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC - local";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+    
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -120,7 +126,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue">
+    <body dir="ltr" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -136,9 +142,7 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
@@ -172,7 +176,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="zerosoul" data-md-color-primary="red" data-md-color-accent="blue"  aria-label="dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5Z"/></svg>
@@ -277,8 +281,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
@@ -405,13 +415,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -505,8 +509,6 @@
         
         
       
-      
-        
       
     
     
@@ -688,21 +690,18 @@
     
       
       
-        
-          
-          
-        
-      
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_7" >
         
           
-          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -808,21 +807,18 @@
     
       
       
-        
-          
-          
-        
-      
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_8" >
         
           
-          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -926,15 +922,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1147,15 +1143,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -1242,15 +1238,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1339,15 +1335,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1441,15 +1437,15 @@
     
       
       
-        
-      
     
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1715,75 +1711,75 @@
 
   <h1>Python Script in Editor</h1>
 
-<div><div class="language-python highlight"><span class="filename">demo.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">unreal</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Constants</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">WALL_MESH_PATH</span> <span class="o">=</span> <span class="s2">"/Game/Assets/Dungeon/SM_Wall_4x2"</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">WALL_SPACING</span> <span class="o">=</span> <span class="mi">800</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">WALL_HEIGHT</span> <span class="o">=</span> <span class="mi">220</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span> <span class="nf">create_wall</span><span class="p">():</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1"># Get the editor utility library</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">editor_util</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorLevelLibrary</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># Before creating the wall, delete all the walls</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">world</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">get_editor_world</span><span class="p">()</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">actors</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">GameplayStatics</span><span class="o">.</span><span class="n">get_all_actors_of_class</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="o">.</span><span class="n">static_class</span><span class="p">())</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">for</span> <span class="n">actor</span> <span class="ow">in</span> <span class="n">actors</span><span class="p">:</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">if</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_label</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Wall"</span><span class="p">):</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">editor_util</span><span class="o">.</span><span class="n">destroy_actor</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="c1"># Define wall segments</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">wall_segments</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Up"</span><span class="p">},</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Down"</span><span class="p">},</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Left"</span><span class="p">},</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Right"</span><span class="p">},</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="p">]</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># Create walls</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">wall_segments</span><span class="p">:</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="n">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"start"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"end"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"rotation"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="c1"># Log a message</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">unreal</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Walls created"</span><span class="p">)</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">def</span> <span class="nf">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="c1"># Calculate the number of walls needed</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">distance</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">num_walls</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_walls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">direction</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">location</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">direction</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="n">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">def</span> <span class="nf">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">actor</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">spawn_actor_from_class</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_rotation</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Rotator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rotation</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="c1"># Load the static mesh</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorAssetLibrary</span><span class="o">.</span><span class="n">load_asset</span><span class="p">(</span><span class="n">WALL_MESH_PATH</span><span class="p">)</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMesh</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="c1"># Set the static mesh</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">static_mesh_component</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">static_mesh_component</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="n">static_mesh_component</span><span class="o">.</span><span class="n">set_static_mesh</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="c1"># Set the actor's label and folder</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_folder_path</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">"/Walls"</span><span class="p">))</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="c1"># Select the actor</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="n">actors_to_select</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Actor</span><span class="p">)</span>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">actors_to_select</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>    <span class="n">editor_util</span><span class="o">.</span><span class="n">set_selected_level_actors</span><span class="p">(</span><span class="n">actors_to_select</span><span class="o">=</span><span class="n">actors_to_select</span><span class="p">)</span>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>    <span class="n">create_wall</span><span class="p">()</span>    
-</span></code></pre></div>
+<div><div class="highlight"><span class="filename">demo.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">unreal</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Constants</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">WALL_MESH_PATH</span> <span class="o">=</span> <span class="s2">"/Game/Assets/Dungeon/SM_Wall_4x2"</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">WALL_SPACING</span> <span class="o">=</span> <span class="mi">800</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">WALL_HEIGHT</span> <span class="o">=</span> <span class="mi">220</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">def</span> <span class="nf">create_wall</span><span class="p">():</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1"># Get the editor utility library</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">editor_util</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorLevelLibrary</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1"># Before creating the wall, delete all the walls</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">world</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">get_editor_world</span><span class="p">()</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">actors</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">GameplayStatics</span><span class="o">.</span><span class="n">get_all_actors_of_class</span><span class="p">(</span><span class="n">world</span><span class="p">,</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="o">.</span><span class="n">static_class</span><span class="p">())</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">for</span> <span class="n">actor</span> <span class="ow">in</span> <span class="n">actors</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">if</span> <span class="n">actor</span><span class="o">.</span><span class="n">get_actor_label</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">"Wall"</span><span class="p">):</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">editor_util</span><span class="o">.</span><span class="n">destroy_actor</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="c1"># Define wall segments</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">wall_segments</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Up"</span><span class="p">},</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4800</span><span class="p">,</span> <span class="o">-</span><span class="mi">4800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Down"</span><span class="p">},</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="o">-</span><span class="mi">900</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Left"</span><span class="p">},</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="p">{</span><span class="s2">"start"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"end"</span><span class="p">:</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">4600</span><span class="p">,</span> <span class="o">-</span><span class="mi">3800</span><span class="p">,</span> <span class="n">WALL_HEIGHT</span><span class="p">),</span> <span class="s2">"rotation"</span><span class="p">:</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="s2">"label"</span><span class="p">:</span> <span class="s2">"Wall-Right"</span><span class="p">},</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="p">]</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># Create walls</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">wall_segments</span><span class="p">:</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="n">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"start"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"end"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"rotation"</span><span class="p">],</span> <span class="n">segment</span><span class="p">[</span><span class="s2">"label"</span><span class="p">])</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>    <span class="c1"># Log a message</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">unreal</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">"Walls created"</span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">def</span> <span class="nf">create_wall_segment</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="c1"># Calculate the number of walls needed</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">distance</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">num_walls</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_walls</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">direction</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Vector</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">location</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">direction</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">WALL_SPACING</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="n">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">def</span> <span class="nf">spawn_wall</span><span class="p">(</span><span class="n">editor_util</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">rotation</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="n">actor</span> <span class="o">=</span> <span class="n">editor_util</span><span class="o">.</span><span class="n">spawn_actor_from_class</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">StaticMeshActor</span><span class="p">,</span> <span class="n">location</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_rotation</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Rotator</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rotation</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>    <span class="c1"># Load the static mesh</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">EditorAssetLibrary</span><span class="o">.</span><span class="n">load_asset</span><span class="p">(</span><span class="n">WALL_MESH_PATH</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    <span class="n">static_mesh</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">StaticMesh</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="c1"># Set the static mesh</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">static_mesh_component</span> <span class="o">=</span> <span class="n">actor</span><span class="o">.</span><span class="n">static_mesh_component</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>    <span class="n">static_mesh_component</span><span class="o">.</span><span class="n">set_static_mesh</span><span class="p">(</span><span class="n">static_mesh</span><span class="p">)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>    <span class="c1"># Set the actor's label and folder</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_actor_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">actor</span><span class="o">.</span><span class="n">set_folder_path</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Name</span><span class="p">(</span><span class="s2">"/Walls"</span><span class="p">))</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="c1"># Select the actor</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="n">actors_to_select</span> <span class="o">=</span> <span class="n">unreal</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">unreal</span><span class="o">.</span><span class="n">Actor</span><span class="p">)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">actors_to_select</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">actor</span><span class="p">)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>    <span class="n">editor_util</span><span class="o">.</span><span class="n">set_selected_level_actors</span><span class="p">(</span><span class="n">actors_to_select</span><span class="o">=</span><span class="n">actors_to_select</span><span class="p">)</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>    <span class="n">create_wall</span><span class="p">()</span>    
+</code></pre></div>
 <p><a class="glightbox" href="../../assets/img/output_filename.webp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" loading="lazy" src="../../assets/img/output_filename.webp"></a></p></div>
 
 
@@ -1927,7 +1923,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
