@@ -2028,18 +2028,20 @@
 </blockquote>
 <p>有了上面的数据字段还不够，<strong>为了更多灵活的操作</strong>，UE还需要我们给他创建一个描述字段FGameplayAttribute。</p>
 <p>FGameplayAttribute是用来描述单个属性的结构体，内部保存了一个<code>TFieldPath&lt;FProperty&gt; Attribute</code>，这是一个反射字段，最终返回它所描述的<strong>FGameplayAttributeData</strong></p>
-<p>定义FGameplayAttribute比较麻烦，UE提供了macro来简化这个过程。
-</p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cp">#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">    GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">    GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)</span>
+<p>定义FGameplayAttribute比较麻烦，UE提供了macro来简化这个过程。</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="cp">#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">      GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">      GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">      GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cp">      GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)</span>
 </span></code></pre></div>
-- 第一个宏通过反射来生成FGameplayAttribute，保存了属性字段的指针
-- 第二个宏是生成属性访问器的帮助宏
-- 第三个宏是生成属性设置器的帮助宏
-- 第四个宏是生成属性初始化器的帮助宏
-  <a class="glightbox" href="../../assets/images/01GAS_MyUnderstand_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/01GAS_MyUnderstand_image.png"></a>
+<ul>
+<li>第一个宏通过反射来生成FGameplayAttribute，保存了属性字段的指针</li>
+<li>第二个宏是生成属性访问器的帮助宏</li>
+<li>第三个宏是生成属性设置器的帮助宏</li>
+<li>第四个宏是生成属性初始化器的帮助宏
+  <a class="glightbox" href="../../assets/images/01GAS_MyUnderstand_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/01GAS_MyUnderstand_image.png"></a></li>
+</ul>
 <p>最终定义一个属性差不多是这样：
 </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintReadOnly</span><span class="p">,</span><span class="w"> </span><span class="n">ReplicatedUsing</span><span class="o">=</span><span class="n">OnRep_Strength</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="o">=</span><span class="s">"Primary Attribute"</span><span class="p">)</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">FGameplayAttributeData</span><span class="w"> </span><span class="n">Strength</span><span class="p">;</span>
@@ -2124,20 +2126,17 @@
   用途：有些场景是需要在属性改变后进行的，比如最大生命值改变了，回满生命值就需要知道当前的最大生命值是多少。 
 </li>
 <li>
-<p>当属性被改变前
-  ```cpp
-    /**</p>
-<ul>
-<li>Called just before any modification happens to an attribute. This is lower level than PreAttributeModify/PostAttribute modify.</li>
-<li>There is no additional context provided here since anything can trigger this. Executed effects, duration based effects, effects being removed, immunity being applied, stacking rules changing, etc.</li>
-<li>This function is meant to enforce things like "Health = Clamp(Health, 0, MaxHealth)" and NOT things like "trigger this extra thing if damage is applied, etc".</li>
-<li>
-<li>NewValue is a mutable reference so you are able to clamp the newly applied value as well.
- */
-virtual void PreAttributeChange(const FGameplayAttribute&amp; Attribute, float&amp; NewValue) { }
-```
-用途：限制即将设置进来的属性值的范围，提前把它钳制在合理的区间内。</li>
-</ul>
+<p>当属性被改变前</p>
+<p></p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cm">/**</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cm"> *  Called just before any modification happens to an attribute. This is lower level than PreAttributeModify/PostAttribute modify.</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="cm"> *  There is no additional context provided here since anything can trigger this. Executed effects, duration based effects, effects being removed, immunity being applied, stacking rules changing, etc.</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="cm"> *  This function is meant to enforce things like "Health = Clamp(Health, 0, MaxHealth)" and NOT things like "trigger this extra thing if damage is applied, etc".</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="cm"> *  </span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="cm"> *  NewValue is a mutable reference so you are able to clamp the newly applied value as well.</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="cm"> */</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">PreAttributeChange</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayAttribute</span><span class="o">&amp;</span><span class="w"> </span><span class="n">Attribute</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&amp;</span><span class="w"> </span><span class="n">NewValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+用途：限制即将设置进来的属性值的范围，提前把它钳制在合理的区间内。
 </li>
 </ul>
 <hr>
@@ -2153,54 +2152,52 @@ virtual void PreAttributeChange(const FGameplayAttribute&amp; Attribute, float&a
 <p>GE是另外两大核心的桥梁，所以会看到好几个不同的handle。这里通过使用方式来介绍。</p>
 <p>GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包含执行上下文还有 规格等级。</p>
 <ol>
-<li>通过CDO创建GE Spec
-   <div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">EffectCtxHandle</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="c1">// trace source obj</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpec</span><span class="w"> </span><span class="nf">Spec</span><span class="p">(</span><span class="n">GE_Class</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">(),</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="p">,</span><span class="w"> </span><span class="n">ActorLevel</span><span class="p">);</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">const</span><span class="w"> </span><span class="n">FActiveGameplayEffectHandle</span><span class="w"> </span><span class="n">ActiveHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectSpecToSelf</span><span class="p">(</span><span class="n">Spec</span><span class="p">);</span>
+<li>
+<p>通过CDO创建GE Spec
+   </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">EffectCtxHandle</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="c1">// trace source obj</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpec</span><span class="w"> </span><span class="nf">Spec</span><span class="p">(</span><span class="n">GE_Class</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">(),</span><span class="w"> </span><span class="n">EffectCtxHandle</span><span class="p">,</span><span class="w"> </span><span class="n">ActorLevel</span><span class="p">);</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">const</span><span class="w"> </span><span class="n">FActiveGameplayEffectHandle</span><span class="w"> </span><span class="n">ActiveHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Asc</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectSpecToSelf</span><span class="p">(</span><span class="n">Spec</span><span class="p">);</span>
 </span></code></pre></div>
-   FGameplayEffectContextHandle 是GE执行的上下文，谁对谁执行，携带自定义数据等。</li>
-</ol>
-<p>FActiveGameplayEffectHandle 是应用GE后的handle，用于管理和引用 GameplayEffect 实例的生命周期。它是一个轻量级的句柄，可以用于后续对效果的查询、修改或移除。比如：
-   ```cpp
-   // Assuming you have stored the handle somewhere
-    FActiveGameplayEffectHandle MyEffectHandle = ...</p>
-<div class="codehilite"><pre><span></span><code><span class="c1">// Remove the effect using the handle</span>
-<span class="n">AbilitySystemComponent</span><span class="o">-&gt;</span><span class="n">RemoveActiveGameplayEffect</span><span class="p">(</span><span class="n">MyEffectHandle</span><span class="p">);</span>
-```
-</code></pre></div>
-
-<ol>
+   FGameplayEffectContextHandle 是GE执行的上下文，谁对谁执行，携带自定义数据等。
+   FActiveGameplayEffectHandle 是应用GE后的handle，用于管理和引用 GameplayEffect 实例的生命周期。它是一个轻量级的句柄，可以用于后续对效果的查询、修改或移除。比如：
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Assuming you have stored the handle somewhere</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">FActiveGameplayEffectHandle</span><span class="w"> </span><span class="n">MyEffectHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="c1">// Remove the effect using the handle</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="n">AbilitySystemComponent</span><span class="o">-&gt;</span><span class="n">RemoveActiveGameplayEffect</span><span class="p">(</span><span class="n">MyEffectHandle</span><span class="p">);</span>
+</span></code></pre></div>
+</li>
 <li>
 <p>通过ASC提供的ApplyGameplayEffectToSelf在内部创建GE Spec 
-    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UGameplayEffect</span><span class="o">*</span><span class="w"> </span><span class="n">PrimaryEffect</span><span class="o">=</span><span class="w"> </span><span class="n">InfoItem</span><span class="p">.</span><span class="n">PrimaryGameplayEffect</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">();</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">PrimaryEffectContext</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">GetAvatarActor</span><span class="p">());</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectToSelf</span><span class="p">(</span><span class="n">PrimaryEffect</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">,</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="p">);</span>
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UGameplayEffect</span><span class="o">*</span><span class="w"> </span><span class="n">PrimaryEffect</span><span class="o">=</span><span class="w"> </span><span class="n">InfoItem</span><span class="p">.</span><span class="n">PrimaryGameplayEffect</span><span class="p">.</span><span class="n">GetDefaultObject</span><span class="p">();</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">FGameplayEffectContextHandle</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">();</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">PrimaryEffectContext</span><span class="p">.</span><span class="n">AddSourceObject</span><span class="p">(</span><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">GetAvatarActor</span><span class="p">());</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="n">ASC</span><span class="o">-&gt;</span><span class="n">ApplyGameplayEffectToSelf</span><span class="p">(</span><span class="n">PrimaryEffect</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">,</span><span class="w"> </span><span class="n">PrimaryEffectContext</span><span class="p">);</span>
 </span></code></pre></div>
 </li>
 <li>
 <p>通过Class来创建，使用 ASC-&gt;MakeOutgoingSpec 来创建GE Spec<br>
-    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SourceASC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">GetAbilitySystemComponent</span><span class="p">(</span><span class="n">GetOwningActorFromActorInfo</span><span class="p">());</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeOutgoingSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">(),</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">());</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">Damage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="p">{</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Damage</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">GetAbilityLevel</span><span class="p">());</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="n">SpecHandle</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Get</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetSetByCallerMagnitude</span><span class="p">(</span><span class="n">Damage</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="p">);</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="p">}</span>
+    </p><div class="language-cpp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">const</span><span class="w"> </span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">SourceASC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">GetAbilitySystemComponent</span><span class="p">(</span><span class="n">GetOwningActorFromActorInfo</span><span class="p">());</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeOutgoingSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">(),</span><span class="w"> </span><span class="n">SourceASC</span><span class="o">-&gt;</span><span class="n">MakeEffectContext</span><span class="p">());</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">Damage</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="p">{</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Damage</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">GetAbilityLevel</span><span class="p">());</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="n">SpecHandle</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">Get</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">SetSetByCallerMagnitude</span><span class="p">(</span><span class="n">Damage</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">ScaledDamage</span><span class="p">);</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">}</span>
 </span></code></pre></div>
 </li>
 <li>在GameplayAbility里使用， 通过MakeOutgoingGameplayEffectSpec来创建GE Spec
-    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeOutgoingGameplayEffectSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">);</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TTuple</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FScalableFloat</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">{</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">    </span><span class="n">FScalableFloat</span><span class="w"> </span><span class="n">DamageAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">();</span>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">    </span><span class="c1">// SpecHandle.Data.Get()-&gt;SetSetByCallerMagnitude(Pair.Key, DamageAmount.GetValueAtLevel(level));</span>
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">    </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">AssignTagSetByCallerMagnitude</span><span class="p">(</span><span class="n">SpecHandle</span><span class="p">,</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">DamageAmount</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">level</span><span class="p">));</span>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="p">}</span>
+    <div class="language-cpp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">SpecHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeOutgoingGameplayEffectSpec</span><span class="p">(</span><span class="n">DamageEffectClass</span><span class="p">,</span><span class="w"> </span><span class="mf">1.f</span><span class="p">);</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TTuple</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">FScalableFloat</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">DamageTypes</span><span class="p">)</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">{</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="n">FScalableFloat</span><span class="w"> </span><span class="n">DamageAmount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetAbilityLevel</span><span class="p">();</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="c1">// SpecHandle.Data.Get()-&gt;SetSetByCallerMagnitude(Pair.Key, DamageAmount.GetValueAtLevel(level));</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="w">    </span><span class="n">UAbilitySystemBlueprintLibrary</span><span class="o">::</span><span class="n">AssignTagSetByCallerMagnitude</span><span class="p">(</span><span class="n">SpecHandle</span><span class="p">,</span><span class="w"> </span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span><span class="w"> </span><span class="n">DamageAmount</span><span class="p">.</span><span class="n">GetValueAtLevel</span><span class="p">(</span><span class="n">level</span><span class="p">));</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">}</span>
 </span></code></pre></div></li>
 </ol></div>
 
@@ -2225,7 +2222,7 @@ virtual void PreAttributeChange(const FGameplayAttribute&amp; Attribute, float&a
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 7, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 8, 2024</span>
   </span>
 
     
