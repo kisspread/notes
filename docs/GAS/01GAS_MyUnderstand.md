@@ -62,13 +62,15 @@ FGameplayAttributeData Strength;
 FGameplayAttribute是用来描述单个属性的结构体，内部保存了一个`TFieldPath<FProperty> Attribute`，这是一个反射字段，最终返回它所描述的**FGameplayAttributeData**
 
 定义FGameplayAttribute比较麻烦，UE提供了macro来简化这个过程。
-```cpp
-#define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
-	GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
-	GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
-	GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
-	GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
-```
+
+  ```cpp
+    #define ATTRIBUTE_ACCESSORS(ClassName, PropertyName) \
+        GAMEPLAYATTRIBUTE_PROPERTY_GETTER(ClassName, PropertyName) \
+        GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
+        GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
+        GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
+  ```
+
 - 第一个宏通过反射来生成FGameplayAttribute，保存了属性字段的指针
 - 第二个宏是生成属性访问器的帮助宏
 - 第三个宏是生成属性设置器的帮助宏
@@ -164,7 +166,8 @@ void OnRep_Strength(const FGameplayAttributeData& Old) const;
 
 
 - 当属性被改变前
-  ```cpp
+
+    ```cpp
   	/**
 	 *	Called just before any modification happens to an attribute. This is lower level than PreAttributeModify/PostAttribute modify.
 	 *	There is no additional context provided here since anything can trigger this. Executed effects, duration based effects, effects being removed, immunity being applied, stacking rules changing, etc.
@@ -203,14 +206,13 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
    const FActiveGameplayEffectHandle ActiveHandle = Asc->ApplyGameplayEffectSpecToSelf(Spec);
    ```
    FGameplayEffectContextHandle 是GE执行的上下文，谁对谁执行，携带自定义数据等。
-
    FActiveGameplayEffectHandle 是应用GE后的handle，用于管理和引用 GameplayEffect 实例的生命周期。它是一个轻量级的句柄，可以用于后续对效果的查询、修改或移除。比如：
-   ```cpp
-   // Assuming you have stored the handle somewhere
-    FActiveGameplayEffectHandle MyEffectHandle = ...
+    ```cpp
+    // Assuming you have stored the handle somewhere
+        FActiveGameplayEffectHandle MyEffectHandle = ...
 
-    // Remove the effect using the handle
-    AbilitySystemComponent->RemoveActiveGameplayEffect(MyEffectHandle);
+        // Remove the effect using the handle
+        AbilitySystemComponent->RemoveActiveGameplayEffect(MyEffectHandle);
     ```
 
 1. 通过ASC提供的ApplyGameplayEffectToSelf在内部创建GE Spec 
