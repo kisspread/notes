@@ -13,12 +13,8 @@ copyright: Copyright &copy; 2022 - 2024 by <a href="https://github.com/kisspread
 markdown_extensions:
   - attr_list
   - md_in_html
-  - codehilite:
-      linenums: false
   - pymdownx.highlight:
       anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -28,6 +24,15 @@ markdown_extensions:
   - pymdownx.tabbed:
   - pymdownx.arithmatex:
       generic: true
+  - markdown.extensions.abbr 
+  - pymdownx.magiclink
+  - pymdownx.caret
+  - pymdownx.betterem
+  - pymdownx.critic
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.tilde    
       
 extra_javascript:
   - javascripts/katex.js
@@ -35,7 +40,11 @@ extra_javascript:
   - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
 extra_css:
+  - stylesheets/extra.css # 自定义CSS
   - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+  - https://fonts.googleapis.com/css2?family=Concert+One&display=swap
+
 plugins:
   - glightbox
   - mkdocs-video
@@ -67,13 +76,13 @@ theme:
   custom_dir: overrides/
   logo: assets/logo.png
   favicon: assets/logo.png
-  font:
-      text: "Noto Sans SC - local"
-      code: Roboto Mono
+  #font:
+      #text: Concert One
+      #code: PT Sans Mono
       
   palette:
     - media: "(prefers-color-scheme: light)" # 检查用户系统配置是否为亮色
-      scheme: default # 亮色模式
+      scheme: zerosoul # 亮色模式
       primary: red # 基本颜色
       accent: blue # 按钮等互动块的颜色
       toggle:
@@ -95,9 +104,10 @@ theme:
     - navigation.tracking 
     - navigation.tabs 
     # - navigation.footer 
-    - navigation.tabs.sticky 
-    - navigation.sections
-    #- navigation.expand 
+    #- navigation.tabs.sticky 
+    # - navigation.sections
+    - navigation.expand 
+    - navigation.path
     - navigation.indexes 
     - toc.follow
     - navigation.top 
