@@ -1129,6 +1129,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ugameplayability" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayAbility
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1956,6 +1965,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ugameplayability" class="md-nav__link">
+    <span class="md-ellipsis">
+      UGameplayAbility
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2204,31 +2222,50 @@
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">}</span>
 </code></pre></div>
     除了使用GE实例提供的SetSetByCallerMagnitude，还可以使用GAS函数库提供的AssignTagSetByCallerMagnitude来设置。
+<p>内部也是用MakeOutgoingSpec来创建GE Spec, 方便之处是自动设置effect context。
+ </p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">FGameplayEffectSpecHandle</span><span class="w"> </span><span class="n">NewHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AbilitySystemComponent</span><span class="o">-&gt;</span><span class="n">MakeOutgoingSpec</span><span class="p">(</span><span class="n">GameplayEffectClass</span><span class="p">,</span><span class="w"> </span><span class="n">Level</span><span class="p">,</span><span class="w"> </span><span class="n">MakeEffectContext</span><span class="p">(</span><span class="n">Handle</span><span class="p">,</span><span class="w"> </span><span class="n">ActorInfo</span><span class="p">));</span>
+</code></pre></div>
 </li>
 <li>
-<p>遍历的方式来获取SetByCallerMagnitude
-    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">// get the magnitude of the damage from "set by caller"  </span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">Damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TTuple</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Spec</span><span class="p">.</span><span class="n">SetByCallerTagMagnitudes</span><span class="p">)</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">{</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">DamageValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Spec</span><span class="p">.</span><span class="n">GetSetByCallerMagnitude</span><span class="p">(</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">);</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">AttributeTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">GetDamageTypeToResistanceMap</span><span class="p">()[</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">];</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">AttributeTag</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">        </span><span class="n">AuraPrint</span><span class="o">::</span><span class="n">Error</span><span class="p">(</span><span class="n">GetOuter</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Invalid Damage Type Tag: %s"</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DamageValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.f</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">CaptureValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="w">    </span><span class="n">ExecutionParams</span><span class="p">.</span><span class="n">AttemptCalculateCapturedAttributeMagnitude</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">TagsToCaptures</span><span class="p">[</span><span class="n">AttributeTag</span><span class="p">],</span><span class="w"> </span><span class="n">EvaluationParameters</span><span class="p">,</span><span class="w"> </span><span class="n">CaptureValue</span><span class="p">);</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="w">    </span><span class="n">CaptureValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">Clamp</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">CaptureValue</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">100.f</span><span class="p">);</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="w">    </span><span class="n">DamageValue</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">CaptureValue</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="w">    </span><span class="n">Damage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">DamageValue</span><span class="p">;</span>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="p">}</span>
+<p>处理GE执行时收到的Spec，可通过遍历的方式来获取SetByCallerMagnitude
+    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">// get the magnitude of the damage from "set by caller"  </span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">Damage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TTuple</span><span class="o">&lt;</span><span class="n">FGameplayTag</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Pair</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Spec</span><span class="p">.</span><span class="n">SetByCallerTagMagnitudes</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">{</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">DamageValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Spec</span><span class="p">.</span><span class="n">GetSetByCallerMagnitude</span><span class="p">(</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">);</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">AttributeTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuraGameplayTags</span><span class="o">::</span><span class="n">GetDamageTypeToResistanceMap</span><span class="p">()[</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">];</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">AttributeTag</span><span class="p">.</span><span class="n">IsValid</span><span class="p">())</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">        </span><span class="n">AuraPrint</span><span class="o">::</span><span class="n">Error</span><span class="p">(</span><span class="n">GetOuter</span><span class="p">(),</span><span class="w"> </span><span class="n">TEXT</span><span class="p">(</span><span class="s">"Invalid Damage Type Tag: %s"</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="n">Pair</span><span class="p">.</span><span class="n">Key</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">DamageValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0.f</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">CaptureValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="w">    </span><span class="n">ExecutionParams</span><span class="p">.</span><span class="n">AttemptCalculateCapturedAttributeMagnitude</span><span class="p">(</span><span class="n">DamageStatics</span><span class="p">().</span><span class="n">TagsToCaptures</span><span class="p">[</span><span class="n">AttributeTag</span><span class="p">],</span><span class="w"> </span><span class="n">EvaluationParameters</span><span class="p">,</span><span class="w"> </span><span class="n">CaptureValue</span><span class="p">);</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="n">CaptureValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FMath</span><span class="o">::</span><span class="n">Clamp</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">CaptureValue</span><span class="p">,</span><span class="w"> </span><span class="mf">0.f</span><span class="p">,</span><span class="w"> </span><span class="mf">100.f</span><span class="p">);</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">    </span><span class="n">DamageValue</span><span class="w"> </span><span class="o">*=</span><span class="w"> </span><span class="p">(</span><span class="mi">100</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">CaptureValue</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">    </span><span class="n">Damage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">DamageValue</span><span class="p">;</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="p">}</span>
 </code></pre></div>
     通过Spec.SetByCallerTagMagnitudes获取出全部SetByCallerMagnitude，这里是遍历出全部伤害数值，然后获得对各种伤害类型的抗性，计算出最终伤害数值。
 </li>
-</ol></div>
+<li>
+<p>创建GE Spec时，遍历的蓝图里设置的SetByCallerMagnitude
+    </p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayModifierInfo</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ModMagnitude</span><span class="w"> </span><span class="o">:</span><span class="n">GE_Spec</span><span class="p">.</span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">Def</span><span class="o">-&gt;</span><span class="n">Modifiers</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="p">{</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ModMagnitude</span><span class="p">.</span><span class="n">ModifierMagnitude</span><span class="p">.</span><span class="n">GetMagnitudeCalculationType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EGameplayEffectMagnitudeCalculation</span><span class="o">::</span><span class="n">SetByCaller</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">        </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">DataTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ModMagnitude</span><span class="p">.</span><span class="n">ModifierMagnitude</span><span class="p">.</span><span class="n">GetSetByCallerFloat</span><span class="p">().</span><span class="n">DataTag</span><span class="p">;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Magnitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Payload</span><span class="p">.</span><span class="n">EventTag</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DataTag</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">Payload</span><span class="p">.</span><span class="n">EventMagnitude</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">0.f</span><span class="p">;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">        </span><span class="n">GE_Spec</span><span class="p">.</span><span class="n">Data</span><span class="o">-&gt;</span><span class="n">SetSetByCallerMagnitude</span><span class="p">(</span><span class="n">DataTag</span><span class="p">,</span><span class="w"> </span><span class="n">Magnitude</span><span class="p">);</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="p">}</span>
+</code></pre></div>
+    需要注意是的， Def就是蓝图里的GE实例，而且是const，所以不能修改。 
+</li>
+</ol>
+<h3 id="ugameplayability">UGameplayAbility</h3>
+<p>定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类</p></div>
 
 
 
@@ -2251,7 +2288,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 8, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 9, 2024</span>
   </span>
 
     
