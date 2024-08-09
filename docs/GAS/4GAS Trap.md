@@ -16,4 +16,24 @@ comments:true
 
  - 总结，通过GameplayTag来判断某个角色是否有激活的GE是最妥当的，因为它是多端复制的，而无法通过actor 是否有激活的GE来判断。
 
+
+### GameplayTask
+
+Ability是永久，但某个Task一段时间后无法收到回调，看起来像自动自动结束了
+
+问题代码：
+
+```c++
+void UAuraListenEventAbility::WaitBaseTagsEvent()
+{
+UAbilityTask_WaitGameplayEvent* WaitGpEventTask = UAbilityTask_WaitGameplayEvent::WaitGameplayEvent(this, BaseTag, nullptr, false, false);
+WaitGpEventTask->EventReceived.AddUniqueDynamic(this,&UAuraListenEventAbility::OnNewEvent);
+WaitGpEventTask->Activate();
+}
+```
+
+原因：创建出来的Task并没有被Ability引用，这里只是局部变量，一段时间后就会被垃圾回收。改成类成员变量即可。
+
+!!! note 
+    很多时候会想当然地认为，改变量会在构造函数里被引用，所以只写局部变量，导致类似的错误。
  
