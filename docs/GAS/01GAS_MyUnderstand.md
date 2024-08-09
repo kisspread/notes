@@ -252,7 +252,13 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
     ```
     除了使用GE实例提供的SetSetByCallerMagnitude，还可以使用GAS函数库提供的AssignTagSetByCallerMagnitude来设置。
     
-1. 遍历的方式来获取SetByCallerMagnitude
+    内部也是用MakeOutgoingSpec来创建GE Spec, 方便之处是自动设置effect context。
+     ```cpp
+     FGameplayEffectSpecHandle NewHandle = AbilitySystemComponent->MakeOutgoingSpec(GameplayEffectClass, Level, MakeEffectContext(Handle, ActorInfo));
+     ```
+
+    
+1. 处理GE执行时收到的Spec，可通过遍历的方式来获取SetByCallerMagnitude
     ```cpp
     // get the magnitude of the damage from "set by caller"  
 	float Damage = 0.f;
@@ -276,5 +282,20 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
     通过Spec.SetByCallerTagMagnitudes获取出全部SetByCallerMagnitude，这里是遍历出全部伤害数值，然后获得对各种伤害类型的抗性，计算出最终伤害数值。
 
     
+1. 创建GE Spec时，遍历的蓝图里设置的SetByCallerMagnitude
+    ```cpp
+    for (const FGameplayModifierInfo& ModMagnitude :GE_Spec.Data->Def->Modifiers)
+	{
+		if (ModMagnitude.ModifierMagnitude.GetMagnitudeCalculationType() == EGameplayEffectMagnitudeCalculation::SetByCaller)
+		{
+			FGameplayTag DataTag = ModMagnitude.ModifierMagnitude.GetSetByCallerFloat().DataTag;
+			const float Magnitude = (Payload.EventTag == DataTag) ? Payload.EventMagnitude : 0.f;
+			GE_Spec.Data->SetSetByCallerMagnitude(DataTag, Magnitude);
+		}
+	}
+    ```
+    需要注意是的， Def就是蓝图里的GE实例，而且是const，所以不能修改。 
 
+### UGameplayAbility
 
+定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类
