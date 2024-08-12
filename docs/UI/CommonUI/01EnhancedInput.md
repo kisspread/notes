@@ -7,9 +7,12 @@ comments:true
 ---
 
 ## TurnOn
+
 ![alt text](../../assets/images/08CropoutSample_image-5.png)
 Project->Game->Common Input Settings:
+
 这3个没打勾的：
+
  - Enable Enhanced Input Support 必须打勾
  - Enable Default InputConfig 每次active，如没配置InputConfig，使用默认输入模式的配置。注意，这个最好不要打勾，因为打勾后，每次打开一个支持 Activatable 的widget，都会覆盖一次 InputMode，可能导致输入混乱。最好自己管理。
  - Allow Out Of Fucas Device Input 字面意思，感觉打勾比较好。

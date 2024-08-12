@@ -19,6 +19,7 @@ RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后
 	 */
 	SizeType RemoveSwap(const ElementType& Item, EAllowShrinking AllowShrinking = EAllowShrinking::Yes)
 ```
+还有RemoveAllSwap，for循环对数组长度敏感，如果for里面涉及到删除元素的操作，用RemoveAllSwap是更好的选择。
 
 
 ## 各种Delegate和Event
