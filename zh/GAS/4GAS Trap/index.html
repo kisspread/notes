@@ -1134,6 +1134,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#multiplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplayer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uaudiocomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAudioComponent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      先后问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pie-dedicated-server-anim-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      PIE模式 dedicated server anim notify 有概率丢失
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1793,6 +1835,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#multiplayer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiplayer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplayer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uaudiocomponent" class="md-nav__link">
+    <span class="md-ellipsis">
+      UAudioComponent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      先后问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pie-dedicated-server-anim-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      PIE模式 dedicated server anim notify 有概率丢失
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1826,9 +1910,6 @@
    <a class="glightbox" href="../../../assets/images/4GAS%20Trap_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/4GAS%20Trap_image.png"></a></p>
 </li>
 <li>
-<p><code>WaitGameplay</code>, the event "WaitGameplay" will be register to all roles: ROLE_Authority (server), ROLE_AutonomousProxy (your character),So, always pay attention to which role the current code is running under. 由于gameplaytag 是多端复制的，所以只要监听正确，所有端都能接受到 waitgampeplay event.如果NPC不需要这个回调，要当心。</p>
-</li>
-<li>
 <p>多人游戏里，如果角色在不同client的视角里表现不一致（<strong>自己能看到，别人看不到</strong>），可能是对GE网络复制的理解错误，导致写出了错误的逻辑:
   In a multiple player game, the Player's GE Replicate Mode is Mixed, while NPC is set to Minimal. 这说明，“当前玩家”的GE只复制到“当前玩家”的电脑上，同时玩家电脑里的NPC不会接受到任何GE网络复制。
    <a class="glightbox" href="../../../assets/images/4GAS%20Trap_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/4GAS%20Trap_image-1.png"></a>
@@ -1852,6 +1933,98 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>很多时候会想当然地认为，改变量会在构造函数里被引用，所以只写局部变量，导致类似的错误。</p>
+</div>
+<h2 id="multiplayer">Multiplayer</h2>
+<h3 id="uaudiocomponent">UAudioComponent</h3>
+<p>UAudioComponent 不会在DedicatedServer创建，调用以下代码只会返回空指针，而其他端正常创建。
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">LoopingAudioComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayStatics</span><span class="o">::</span><span class="n">SpawnSoundAttached</span><span class="p">(</span><span class="n">FlyingSound</span><span class="p">,</span><span class="w"> </span><span class="n">GetRootComponent</span><span class="p">());</span>
+</code></pre></div>
+所以这类组件都要进行非空判断再做操作。
+<h3 id="_1">先后问题</h3>
+<p>服务端SpawnActor后，立即对它执行网络多播操作，在多人游戏里可能导致先后问题。
+这里log显示客户端的beginplay比SpeedUpProjectile慢。
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="o">:</span><span class="nx">Projectile</span><span class="w"> </span><span class="nx">BeginPlay</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="o">:</span><span class="nx">SpeedUpProjectile</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="o">:</span><span class="nx">SpeedUpProjectile</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="o">:</span><span class="nx">Projectile</span><span class="w"> </span><span class="nx">BeginPlay</span><span class="w"> </span>
+</code></pre></div>
+解决方法：
+- 如果可以spawn actor后，不要立即执行。
+- 如果必须立即执行，只能在BeginPlay里做记号，写额外的逻辑处理。因为网络先后问题是不能避免的。
+<h3 id="pie-dedicated-server-anim-notify">PIE模式 dedicated server anim notify 有概率丢失</h3>
+<p>经过多次测试，这种问题，只在PIE模式下出现，在独立窗口下不会出现。（PIE模式总能测出各种隐藏bug，找bug神器）</p>
+<p>省流：Montage Tick Type    设置为 BranchingPoint即可解决。</p>
+<p>调试日志,摘取一段OnReceivedMontageAttackAction只在client出现的片段：
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="w">         </span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">PlayDefaultMontage</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">false</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">PlayDefaultMontage</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">false</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="w">         </span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">OnReceivedMontageAttackAction</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">false</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="w">         </span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">OnMontageBlendOut</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">false</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">Client</span><span class="w">         </span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">EndAbility</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">true</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">OnMontageBlendOut</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">false</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="p">,</span><span class="nx">UAuraGameplayAbility</span><span class="o">::</span><span class="nx">EndAbility</span><span class="w"> </span><span class="p">,</span><span class="nx">Is</span><span class="w"> </span><span class="nx">WaitGamplayEventFinished</span><span class="o">?:</span><span class="kc">true</span>
+</code></pre></div>
+可以看到 task 并没有结束，但就是收不到 蒙太奇发出的事件通知。而且是有概率的。
+<p><a class="glightbox" href="../../../assets/images/4GAS%20Trap_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/4GAS%20Trap_image-2.png"></a></p>
+<p>Notify Trigger Chance =1, 设置通知概率是100%执行。</p>
+<p>TirggerWeightThreshold = 0.000001 这个值是说，动画混合了多少比重后，允许触发该Notify。越小越容易触发。</p>
+<p>这两个值都是正确的设置的，那么问题就出在 <strong>MontageNotifyTickType</strong>上。经过多次测试，改成branchingpoint 模式，就一直稳定触发该Notify。</p>
+<p>内部注释是这样说的：</p>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">/** Ticking method for AnimNotifies in AnimMontages. /</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="cm">UENUM()</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="cm">namespace EMontageNotifyTickType</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="cm">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="cm">enum Type : int</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="cm">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="cm">/* Queue notifies, and trigger them at the end of the evaluation phase (faster). Not suitable for changing sections or montage position. /</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="cm">Queued,</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="cm">/* Trigger notifies as they are encountered (Slower). Suitable for changing sections or montage position. */</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">BranchingPoint</span><span class="p">,</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">};</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="p">}</span>
+</code></pre></div>
+Queued vs BranchingPoint:
+<ul>
+<li>Queued: 通知被排队，并在评估阶段结束时触发。这种方式更快，但不适合改变节段或蒙太奇位置。</li>
+<li>BranchingPoint: 通知在遇到时立即触发。虽然较慢，但适合改变节段或蒙太奇位置。</li>
+</ul>
+<p>太简短，看看官方文档的版本：</p>
+<blockquote>
+<p><a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/animation-notifies-in-unreal-engine">https://dev.epicgames.com/documentation/en-us/unreal-engine/animation-notifies-in-unreal-engine</a></p>
+</blockquote>
+<p>大致就是说：Queued模式效率高，但容忍有不精确的情况，BranchingPoint模式低效，但精确。但也没有解释为什么会有概率丢失。</p>
+<div class="admonition 让ai总结">
+<p class="admonition-title">让ai总结</p>
+<p><strong>Montage Tick Type 有两个选项</strong>：</p>
+<p><strong>Queued（队列模式）:</strong></p>
+<p>特点：异步、性能更好，但精确度较低。
+工作方式：通知被添加到队列中，在评估阶段结束时一起处理。</p>
+<p>适用场景：</p>
+<p>对帧精确度要求不高的情况。
+通知执行有轻微帧不准确是可以接受的。
+适合用于非关键的视觉或音效触发。</p>
+<p><strong>优点</strong>：性能开销较小，适合处理大量非关键通知。</p>
+<p><strong>缺点</strong>：可能导致轻微的时间不准确，不适合精确的游戏逻辑控制。</p>
+<p><strong>Branching Point（分支点模式）:</strong></p>
+<p>特点：同步、精确度高，但性能开销较大。</p>
+<p>工作方式：通知在遇到时立即执行，确保最大的帧精确度。</p>
+<p>适用场景：</p>
+<p>需要精确控制执行时间的情况。
+通知用于执行其他事件的受控序列。
+用于做出影响游戏玩法的决策。
+例如：基于此通知进行分支决策。</p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>提供最高的帧精确度。</li>
+<li>适合复杂的游戏逻辑和精确的事件序列。</li>
+</ul>
+<p><strong>缺点</strong>：相对较高的性能开销，特别是在处理大量通知时。</p>
+<p>选择建议：</p>
+<p>对于大多数视觉和音效通知，Queued 模式通常就足够了。
+对于涉及重要游戏逻辑、需要精确时间控制的通知，或者在通知基础上进行复杂决策的情况，应该使用 Branching Point 模式。
+在开发过程中，如果发现通知的时间精确度问题，可以考虑从 Queued 切换到 Branching Point。</p>
+<p>总结：</p>
+<p><strong>Queued</strong>：适合一般用途，性能好但精确度较低。
+<strong>Branching Point</strong>：适合需要高精度控制的情况，特别是在影响游戏玩法或进行复杂决策时。</p>
 </div></div>
 
 
@@ -1875,7 +2048,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 9, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 12, 2024</span>
   </span>
 
     
