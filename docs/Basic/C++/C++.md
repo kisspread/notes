@@ -1,6 +1,45 @@
 Title: UE C++ Usage
 comments: true
 
+
+## lambda 捕获
+这里记录一个lambda捕获问题作为lambda捕获的谨记内容。
+
+起初，这里是用按值捕获，AddLambda([this,&AttributeInfo]。因为外部值也是一个引用，引用其实就是一个指针，感觉按值捕获也是一样的。然后发生很诡异的事情，
+BroadcastInfo 里 tag和 value都能正常设置。但AttributeChangeDelegate（这是一个动态回调）无法正确执行。
+
+期间一直以为是const 修饰的锅，因为我把AttributeChangeDelegate设置为mutable, 感觉是因为mutable的问题。由于上面两个参数正常，我一直没有怀疑这个lambda捕获的问题。
+
+讲道理的说，const FAttributeInfo& AttributeInfo按值捕获获得是值的副本，离开这for的作用域后原本的“值”就可能被回收。但副本指向的也是原始的AttributeInfo，理应都一样才对，所以我非常不解。 如果有人知道真实原因，请告知。
+
+总的来说，lambda的使用还是要谨慎。
+
+```cpp
+void UMenuWidgetController::BindCallBacksToDependence()
+{
+	for (const FAttributeInfo& AttributeInfo : GetAllAttributes())
+	{
+		AuraASC()->GetGameplayAttributeValueChangeDelegate(AttributeInfo.AttributeAccessor).AddLambda([this,&AttributeInfo](const FOnAttributeChangeData& OnAttributeChangeData)
+			{
+				BroadcastInfo(AttributeInfo);
+			}
+		);
+	}
+}
+
+void UMenuWidgetController::BroadcastInfo(const FAttributeInfo& AttributeInfo)
+{
+	const FAttributeInfo& ResultAttr = FindAttributeInfoByTag(AttributeInfo.AttributeTag);
+	//update value in data assets.
+	ResultAttr.AttributeValue = AttributeInfo.AttributeAccessor.GetNumericValue(AuraAS());
+	AttributeInfo.AttributeChangeDelegate.ExecuteIfBound(ResultAttr.AttributeValue);
+	
+}
+```
+
+
+
+
 ## 集合
 RemoveSwap 要删除的元素，和末尾交换位置，然后删除它，然后继续找下一个。这种方式不考虑元素的顺序，数组不会整个重排，对比RemoveAt效率高。RemoveSingleSwap是单个的版本。
 ``` cpp
