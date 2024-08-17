@@ -236,7 +236,7 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
 		SpecHandle.Data.Get()->SetSetByCallerMagnitude(Damage.Key, ScaledDamage);
 	}
     ```
-    这里还使用了SetSetByCallerMagnitude，GE允许在运行时动态配置某个内置修改器的强度值，前提是在蓝图里先配置号，多个修改器的强度值是通过Gameplay Tag来区分。
+    这里还使用了SetSetByCallerMagnitude，GE允许在运行时动态配置某个内置修改器的强度值，前提是在蓝图里先配置号，多个修改器的强度值是通过Gameplay Tag来区分。（一个修改器只允许修改一个属性，但一个属性的setbycaller可以配置多个，所以用Gameplay Tag区分，因此Tag要是唯一的）
 
 1. 在GameplayAbility里使用， 通过MakeOutgoingGameplayEffectSpec来创建GE Spec
     ```cpp
