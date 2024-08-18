@@ -24,7 +24,7 @@
     
     
       
-        <title>Rider调试记录 - Game Dev Notes</title>
+        <title>Rider Debug UCommandlet - Game Dev Notes</title>
       
     
     
@@ -168,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rider调试记录
+              Rider Debug UCommandlet
             
           </span>
         </div>
@@ -583,7 +583,7 @@
           
   
   <span class="md-ellipsis">
-    Rider调试记录
+    Rider Debug UCommandlet
   </span>
   
 
@@ -594,7 +594,7 @@
         
   
   <span class="md-ellipsis">
-    Rider调试记录
+    Rider Debug UCommandlet
   </span>
   
 
@@ -1845,7 +1845,7 @@
   
 
 
-  <h1>Rider调试记录</h1>
+  <h1>Rider Debug UCommandlet</h1>
 
 <div><p>如何调试UCommandlet命令行程序</p>
 <hr>
@@ -1898,7 +1898,7 @@
 </code></pre></div>
 <p>多年的Android开发经验告诉我，可以在rider的Run configuration里增加一个配置:
 <a class="glightbox" href="../../assets/images/Debug_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Debug_image-2.png"></a>
-把上面使用说明的命令行参数填进去。</p>
+把上面使用说明的命令行参数填进去，并附加 <strong>-waitforattach</strong>, 最好把运行前 build project的步骤去掉，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。</p>
 <p>打好断点，运行。
 成功跳转到了报错的地方：<a class="glightbox" href="../../assets/images/Debug_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/Debug_image.png"></a></p>
 <p>理论上，这里不可能在命令行模式得到执行，但实际上它执行了，我怀疑是CDO的自动销毁。
@@ -1959,7 +1959,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 18, 2024</span>
   </span>
 
     
