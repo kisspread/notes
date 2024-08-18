@@ -1,4 +1,4 @@
-title: Rider调试记录
+title: Rider Debug UCommandlet
 comments:true
 
 如何调试UCommandlet命令行程序
@@ -65,7 +65,7 @@ const FString UGatherTextCommandlet::UsageText
 
 多年的Android开发经验告诉我，可以在rider的Run configuration里增加一个配置:
 ![alt text](../assets/images/Debug_image-2.png)
-把上面使用说明的命令行参数填进去。
+把上面使用说明的命令行参数填进去，并附加 **-waitforattach**, 最好把运行前 build project的步骤去掉，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。
 
 打好断点，运行。
 成功跳转到了报错的地方：![alt text](../assets/images/Debug_image.png)
