@@ -96,7 +96,7 @@ theme:
         icon: material/eye-outline
         name: light mode
   features:
-    - navigation.instant
+    # - navigation.instant
     - content.code.copy
     - content.code.annotate
     - content.code.select

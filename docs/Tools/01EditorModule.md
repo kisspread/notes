@@ -41,7 +41,9 @@ In this namespace, you only need to implement a method called **Delayed Registra
 ### Implementation Details
 
 There are two main details:
+
 - Creating the GE blueprint asset.
+
 - Creating a GameplayTag and saving it to an .ini file.
 
 #### Creating GE

@@ -41,7 +41,9 @@ comments:true
 ### 实现细节
 
 有两个主要细节：
+
  - 创建GE 的蓝图资产
+ 
  - 创建GameplayTag 并保存到 .ini 文件里
 
 #### 创建GE
