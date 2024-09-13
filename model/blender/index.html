@@ -721,6 +721,8 @@
       
         
       
+        
+      
     
     
       
@@ -808,6 +810,27 @@
   
   <span class="md-ellipsis">
     Multi section Montage Anim Notify Not Fire In Client
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Basic/Blueprint/physisc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Physisc
   </span>
   
 
@@ -1819,6 +1842,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      法向朝向没问题，但模型着色时候，出现伪影，黑斑
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1883,6 +1915,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      法向朝向没问题，但模型着色时候，出现伪影，黑斑
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1914,6 +1955,7 @@
   <h1>Modeling with Blender</h1>
 
 <div><h2 id="_1">问题合集</h2>
+<hr>
 <h3 id="mmd-blender">MMD 角色的模型 在虚幻展现的似乎，面部有细微的凹凸不平，坑坑洼洼，需要在blender里修复。</h3>
 <p>参考：</p>
 <ol>
@@ -1925,6 +1967,13 @@
 <li>参考上述链接，用球面传递拐面修改器的方式，影响角色面部的法向信息。其中的球面的细分决定精细度</li>
 <li>导出的 平滑勾选 面 和 Tangent Space 切线空间</li>
 <li>导入的虚幻Normal Import Method 中勾选 Import Normals and Tangents 选项。</li>
+</ol>
+<hr>
+<h3 id="_2">法向朝向没问题，但模型着色时候，出现伪影，黑斑</h3>
+<ol>
+<li>尝试平滑着色</li>
+<li>如果上一步不像，点击 数据，几何数据，清除自定义拆边法向数据 就可以了。（clear custom spilt normals data）
+<a class="glightbox" href="../../assets/images/blender_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/blender_image.png"></a></li>
 </ol></div>
 
 
@@ -1948,7 +1997,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 9, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 13, 2024</span>
   </span>
 
     
