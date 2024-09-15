@@ -3,6 +3,21 @@ comments: true
 
 不限于蓝图，C++也有。记录一下
 
+## 蓝图操作问题
+记录使用蓝图时，遇到的操作问题
+
+### 无法拖动 Components的到  蓝图graph 窗口
+
+拖动成员时，显示类似 “cannot find corresponding variable”
+![alt text](../../assets/images/BluePrint_image-2.png)
+
+原因是，命名消失了，变成了 none，未命名的组件蓝图脚本里无法使用：
+![alt text](../../assets/images/BluePrint_image-3.png)
+
+应该是热重载导致。重写编译试试，实在不行改个名字。
+
+
+
 ## 蓝图陷阱
 
 ### Event的变量覆盖
