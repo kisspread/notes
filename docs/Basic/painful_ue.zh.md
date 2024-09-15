@@ -1,8 +1,8 @@
-title:嵌套actor component 并没有那么容易
+title:嵌套actor component 并没有那么直接
 comments:true
 
 
-### 嵌套actor component 并没有那么容易.
+### 嵌套actor component 并没有那么直接
 
 当我尝试在component中嵌套另一个component的时候，发现报错：
 > Template Mismatch during attachment. Attaching instanced component to template component.

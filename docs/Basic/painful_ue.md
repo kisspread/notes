@@ -56,5 +56,7 @@ void AMyCharacter::AMyCharacter()
 }
 ```
 
+
 (The reason for nesting components is to organize highly related code together. But in reality, it's not always perfect. MyCollisonBox needs to be created outside and then passed in.)
 
+Basically, actor components support nesting. But you can only execute the nested logic within the actor, not within the component.
