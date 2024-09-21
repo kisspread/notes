@@ -4,6 +4,8 @@ comments:true
 
 ### 嵌套actor component 并没有那么直接
 
+
+
 当我尝试在component中嵌套另一个component的时候，发现报错：
 > Template Mismatch during attachment. Attaching instanced component to template component.
 
@@ -56,5 +58,7 @@ void AMyCharacter::AMyCharacter()
 
 （我们之所以用嵌套的方式来整理component，目的是为了把高度关联的代码整合在一起。但现实就是不那么完美,MyCollisonBox需要放在外面创建，然后传递进去）
 
+
+**简单地说，actorcomponent是支持嵌套的。但你只能在actor里去执行里的嵌套逻辑，而不能在component里去执行。**
 
 ----
