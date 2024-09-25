@@ -296,6 +296,31 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
     ```
     需要注意是的， Def就是蓝图里的GE实例，而且是const，所以不能修改。 
 
-### UGameplayAbility
+## UGameplayAbility
 
 定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类
+
+### FGameplayAbilitySpec 
+
+不管是GE，AS还是GA，他们都是设计成是通用的，他们和Mesh，texture这类资产类似，运行时不会去改变它们，它们相当于模板。习惯oop编程，都会有疑问，为何一个Class都已经实例了一个对象，这个对象为何还需要一个“规格”？我创建的时候指定GA的参数不好吗？我认为这是因为虚幻还有很多要考虑的因素，比如网络同步，数据持久性等。再分离出一层会更加通用便捷一些，所以有了FGameplayAbilitySpec 。
+
+FGameplayAbilitySpec  可以用GA的CDO来创建，CDO是全局共用，修改它的状态会影响到全部。(FGameplayAbilitySpec内部有如何实例化GA的策略) FGameplayAbilitySpec就相当于GA的**数据类**，它描述了每个技能的“**个性**”，有了数据类做基础，**网络传输，数据持久化**就方便很多，同时也是GA“实例”的代表。
+
+#### 体现技能的个性
+OOP的思路首先想到是继承，覆盖重写。但虚幻里通常不会继承于FGameplayAbilitySpec，因为它是为了通用性设计的，继承于它反而会增加一些复杂性。所以它提供了很多可以设置tag的字段来描述它自己。比如` AbilitySpec.DynamicAbilityTags`，只要负责打标签就能体现个性，在GA的方法里里就可以根据标签差异，来区别对待。比如都是火球术，有大师级tag的就能一次性打出更多的火球。这也是一种数据驱动(data-driven)。
+
+#### 实例化策略
+理论上，一个FGameplayAbilitySpec 内部只有一个GA 实例，但查看代码会发现它内部是有一个实例数组的，一个“规格”内部引用的GA可能被多次实例化, 这是因为GA可以配置实例化策略：
+
+- NonInstanced（非实例化）
+- InstancedPerActor（每个角色一个实例）
+- InstancedPerExecution（每次执行一个实例）
+
+对于 NonInstanced 策略，FGameplayAbilitySpec 只使用 CDO，不需要额外的实例, 共享CDO实例的内部状态。
+
+对于 InstancedPerActor 策略，FGameplayAbilitySpec 会在 NonReplicatedInstances 或 ReplicatedInstances 中存储一个实例，具体取决于能力是否需要复制。
+
+对于 InstancedPerExecution 策略，每次执行能力时都会创建一个新实例，这些实例会被存储在 NonReplicatedInstances 或 ReplicatedInstances 数组中。
+
+
+ 
