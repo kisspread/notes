@@ -16,7 +16,7 @@
         <link rel="prev" href="../../C%2B%2B/actor/">
       
       
-        <link rel="next" href="../ListView/">
+        <link rel="next" href="../LMB_Scrollable_LIstView/">
       
       
       <link rel="icon" href="../../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>00 - Game Dev Notes</title>
+        <title>FYI - Game Dev Notes</title>
       
     
     
@@ -168,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              00
+              FYI
             
           </span>
         </div>
@@ -1060,6 +1060,8 @@
       
         
       
+        
+      
     
     
       
@@ -1109,7 +1111,7 @@
           
   
   <span class="md-ellipsis">
-    00
+    FYI
   </span>
   
 
@@ -1120,7 +1122,7 @@
         
   
   <span class="md-ellipsis">
-    00
+    FYI
   </span>
   
 
@@ -1152,6 +1154,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LMB_Scrollable_LIstView/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Make Left Mouse Button Enable dragging to scroll the ListView.
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2119,7 +2142,7 @@
   
 
 
-  <h1>00</h1>
+  <h1>FYI</h1>
 
 <div><h2 id="references">参考 References</h2>
 <ul>
@@ -2129,6 +2152,7 @@
 <li>
 <p><a href="https://myslate.readthedocs.io/en/latest/index.html">slate UI 介绍</a></p>
 </li>
+<li><a href="https://myslate.readthedocs.io/en/latest/pages/%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB%E5%92%8C%E7%A2%B0%E6%92%9E%E7%BD%91%E6%A0%BC.html">鼠标点击和碰撞网格</a></li>
 <li><a href="https://lxjk.github.io/2019/10/01/How-to-Make-Tools-in-U-E.html">how to make tools in ue</a></li>
 </ul></div>
 
@@ -2138,10 +2162,67 @@
 
 
 
+  
+  
 
 
 
 
+
+
+  <h2 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="kisspread/notes"
+        data-repo-id="R_kgDOMNKAqg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMNKAqs4CgVZ_"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+  </script>
+
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    // Set palette on initial load
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    // Register event handlers after documented loaded
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
+
+          // Instruct Giscus to change theme
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
 
                 
               </article>
