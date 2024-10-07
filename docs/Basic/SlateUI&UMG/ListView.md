@@ -5,7 +5,7 @@ comments:true
 
 **UListView** 是专门处理 以 **UObject** 作为父类的数据项的列表。可以认为它是一个专门为UObject 类型优化使用的ListView。
 
-其中，它专门处理了 子类是 **AActor** 的类型的情况。
+其中，它有专门处理子类是 **AActor** 的类型的情况。
 
 ```cpp
 void UListView::OnItemsChanged(const TArray<UObject*>& AddedItems, const TArray<UObject*>& RemovedItems)
