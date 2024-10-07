@@ -64,9 +64,12 @@ MakeTDecl<ListViewT<ItemType>>( "ListViewT<ItemType>", "ListViewBase.h", 235, Re
 
 总之，过程非常复杂，但实际使用还是很简洁高效的，知道是怎么回事就可以了。
 
+---
+
+
 ## SLATE_EVENT 构造事件宏
 
-该macro提供了多种方法来绑定OnSelectionChanged事件，包括：
+该macro提供了多种方法来在FArguments里构造OnSelectionChanged事件，包括：
 
 - 直接绑定委托
 - 静态函数绑定（Static）
@@ -82,10 +85,15 @@ using FOnSelectionChanged       = typename TSlateDelegates< NullableItemType >::
 //创建一个事件类型
 SLATE_EVENT( FOnSelectionChanged, OnSelectionChanged ) 
 
+//然后，SListView的成员里定义一个，这样构造器模式里下划线那个，就可以赋值给这个真正的成员。似乎用到了通过右值引用和移动语义，减少复制。
+/** Delegate to invoke when selection changes. */
+FOnSelectionChanged OnSelectionChanged;
+
 ``` 
 
 展开 **SLATE_EVENT** 后，会发现它提供特别多便捷设置方法，这个宏就是为我们简化添加这种构造方法的步骤。
 可见，每个方法都返回static_cast<WidgetArgsType*>(this)->Me()，允许链式调用，也就形成了构造器模式。
+ 
 
 ```cpp
         WidgetArgsType& OnSelectionChanged(const FOnSelectionChanged& InDelegate)
@@ -204,7 +212,7 @@ template <template<typename> class ListViewT = SListView, typename UListViewBase
 ```            
 
 ## SLATE_ATTRIBUTE 属性构造宏
-该宏提供了一种简单的方法来绑定属性，包括：
+该宏用来在FArguments里构造属性，支持以下几种方式，包括：
 
 - 直接设置值
 - 静态函数（Static）
