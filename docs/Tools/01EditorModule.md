@@ -96,7 +96,7 @@ You need to use `IGameplayTagsEditorModule`, so you must add dependencies. The u
     ```
 
 #### Complete Code
-[GamePlayAbilityGenCooldownGE](https://github.com/kisspread/notes/blob/main/sample code/CustomAssesAction/GamePlayAbilityGenCooldownGE.cpp)
+[GamePlayAbilityGenCooldownGE](https://github.com/kisspread/notes/blob/main/samplecode/CustomAssesAction/GamePlayAbilityGenCooldownGE.cpp)
 
 ### Other Attempts
 

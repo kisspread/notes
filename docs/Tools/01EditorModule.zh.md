@@ -97,7 +97,7 @@ UGameplayEffect* NewGE = Cast<UGameplayEffect>(GeneratedClass->GetDefaultObject(
 
 
 #### 完整代码
-[GamePlayAbilityGenCooldownGE](https://github.com/kisspread/notes/blob/main/sample code/CustomAssesAction/GamePlayAbilityGenCooldownGE.cpp)
+[GamePlayAbilityGenCooldownGE](https://github.com/kisspread/notes/blob/main/samplecode/CustomAssesAction/GamePlayAbilityGenCooldownGE.cpp)
 
 
 ### 其他尝试
