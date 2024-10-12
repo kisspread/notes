@@ -2,8 +2,25 @@ title: Slate Macro
 comment: true
 
 ---
+### slate的构造：
 
-## SLATE_BEGIN_ARGS 构造器开始
+要理解这些宏是什么，就要知道under the hood到底生成了什么，才能知道他们的作用。
+
+```cpp
+SLATE_BEGIN_ARGS( SSubMenuButton )
+		: _ShouldAppearHovered( false )
+		{}
+		/** The label to display on the button */
+		SLATE_ATTRIBUTE( FString, Label )
+		/** Called when the button is clicked */
+		SLATE_EVENT( FOnClicked, OnClicked )
+		/** Content to put in the button */
+		SLATE_NAMED_SLOT( FArguments, FSimpleSlot, Content )
+		/** Whether or not the button should appear in the hovered state */
+		SLATE_ATTRIBUTE( bool, ShouldAppearHovered )
+	SLATE_END_ARGS()
+```
+### SLATE_BEGIN_ARGS 构造器开始
 Slate定义参数，是用构造器，也就是建造者模式来构造参数。
 
 SLATE_BEGIN_ARGS 会创建一个FArguments的内部结构体，这个结构体就是建造者模式的构造器。
@@ -67,7 +84,7 @@ MakeTDecl<ListViewT<ItemType>>( "ListViewT<ItemType>", "ListViewBase.h", 235, Re
 ---
 
 
-## SLATE_EVENT 构造事件宏
+### SLATE_EVENT 构造事件宏
 
 该macro提供了多种方法来在FArguments里构造OnSelectionChanged事件，包括：
 
@@ -78,7 +95,7 @@ MakeTDecl<ListViewT<ItemType>>( "ListViewT<ItemType>", "ListViewBase.h", 235, Re
 - 共享指针绑定（SP）
 - UObject绑定（UObject）
 
-### 解析
+#### 解析
 ```cpp
 //using声明来创建一个类型别名
 using FOnSelectionChanged       = typename TSlateDelegates< NullableItemType >::FOnSelectionChanged;
@@ -182,7 +199,7 @@ FOnSelectionChanged OnSelectionChanged;
     
 ```
 
-### 用法
+#### 用法
 
 引擎内部的帮助函数，提供构造帮助类：ListView construction helpers
 
@@ -211,7 +228,7 @@ template <template<typename> class ListViewT = SListView, typename UListViewBase
 			.OnSelectionChanged_UObject(Implementer, &UListViewBaseT::HandleSelectionChanged)
 ```            
 
-## SLATE_ATTRIBUTE 属性构造宏
+### SLATE_ATTRIBUTE 属性构造宏
 该宏用来在FArguments里构造属性，支持以下几种方式，包括：
 
 - 直接设置值
@@ -221,7 +238,7 @@ template <template<typename> class ListViewT = SListView, typename UListViewBase
 - 共享指针（SP）
 - UObject方法（UObject）
 
-### 解析
+#### 解析
 
 ```cpp
 SLATE_ATTRIBUTE( float, ItemHeight )
