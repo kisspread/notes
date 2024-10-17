@@ -310,7 +310,7 @@ FGameplayAbilitySpec  可以用GA的CDO来创建，CDO是全局共用，修改�
 OOP的思路首先想到是继承，覆盖重写。但虚幻里通常不会继承于FGameplayAbilitySpec，因为它是为了通用性设计的，继承于它反而会增加一些复杂性。所以它提供了很多可以设置tag的字段来描述它自己。比如` AbilitySpec.DynamicAbilityTags`，只要负责打标签就能体现个性，在GA的方法里里就可以根据标签差异，来区别对待。比如都是火球术，有大师级tag的就能一次性打出更多的火球。这也是一种数据驱动(data-driven)。
 
 #### 实例化策略
-理论上，一个FGameplayAbilitySpec 内部只有一个GA 实例，但查看代码会发现它内部是有一个实例数组的，一个“规格”内部引用的GA可能被多次实例化, 这是因为GA可以配置实例化策略：
+理论上，一个FGameplayAbilitySpec 内部只有一个GA 实例，但查看代码会发现它内部还有一个GA的实例数组的，也就是一个“规格”内部引用的GA可能被多次实例化, 这是因为GA可以配置实例化策略：
 
 - NonInstanced（非实例化）
 - InstancedPerActor（每个角色一个实例）
