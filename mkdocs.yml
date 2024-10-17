@@ -129,3 +129,8 @@ theme:
       example: octicons/beaker-16
       quote: octicons/quote-16
 
+exclude_docs: |
+  .*
+  /Excalidraw/
+  /canvas/
+  /task/
