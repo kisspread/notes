@@ -187,12 +187,16 @@ void OnRep_Strength(const FGameplayAttributeData& Old) const;
 
 ## UGameplayEffect
 !!! info
-    UGameplayEffect是GAS的**过程**，它定义了**数据计算方法**，可以是赋值，也可以是逻辑运算。
+    UGameplayEffect是GAS的**过程**，可用它配置**数据计算方法**，也就是数值运算的过程。还可以配置各种component，来自定义技能的逻辑“过程”，比如打各种tag，GE持续时间内获得新GA。
+    
+    GE就像设计好的函数，方法，供GA去调用。一个GA里可能会调用好几个GE；一个GE也可能会被多个GA调用
 
-实践中，并没有发现需要给UGameplayEffect定义C++ 子类，把它当成纯蓝图数据类来使用即可。
+5.3里，不需要给UGameplayEffect定义C++ 子类，这个版本的GE 开放了 GE component功能，也就是组合优于继承，用各种component的组合，来满足开发者需要自定义的“过程”。
+
+[GE component 参考](https://bobby-liu.medium.com/unreal-gameplay-effect-just-got-better-introduction-to-gameplay-effect-components-d5c498b1d149)
 
 ### 蓝图配置
-参考Aura课程。这里省略
+（有时间再记录）
 
 ### UGameplayEffec C++里的使用方式
 
@@ -296,9 +300,30 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
     ```
     需要注意是的， Def就是蓝图里的GE实例，而且是const，所以不能修改。 
 
-## UGameplayAbility
 
-定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类
+
+
+
+### GEComponents 
+![alt text](../assets/images/01GAS_MyUnderstand_image-2.png)
+
+GE自带10个 Component，还有一个 只显示描述的 Text Only Component
+
+自定义 GEComponent 需要注意的几个方法：
+
+- CanGameplayEffectApply： 决定GE是否能把apply，所有component都返回 真，GE才能被应用。
+- OnActiveGameplayEffectAdded： 周期性的GE首次会调用这个方法。
+- OnGameplayEffectExecuted：  对于即时的游戏效果类型，这将在成功应用于目标之后立即激活。对于定期游戏效果，每当发生属性 /游戏标签的更改时，此功能都会激活。
+- OnGamePlayEffectApplied：在成功应用于目标之后，即时和周期性效应都只会调用一次功能。这是对游戏玩法效果进行任何执行前的要求检查的机会。
+- OnGameplayEffectChanged：任何GE内部的字段改变，会调用此方法。
+
+
+## UGameplayAbility
+!!! info
+    定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类. 
+
+    GA 不关心具体过程，过程由GE担任，GA关心如何调度这些GE。
+
 
 ### FGameplayAbilitySpec 
 
