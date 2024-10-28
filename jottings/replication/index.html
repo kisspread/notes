@@ -1,6 +1,6 @@
 
 <!doctype html>
-<html lang="zh" class="no-js">
+<html lang="en" class="no-js">
   <head>
     
       <meta charset="utf-8">
@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/PCG/UE5.4PCGWithCPP/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/jottings/replication/">
       
       
-        <link rel="prev" href="../00/">
+        <link rel="prev" href="../commonui/">
       
       
-        <link rel="next" href="../../Tools/00/">
+        <link rel="next" href="../../model/blender/">
       
       
-      <link rel="icon" href="../../../assets/logo.png">
+      <link rel="icon" href="../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>UE5.4 PCG 自定义节点 C++常用类 浅析 - Game Dev Notes</title>
+        <title>Replication - Game Dev Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -91,7 +91,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
@@ -99,7 +99,7 @@
     
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -107,7 +107,7 @@
     
     
 
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -116,7 +116,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -135,8 +135,8 @@
     <div data-md-component="skip">
       
         
-        <a href="#upcgdata" class="md-skip">
-          跳转至
+        <a href="#network-prediction-plugin" class="md-skip">
+          Skip to content
         </a>
       
     </div>
@@ -148,10 +148,10 @@
       
 
 <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -168,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              UE5.4 PCG 自定义节点 C++常用类 浅析
+              Replication
             
           </span>
         </div>
@@ -208,20 +208,20 @@
       <div class="md-header__option">
   <div class="md-select">
     
-    <button class="md-header__button md-icon" aria-label="选择当前语言">
+    <button class="md-header__button md-icon" aria-label="Select language">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../PCG/UE5.4PCGWithCPP/" hreflang="en" class="md-select__link">
+            <a href="./" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
         
           <li class="md-select__item">
-            <a href="./" hreflang="zh" class="md-select__link">
+            <a href="../../zh/jottings/replication/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -240,16 +240,16 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
-      <nav class="md-search__options" aria-label="查找">
+      <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
         </button>
@@ -262,7 +262,7 @@
       <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            正在初始化搜索引擎
+            Initializing search
           </div>
           <ol class="md-search-result__list" role="presentation"></ol>
         </div>
@@ -273,7 +273,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -294,7 +294,7 @@
         
           
             
-<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
   <div class="md-grid">
     <ul class="md-tabs__list">
       
@@ -303,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -358,13 +358,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../PCG/00/" class="md-tabs__link">
           
   
     
@@ -420,11 +418,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../jottings/commonui/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../commonui/" class="md-tabs__link">
           
   
     
@@ -477,18 +477,18 @@
   
 
 
-<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../.." title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     Game Dev Notes
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/kisspread" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/kisspread" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
@@ -508,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -722,7 +722,7 @@
         
   
   <span class="md-ellipsis">
-    嵌套actor component 并没有那么直接
+    Nesting actor components isn't exactly straightforward.
   </span>
   
 
@@ -1302,10 +1302,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1316,20 +1314,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1340,7 +1337,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             PCG
@@ -1354,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
+      <a href="../../PCG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,132 +1369,18 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    UE5.4 PCG 自定义节点 C++常用类 浅析
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    UE5.4 PCG 自定义节点 C++常用类 浅析
+    A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#upcgdata" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGData
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fpcgpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGPoint
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fpcgcontext" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGContext
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgsettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGSettings
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UPCGSettings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fpcgpinproperties" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGPinProperties
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fpcgtaggeddata" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGTaggedData
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgpointdata" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGPointData
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgparamdata" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGParamData
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1768,7 +1651,7 @@
         
   
   <span class="md-ellipsis">
-    How to Setup CommonUI in UE5.4.2 结合增强输入
+    How to Setup CommonUI in UE5.4.2 with enhanced input
   </span>
   
 
@@ -1831,7 +1714,7 @@
         
   
   <span class="md-ellipsis">
-    CommonActionWidget Usage
+    How to Use CommonActionWidget
   </span>
   
 
@@ -2130,8 +2013,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -2142,19 +2027,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -2165,7 +2051,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Jottings
@@ -2179,7 +2065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jottings/commonui/" class="md-nav__link">
+      <a href="../commonui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2197,10 +2083,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../jottings/replication/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Replication
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2209,6 +2113,51 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#network-prediction-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Prediction plugin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iris" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iris
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gas-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      GAS Prediction
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2306,90 +2255,39 @@
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="目录">
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      目录
+      Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#upcgdata" class="md-nav__link">
+  <a href="#network-prediction-plugin" class="md-nav__link">
     <span class="md-ellipsis">
-      UPCGData
+      Network Prediction plugin
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fpcgpoint" class="md-nav__link">
+  <a href="#iris" class="md-nav__link">
     <span class="md-ellipsis">
-      FPCGPoint
+      Iris
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#fpcgcontext" class="md-nav__link">
+  <a href="#gas-prediction" class="md-nav__link">
     <span class="md-ellipsis">
-      FPCGContext
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgsettings" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGSettings
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="UPCGSettings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fpcgpinproperties" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGPinProperties
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fpcgtaggeddata" class="md-nav__link">
-    <span class="md-ellipsis">
-      FPCGTaggedData
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgpointdata" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGPointData
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#upcgparamdata" class="md-nav__link">
-    <span class="md-ellipsis">
-      UPCGParamData
+      GAS Prediction
     </span>
   </a>
   
@@ -2410,7 +2308,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/PCG/UE5.4PCGWithCPP.zh.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/jottings/replication.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2418,76 +2316,83 @@
   
 
 
-  <h1>UE5.4 PCG 自定义节点 C++常用类 浅析</h1>
+  <h1>Replication</h1>
 
-<div><h2 id="upcgdata"><strong>UPCGData</strong></h2>
-<ul>
-<li>相当于 PGC的“UObject”, 大部分PCG的类都派生于它。</li>
-</ul>
-<h2 id="fpcgpoint"><strong>FPCGPoint</strong></h2>
-<ul>
-<li>PCG 点的元结构，就是蓝图里调试时显示的点信息，Position, Density, Bound 等待。</li>
-</ul>
-<h2 id="fpcgcontext"><strong>FPCGContext</strong></h2>
-<ul>
-<li>执行时的上下文（有多少线连进来可以通过它获取)</li>
-</ul>
-<h2 id="upcgsettings"><strong>UPCGSettings</strong></h2>
-<ul>
-<li>大部分PCG 节点都是带UPCGSettings的，自定义节点也继承这个类，是对整个节点配置的包装，用于生成IPCGElement就是蓝图里我们看到的节点，外部通过IPCGElement::Execute来执行<code>UPCGSettings::ExecuteInternal</code>方法。ExecuteInternal就是我们自定义逻辑的地方。</li>
-<li>自定义变量写在这里，就可以在graph 节点里配置</li>
-<li>该类也是派生于UPCGData</li>
-<li>
-<p>Settings里会用到两个重要的结构体</p>
-<h3 id="fpcgpinproperties"><strong>FPCGPinProperties</strong></h3>
-<ul>
-<li>是Pin的属性类，用于描述UPCGSettings的Input/Output Pin 的属性，比如是否为高级，是否必须设置(EPCGPinStatus::Required) 等</li>
-<li>通过EPCGDataType来配置Pin接受的数据类型，最常用的类型是Point 和 Param, Param就是蓝图里的Attribute Set类型</li>
-</ul>
-<h3 id="fpcgtaggeddata"><strong>FPCGTaggedData</strong></h3>
-<ul>
-<li>Pin的数据类，用于描述Pin的数据。被执行时，需要从FPCGContext获得连接进来的数据。“有多少线连进来，就有多少FPCGTaggedData”</li>
-<li>有个数据字段<code>TObjectPtr&lt;const UPCGData&gt; Data</code>，可以根据自己的需要，cast 成自己要的派生类</li>
-<li>
-<p>输入数据 需要用 <code>Outputs.Add_GetRef(Input)</code> 关联一下 input</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">//step1 从执行的上下文里获得Outputs</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGTaggedData</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">Outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Context</span><span class="o">-&gt;</span><span class="n">OutputData</span><span class="p">.</span><span class="n">TaggedData</span><span class="p">;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">//step2 关联Input</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">FPCGTaggedData</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ChosenTaggedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Outputs</span><span class="p">.</span><span class="n">Add_GetRef</span><span class="p">(</span><span class="n">Input</span><span class="p">);</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">//step3 完成配置</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="p">;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">ChosenTaggedData</span><span class="p">.</span><span class="n">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCGRandomChoiceSettings</span><span class="o">::</span><span class="n">ChosenPointsLabel</span><span class="p">;</span>
-</code></pre></div>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="upcgpointdata"><strong>UPCGPointData</strong></h2>
-<ul>
-<li>Point类型的包装类，继承于UPCGData，包装了FPCGPoint</li>
-<li>FPCGTaggedData 的Data 类型选项之一</li>
-<li>创建后通常要用Input PointData 来InitializeFromData它,因为 进来的PointData包含了一些上下文不能丢失
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">UPCGPointData</span><span class="o">*</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGPointData</span><span class="o">&gt;</span><span class="p">();</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">InitializeFromData</span><span class="p">(</span><span class="n">PointData</span><span class="p">);</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">TArray</span><span class="o">&lt;</span><span class="n">FPCGPoint</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">ChosenPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChosenPointsData</span><span class="o">-&gt;</span><span class="n">GetMutablePoints</span><span class="p">();</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">//分配内存空间大小</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ChosenPoints</span><span class="p">.</span><span class="n">Reserve</span><span class="p">(</span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
-</code></pre></div></li>
-</ul>
-<h2 id="upcgparamdata"><strong>UPCGParamData</strong></h2>
-<ul>
-<li>是蓝图里的Attribute Set类型, 也是FPCGTaggedData 的Data 类型选项之一</li>
-<li>
-<p>创建一个int32 类型 代码示例，形式有点像Key-Value</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="c1">// Create Attribute set</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">UPCGParamData</span><span class="o">*</span><span class="w"> </span><span class="n">ParamData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGParamData</span><span class="o">&gt;</span><span class="p">();</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="c1">//通过CreateAttribute创建 int32, </span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">FPCGMetadataAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">CreateAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"ChosenPointsNum"</span><span class="p">),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="c1">//赋值</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="n">Attribute</span><span class="o">-&gt;</span><span class="n">SetValue</span><span class="p">(</span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span>
-</code></pre></div>
-</li>
-</ul></div>
+<div><h3 id="network-prediction-plugin">Network Prediction plugin</h3>
+<p><a class="glightbox" href="../../assets/images/jottings_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/jottings_image.png"></a>
+从提交记录上看，该插件2021年已经停更，后面的都是小改动。主程序员(Dave Ratti)已经离职epic.</p>
+<p>NP插件需要和Mover 2.0 配合使用会比较好。</p>
+<p>GAS  和 CMC 都和 NP 不太兼容，必须考虑 NP 插件中存在的缓冲时间。如果不这样做，所有 CMC/GAS 功能的执行速度都会比 NP 代码更快，并且您将看到明显的执行延迟。</p>
+<p>The Network Prediction plugin (which can also be found in Engine/Plugins/Runtime/NetworkPrediction) – Sign up here if you don’t have Git access – is available in a default Unreal Engine installation but is still experimental at the time of writing this article and progress has been halted due to the main programmer (Dave Ratti) no longer working at Epic. Through personal extensive testing it is in a good state to be used though and solves a few of the issues mentioned here such as packet buffering/ordering, client/server frame syncing and desync/reconciling tools along with providing some other nice to have features. Epic have mentioned on UDN that they’re still working on a version of the Character Movement Component which is compatible with the NP plugin but it is yet to be announced (It might be the Mover 2.0 component?). It’s also worth mentioning that if you’re using the Gameplay Ability System in your project it will also not be compatible and you’ll have to create your own alternative using the NP plugin if you want accurate results.</p>
+<p>Note: If you do try to use this plugin alongside GAS or CMC you’ll have to account for the buffer time which exists in the NP plugin. If you don’t all CMC/GAS functionality will execute sooner than NP code and you’ll see a visible delay in execution.</p>
+<p><a href="https://www.kierannewland.co.uk/the-problems-with-unreal-engines-default-networking/">source</a></p>
+<p><a href="https://www.kierannewland.co.uk/using-the-network-prediction-plugin/">Using The Network Prediction Plugin In Unreal
+</a></p>
+<h3 id="iris">Iris</h3>
+<p>Iris 复制系统对比旧复制系统，性能更好，拓展性更强，维护更容易。</p>
+<p>在大量玩家的游戏里，他对服务端更加友好，内存占用减少，能支持更多的玩家。</p>
+<p>官方建议尽可能避免创建自定义序列化程序，因为未来的Iris版本可能会提供更详细的属性来描述如何复制属性，包括要使用的序列化程序、该序列化程序的参数以及复制条件。</p>
+<p>It is recommended to avoid creating custom serializers when possible. A planned feature for Iris is to provide more detailed attributes to describe how properties are replicated, including which serializer to use, parameters for that serializer, and replication conditions. The goal is to give projects greater control over their replicated data without the need to write custom serializers, as well as allowing for features such as delta compression to be automatically supported.</p>
+<p><a href="https://dev.epicgames.com/community/learning/tutorials/z08b/unreal-engine-iris-faq">source</a></p>
+<h3 id="gas-prediction">GAS Prediction</h3>
+<p>Dave Ratti 在2019年回答了GAS存在的一些问题，这里是第8个提问和回答。他认为GAS已经非常稳定，当前版本的GAS不会有大改动。长远地看，如果有V2版本将会统一客户端预测，比如CMC；支持GE移除的预测，支持延迟高延迟的GE重新对账；优化RPC网络数据，把堡垒之夜中进行了大量优化带给UE。</p>
+<p>21年左右Dave Ratti已经离职。</p>
+<p>目前的情况，现在还有2个月就2025了，Mover 2.0 应该是新的CMC，还是实验性；NP插件是beta 版本。
+Iris 在5.4 中仍将标记为实验性。GAS没啥新的动静，估计等待上面这些大哥稳定，才会有有改动吧。</p>
+<p>What is Epic’s roadmap for the GameplayAbilitySystem plugin? Which features does
+Epic plan to add in 2019 and beyond?</p>
+<blockquote>
+<p>We feel that overall the system is pretty stable at this point and we don’t have anyone working
+on major new features. Bug fixes and small improvements occasionally are made for Fortnite or
+from UDN/pull requests, but that is it right now.
+Longer term, I think we will eventually do a “V2” or some big changes. We learned a lot from
+writing this system and feel we got a lot right and a lot wrong. I would love a chance to correct
+those mistakes and improve some of the fatal flaws that were pointed out above.
+If a V2 was to ever come, providing an upgrade path would be of utmost importance. We would
+never make a V2 and leave Fortnite on V1 forever: there would be some path or procedures
+that would automatically migrate as much as possible, though there would still almost certainly
+be some manual remaking required.
+The high priority fixes would be:
+● Better interoperability with the character movement system. Unifying client prediction.
+● GE removal prediction (question #4)
+● GE latency reconciliation (question #8)
+● Generalized network optimizations such as batching RPCs and proxy structures. Mostly
+the stuff that we’ve done for Fortnite but find ways to break it down into more
+generalized form, at least so that games can write their own game specific optimizations
+more easily.
+The more general refactor type of changes I would consider making:
+● I would like to look at fundamentally moving away from having GEs reference
+spreadsheet values directly, instead they would be able to emit parameters and those
+parameters could be filled by some higher level object that is bound to spreadsheet
+values. The problem with the current model is that GEs become unsharable due to their
+tight coupling with the curve table rows. I think a generalized system for
+parameterization could be written and be the underpinning of a V2 system.
+● Reduce number of “policies” on UGameplayAbility. I would remove ReplicationPolicy
+InstancingPolicy. Replication is, imo, almost never actually needed and causes
+confusion. InstancingPolicy should be replaced instead by making
+FGameplayAbilitySpec a UObject that can be subclassed. This should have been the
+“non instantiated ability object” that has events and is blueprintable. The
+UGameplayAbility should be the “instanced per execution” object. It could be optional if
+you need to actually instantiate: instead “non instanced” abilities would be implemented
+via the new UGameplayAbilitySpec object.
+● The system should provide more “middle level” constructs such as “filtered GE
+application container” (data drive what GEs to apply to which actors with higher level
+gameplay logic), “Overlapping volume support” (apply the “Filtered GE application
+container” based on collision primitive overlap events), etc.These are building blocks that
+every project ends up implementing in their own way. Getting them right is non trivial so I
+think we should do a better job providing some basic implementations.
+● In general, reducing boilerplate needed to get your project up and running. Possibly a
+separate module “Ex library” or whatever that could provide things like passive abilities
+or basic hitscan weapons out of the box. This module would be optional but would get
+you up and running quickly.
+● I would like to move GameplayCues to a separate module that is not coupled with the
+ability system. I think there are a lot of improvements that could be made here.
+This is only my personal opinion and not a commitment from anyone. I think the most realistic
+course of action will be as new engine tech initiatives come through, the ability system will need
+to be updated and that will be a time to do this sort of thing. These initiatives could be related to
+scripting, networking, or physics/character movement. This is all very far looking ahead though
+so I cannot give commitments or estimates on timelines.</p>
+</blockquote></div>
 
 
 
@@ -2507,20 +2412,20 @@
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="最后更新">
+    <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 20, 2024</span>
   </span>
 
     
     
       
   <span class="md-source-file__fact">
-    <span class="md-icon" title="创建日期">
+    <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年6月25日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 20, 2024</span>
   </span>
 
     
@@ -2532,7 +2437,7 @@
 
 
 
-  <h2 id="__comments">评论</h2>
+  <h2 id="__comments">Comments</h2>
   <script src="https://giscus.app/client.js"
         data-repo="kisspread/notes"
         data-repo-id="R_kgDOMNKAqg"
@@ -2597,7 +2502,7 @@
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
-  回到页面顶部
+  Back to top
 </button>
         
       </main>
@@ -2630,12 +2535,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

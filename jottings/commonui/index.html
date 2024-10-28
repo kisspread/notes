@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/jottings/jottings/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/jottings/commonui/">
       
       
         <link rel="prev" href="../../UI/SlateUI%26UMG/slate/">
       
       
-        <link rel="next" href="../../model/blender/">
+        <link rel="next" href="../replication/">
       
       
       <link rel="icon" href="../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Replication - Game Dev Notes</title>
+        <title>Common UI - Game Dev Notes</title>
       
     
     
@@ -135,7 +135,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#network-prediction-plugin" class="md-skip">
+        <a href="#ucommongroupbase" class="md-skip">
           Skip to content
         </a>
       
@@ -168,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Replication
+              Common UI
             
           </span>
         </div>
@@ -221,7 +221,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/jottings/jottings/" hreflang="zh" class="md-select__link">
+            <a href="../../zh/jottings/commonui/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -2022,6 +2022,8 @@
       
         
       
+        
+      
     
     
       
@@ -2074,7 +2076,7 @@
           
   
   <span class="md-ellipsis">
-    Replication
+    Common UI
   </span>
   
 
@@ -2085,7 +2087,7 @@
         
   
   <span class="md-ellipsis">
-    Replication
+    Common UI
   </span>
   
 
@@ -2105,27 +2107,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-prediction-plugin" class="md-nav__link">
+  <a href="#ucommongroupbase" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Prediction plugin
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#iris" class="md-nav__link">
-    <span class="md-ellipsis">
-      Iris
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gas-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      GAS Prediction
+      UcommonGroupBase
     </span>
   </a>
   
@@ -2135,6 +2119,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replication
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2244,27 +2249,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#network-prediction-plugin" class="md-nav__link">
+  <a href="#ucommongroupbase" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Prediction plugin
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#iris" class="md-nav__link">
-    <span class="md-ellipsis">
-      Iris
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gas-prediction" class="md-nav__link">
-    <span class="md-ellipsis">
-      GAS Prediction
+      UcommonGroupBase
     </span>
   </a>
   
@@ -2285,7 +2272,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/jottings/jottings.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/jottings/commonui.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2293,83 +2280,14 @@
   
 
 
-  <h1>Replication</h1>
+  <h1>Common UI</h1>
 
-<div><h3 id="network-prediction-plugin">Network Prediction plugin</h3>
-<p><a class="glightbox" href="../../assets/images/jottings_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/jottings_image.png"></a>
-从提交记录上看，该插件2021年已经停更，后面的都是小改动。主程序员(Dave Ratti)已经离职epic.</p>
-<p>NP插件需要和Mover 2.0 配合使用会比较好。</p>
-<p>GAS  和 CMC 都和 NP 不太兼容，必须考虑 NP 插件中存在的缓冲时间。如果不这样做，所有 CMC/GAS 功能的执行速度都会比 NP 代码更快，并且您将看到明显的执行延迟。</p>
-<p>The Network Prediction plugin (which can also be found in Engine/Plugins/Runtime/NetworkPrediction) – Sign up here if you don’t have Git access – is available in a default Unreal Engine installation but is still experimental at the time of writing this article and progress has been halted due to the main programmer (Dave Ratti) no longer working at Epic. Through personal extensive testing it is in a good state to be used though and solves a few of the issues mentioned here such as packet buffering/ordering, client/server frame syncing and desync/reconciling tools along with providing some other nice to have features. Epic have mentioned on UDN that they’re still working on a version of the Character Movement Component which is compatible with the NP plugin but it is yet to be announced (It might be the Mover 2.0 component?). It’s also worth mentioning that if you’re using the Gameplay Ability System in your project it will also not be compatible and you’ll have to create your own alternative using the NP plugin if you want accurate results.</p>
-<p>Note: If you do try to use this plugin alongside GAS or CMC you’ll have to account for the buffer time which exists in the NP plugin. If you don’t all CMC/GAS functionality will execute sooner than NP code and you’ll see a visible delay in execution.</p>
-<p><a href="https://www.kierannewland.co.uk/the-problems-with-unreal-engines-default-networking/">source</a></p>
-<p><a href="https://www.kierannewland.co.uk/using-the-network-prediction-plugin/">Using The Network Prediction Plugin In Unreal
-</a></p>
-<h3 id="iris">Iris</h3>
-<p>Iris 复制系统对比旧复制系统，性能更好，拓展性更强，维护更容易。</p>
-<p>在大量玩家的游戏里，他对服务端更加友好，内存占用减少，能支持更多的玩家。</p>
-<p>官方建议尽可能避免创建自定义序列化程序，因为未来的Iris版本可能会提供更详细的属性来描述如何复制属性，包括要使用的序列化程序、该序列化程序的参数以及复制条件。</p>
-<p>It is recommended to avoid creating custom serializers when possible. A planned feature for Iris is to provide more detailed attributes to describe how properties are replicated, including which serializer to use, parameters for that serializer, and replication conditions. The goal is to give projects greater control over their replicated data without the need to write custom serializers, as well as allowing for features such as delta compression to be automatically supported.</p>
-<p><a href="https://dev.epicgames.com/community/learning/tutorials/z08b/unreal-engine-iris-faq">source</a></p>
-<h3 id="gas-prediction">GAS Prediction</h3>
-<p>Dave Ratti 在2019年回答了GAS存在的一些问题，这里是第8个提问和回答。他认为GAS已经非常稳定，当前版本的GAS不会有大改动。长远地看，如果有V2版本将会统一客户端预测，比如CMC；支持GE移除的预测，支持延迟高延迟的GE重新对账；优化RPC网络数据，把堡垒之夜中进行了大量优化带给UE。</p>
-<p>21年左右Dave Ratti已经离职。</p>
-<p>目前的情况，现在还有2个月就2025了，Mover 2.0 应该是新的CMC，还是实验性；NP插件是beta 版本。
-Iris 在5.4 中仍将标记为实验性。GAS没啥新的动静，估计等待上面这些大哥稳定，才会有有改动吧。</p>
-<p>What is Epic’s roadmap for the GameplayAbilitySystem plugin? Which features does
-Epic plan to add in 2019 and beyond?</p>
-<blockquote>
-<p>We feel that overall the system is pretty stable at this point and we don’t have anyone working
-on major new features. Bug fixes and small improvements occasionally are made for Fortnite or
-from UDN/pull requests, but that is it right now.
-Longer term, I think we will eventually do a “V2” or some big changes. We learned a lot from
-writing this system and feel we got a lot right and a lot wrong. I would love a chance to correct
-those mistakes and improve some of the fatal flaws that were pointed out above.
-If a V2 was to ever come, providing an upgrade path would be of utmost importance. We would
-never make a V2 and leave Fortnite on V1 forever: there would be some path or procedures
-that would automatically migrate as much as possible, though there would still almost certainly
-be some manual remaking required.
-The high priority fixes would be:
-● Better interoperability with the character movement system. Unifying client prediction.
-● GE removal prediction (question #4)
-● GE latency reconciliation (question #8)
-● Generalized network optimizations such as batching RPCs and proxy structures. Mostly
-the stuff that we’ve done for Fortnite but find ways to break it down into more
-generalized form, at least so that games can write their own game specific optimizations
-more easily.
-The more general refactor type of changes I would consider making:
-● I would like to look at fundamentally moving away from having GEs reference
-spreadsheet values directly, instead they would be able to emit parameters and those
-parameters could be filled by some higher level object that is bound to spreadsheet
-values. The problem with the current model is that GEs become unsharable due to their
-tight coupling with the curve table rows. I think a generalized system for
-parameterization could be written and be the underpinning of a V2 system.
-● Reduce number of “policies” on UGameplayAbility. I would remove ReplicationPolicy
-InstancingPolicy. Replication is, imo, almost never actually needed and causes
-confusion. InstancingPolicy should be replaced instead by making
-FGameplayAbilitySpec a UObject that can be subclassed. This should have been the
-“non instantiated ability object” that has events and is blueprintable. The
-UGameplayAbility should be the “instanced per execution” object. It could be optional if
-you need to actually instantiate: instead “non instanced” abilities would be implemented
-via the new UGameplayAbilitySpec object.
-● The system should provide more “middle level” constructs such as “filtered GE
-application container” (data drive what GEs to apply to which actors with higher level
-gameplay logic), “Overlapping volume support” (apply the “Filtered GE application
-container” based on collision primitive overlap events), etc.These are building blocks that
-every project ends up implementing in their own way. Getting them right is non trivial so I
-think we should do a better job providing some basic implementations.
-● In general, reducing boilerplate needed to get your project up and running. Possibly a
-separate module “Ex library” or whatever that could provide things like passive abilities
-or basic hitscan weapons out of the box. This module would be optional but would get
-you up and running quickly.
-● I would like to move GameplayCues to a separate module that is not coupled with the
-ability system. I think there are a lot of improvements that could be made here.
-This is only my personal opinion and not a commitment from anyone. I think the most realistic
-course of action will be as new engine tech initiatives come through, the ability system will need
-to be updated and that will be a time to do this sort of thing. These initiatives could be related to
-scripting, networking, or physics/character movement. This is all very far looking ahead though
-so I cannot give commitments or estimates on timelines.</p>
-</blockquote></div>
+<div><h3 id="ucommongroupbase">UcommonGroupBase</h3>
+<p>当只有一个子widget的时候，会默认调用“选中”方法。在219行</p>
+<p>（默认没有声音）</p>
+<p>所以第一个add进来的widget，默认是一定会选中的，触发不满足 相关条件。</p>
+<p>但这个时机通常不太好，建议 bSelectedRequired 为 false, 然后自己手动调用选中。</p>
+<p><a class="glightbox" href="../../assets/images/commonui_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/commonui_image.png"></a></p></div>
 
 
 
@@ -2392,7 +2310,7 @@ so I cannot give commitments or estimates on timelines.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 28, 2024</span>
   </span>
 
     
@@ -2402,7 +2320,7 @@ so I cannot give commitments or estimates on timelines.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 20, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 28, 2024</span>
   </span>
 
     
