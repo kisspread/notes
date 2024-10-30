@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/GAS/3AbilityAsync/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/UI/CommonUI/09WidgetGroup/">
       
       
-        <link rel="prev" href="../2DataAssetsAuto/">
+        <link rel="prev" href="../08CropoutSample/">
       
       
-        <link rel="next" href="../4GAS%20Trap/">
+        <link rel="next" href="../../SlateUI%26UMG/00/">
       
       
-      <link rel="icon" href="../../../assets/logo.png">
+      <link rel="icon" href="../../../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
-        <title>Use AbilityAsync Instead of UBlueprintAsyncActionBase - Game Dev Notes</title>
+        <title>CommonUI 控件组 - Game Dev Notes</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.0253249f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
   
@@ -91,7 +91,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
@@ -99,7 +99,7 @@
     
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Concert+One&display=swap">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -107,7 +107,7 @@
     
     
 
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -116,7 +116,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -134,6 +134,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ucommonwidgetgroupbase" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -144,9 +149,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../../" title="Game Dev Notes" class="md-header__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -163,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Use AbilityAsync Instead of UBlueprintAsyncActionBase
+              CommonUI 控件组
             
           </span>
         </div>
@@ -210,7 +215,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../GAS/3AbilityAsync/" hreflang="en" class="md-select__link">
+            <a href="../../../../UI/CommonUI/09WidgetGroup/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -298,7 +303,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link">
+      <a href="../../../" class="md-tabs__link">
         
   
     
@@ -317,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Basic/00/" class="md-tabs__link">
+        <a href="../../../Basic/00/" class="md-tabs__link">
           
   
     
@@ -333,13 +338,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../GAS/00/" class="md-tabs__link">
           
   
     
@@ -359,7 +362,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../PCG/00/" class="md-tabs__link">
+        <a href="../../../PCG/00/" class="md-tabs__link">
           
   
     
@@ -379,7 +382,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../Tools/00/" class="md-tabs__link">
+        <a href="../../../Tools/00/" class="md-tabs__link">
           
   
     
@@ -395,11 +398,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../UI/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../00/" class="md-tabs__link">
           
   
     
@@ -419,7 +424,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../jottings/commonui/" class="md-tabs__link">
+        <a href="../../../jottings/commonui/" class="md-tabs__link">
           
   
     
@@ -439,7 +444,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../model/blender/" class="md-tabs__link">
+        <a href="../../../model/blender/" class="md-tabs__link">
           
   
     
@@ -474,9 +479,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
+    <a href="../../../" title="Game Dev Notes" class="md-nav__button md-logo" aria-label="Game Dev Notes" data-md-component="logo">
       
-  <img src="../../../assets/logo.png" alt="logo">
+  <img src="../../../../assets/logo.png" alt="logo">
 
     </a>
     Game Dev Notes
@@ -503,7 +508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../" class="md-nav__link">
+      <a href="../../../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -587,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/00/" class="md-nav__link">
+      <a href="../../../Basic/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -608,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Debug/" class="md-nav__link">
+      <a href="../../../Basic/Debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Material/" class="md-nav__link">
+      <a href="../../../Basic/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -650,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Math/" class="md-nav__link">
+      <a href="../../../Basic/Math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -692,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/ffmpeg/" class="md-nav__link">
+      <a href="../../../Basic/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -713,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/painful_ue/" class="md-nav__link">
+      <a href="../../../Basic/painful_ue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/ps/" class="md-nav__link">
+      <a href="../../../Basic/ps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/python/" class="md-nav__link">
+      <a href="../../../Basic/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -828,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/0dontdothis/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/0dontdothis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -849,7 +854,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -870,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/MontageSection/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/MontageSection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -891,7 +896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/editor/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -912,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/Blueprint/physisc/" class="md-nav__link">
+      <a href="../../../Basic/Blueprint/physisc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1010,7 +1015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1031,7 +1036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Basic/C%2B%2B/actor/" class="md-nav__link">
+      <a href="../../../Basic/C%2B%2B/actor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,10 +1069,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1090,20 +1093,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1114,7 +1116,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             GAS
@@ -1128,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
+      <a href="../../../GAS/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1149,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01GAS_MyUnderstand/" class="md-nav__link">
+      <a href="../../../GAS/01GAS_MyUnderstand/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1170,7 +1172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02GamePlayTag/" class="md-nav__link">
+      <a href="../../../GAS/02GamePlayTag/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1191,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../2DataAssetsAuto/" class="md-nav__link">
+      <a href="../../../GAS/2DataAssetsAuto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1209,17 +1211,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../GAS/3AbilityAsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1228,7 +1223,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1241,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../4GAS%20Trap/" class="md-nav__link">
+      <a href="../../../GAS/4GAS%20Trap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../5CooldownGE/" class="md-nav__link">
+      <a href="../../../GAS/5CooldownGE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1283,7 +1277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../6GE_Calculation/" class="md-nav__link">
+      <a href="../../../GAS/6GE_Calculation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1357,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/00/" class="md-nav__link">
+      <a href="../../../PCG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1378,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
+      <a href="../../../PCG/UE5.4PCGWithCPP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1452,7 +1446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/00/" class="md-nav__link">
+      <a href="../../../Tools/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1473,7 +1467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/01EditorModule/" class="md-nav__link">
+      <a href="../../../Tools/01EditorModule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1498,8 +1492,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1514,19 +1510,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1537,7 +1534,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             UI
@@ -1551,7 +1548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/00/" class="md-nav__link">
+      <a href="../../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1572,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/WidgetPool/" class="md-nav__link">
+      <a href="../../WidgetPool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1590,8 +1587,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1621,13 +1620,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -1641,7 +1638,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             CommonUI
@@ -1655,7 +1652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
+      <a href="../00How%20to%20setup%20CommonUI%20in%20UE5.4.2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1676,7 +1673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/01EnhancedInput/" class="md-nav__link">
+      <a href="../01EnhancedInput/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1697,7 +1694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/01Focus/" class="md-nav__link">
+      <a href="../01Focus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1718,7 +1715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/02CommonActionWidget/" class="md-nav__link">
+      <a href="../02CommonActionWidget/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1739,7 +1736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
+      <a href="../03Hold%20Support%20For%20Enhnaced%20Input/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1760,7 +1757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
+      <a href="../05ActionBar%20Support%20%27Hold%27/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1781,7 +1778,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/06HandleInputChange/" class="md-nav__link">
+      <a href="../06HandleInputChange/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1802,7 +1799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/07CustomAnalogCursor/" class="md-nav__link">
+      <a href="../07CustomAnalogCursor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1823,7 +1820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/CommonUI/08CropoutSample/" class="md-nav__link">
+      <a href="../08CropoutSample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1841,10 +1838,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../UI/CommonUI/09WidgetGroup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CommonUI 控件组
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1853,6 +1868,66 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ucommonwidgetgroupbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UCommonWidgetGroupBase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ucommonbuttongroupbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UCommonButtonGroupBase 是具体实现，也是目前唯一的实现。
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UCommonButtonGroupBase 是具体实现，也是目前唯一的实现。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      由于是纯逻辑对象，布局操作交给开发者自定义实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一些需要注意的细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1925,7 +2000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/SlateUI%26UMG/00/" class="md-nav__link">
+      <a href="../../SlateUI%26UMG/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1946,7 +2021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/SlateUI%26UMG/LMB_Scrollable_LIstView/" class="md-nav__link">
+      <a href="../../SlateUI%26UMG/LMB_Scrollable_LIstView/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +2042,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/SlateUI%26UMG/ListView/" class="md-nav__link">
+      <a href="../../SlateUI%26UMG/ListView/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1988,7 +2063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/SlateUI%26UMG/SlateMacro/" class="md-nav__link">
+      <a href="../../SlateUI%26UMG/SlateMacro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2009,7 +2084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../UI/SlateUI%26UMG/slate/" class="md-nav__link">
+      <a href="../../SlateUI%26UMG/slate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2091,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jottings/commonui/" class="md-nav__link">
+      <a href="../../../jottings/commonui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2112,7 +2187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../jottings/replication/" class="md-nav__link">
+      <a href="../../../jottings/replication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2184,7 +2259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../model/blender/" class="md-nav__link">
+      <a href="../../../model/blender/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2223,6 +2298,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ucommonwidgetgroupbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UCommonWidgetGroupBase
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ucommonbuttongroupbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      UCommonButtonGroupBase 是具体实现，也是目前唯一的实现。
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UCommonButtonGroupBase 是具体实现，也是目前唯一的实现。">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      由于是纯逻辑对象，布局操作交给开发者自定义实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一些需要注意的细节
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2236,7 +2361,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/GAS/3AbilityAsync.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/UI/CommonUI/09WidgetGroup.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2244,49 +2369,40 @@
   
 
 
-  <h1>Use AbilityAsync Instead of UBlueprintAsyncActionBase</h1>
+  <h1>CommonUI 控件组</h1>
 
-<div><p>GAS Course introduces UBlueprintAsyncActionBase, I found some subClass maybe useful.
-<a class="glightbox" href="../../../assets/images/3AbilityAsync_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/3AbilityAsync_image.png"></a></p>
-<p>Derived from UAbilityAsync, we can reduce some code.</p>
-<div class="highlight"><span class="filename">AbilityAsync_WaitCooldown.h</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cp">#pragma once</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CoreMinimal.h"</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Abilities/Async/AbilityAsync.h"</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"AbilityAsync_WaitCooldown.generated.h"</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam</span><span class="p">(</span><span class="n">FOnCooldownDelegate</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="p">,</span><span class="w"> </span><span class="n">TimeRemaining</span><span class="p">);</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="cm">/**</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="cm"> * </span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="cm"> */</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">UCLASS</span><span class="p">()</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">class</span><span class="w"> </span><span class="nc">AURA_API</span><span class="w"> </span><span class="n">UAbilityAsync_WaitCooldown</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">UAbilityAsync</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">{</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="n">GENERATED_BODY</span><span class="p">()</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">public</span><span class="o">:</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">)</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="n">FOnCooldownDelegate</span><span class="w"> </span><span class="n">CooldownStart</span><span class="p">;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="n">UPROPERTY</span><span class="p">(</span><span class="n">BlueprintAssignable</span><span class="p">)</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">FOnCooldownDelegate</span><span class="w"> </span><span class="n">CooldownEnd</span><span class="p">;</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintCallable</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintInternalUseOnly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span><span class="p">))</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">UAbilityAsync_WaitCooldown</span><span class="o">*</span><span class="w"> </span><span class="n">WaitCooldown</span><span class="p">(</span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">InASC</span><span class="p">,</span><span class="w"> </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">InCooldownTag</span><span class="p">);</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">EndAction</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">CooldownTagChanged</span><span class="p">(</span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">GameplayTag</span><span class="p">,</span><span class="w"> </span><span class="n">int32</span><span class="w"> </span><span class="n">Count</span><span class="w"> </span><span class="p">);</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">OnGE_ApplyToSelf</span><span class="p">(</span><span class="n">UAbilitySystemComponent</span><span class="o">*</span><span class="w"> </span><span class="n">ASC</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">FGameplayEffectSpec</span><span class="o">&amp;</span><span class="w"> </span><span class="n">GESpec</span><span class="p">,</span><span class="w"> </span><span class="n">FActiveGameplayEffectHandle</span><span class="w"> </span><span class="n">ActiveGameplayEffectHandle</span><span class="p">);</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">Activate</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">protected</span><span class="o">:</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="n">FGameplayTag</span><span class="w"> </span><span class="n">CooldownTag</span><span class="p">;</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="p">};</span>
-</code></pre></div></div>
+<div><hr>
+<h3 id="ucommonwidgetgroupbase">UCommonWidgetGroupBase</h3>
+<p>控件组类似 Android的 RadioGroup，（可选组，单选多选）。</p>
+<p>不同的的是：控件组 不是 UserWidget，不是控件，而是逻辑对象。 它继承与 UObject。用于统一逻辑调度，并暴露方法给蓝图和C++使用</p>
+<p>Android的RadioGroup是控件, 并没有单独抽象出“可选组”的逻辑，相似的控件无法复用逻辑代码，导致Android必须额外实现TabLayout这种东西。</p>
+<p><a class="glightbox" href="../../../../assets/images/09WidgetGroup_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/09WidgetGroup_image.png"></a></p>
+<p>控件组基类 只提供 增删功能，非常简洁。</p>
+<h3 id="ucommonbuttongroupbase">UCommonButtonGroupBase 是具体实现，也是目前唯一的实现。</h3>
+<p>目前只有TabList 和 CarouseNavBar 使用。</p>
+<p>提供了：
+- 增删查 的各种接口，相应的回调监听
+- 单选
+- 多选 // 不是特别支持
+- 循环切换
+- 弃选</p>
+<p><a class="glightbox" href="../../../../assets/images/09WidgetGroup_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/09WidgetGroup_image-1.png"></a></p>
+<h4 id="_1">由于是纯逻辑对象，布局操作交给开发者自定义实现</h4>
+<p>参考UCommonTabListWidgetBase : public UCommonUserWidget的实现：</p>
+<p>它又包装了一下，主要的这两个函数
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintNativeEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TabList</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintProtected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span><span class="p">))</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">HandleTabCreation</span><span class="p">(</span><span class="n">FName</span><span class="w"> </span><span class="n">TabNameID</span><span class="p">,</span><span class="w"> </span><span class="n">UCommonButtonBase</span><span class="o">*</span><span class="w"> </span><span class="n">TabButton</span><span class="p">);</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">UFUNCTION</span><span class="p">(</span><span class="n">BlueprintNativeEvent</span><span class="p">,</span><span class="w"> </span><span class="n">Category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TabList</span><span class="p">,</span><span class="w"> </span><span class="n">meta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">BlueprintProtected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"true"</span><span class="p">))</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">HandleTabRemoval</span><span class="p">(</span><span class="n">FName</span><span class="w"> </span><span class="n">TabNameID</span><span class="p">,</span><span class="w"> </span><span class="n">UCommonButtonBase</span><span class="o">*</span><span class="w"> </span><span class="n">TabButton</span><span class="p">);</span>
+</code></pre></div>
+<p>UI蓝图里，需要自己指定Button的布局容器。这里的 Add Tab用了 Horizon Box 来布局</p>
+<p><a class="glightbox" href="../../../../assets/images/09WidgetGroup_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/09WidgetGroup_image-2.png"></a></p>
+<h4 id="_2">一些需要注意的细节</h4>
+<p>当只有一个子widget的时候，会默认调用“选中”方法。在219行</p>
+<p>（默认没有声音）</p>
+<p>所以第一个add进来的widget，默认是一定会选中的，除非不满足 相关条件。</p>
+<p><a class="glightbox" href="../../../../assets/images/commonui_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/commonui_image.png"></a></p></div>
 
 
 
@@ -2309,7 +2425,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 30, 2024</span>
   </span>
 
     
@@ -2319,7 +2435,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 30, 2024</span>
   </span>
 
     
@@ -2429,12 +2545,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.select", "content.action.edit", "content.tooltips", "navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.path", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.83f73b43.min.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="../../../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
