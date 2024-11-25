@@ -4,10 +4,12 @@ comments:true
 ## [Matrix](https://www.bilibili.com/video/BV1X7411F744?p=2)
 
 ![alt text](../assets/images/Math_image-1.png)
+
 - 要能相乘，N要相同，然后结果 把N看出消掉了即可
 - 计算结果，加入是第i行，第j列，那么就去A找第i行的全部元素，和B第J列的全部元素，点积即可。
 
 ### 点积 和 交积
+
  - 点积 判断相似度，计算角度
  - 叉积 判断左右，判断点是否在多边形内部 根据A x B = -B X A, 一旦有一条边符号不对，既说明在 点不在多边形内部。
 
