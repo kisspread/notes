@@ -725,9 +725,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#set-webp-properties-and-convert" class="md-nav__link">
+  <a href="#mp4-to-webp" class="md-nav__link">
     <span class="md-ellipsis">
-      Set webp properties and convert
+      mp4 to webp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mp4-resize" class="md-nav__link">
+    <span class="md-ellipsis">
+      mp4 resize
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mp4-to-gif" class="md-nav__link">
+    <span class="md-ellipsis">
+      mp4 to GIF:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gif-to-frame-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      GIF to frame images
     </span>
   </a>
   
@@ -2399,9 +2426,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#set-webp-properties-and-convert" class="md-nav__link">
+  <a href="#mp4-to-webp" class="md-nav__link">
     <span class="md-ellipsis">
-      Set webp properties and convert
+      mp4 to webp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mp4-resize" class="md-nav__link">
+    <span class="md-ellipsis">
+      mp4 resize
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mp4-to-gif" class="md-nav__link">
+    <span class="md-ellipsis">
+      mp4 to GIF:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gif-to-frame-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      GIF to frame images
     </span>
   </a>
   
@@ -2431,16 +2485,26 @@
 
 
 <div><h1 id="ffmpeg">FFmpeg</h1>
-<p>mp4 to webp cli</p>
-<h2 id="set-webp-properties-and-convert">Set webp properties and convert</h2>
+<p>ffmpeg commands usage</p>
+<h2 id="mp4-to-webp">mp4 to webp</h2>
 <p>Example command which would convert an mp4 file to a lossless loop playing webp file in 20FPS with resolution 800px(width) * h600px(height):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg -i input_filename.mp4 -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 800:600 output_filename.webp
 </code></pre></div>
 <p>Export an animated lossy WebP with preset mode picture：
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg -i input.mp4 -vcodec libwebp -filter:v fps=fps=20 -lossless 0  -compression_level 3 -q:v 70 -loop 1 -preset picture -an -vsync 0 -s 800:600 output.webp
 </code></pre></div>
-Mp4 resize, reduce resolution rate, bit rate, compress audio, and using H.265
+<h2 id="mp4-resize">mp4 resize</h2>
+<p>Mp4 resize, reduce resolution rate, bit rate, compress audio, and using H.265</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ffmpeg -i input.mp4 -vf "scale=1280:720" -b:v 1000k -b:a 128k -c:v libx265 -crf 28 output.mp4
+</code></pre></div>
+<h2 id="mp4-to-gif">mp4 to GIF:</h2>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ffmpeg -i "youfile.mp4" -c:v gif "output.gif"
+</code></pre></div>
+or with a specific frame rate and scale:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ffmpeg -i "yourfile.mp4" -vf "fps=60,scale=480:-1:flags=lanczos" -c:v gif "output.gif"
+</code></pre></div>
+<h2 id="gif-to-frame-images">GIF to frame images</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ffmpeg -i "yourFile.gif"  -vsync 0 frame%d.png 
 </code></pre></div>
 <p>more:
   <a href="https://gist.github.com/witmin/1edf926c2886d5c8d9b264d70baf7379">mp4 to webp</a></p></div>
@@ -2466,7 +2530,7 @@ Mp4 resize, reduce resolution rate, bit rate, compress audio, and using H.265
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 28, 2024</span>
   </span>
 
     
