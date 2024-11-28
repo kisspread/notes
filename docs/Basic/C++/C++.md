@@ -37,6 +37,11 @@ void UMenuWidgetController::BroadcastInfo(const FAttributeInfo& AttributeInfo)
 }
 ```
 
+[更多UE使用lambda的注意事项](https://neil3d.github.io/unreal/mpp-lambda.html)
+
+- 延迟调用的lambda（包括delegates，BindLambda） 要注意悬空引用，离开作用域后，部分已捕获的引用可能被析构。
+- 捕获Uobject类型时，尽量用 弱引用TWeakObjectPtr，因为当 Lambda 捕获一个 UObject 指针时，它会创建一个强引用，只要这个lambda一直存在，就会导致Uobject无法正确回收。
+
 
 
 
