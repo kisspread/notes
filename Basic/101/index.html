@@ -2929,6 +2929,65 @@
 <li><strong>Flat Shading</strong>：适合低多边形风格、低端硬件或实时渲染需要时。</li>
 <li><strong>Gouraud Shading</strong>：适合实时图形、游戏引擎的中低预算场景。</li>
 <li><strong>Phong Shading</strong>：适合高品质渲染（如电影特效、静态场景渲染）或现代高性能 GPU 支持的场景。</li>
+</ul>
+<h1 id="_9">着色（插值、高级纹理映射）</h1>
+<p>阅读材料：第 11 章（Texture Mapping）, 第 11.1、11.2 节</p>
+<p><a href="https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_09.pdf">https://sites.cs.ucsb.edu/~lingqi/teaching/resources/GAMES101_Lecture_09.pdf</a></p>
+<p>## 三角形的重心</p>
+<ul>
+<li>重心坐标系 不依赖世界坐标，它是针对三角形三个点的相对坐标。</li>
+<li>重心坐标系本质上是一种权重系统，定义了三角形顶点对任意三角形内部点的"贡献"。</li>
+<li>
+<p>三角形的重心，相当于这个坐标系的"0点"，三个顶点的均值位置。
+   <a class="glightbox" href="../../assets/images/101_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-8.png"></a></p>
+</li>
+<li>
+<p>利用重心坐标系，就可以进行对各种基于顶点的属性，进行顶点插值
+   <a class="glightbox" href="../../assets/images/101_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-9.png"></a>  </p>
+</li>
+</ul>
+<h2 id="_10">纹理映射</h2>
+<ul>
+<li>纹理，认为纹素（texels）是纹理的最小单位， 之间的距离是1；256x256的纹理，就有256x256个纹素.</li>
+<li>光栅化后，屏幕像素可能会被映射到纹素之间，总之肯定不会恰好对准到某个纹素的位置。</li>
+<li>为了解决这个问题，需要在纹理和像素之间进行插值，就是纹理映射。
+  <a class="glightbox" href="../../assets/images/101_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-10.png"></a></li>
+<li>Nearest:
+  最近邻插值，取最接近的纹素的颜色，会导致明显的锯齿</li>
+<li>Bilinear:
+  双线性插值，取最接近的两个纹素的颜色，可以避免锯齿，但是会导致边缘模糊。（做了3次插值） 
+  <a class="glightbox" href="../../assets/images/101_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-11.png"></a></li>
+<li>Bicubic:
+  双三次插值，取更多的纹素进行插值，效果更好，但是计算量更大。</li>
+</ul>
+<h2 id="texture-magnification">Texture Magnification</h2>
+<p>上述是纹理小，屏幕大的情况，连续的像素之间，可以利用纹素进行插值，来实现纹理的放大。
+但是如果一个像素，覆盖了多个纹素，比如视角的远处，就会导致颜色错乱(Moire)。
+<a class="glightbox" href="../../assets/images/101_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-12.png"></a></p>
+<p><a class="glightbox" href="../../assets/images/101_image-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-13.png"></a>
+- 可以通过超采样，来解决这个问题，但是计算量会更大，效果不明显。
+- 假如一个像素覆盖了4个纹素，那么就用4个纹素的颜色平均值来代替。对非常远的物体，一个像素可能覆盖全部，比如256个，计算量会特别大。
+- Mipmap被设计成预计算后存起来，仅增加⅓的显存占用。每层Mipmap的尺寸都是上一层的一半，直到最后一层，尺寸为1x1。。极限求和是⅓。
+  <a class="glightbox" href="../../assets/images/101_image-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-14.png"></a>
+- 所以Mipmap是一种查询系统，查询用哪一层Mipping作为当前像素的均值。假如覆盖了2个纹素，这些纹素之间的距离是1，那就是用最外层，原始层，也就是第0层。
+- 假如某个像素覆盖了很多纹素，这会在纹理上投影出一个大点P(覆盖了很多个纹素)，那么再取邻近像素的对应的纹素大点Q，（相邻可以是上下左右）获得两个点之间最大距离L，假如L是8,就代表信息量缩小了8倍，用log2(L) 就可以知道它要用第3层Mipmap来查询均值。
+  <a class="glightbox" href="../../assets/images/101_image-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-15.png"></a>
+- 但还是会有锯齿问题，因为Log2(L) 的结果往往不是整数，这就需要 层与层之间进行插值。
+- 这个插值叫做 Trilinear Interpolation(三线性插值) 或者 Trilinear filtering,能达成非常好的抗锯齿效果，但是计算量更大。
+  <a class="glightbox" href="../../assets/images/101_image-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-16.png"></a></p>
+<ul>
+<li>
+<p>经过上面这些步骤，远处的位置，还是有模糊感，因为不同视角下，纹理缩小的方向是不同的，而Minimap的缩小方向是一致的，所以最终的结果就是模糊的。
+   <a class="glightbox" href="../../assets/images/101_image-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-17.png"></a></p>
+</li>
+<li>
+<p>Anisotropic Filtering(各向异性过滤)可以部分解决这个问题。图中对角线就是普通的Mipmap. 特殊实现下还是有问题。
+  <a class="glightbox" href="../../assets/images/101_image-18.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-18.png"></a></p>
+</li>
+<li>
+<p>EWA Filtering(Exponential Weighted Average过滤)是一种更好的方法，它可以在不同的方向上进行过滤，并且能够更好地平滑纹理。计算压力较大，暂时未讲原理。
+  <a class="glightbox" href="../../assets/images/101_image-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../assets/images/101_image-19.png"></a>  </p>
+</li>
 </ul></div>
 
 
@@ -2952,7 +3011,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 11, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 12, 2024</span>
   </span>
 
     
