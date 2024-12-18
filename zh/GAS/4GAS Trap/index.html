@@ -1457,11 +1457,53 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#avataractor" class="md-nav__link">
+  <a href="#abilitysystemcomponent-avataractor-cs" class="md-nav__link">
     <span class="md-ellipsis">
-      AvatarActor 不一致
+      AbilitySystemComponent AvatarActor C/S 类型不一致
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="AbilitySystemComponent AvatarActor C/S 类型不一致">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avataractor" class="md-nav__link">
+    <span class="md-ellipsis">
+      AvatarActor 的基本概念:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型使用场景:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化相关:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      对于玩家控制的角色:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1508,7 +1550,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       先后问题
     </span>
@@ -2570,11 +2612,53 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#avataractor" class="md-nav__link">
+  <a href="#abilitysystemcomponent-avataractor-cs" class="md-nav__link">
     <span class="md-ellipsis">
-      AvatarActor 不一致
+      AbilitySystemComponent AvatarActor C/S 类型不一致
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="AbilitySystemComponent AvatarActor C/S 类型不一致">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avataractor" class="md-nav__link">
+    <span class="md-ellipsis">
+      AvatarActor 的基本概念:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型使用场景:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      初始化相关:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      对于玩家控制的角色:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2621,7 +2705,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       先后问题
     </span>
@@ -2669,18 +2753,24 @@
   <h1>Gas Common Pitfalls</h1>
 
 <div><h2 id="gascomponent">GASComponent</h2>
-<h3 id="avataractor">AvatarActor  不一致</h3>
+<h3 id="abilitysystemcomponent-avataractor-cs">AbilitySystemComponent AvatarActor C/S 类型不一致</h3>
+<h4 id="avataractor">AvatarActor 的基本概念:</h4>
 <ul>
-<li>AvatarActor 的基本概念:</li>
 <li>AvatarActor 是 ASC(AbilitySystemComponent)的物理表现 Actor</li>
 <li>它与 OwnerActor(拥有 ASC 的 Actor)可以是同一个 Actor,也可以是不同的 Actor</li>
-<li>典型使用场景:</li>
-<li>简单的 AI 小兵:OwnerActor 和 AvatarActor 是同一个 Actor
-  -MOBA 游戏中的英雄:OwnerActor 是 PlayerState,AvatarActor 是英雄的 Character 类</li>
-<li>初始化相关:</li>
+</ul>
+<h4 id="_1">典型使用场景:</h4>
+<ul>
+<li>简单的 AI 小兵:OwnerActor 和 AvatarActor 是同一个 Actor</li>
+<li>MOBA 游戏中的英雄:OwnerActor 是 PlayerState,AvatarActor 是英雄的 Character 类</li>
+</ul>
+<h4 id="_2">初始化相关:</h4>
+<ul>
 <li>ASC 需要在服务器和客户端都进行初始化,设置 OwnerActor 和 AvatarActor</li>
 <li>初始化通常在 Pawn 被控制后进行(在 possession 之后)</li>
-<li>对于玩家控制的角色:</li>
+</ul>
+<h4 id="_3">对于玩家控制的角色:</h4>
+<ul>
 <li>服务器端在 Pawn 的 PossessedBy() 函数中初始化</li>
 <li>客户端在 Pawn 的 OnRep_PlayerState() 函数中初始化</li>
 </ul>
@@ -2727,7 +2817,7 @@
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">LoopingAudioComponent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">UGameplayStatics</span><span class="o">::</span><span class="n">SpawnSoundAttached</span><span class="p">(</span><span class="n">FlyingSound</span><span class="p">,</span><span class="w"> </span><span class="n">GetRootComponent</span><span class="p">());</span>
 </code></pre></div>
 所以这类组件都要进行非空判断再做操作。
-<h3 id="_1">先后问题</h3>
+<h3 id="_4">先后问题</h3>
 <p>服务端SpawnActor后，立即对它执行网络多播操作，在多人游戏里可能导致先后问题。
 这里log显示客户端的beginplay比SpeedUpProjectile慢。
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nx">LogAura</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="o">:</span><span class="w"> </span><span class="nx">DedicatedServer</span><span class="o">:</span><span class="nx">Projectile</span><span class="w"> </span><span class="nx">BeginPlay</span>
