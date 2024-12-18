@@ -3,6 +3,28 @@ comments:true
 
 ## GASComponent
 
+### AvatarActor  不一致
+
+- AvatarActor 的基本概念:
+  - AvatarActor 是 ASC(AbilitySystemComponent)的物理表现 Actor
+  - 它与 OwnerActor(拥有 ASC 的 Actor)可以是同一个 Actor,也可以是不同的 Actor
+- 典型使用场景:
+  - 简单的 AI 小兵:OwnerActor 和 AvatarActor 是同一个 Actor
+  -MOBA 游戏中的英雄:OwnerActor 是 PlayerState,AvatarActor 是英雄的 Character 类
+- 初始化相关:
+  - ASC 需要在服务器和客户端都进行初始化,设置 OwnerActor 和 AvatarActor
+  - 初始化通常在 Pawn 被控制后进行(在 possession 之后)
+- 对于玩家控制的角色:
+  - 服务器端在 Pawn 的 PossessedBy() 函数中初始化
+  - 客户端在 Pawn 的 OnRep_PlayerState() 函数中初始化
+
+!!! warning
+    这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState。（ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character）
+
+    调试的时候会发现，BeginPlay里，服务端和客户端AvatarActor的类型不一致，同样的代码出现了不同的表现。
+
+    BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。
+
 ### gameplaytag 和 gameplay effect 的 replication policy
 - **过早调用`waitGameplayTag`会导致注册失败**：The initialization of GASComponent is after `BeginPlay`. If a node like `WaitGameplay` is called after `BeginPlay`, it usually can't register events to GAS because the GAS Component is null. This applies to both the server and client. 所有应该在on commponent created 之后调用。
    ![alt text](<../assets/images/4GAS Trap_image.png>)
