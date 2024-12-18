@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/Basic/shader/Material/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/Basic/C%2B%2B/Rider/">
       
       
-        <link rel="prev" href="../../C%2B%2B/actor/">
+        <link rel="prev" href="../Programming%20idiom/">
       
       
-        <link rel="next" href="../base/">
+        <link rel="next" href="../USubSystem/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Material - Game Dev Notes</title>
+        <title>Rider - Game Dev Notes</title>
       
     
     
@@ -135,7 +135,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#coordinate-system" class="md-skip">
+        <a href="#rider-debugger" class="md-skip">
           Skip to content
         </a>
       
@@ -168,7 +168,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Material
+              Rider
             
           </span>
         </div>
@@ -221,7 +221,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../../zh/Basic/shader/Material/" hreflang="zh" class="md-select__link">
+            <a href="../../../zh/Basic/C%2B%2B/Rider/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -971,8 +971,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -992,13 +994,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_12" checked>
         
           
           <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
@@ -1012,7 +1012,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             C++
@@ -1026,7 +1026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1047,7 +1047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C%2B%2B/Programming%20idiom/" class="md-nav__link">
+      <a href="../Programming%20idiom/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1065,10 +1065,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../C%2B%2B/Rider/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Rider
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1077,6 +1095,33 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rider-debugger" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rider debugger 技巧
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1089,7 +1134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1110,7 +1155,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../C%2B%2B/actor/" class="md-nav__link">
+      <a href="../actor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,10 +1181,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1153,11 +1196,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_13" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
           <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
@@ -1171,7 +1216,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             Shader
@@ -1182,28 +1227,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Material
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../shader/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1212,183 +1239,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#coordinate-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Coordinate System
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Coordinate System">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-coordinate-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Coordinate System
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#standard-coordinate-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Coordinate System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#drawing-circles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Drawing Circles
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Drawing Circles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lerp-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lerp One
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#subtract-and-multiply" class="md-nav__link">
-    <span class="md-ellipsis">
-      Subtract and Multiply
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#radialgradientexponential" class="md-nav__link">
-    <span class="md-ellipsis">
-      RadialGradientExponential
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spheregradient" class="md-nav__link">
-    <span class="md-ellipsis">
-      SphereGradient
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smoothstep" class="md-nav__link">
-    <span class="md-ellipsis">
-      smoothstep
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#drawing-rings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Drawing Rings
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Drawing Rings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dot-product" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dot Product
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#subtraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Subtraction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#animation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Animation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Animation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-combination" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Combination
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1401,7 +1251,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../base/" class="md-nav__link">
+      <a href="../../shader/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2635,161 +2485,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coordinate-system" class="md-nav__link">
+  <a href="#rider-debugger" class="md-nav__link">
     <span class="md-ellipsis">
-      Coordinate System
+      Rider debugger 技巧
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Coordinate System">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-coordinate-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Coordinate System
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#standard-coordinate-system" class="md-nav__link">
-    <span class="md-ellipsis">
-      Standard Coordinate System
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#drawing-circles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Drawing Circles
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Drawing Circles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lerp-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lerp One
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#subtract-and-multiply" class="md-nav__link">
-    <span class="md-ellipsis">
-      Subtract and Multiply
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#radialgradientexponential" class="md-nav__link">
-    <span class="md-ellipsis">
-      RadialGradientExponential
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#spheregradient" class="md-nav__link">
-    <span class="md-ellipsis">
-      SphereGradient
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#smoothstep" class="md-nav__link">
-    <span class="md-ellipsis">
-      smoothstep
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#drawing-rings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Drawing Rings
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Drawing Rings">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#multiplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      Multiplication
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dot-product" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dot Product
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#subtraction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Subtraction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#animation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Animation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Animation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#simple-combination" class="md-nav__link">
-    <span class="md-ellipsis">
-      Simple Combination
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2808,7 +2508,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/Basic/shader/Material.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/Basic/C++/Rider.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2816,57 +2516,36 @@
   
 
 
-  <h1>Material</h1>
+  <h1>Rider</h1>
 
-<div><p>Here are several ways to draw circles in the material function:</p>
-<h2 id="coordinate-system">Coordinate System</h2>
-<p>Choose your coordinate system based on preference.</p>
-<h3 id="simple-coordinate-system">Simple Coordinate System</h3>
-<p>Simple and easy to use, with few nodes. The point (-1, -1) is in the top right corner, which may feel counterintuitive at first compared to what's shown in textbooks, but you'll get used to it.
-<a class="glightbox" href="../../../assets/images/Material_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-1.png"></a></p>
-<h3 id="standard-coordinate-system">Standard Coordinate System</h3>
-<p>The standard coordinate system involves two additional steps: rotation and swapping the XY axes. Although it requires two more instructions, a good coordinate system aids in understanding.
-<a class="glightbox" href="../../../assets/images/Material_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../assets/images/Material_image.png"></a></p>
-<h2 id="drawing-circles">Drawing Circles</h2>
-<h3 id="lerp-one">Lerp One</h3>
-<p>Interpolate between 0 and -1 based on the distance field as a ratio.
-<a class="glightbox" href="../../../assets/images/Material_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-2.png"></a></p>
-<h3 id="subtract-and-multiply">Subtract and Multiply</h3>
-<p>Values below 0.8 are negative, resulting in a fully black circle. Multiplication is used to control the edges, making them sharper as the value increases.
-<a class="glightbox" href="../../../assets/images/Material_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-3.png"></a></p>
-<h3 id="radialgradientexponential">RadialGradientExponential</h3>
-<p>This built-in function is not recommended for drawing regular circles as it involves a relatively high computational load. While the previous methods required 47 instructions, this one needs 51. It can generate a cotton candy-like circle.
-<a class="glightbox" href="../../../assets/images/Material_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="RadialGradientExponential" src="../../../assets/images/Material_image-4.png"></a></p>
-<p>The internal implementation is complex, and unless you specifically need this effect, it's not necessary to use it.
-<a class="glightbox" href="../../../assets/images/Material_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-5.png"></a></p>
-<h3 id="spheregradient">SphereGradient</h3>
-<p>The built-in function SphereGradient creates a circular gradient similar to the image below. It uses the circle equation to achieve a smooth transition effect. It is still not recommended for drawing standard circles.
-<a class="glightbox" href="../../../assets/images/Material_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-6.png"></a></p>
-<h3 id="smoothstep">smoothstep</h3>
-<p>Highly recommended for drawing the simplest circles. When max equals min, there's no need to handle gradient values, and the output values range purely from 0 to 1. It's worth mentioning that if you swap min and max, it will reverse. For consistent direction, it's better to use 1-x.
-<a class="glightbox" href="../../../assets/images/Material_image-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-9.png"></a></p>
-<h2 id="drawing-rings">Drawing Rings</h2>
-<p>Based on the above methods, drawing a large circle first and then a smaller one can create rings.</p>
-<h3 id="multiplication">Multiplication</h3>
-<p>Two circles, one positive and one negative. The overlapping area is positive, and rounding up the product.
-<a class="glightbox" href="../../../assets/images/Material_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-7.png"></a></p>
-<h3 id="dot-product">Dot Product</h3>
-<p>Dot product of two circles ranges from -1 to 1. The more similar the overlapping parts, the closer to 1.
-<a class="glightbox" href="../../../assets/images/Material_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-8.png"></a></p>
-<h3 id="subtraction">Subtraction</h3>
-<p>Using smoothstep produces pure 0s and 1s, which is excellent.
-<a class="glightbox" href="../../../assets/images/Material_image-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-10.png"></a></p>
-<h2 id="animation">Animation</h2>
-<p>Here, the animation is driven by periodic time.
-<a class="glightbox" href="../../../assets/images/Material_image-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-11.png"></a></p>
-<p>The range of atan2 is <span class="arithmatex">\(\left[ -\pi, \pi \right]\)</span>. Dividing by 2π and using frac for decimal values is explained here:</p>
+<div><h2 id="rider-debugger">Rider debugger 技巧</h2>
 <ul>
-<li>Dividing by 2π narrows the range to <span class="arithmatex">\(\left[ -0.5, 0.5 \right]\)</span>.</li>
-<li>frac handles negative numbers by using 1-x. For example, for -0.4, the decimal part is 0.4, and 1-0.4=0.6.</li>
-<li>As the frac operation continues to increase, it reaches 1, allowing a complete rotation.</li>
-</ul>
-<h3 id="simple-combination">Simple Combination</h3>
-<p><a class="glightbox" href="../../../assets/images/Material_image-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Material_image-12.png"></a></p></div>
+<li>
+<p>断点判断当前进程是服务端还是客户端,不依赖UELog：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">{</span>,,UE4Editor-Engine.dll<span class="o">}</span>::GPlayInEditorContextString
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">{</span>,,UnrealEditor-Engine.dll<span class="o">}</span>::GPlayInEditorContextString<span class="w"> </span>
+</code></pre></div>
+</li>
+<li>
+<p><a class="glightbox" href="../../../assets/images/Rider_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Rider_image.png"></a></p>
+</li>
+<li>把<code>{,,UnrealEditor-Engine.dll}::GPlayInEditorContextString</code>添加到rider watch即可,以后每次能用。</li>
+<li>
+<p>UE4用这个 <code>{,,UE4Editor-Engine.dll}::GPlayInEditorContextString</code></p>
+</li>
+<li>
+<p>调试 UCommandlet 命令行程序</p>
+</li>
+<li>
+<p>命令配置：</p>
+<p><code>-run=MyCommandlet</code></p>
+</li>
+<li>
+<p>等待调试</p>
+<p><code>-waitforattach</code><br>
+  - <a href="../../Debug/">详细参考</a>  </p>
+</li>
+</ul></div>
 
 
 
@@ -2889,7 +2568,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 18, 2024</span>
   </span>
 
     
@@ -2899,7 +2578,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 26, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 18, 2024</span>
   </span>
 
     
@@ -2910,60 +2589,6 @@
 
 
 
-
-  <h2 id="__comments">Comments</h2>
-  <script src="https://giscus.app/client.js"
-        data-repo="kisspread/notes"
-        data-repo-id="R_kgDOMNKAqg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOMNKAqs4CgVZ_"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="1"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-  </script>
-
-  <!-- Synchronize Giscus theme with palette -->
-  <script>
-    var giscus = document.querySelector("script[src*=giscus]")
-
-    // Set palette on initial load
-    var palette = __md_get("__palette")
-    if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate"
-        ? "transparent_dark"
-        : "light"
-
-      // Instruct Giscus to set theme
-      giscus.setAttribute("data-theme", theme) 
-    }
-
-    // Register event handlers after documented loaded
-    document.addEventListener("DOMContentLoaded", function() {
-      var ref = document.querySelector("[data-md-component=palette]")
-      ref.addEventListener("change", function() {
-        var palette = __md_get("__palette")
-        if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate"
-            ? "transparent_dark"
-            : "light"
-
-          // Instruct Giscus to change theme
-          var frame = document.querySelector(".giscus-frame")
-          frame.contentWindow.postMessage(
-            { giscus: { setConfig: { theme } } },
-            "https://giscus.app"
-          )
-        }
-      })
-    })
-  </script>
 
                 
               </article>
