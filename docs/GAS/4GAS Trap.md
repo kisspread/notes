@@ -3,18 +3,25 @@ comments:true
 
 ## GASComponent
 
-### AvatarActor  不一致
+### AbilitySystemComponent AvatarActor C/S 类型不一致
 
-- AvatarActor 的基本概念:
+#### AvatarActor 的基本概念:
+
   - AvatarActor 是 ASC(AbilitySystemComponent)的物理表现 Actor
   - 它与 OwnerActor(拥有 ASC 的 Actor)可以是同一个 Actor,也可以是不同的 Actor
-- 典型使用场景:
+
+#### 典型使用场景:
+
   - 简单的 AI 小兵:OwnerActor 和 AvatarActor 是同一个 Actor
-  -MOBA 游戏中的英雄:OwnerActor 是 PlayerState,AvatarActor 是英雄的 Character 类
-- 初始化相关:
+  - MOBA 游戏中的英雄:OwnerActor 是 PlayerState,AvatarActor 是英雄的 Character 类
+
+#### 初始化相关:
+
   - ASC 需要在服务器和客户端都进行初始化,设置 OwnerActor 和 AvatarActor
   - 初始化通常在 Pawn 被控制后进行(在 possession 之后)
-- 对于玩家控制的角色:
+
+#### 对于玩家控制的角色:
+
   - 服务器端在 Pawn 的 PossessedBy() 函数中初始化
   - 客户端在 Pawn 的 OnRep_PlayerState() 函数中初始化
 
