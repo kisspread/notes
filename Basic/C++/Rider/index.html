@@ -1116,6 +1116,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Rider debugger 技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      断点判断当前进程是服务端还是客户端,不依赖UELog：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucommandlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试 UCommandlet 命令行程序
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2491,6 +2515,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Rider debugger 技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      断点判断当前进程是服务端还是客户端,不依赖UELog：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ucommandlet" class="md-nav__link">
+    <span class="md-ellipsis">
+      调试 UCommandlet 命令行程序
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -2519,32 +2567,24 @@
   <h1>Rider</h1>
 
 <div><h2 id="rider-debugger">Rider debugger 技巧</h2>
-<ul>
-<li>
-<p>断点判断当前进程是服务端还是客户端,不依赖UELog：</p>
+<h3 id="uelog">断点判断当前进程是服务端还是客户端,不依赖UELog：</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">{</span>,,UE4Editor-Engine.dll<span class="o">}</span>::GPlayInEditorContextString
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">{</span>,,UnrealEditor-Engine.dll<span class="o">}</span>::GPlayInEditorContextString<span class="w"> </span>
 </code></pre></div>
-</li>
-<li>
 <p><a class="glightbox" href="../../../assets/images/Rider_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Rider_image.png"></a></p>
+<ul>
+<li>
+<p>把<code>{,,UnrealEditor-Engine.dll}::GPlayInEditorContextString</code>添加到rider watch即可,以后每次能用。</p>
 </li>
-<li>把<code>{,,UnrealEditor-Engine.dll}::GPlayInEditorContextString</code>添加到rider watch即可,以后每次能用。</li>
 <li>
 <p>UE4用这个 <code>{,,UE4Editor-Engine.dll}::GPlayInEditorContextString</code></p>
 </li>
-<li>
-<p>调试 UCommandlet 命令行程序</p>
-</li>
-<li>
-<p>命令配置：</p>
-<p><code>-run=MyCommandlet</code></p>
-</li>
-<li>
-<p>等待调试</p>
-<p><code>-waitforattach</code><br>
-  - <a href="../../Debug/">详细参考</a>  </p>
-</li>
+</ul>
+<h3 id="ucommandlet">调试 UCommandlet 命令行程序</h3>
+<ul>
+<li>命令配置： <code>-run=MyCommandlet</code></li>
+<li>等待调试: <code>-waitforattach</code>  </li>
+<li><a href="../../Debug/">详细参考</a>  </li>
 </ul></div>
 
 
