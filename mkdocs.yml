@@ -11,6 +11,7 @@ copyright: Copyright &copy; 2022 - 2024 by <a href="https://github.com/kisspread
 
 
 markdown_extensions:
+  - mdx_truly_sane_lists
   - attr_list
   - md_in_html
   - pymdownx.highlight:
