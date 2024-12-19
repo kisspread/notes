@@ -27,10 +27,10 @@ comments:true
 
 !!! warning
     这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState。（ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character）
-
+    ![alt text](<../assets/images/4GAS Trap_image-3.png>)
     调试的时候会发现，BeginPlay里，服务端和客户端AvatarActor的类型不一致，同样的代码出现了不同的表现。
 
-    BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。
+    BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。最好是重写InitAbilityActorInfo，在这里进行判断。
 
 ### gameplaytag 和 gameplay effect 的 replication policy
 - **过早调用`waitGameplayTag`会导致注册失败**：The initialization of GASComponent is after `BeginPlay`. If a node like `WaitGameplay` is called after `BeginPlay`, it usually can't register events to GAS because the GAS Component is null. This applies to both the server and client. 所有应该在on commponent created 之后调用。
