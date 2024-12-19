@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1573,6 +1596,8 @@
       
         
       
+        
+      
     
     
       
@@ -1639,6 +1664,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2600,18 +2646,22 @@
   <a class="glightbox" href="../../../assets/images/01CUIHowDebug_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/01CUIHowDebug_image-2.png"></a></p>
 <h3 id="_4">调试案例</h3>
 <ul>
-<li>绑定按键按下没反应 ：
+<li>
+<p>绑定按键按下没反应 ：
   调试位置：UIActionRouterTypes.cpp line:705
- <code>bool FActionRouterBindingCollection::ProcessNormalInput(ECommonInputMode ActiveInputMode, FKey Key, EInputEvent InputEvent) const</code></li>
-</ul>
+ <code>bool FActionRouterBindingCollection::ProcessNormalInput(ECommonInputMode ActiveInputMode, FKey Key, EInputEvent InputEvent) const</code></p>
 <p>最需要调试的是<code>TryConsumeInput</code>方法，它是一个lambda，决定是否触发action的回调，各种不调用的疑难杂症都能在这里找到。</p>
+</li>
+</ul>
 <ul>
-<li>手柄扳机键没反应
+<li>
+<p>手柄扳机键没反应
   调试后发现原因，录制按键时只会把扳机键录制为 RightTriggerAxis
   <a class="glightbox" href="../../../assets/images/01CUIHowDebug_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/01CUIHowDebug_image.png"></a>
-  而游戏过程种，得到的值却是RightTrigger，导致无法触发action。</li>
-</ul>
-<p>根本原因是，对于Enhanced Input来说，就不应该存在 axis （轴映射）这种东西，它只有action。但编辑器在开启 enhanced input 时，还是录制到了 legacy的axis 键位，其实是引擎的BUG </p></div>
+  而游戏过程种，得到的值却是RightTrigger，导致无法触发action。</p>
+<p>根本原因是，对于Enhanced Input来说，就不应该存在 axis （轴映射）这种东西，它只有action。但编辑器在开启 enhanced input 时，还是录制到了 legacy的axis 键位，其实是引擎的BUG </p>
+</li>
+</ul></div>
 
 
 

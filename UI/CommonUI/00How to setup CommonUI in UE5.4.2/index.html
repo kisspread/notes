@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1573,6 +1596,8 @@
       
         
       
+        
+      
     
     
       
@@ -1639,6 +1664,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2594,11 +2640,9 @@
 <hr>
 <h3 id="concept-of-activation">Concept of Activation</h3>
 <p>An Activatable Widget is an important concept in Common UI. It can be simply understood that once activated, it will be displayed, and deactivated means hidden. Additionally:</p>
-<ul>
-<li>Once an activatable widget is activated, it will take over the Input Action, similar to manually calling <code>setInputMode</code> in UE4. This can cause conflicts, and it is not recommended to use the old method in CommonUI. I have tried this, and it led to various issues with Mouse Capture.</li>
-<li>Taking over input action is a thoughtful design because many games need to show the mouse once the menu is displayed. We only need to override GetDesiredInputConfig to decide the various behaviors of the mouse and controls.</li>
-<li>Therefore, we need to configure the default InputAction of the game on a resident HUD and abandon the use of UE4's <code>setInputMode</code>.</li>
-</ul>
+<p>- Once an activatable widget is activated, it will take over the Input Action, similar to manually calling <code>setInputMode</code> in UE4. This can cause conflicts, and it is not recommended to use the old method in CommonUI. I have tried this, and it led to various issues with Mouse Capture.
+  - Taking over input action is a thoughtful design because many games need to show the mouse once the menu is displayed. We only need to override GetDesiredInputConfig to decide the various behaviors of the mouse and controls.
+  - Therefore, we need to configure the default InputAction of the game on a resident HUD and abandon the use of UE4's <code>setInputMode</code>.</p>
 <h3 id="concept-of-stack">Concept of Stack</h3>
 <p>Similar to mobile apps, the stack in CommonUI is the effect of stacking interfaces layer by layer as you enter them, and you can go back layer by layer through the back button.</p>
 <ul>
@@ -2675,20 +2719,18 @@
 </ul>
 <h3 id="enhanced-input-and-automatic-button-icon-display">Enhanced Input and Automatic Button Icon Display</h3>
 <ul>
-<li>
-<p>In <code>Game-&gt;CommonInputSetting</code>, add your platform icon data and set "Enable Enhanced Input Support" to true.</p>
-<p><a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></a></p>
+<li>In <code>Game-&gt;CommonInputSetting</code>, add your platform icon data and set "Enable Enhanced Input Support" to true.<p><a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-4.png"></a></p>
 </li>
-<li>
-<p>Create a <code>CommonBaseButton</code>, place a <code>CommonActionWidget</code> inside it, and rename it to <code>InputActionWidget</code>. <strong>It must be named this way, otherwise it will not display.</strong></p>
-</li>
-<li>
-<p>Configure the <code>CommonBaseButton</code> input action, setting an <code>InputAction</code> for it. Here, an 'E' key is set, and the <code>CommonActionWidget</code> inside the button will display the corresponding icon.
-  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></a></p>
-</li>
-<li>
-<p>If no <code>InputAction</code> is specified for the above <code>CommonBaseButton</code>, the system will automatically set the relevant action icon based on the platform when it is in focus. For example, the Xbox's down button icon is usually the gamepad face button down, so it will display an 'A' icon.</p>
-</li>
+</ul>
+<ul>
+<li>Create a <code>CommonBaseButton</code>, place a <code>CommonActionWidget</code> inside it, and rename it to <code>InputActionWidget</code>. <strong>It must be named this way, otherwise it will not display.</strong></li>
+</ul>
+<ul>
+<li>Configure the <code>CommonBaseButton</code> input action, setting an <code>InputAction</code> for it. Here, an 'E' key is set, and the <code>CommonActionWidget</code> inside the button will display the corresponding icon.
+  <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2_image-5.png"></a></li>
+</ul>
+<ul>
+<li>If no <code>InputAction</code> is specified for the above <code>CommonBaseButton</code>, the system will automatically set the relevant action icon based on the platform when it is in focus. For example, the Xbox's down button icon is usually the gamepad face button down, so it will display an 'A' icon.</li>
 <li>This 'A' icon can be specified through configuring <code>CommonUIInputData</code>.
   <a class="glightbox" href="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../../assets/images/How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh_image.png"></a></li>
 <li>You can change the <code>ForwardAction</code> from the 'A' button to the 'X' button. However, this only modifies the icon, as the platform still passes the 'A' button's <code>InputAction</code>. Visually, it will show the 'X' icon, but the key binding remains 'A'. I can only consider this a bug. If you know the correct approach, please let me know.</li>

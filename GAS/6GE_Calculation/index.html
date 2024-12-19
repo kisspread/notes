@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1771,6 +1794,8 @@
       
         
       
+        
+      
     
     
       
@@ -1837,6 +1862,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2914,17 +2960,15 @@ VigorDef是一个<code>FGameplayEffectAttributeCaptureDefinition</code>
 <p>for example:</p>
 <p>想象一个角色有一个"力量"属性，初始值为10。现在我们要创建一个持续30秒的增强效果，增加该角色50%的伤害。</p>
 <ul>
-<li>
-<p>情况1：不使用快照（bSnapshot = false）</p>
-<p>效果开始时，角色力量为10，伤害增加50%，即15。
-如果在效果持续期间，角色的力量提升到20，伤害会随之增加到30。
-效果会始终使用当前的力量值来计算伤害。</p>
+<li>情况1：不使用快照（bSnapshot = false）<p>效果开始时，角色力量为10，伤害增加50%，即15。
+  如果在效果持续期间，角色的力量提升到20，伤害会随之增加到30。
+  效果会始终使用当前的力量值来计算伤害。</p>
 </li>
-<li>
-<p>情况2：使用快照（bSnapshot = true）</p>
-<p>效果开始时，角色力量为10，伤害增加50%，即15。
-即使在效果持续期间角色的力量提升到20，伤害仍然保持在15。
-效果会使用应用时捕获的力量值（10）来计算伤害，不受后续力量变化的影响。</p>
+</ul>
+<ul>
+<li>情况2：使用快照（bSnapshot = true）<p>效果开始时，角色力量为10，伤害增加50%，即15。
+  即使在效果持续期间角色的力量提升到20，伤害仍然保持在15。
+  效果会使用应用时捕获的力量值（10）来计算伤害，不受后续力量变化的影响。</p>
 </li>
 </ul>
 <h4 id="uattributesetgetxxxattribute">UAttributeSet::GetXXXAttribute()</h4>

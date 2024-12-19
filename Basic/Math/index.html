@@ -558,6 +558,8 @@
       
         
       
+        
+      
     
     
       
@@ -625,6 +627,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -971,10 +994,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -985,8 +1008,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -1136,10 +1159,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1150,8 +1173,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1295,10 +1318,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1309,8 +1332,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1714,6 +1737,8 @@
       
         
       
+        
+      
     
     
       
@@ -1780,6 +1805,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2719,38 +2765,37 @@
 <p>缩放和旋转都能用2x2矩阵乘法来变化，唯独平移。在2维上，
 齐次坐标是为了解决 平移无法写成矩阵乘法的形式构建出来的3x3矩阵，同时让让功能多样化。</p>
 <ul>
-<li>
-<p>平移
+<li>平移
    $$
    T(tx, ty) = \begin{pmatrix}
    1 &amp; 0 &amp; tx \
    0 &amp; 1 &amp; ty \
    0 &amp; 0 &amp; 1
    \end{pmatrix}
-  $$</p>
-</li>
-<li>
-<p>缩放
+  $$</li>
+</ul>
+<ul>
+<li>缩放
   $$
    S(sx, sy) = \begin{pmatrix}
    sx &amp; 0 &amp; 0 \
    0 &amp; sy &amp; 0 \
    0 &amp; 0 &amp; 1
    \end{pmatrix}
-  $$</p>
-</li>
-<li>
-<p>旋转
+  $$</li>
+</ul>
+<ul>
+<li>旋转
    $$
    R(\theta) = \begin{pmatrix}
    \cos\theta &amp; -\sin\theta &amp; 0 \
    \sin\theta &amp; \cos\theta &amp; 0 \
    0 &amp; 0 &amp; 1
    \end{pmatrix}
-   $$</p>
-</li>
-<li>
-<p>沿<span class="arithmatex">\(x\)</span>轴方向的剪切：
+   $$</li>
+</ul>
+<ul>
+<li>沿<span class="arithmatex">\(x\)</span>轴方向的剪切：
      $$
      Sh_x(sh_x) = \begin{pmatrix}
      1 &amp; sh_x &amp; 0 \
@@ -2758,18 +2803,17 @@
      0 &amp; 0 &amp; 1
      \end{pmatrix}
      $$
-     其中，<span class="arithmatex">\(sh_x\)</span>是沿<span class="arithmatex">\(x\)</span>轴方向的剪切因子。</p>
-</li>
-<li>
-<p>沿<span class="arithmatex">\(y\)</span>轴方向的剪切：
+     其中，<span class="arithmatex">\(sh_x\)</span>是沿<span class="arithmatex">\(x\)</span>轴方向的剪切因子。</li>
+</ul>
+<ul>
+<li>沿<span class="arithmatex">\(y\)</span>轴方向的剪切：
      $$
      Sh_y(sh_y) = \begin{pmatrix}
      1 &amp; 0 &amp; 0 \
      sh_y &amp; 1 &amp; 0 \
      0 &amp; 0 &amp; 1
      \end{pmatrix}
-     $$</p>
-</li>
+     $$</li>
 </ul>
 <h3 id="_3">结合律</h3>
 <p>矩阵乘法不可以进行交换律，但有结合律</p>

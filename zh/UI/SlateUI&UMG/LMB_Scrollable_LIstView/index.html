@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1573,6 +1596,8 @@
       
         
       
+        
+      
     
     
       
@@ -1639,6 +1664,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2761,20 +2807,18 @@
 <p><a href="https://github.com/kisspread/notes/blob/main/samplecode/LeftClickToScroll/ULeftClickScrollListView.h">SourceCode</a> </p>
 <h3 id="_1">分析</h3>
 <ul>
-<li>
-<p><strong>默认支持右键滚动</strong></p>
-<p>虚幻默认支持右键滚动, 那么<strong>直接把右键滚动的的条件改成左键</strong>,继承一下UListView,简单改下是不是就能成功呢?</p>
+<li><strong>默认支持右键滚动</strong><p>虚幻默认支持右键滚动, 那么<strong>直接把右键滚动的的条件改成左键</strong>,继承一下UListView,简单改下是不是就能成功呢?</p>
 <p>事情不会那么简单, epic把功能做到别扭的右键上去. epic 这样做一定是有原因的.</p>
 </li>
-<li>
-<p><strong>让ai阅读源码</strong></p>
-<p>这里涉及到 slate 和 UMG， 源码非常庞大，ai给出的线索非常有限，但还是快速定位到了 默认的右键滚动关键代码：</p>
+</ul>
+<ul>
+<li><strong>让ai阅读源码</strong><p>这里涉及到 slate 和 UMG， 源码非常庞大，ai给出的线索非常有限，但还是快速定位到了 默认的右键滚动关键代码：</p>
 <p><code>FReply STableViewBase::OnMouseMove( const FGeometry&amp; MyGeometry, const FPointerEvent&amp; MouseEvent )</code></p>
 <p>但ai的作用很难在这种复杂的代码里发挥，即使是sonnet也只适合简单的定位工作，让它实现左键的版本，非常容易范低级错误逻辑非常差，这可能是训练集没有针对虚幻“U++”的原因，况且虚幻的代码模板套模板，各种多继承，Slate的魔法Marco都能把ai搞傻。</p>
 </li>
-<li>
-<p><strong>明确目标，支持左键滚动的同时，不干扰正常的点击</strong></p>
-<p>阅读源码的过程中意识到，方法是重写是会影响到点击事件的传播的，所以必须理清点击事件的传播，才能正确修改。</p>
+</ul>
+<ul>
+<li><strong>明确目标，支持左键滚动的同时，不干扰正常的点击</strong><p>阅读源码的过程中意识到，方法是重写是会影响到点击事件的传播的，所以必须理清点击事件的传播，才能正确修改。</p>
 </li>
 </ul>
 <h3 id="_2">解析</h3>
@@ -2839,9 +2883,11 @@ OnPreviewAnalogInputEvent
 <ul>
 <li><a href="https://zhuanlan.zhihu.com/p/448050955">【UE·底层篇】Slate源码分析——点击事件的触发流程梳理</a></li>
 <li><a href="https://zhuanlan.zhihu.com/p/370249957">【UE·UI篇】ListView使用经验总结</a></li>
-<li><a href="https://myslate.readthedocs.io/en/latest/index.html"> Slate介绍</a></li>
-</ul>
-<p><a class="glightbox" href="../../../../assets/images/LMB_Scrollable_LIstView_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="解析成功" src="../../../../assets/images/LMB_Scrollable_LIstView_image-2.png"></a></p></div>
+<li>
+<p><a href="https://myslate.readthedocs.io/en/latest/index.html"> Slate介绍</a></p>
+<p><a class="glightbox" href="../../../../assets/images/LMB_Scrollable_LIstView_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="解析成功" src="../../../../assets/images/LMB_Scrollable_LIstView_image-2.png"></a></p>
+</li>
+</ul></div>
 
 
 

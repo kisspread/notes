@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1573,6 +1596,8 @@
       
         
       
+        
+      
     
     
       
@@ -1639,6 +1664,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2784,16 +2830,14 @@
 <h2 id="tldr">TL;DR 太长不看</h2>
 <p>commonUI 有两个“Focus”, 一个是Widget的Focus，另一个是Input Mode 的Focus。</p>
 <ul>
-<li>
-<p>如果当前屏幕里有 focus的widget，那么导航键 就有可能被 CommonUI 吃掉，尤其是 Input Mode是All的情况。取消勾选 Focusable 即可：<a class="glightbox" href="../../../../assets/images/01Focus_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01Focus_image.png"></a>
-或者，在 OnFocusReceived里面，手动调用 Set Focus to Game Viewport</p>
-</li>
-<li>
-<p>CommonUI 没有自动激活相应的 Input Mode，勾选Supports Activation Focus 即可。</p>
-</li>
-<li>
-<p>确认键（FaceButton Bottom） 被CommonUI占用：可以通过 C++ <a href="../07CustomAnalogCursor/">重写父类判断的方法来解决</a></p>
-</li>
+<li>如果当前屏幕里有 focus的widget，那么导航键 就有可能被 CommonUI 吃掉，尤其是 Input Mode是All的情况。取消勾选 Focusable 即可：<a class="glightbox" href="../../../../assets/images/01Focus_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../../assets/images/01Focus_image.png"></a>
+或者，在 OnFocusReceived里面，手动调用 Set Focus to Game Viewport</li>
+</ul>
+<ul>
+<li>CommonUI 没有自动激活相应的 Input Mode，勾选Supports Activation Focus 即可。</li>
+</ul>
+<ul>
+<li>确认键（FaceButton Bottom） 被CommonUI占用：可以通过 C++ <a href="../07CustomAnalogCursor/">重写父类判断的方法来解决</a></li>
 </ul>
 <hr>
 <h2 id="_1">一些概念</h2>
@@ -2845,52 +2889,54 @@
 <p>所以输入事件的操作，都是通过构造一个FReply对象，并对其设置响应的值，一层一层地传递处理。</p>
 <p><code>FReply</code> 类是一个用于在 Slate 系统中处理和响应事件的工具类。它提供了丰富的 API，用于指示系统如何处理鼠标事件、焦点管理、导航、拖拽操作等。通过返回 <code>FReply</code> 对象，开发者可以灵活地控制事件处理流程，增强用户交互体验。</p>
 <ol>
-<li><strong>事件处理状态</strong>：</li>
 <li>
-<p><code>Handled()</code> 和 <code>Unhandled()</code> 静态方法用于创建一个表示事件处理状态的 <code>FReply</code> 对象。<code>Handled()</code> 表示事件已被处理，<code>Unhandled()</code> 表示事件未被处理。</p>
+<p><strong>事件处理状态</strong>：</p>
+<ul>
+<li><code>Handled()</code> 和 <code>Unhandled()</code> 静态方法用于创建一个表示事件处理状态的 <code>FReply</code> 对象。<code>Handled()</code> 表示事件已被处理，<code>Unhandled()</code> 表示事件未被处理。</li>
+</ul>
 </li>
 <li>
 <p><strong>鼠标事件处理</strong>：</p>
 </li>
 </ol>
 <p>注意，这些都是设置相应的值，最终处理是在Tick里。</p>
-<ul>
-<li><code>CaptureMouse(TSharedRef&lt;SWidget&gt; InMouseCaptor)</code>：请求系统将鼠标事件捕获到指定的 Widget。</li>
-<li><code>UseHighPrecisionMouseMovement(TSharedRef&lt;SWidget&gt; InMouseCaptor)</code>：请求启用高精度鼠标移动。</li>
-<li><code>SetMousePos(const FIntPoint&amp; NewMousePos)</code>：请求将鼠标光标移动到指定位置。</li>
-<li><code>LockMouseToWidget(TSharedRef&lt;SWidget&gt; InWidget)</code>：请求将鼠标锁定在指定 Widget 的范围内。</li>
-<li><code>ReleaseMouseLock()</code>：请求释放鼠标锁定。</li>
-<li>
-<p><code>ReleaseMouseCapture()</code>：请求释放鼠标捕获。</p>
-</li>
+<p>- <code>CaptureMouse(TSharedRef&lt;SWidget&gt; InMouseCaptor)</code>：请求系统将鼠标事件捕获到指定的 Widget。
+   - <code>UseHighPrecisionMouseMovement(TSharedRef&lt;SWidget&gt; InMouseCaptor)</code>：请求启用高精度鼠标移动。
+   - <code>SetMousePos(const FIntPoint&amp; NewMousePos)</code>：请求将鼠标光标移动到指定位置。
+   - <code>LockMouseToWidget(TSharedRef&lt;SWidget&gt; InWidget)</code>：请求将鼠标锁定在指定 Widget 的范围内。
+   - <code>ReleaseMouseLock()</code>：请求释放鼠标锁定。
+   - <code>ReleaseMouseCapture()</code>：请求释放鼠标捕获。</p>
+<ol>
 <li>
 <p><strong>焦点管理</strong>：</p>
-</li>
+<ul>
 <li><code>SetUserFocus(TSharedRef&lt;SWidget&gt; GiveMeFocus, EFocusCause ReasonFocusIsChanging, bool bInAllUsers)</code>：请求将用户焦点设置到指定的 Widget。</li>
 <li><code>ClearUserFocus(bool bInAllUsers)</code> 和 <code>ClearUserFocus(EFocusCause ReasonFocusIsChanging, bool bInAllUsers)</code>：请求清除用户焦点。</li>
-<li>
-<p><code>CancelFocusRequest()</code>：取消先前的焦点请求。</p>
+<li><code>CancelFocusRequest()</code>：取消先前的焦点请求。</li>
+</ul>
 </li>
 <li>
 <p><strong>导航</strong>：</p>
-</li>
+<ul>
 <li><code>SetNavigation(EUINavigation InNavigationType, const ENavigationGenesis InNavigationGenesis, const ENavigationSource InNavigationSource)</code>：请求系统尝试进行指定类型的导航。</li>
-<li>
-<p><code>SetNavigation(TSharedRef&lt;SWidget&gt; InNavigationDestination, const ENavigationGenesis InNavigationGenesis, const ENavigationSource InNavigationSource)</code>：请求导航到指定的 Widget。</p>
+<li><code>SetNavigation(TSharedRef&lt;SWidget&gt; InNavigationDestination, const ENavigationGenesis InNavigationGenesis, const ENavigationSource InNavigationSource)</code>：请求导航到指定的 Widget。</li>
+</ul>
 </li>
 <li>
 <p><strong>拖拽操作</strong>：</p>
-</li>
+<ul>
 <li><code>DetectDrag(const TSharedRef&lt;SWidget&gt;&amp; DetectDragInMe, FKey MouseButton)</code>：请求系统检测指定 Widget 的拖拽操作。</li>
 <li><code>BeginDragDrop(TSharedRef&lt;FDragDropOperation&gt; InDragDropContent)</code>：开始一个拖拽操作。</li>
-<li>
-<p><code>EndDragDrop()</code>：结束当前的拖拽操作。</p>
+<li><code>EndDragDrop()</code>：结束当前的拖拽操作。</li>
+</ul>
 </li>
 <li>
 <p><strong>其他操作</strong>：</p>
-</li>
+<ul>
 <li><code>PreventThrottling()</code>：请求在鼠标按下时不进行 UI 响应的节流。</li>
 </ul>
+</li>
+</ol>
 <h3 id="fcommonanalogcursor">FCommonAnalogCursor</h3>
 <h4 id="isgameviewportinfocuspathwithoutcapture">函数 <code>IsGameViewportInFocusPathWithoutCapture</code></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/**</span>

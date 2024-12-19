@@ -556,6 +556,8 @@
       
         
       
+        
+      
     
     
       
@@ -622,6 +624,27 @@
   
   <span class="md-ellipsis">
     101 notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Basic/Abbreviation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    一些概念和简写搜集
   </span>
   
 
@@ -830,10 +853,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_11" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
         
           
-          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -844,8 +867,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_12">
             <span class="md-nav__icon md-icon"></span>
             Blueprint
           </label>
@@ -995,10 +1018,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_12" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
         
           
-          <label class="md-nav__link" for="__nav_2_12" id="__nav_2_12_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1009,8 +1032,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_12_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_13">
             <span class="md-nav__icon md-icon"></span>
             C++
           </label>
@@ -1154,10 +1177,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_13" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_14" >
         
           
-          <label class="md-nav__link" for="__nav_2_13" id="__nav_2_13_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_14" id="__nav_2_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1168,8 +1191,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_13_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_13">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_14">
             <span class="md-nav__icon md-icon"></span>
             Shader
           </label>
@@ -1573,6 +1596,8 @@
       
         
       
+        
+      
     
     
       
@@ -1639,6 +1664,27 @@
   
   <span class="md-ellipsis">
     Auto Created Cooldown GE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Tools/02GitDependences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UE5 Git Dependences
   </span>
   
 
@@ -2664,19 +2710,19 @@
 </code></pre></div>
 <h2 id="_5">还有大坑？</h2>
 <ul>
-<li>
-<p>调试发现，如果点击face button bottom, 会触发点击事件，鼠标会回到屏幕中间！
-   <a class="glightbox" href="../../../assets/images/06HandleInputChange_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/06HandleInputChange_image-7.png"></a> </p>
-</li>
-<li>
-<p>这里没有可用的开关变量，点击后一定会被<code>TargetGeometry.GetAbsolutePositionAtCoordinates(FVector2D(0.5f, 0.5f));</code> 把鼠标设置回屏幕中间。
-而bLinkCursorToGamepadFocus目前是个没用上的虚假占位变量。
-   <a class="glightbox" href="../../../assets/images/06HandleInputChange_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/06HandleInputChange_image-8.png"></a></p>
-</li>
-<li>然后，还发现要一个好玩的内部测试代码，同时按下这4个按键一秒，会触发隐藏开关，鼠标不会回中间了，但手柄左边变成移动鼠标了。
-目前来说，只能修改源码实现。</li>
+<li>调试发现，如果点击face button bottom, 会触发点击事件，鼠标会回到屏幕中间！
+   <a class="glightbox" href="../../../assets/images/06HandleInputChange_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/06HandleInputChange_image-7.png"></a> </li>
 </ul>
+<ul>
+<li>这里没有可用的开关变量，点击后一定会被<code>TargetGeometry.GetAbsolutePositionAtCoordinates(FVector2D(0.5f, 0.5f));</code> 把鼠标设置回屏幕中间。
+而bLinkCursorToGamepadFocus目前是个没用上的虚假占位变量。
+   <a class="glightbox" href="../../../assets/images/06HandleInputChange_image-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/06HandleInputChange_image-8.png"></a></li>
+<li>
+<p>然后，还发现要一个好玩的内部测试代码，同时按下这4个按键一秒，会触发隐藏开关，鼠标不会回中间了，但手柄左边变成移动鼠标了。
+目前来说，只能修改源码实现。</p>
 <p><a class="glightbox" href="../../../assets/images/06HandleInputChange_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/06HandleInputChange_image-6.png"></a></p>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <p>如果不按face button bottom进行点击事件，功能还是正常的。
 tab ` to open console:
