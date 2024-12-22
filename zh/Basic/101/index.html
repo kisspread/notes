@@ -3078,7 +3078,7 @@
 <ul>
 <li>还有 用于程序化计算的噪声图，预计算（烘焙）的环境光遮蔽图，3d体积渲染图。</li>
 </ul>
-<h2 id="geometry">Geometry</h2>
+<h2 id="geometry-representation">Geometry Representation</h2>
 <ul>
 <li>几何的表示，有显式和隐式的两种方式。</li>
 <li>显式的表示，比如三角形，直接用三个顶点来表示。比如最常见的 Mesh。</li>
@@ -3099,9 +3099,73 @@
 <a class="glightbox" href="../../../assets/images/101_image-27.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-27.png"></a></li>
 </ul>
 <ul>
-<li>Level Set, fractal 分别是显式和隐式
+<li>Level Set, fractal (没有细说)
   <a class="glightbox" href="../../../assets/images/101_image-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-28.png"></a><br>
 <a class="glightbox" href="../../../assets/images/101_image-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-29.png"></a></li>
+</ul>
+<h2 id="bezier-curves">Bezier Curves</h2>
+<h3 id="wavefront-obj">wavefront OBJ 文件格式</h3>
+<p>OBJ是Wavefront科技开发的一种几何体图形文件格式。该格式最初是为动画工具Advanced Visualizer开发，现已开放，很多其它三维图形软件中都有使用。</p>
+<p><a class="glightbox" href="../../../assets/images/101_image-30.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-30.png"></a></p>
+<ul>
+<li>v 是顶点，图里是正方体8个顶点</li>
+<li>vt 是纹理坐标，顺序不能乱，后续面里会根据先后序号来引用。</li>
+<li>vn 是法向量，图里是正方体，理论上应该是6个法向量，图里出现了8个是一种数据冗余。 </li>
+<li>f 是面，由3点组成，每个点的格式：v1/vt1/vn1，没有纹理可以写成 v1//vn1</li>
+<li>可知存在纹理时，每个顶点有映射在纹理里的平面坐标。然后通过三角坐标来采样三角形内每个像素的纹理。</li>
+<li>更多未提及的格式参考 维基百科 <a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file">Wavefront OBJ</a></li>
+</ul>
+<h3 id="curves">Curves</h3>
+<p>-重点介绍了Bézier Curves，⻉塞尔曲线。最早基于de Casteljau Algorithm。各种贝塞尔曲线都 可以用 ** Bernstein Polynomials(伯恩斯坦多项式) ** 来表示，并推广到多维空间。</p>
+<p>我的理解，de Casteljau Algorithm 是一种基于权重插值的算法。控制点代表曲线的权重（力），曲线上的每个点是所有控制点的加权平均。</p>
+<ul>
+<li>三个控制点的例子（quadratic Bezier，二阶贝塞尔曲线）：
+  <a class="glightbox" href="../../../assets/images/101_image-31.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-31.png"></a></li>
+</ul>
+<ul>
+<li>四个控制点的例子（cubic Bezier, 立方贝塞尔曲线））:
+  <a class="glightbox" href="../../../assets/images/101_image-32.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-32.png"></a></li>
+</ul>
+<ul>
+<li>quadratic Bezier 曲线的插值公式:
+  <a class="glightbox" href="../../../assets/images/101_image-33.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-33.png"></a><ul>
+<li>有点像平方公式展开，令 1-t = x; (x + t)^2 = x^2 + 2xt + t^2 </li>
+<li>t取任何值，基函数之和都是1, 所以这其实又回到了重心坐标（本质上是加权平均的一种几何扩展），基函数就是每个控制点的权重。</li>
+<li>所以，Bezier 曲线上的点都必然落在构成形状的顶点的凸包内。就像重心坐标系下，所有点都在三角形内一个道理。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>用Bernstein Polynomials(伯恩斯坦多项式)表示Bezier曲线:
+  <a class="glightbox" href="../../../assets/images/101_image-34.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-34.png"></a><ul>
+<li>基函数都是连续可导，所以Bezier函数 的加权平均也是连续可导的，结果必然是曲线。</li>
+<li>特殊值，t=0时和1时，分别是起始点和终点。此时求导，方向只和相邻的控制点有关，大小是阶数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>Piecewise Bézier Curves（分段贝塞尔曲线）
+<a class="glightbox" href="../../../assets/images/101_image-35.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-35.png"></a></p>
+<ul>
+<li>由于高阶贝塞尔曲线，比如n=10，由于每个点都贡献权重，牵一发而动全身</li>
+<li>分段贝塞尔曲线完美解决了这个问题</li>
+<li>对于分段立方贝塞尔曲线的连接处，如果切线法向在一个方向上，那么称为C0 Continuity(连续性)，大小也相同，称呼为C1连续。
+  <a class="glightbox" href="../../../assets/images/101_image-36.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-36.png"></a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Spline Curves(样条曲线) 
+  可控制的曲线，没细说。</li>
+</ul>
+<ul>
+<li>贝塞尔曲面
+  <a class="glightbox" href="../../../assets/images/101_image-37.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-37.png"></a><ul>
+<li>原理简化版：类比二次线性插值，任意t时，各个垂直方向的点作为该方向上的控制点。
+  <a class="glightbox" href="../../../assets/images/101_image-38.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/101_image-38.png"></a> </li>
+</ul>
+</li>
 </ul></div>
 
 
@@ -3125,7 +3189,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 15, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 22, 2024</span>
   </span>
 
     
