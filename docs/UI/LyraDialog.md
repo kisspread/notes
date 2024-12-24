@@ -131,5 +131,19 @@ Lyra 的弹窗是通过异步Action 来进行的。。
         OnResultCallback = ResultCallback;
     }
     ```
+    
 - Lyra动态创建了全部按钮，然后设置了委托并都绑定了同一个`CloseConfirmationWindow`关闭弹窗。
 - 最后，蓝图可以根据`CloseConfirmationWindow`传递过来的`ECommonMessagingResult`来做相应的处理。
+
+---
+
+## 总结
+
+- UGameUIManagerSubsystem 负责注册，通知。
+- UGameUIPolicy 配置根部布局
+- UCommonMessagingSubsystem 创建Dialog
+- UCommonGameDialogDescriptor 定义弹窗的内容
+- UCommonGameDialog 实现弹窗内容
+- UAsyncAction_ShowConfirmation 发起弹窗并广播结果
+
+个人看法， UGameUIManagerSubsystem 内部有个 SwitchPolicy 的方法，用于切换不同的 UGameUIPolicy，也就是切换不同的根布局。然而，根布局只是一个放置不同stack的容器，即使要实现类似博德之门那种，根据键鼠和手柄切换不同的操作UI，也不是用SwitchPolicy来实现的，因为它已经是根容器，根容器本身不做任何实现，切换它没有意义。总感觉这里是设计非常冗余。
