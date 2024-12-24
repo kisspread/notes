@@ -1968,6 +1968,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2807,6 +2816,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2897,7 +2915,7 @@
 <h3 id="4-ucommongamedialog">4. UCommonGameDialog</h3>
 <p>弹窗的真正实现，<code>SetupDialog</code>用于准备整个弹窗的UI。SetupDialog上面提到的<code>UCommonMessagingSubsystem</code>来调用。</p>
 <ul>
-<li>Lyra 的实现例子：<code>ULyraConfirmationScreen</code><p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">ULyraConfirmationScreen::SetupDialog</span><span class="p">(</span><span class="n">UCommonGameDialogDescriptor</span><span class="o">*</span><span class="w"> </span><span class="n">Descriptor</span><span class="p">,</span><span class="w"> </span><span class="n">FCommonMessagingResultDelegate</span><span class="w"> </span><span class="n">ResultCallback</span><span class="p">)</span>
+<li>Lyra 的实现例子：<code>ULyraConfirmationScreen</code><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">ULyraConfirmationScreen::SetupDialog</span><span class="p">(</span><span class="n">UCommonGameDialogDescriptor</span><span class="o">*</span><span class="w"> </span><span class="n">Descriptor</span><span class="p">,</span><span class="w"> </span><span class="n">FCommonMessagingResultDelegate</span><span class="w"> </span><span class="n">ResultCallback</span><span class="p">)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">{</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Super</span><span class="o">::</span><span class="n">SetupDialog</span><span class="p">(</span><span class="n">Descriptor</span><span class="p">,</span><span class="w"> </span><span class="n">ResultCallback</span><span class="p">);</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
@@ -2938,10 +2956,23 @@
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="n">OnResultCallback</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ResultCallback</span><span class="p">;</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="p">}</span>
 </code></pre></div>
-- Lyra动态创建了全部按钮，然后设置了委托并都绑定了同一个<code>CloseConfirmationWindow</code>关闭弹窗。
-- 最后，蓝图可以根据<code>CloseConfirmationWindow</code>传递过来的<code>ECommonMessagingResult</code>来做相应的处理。
 </li>
-</ul></div>
+</ul>
+<ul>
+<li>Lyra动态创建了全部按钮，然后设置了委托并都绑定了同一个<code>CloseConfirmationWindow</code>关闭弹窗。</li>
+<li>最后，蓝图可以根据<code>CloseConfirmationWindow</code>传递过来的<code>ECommonMessagingResult</code>来做相应的处理。</li>
+</ul>
+<hr>
+<h2 id="_3">总结</h2>
+<ul>
+<li>UGameUIManagerSubsystem 负责注册，通知。</li>
+<li>UGameUIPolicy 配置根部布局</li>
+<li>UCommonMessagingSubsystem 创建Dialog</li>
+<li>UCommonGameDialogDescriptor 定义弹窗的内容</li>
+<li>UCommonGameDialog 实现弹窗内容</li>
+<li>UAsyncAction_ShowConfirmation 发起弹窗并广播结果</li>
+</ul>
+<p>个人看法， UGameUIManagerSubsystem 内部有个 SwitchPolicy 的方法，用于切换不同的 UGameUIPolicy，也就是切换不同的根布局。然而，根布局只是一个放置不同stack的容器，即使要实现类似博德之门那种，根据键鼠和手柄切换不同的操作UI，也不是用SwitchPolicy来实现的，因为它已经是根容器，根容器本身不做任何实现，切换它没有意义。总感觉这里是设计非常冗余。</p></div>
 
 
 
