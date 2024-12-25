@@ -49,6 +49,7 @@ extra_css:
 plugins:
   - glightbox
   - mkdocs-video
+  - blueprintue
   - i18n:
       docs_structure: suffix
       languages:
