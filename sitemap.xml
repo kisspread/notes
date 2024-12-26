@@ -267,6 +267,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/Tools/03ReparentcorruptedBP/"/>
     </url>
     <url>
+        <loc>https://kisspread.github.io/notes/Tools/04.mkdocs-uebp/</loc>
+        <lastmod>2024-12-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/Tools/04.mkdocs-uebp/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/Tools/04.mkdocs-uebp/"/>
+    </url>
+    <url>
         <loc>https://kisspread.github.io/notes/UI/00/</loc>
         <lastmod>2024-12-26</lastmod>
         <changefreq>daily</changefreq>
@@ -699,6 +706,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/Tools/03ReparentcorruptedBP/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/Tools/03ReparentcorruptedBP/"/>
+    </url>
+    <url>
+        <loc>https://kisspread.github.io/notes/zh/Tools/04.mkdocs-uebp/</loc>
+        <lastmod>2024-12-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://kisspread.github.io/notes/zh/Tools/04.mkdocs-uebp/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://kisspread.github.io/notes/Tools/04.mkdocs-uebp/"/>
     </url>
     <url>
         <loc>https://kisspread.github.io/notes/zh/UI/00/</loc>

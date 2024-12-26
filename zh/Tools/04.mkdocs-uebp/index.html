@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://kisspread.github.io/notes/zh/Basic/Debug/">
+        <link rel="canonical" href="https://kisspread.github.io/notes/zh/Tools/04.mkdocs-uebp/">
       
       
-        <link rel="prev" href="../Abbreviation/">
+        <link rel="prev" href="../03ReparentcorruptedBP/">
       
       
-        <link rel="next" href="../Math/">
+        <link rel="next" href="../../UI/00/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Rider Debug UCommandlet - Game Dev Notes</title>
+        <title>Mkdocs Plugin for Rendering UE Blueprints - Game Dev Notes</title>
       
     
     
@@ -143,7 +143,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#features" class="md-skip">
           跳转至
         </a>
       
@@ -176,7 +176,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Rider Debug UCommandlet
+              Mkdocs Plugin for Rendering UE Blueprints
             
           </span>
         </div>
@@ -223,7 +223,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../Basic/Debug/" hreflang="en" class="md-select__link">
+            <a href="../../../Tools/04.mkdocs-uebp/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -326,13 +326,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../00/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../Basic/00/" class="md-tabs__link">
           
   
     
@@ -388,11 +386,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../Tools/00/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../00/" class="md-tabs__link">
           
   
     
@@ -533,10 +533,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -571,20 +569,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -595,7 +592,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basic
@@ -609,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../00/" class="md-nav__link">
+      <a href="../../Basic/00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -630,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../101/" class="md-nav__link">
+      <a href="../../Basic/101/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -651,7 +648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Abbreviation/" class="md-nav__link">
+      <a href="../../Basic/Abbreviation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,28 +666,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Rider Debug UCommandlet
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../Basic/Debug/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -699,60 +678,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      起因
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      分析
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      开始解决
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      还有高手
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -765,7 +690,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Math/" class="md-nav__link">
+      <a href="../../Basic/Math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -786,7 +711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
+      <a href="../../Basic/Using%20Python%20Script%20to%20Place%20StaicMesh%20into%20Level%20Editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ffmpeg/" class="md-nav__link">
+      <a href="../../Basic/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -828,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lfs/" class="md-nav__link">
+      <a href="../../Basic/lfs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -849,7 +774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../painful_ue/" class="md-nav__link">
+      <a href="../../Basic/painful_ue/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -870,7 +795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ps/" class="md-nav__link">
+      <a href="../../Basic/ps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -891,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../python/" class="md-nav__link">
+      <a href="../../Basic/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/0dontdothis/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/0dontdothis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -985,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/BluePrint/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/BluePrint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1006,7 +931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/MontageSection/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/MontageSection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1027,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/editor/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/editor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1048,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Blueprint/physisc/" class="md-nav__link">
+      <a href="../../Basic/Blueprint/physisc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1129,7 +1054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/C%2B%2B/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/C%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/Programming%20idiom/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/Programming%20idiom/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1171,7 +1096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/Rider/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/Rider/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1192,7 +1117,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/USubSystem/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/USubSystem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1213,7 +1138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../C%2B%2B/actor/" class="md-nav__link">
+      <a href="../../Basic/C%2B%2B/actor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shader/Material/" class="md-nav__link">
+      <a href="../../Basic/shader/Material/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1309,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../shader/base/" class="md-nav__link">
+      <a href="../../Basic/shader/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1670,8 +1595,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1688,19 +1615,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1711,7 +1639,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Tools
@@ -1725,7 +1653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/00/" class="md-nav__link">
+      <a href="../00/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1746,7 +1674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/01EditorModule/" class="md-nav__link">
+      <a href="../01EditorModule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1767,7 +1695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/02GitDependences/" class="md-nav__link">
+      <a href="../02GitDependences/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1788,7 +1716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tools/03ReparentcorruptedBP/" class="md-nav__link">
+      <a href="../03ReparentcorruptedBP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1806,10 +1734,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../Tools/04.mkdocs-uebp/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Mkdocs Plugin for Rendering UE Blueprints
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1818,6 +1764,162 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-code-block-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Code Block (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inline-blueprint-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Inline Blueprint Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-blueprintuecom-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Blueprintue.com Links
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acknowledgements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-test-cases-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some Test Cases for Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Some Test Cases for Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-code-block-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. Code Block Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1code-block-style-in-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Code block Style In Item
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dont-affect-other-code-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Don't affect other code blocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-no-conversion-inside-code-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. No conversion inside code blocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-inline-url-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. inline url test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2658,38 +2760,140 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      起因
+      Features
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      分析
+      Installation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
-      开始解决
+      Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-code-block-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Code Block (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-inline-blueprint-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Inline Blueprint Text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-blueprintuecom-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Blueprintue.com Links
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#acknowledgements" class="md-nav__link">
     <span class="md-ellipsis">
-      还有高手
+      Acknowledgements
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-test-cases-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Some Test Cases for Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Some Test Cases for Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-code-block-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. Code Block Style
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1code-block-style-in-item" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Code block Style In Item
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-dont-affect-other-code-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Don't affect other code blocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-no-conversion-inside-code-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. No conversion inside code blocks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-inline-url-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. inline url test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2708,7 +2912,7 @@
                   
 
   
-    <a href="https://github.com/kisspread/edit/master/docs/Basic/Debug.md" title="编辑此页" class="md-content__button md-icon">
+    <a href="https://github.com/kisspread/edit/master/docs/Tools/04.mkdocs-uebp.md" title="编辑此页" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2716,96 +2920,192 @@
   
 
 
-  <h1>Rider Debug UCommandlet</h1>
+  <h1>Mkdocs Plugin for Rendering UE Blueprints</h1>
 
-<div><p>如何调试UCommandlet命令行程序</p>
-<hr>
-<h2 id="_1">起因</h2>
-<p>使用多语言支持工具的过程中，一直触发一个错误，但log非常简陋，无法定位到问题所在。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:646<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogGatherTextCommandlet:<span class="w"> </span>Display:<span class="w"> </span>Completed<span class="w"> </span>GatherTextStep3:<span class="w"> </span>GenerateTextLocalizationReportCommandlet<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.00<span class="w"> </span>seconds
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:647<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogGatherTextCommandlet:<span class="w"> </span>Display:<span class="w"> </span>Completed<span class="w"> </span>all<span class="w"> </span>steps<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">2</span>.29<span class="w"> </span>seconds
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:647<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogGatherTextCommandlet:<span class="w"> </span>Display:<span class="w"> </span>GatherText<span class="w"> </span>completed<span class="w"> </span>with<span class="w"> </span><span class="nb">exit</span><span class="w"> </span>code<span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:647<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogInit:<span class="w"> </span>Display:<span class="w"> </span>Finished.
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:647<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogInit:<span class="w"> </span>Display:<span class="w"> </span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Execution<span class="w"> </span>of<span class="w"> </span>commandlet<span class="w"> </span>took:<span class="w">  </span><span class="m">2</span>.29<span class="w"> </span>seconds
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:818<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogOutputDevice:<span class="w"> </span>Warning:<span class="w"> </span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Script<span class="w"> </span>Stack<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>frames<span class="o">)</span><span class="w"> </span>:
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="o">[</span><span class="m">2024</span>.08.17-19.05.06:823<span class="o">][</span><span class="w">  </span><span class="m">0</span><span class="o">]</span>LogWindows:<span class="w"> </span>Error:<span class="w"> </span>appError<span class="w"> </span>called:<span class="w"> </span>Assertion<span class="w"> </span>failed:<span class="w"> </span>!IsRooted<span class="o">()</span><span class="w"> </span><span class="o">[</span>File:X:<span class="se">\U</span>nrealEngine<span class="se">\E</span>ngine<span class="se">\S</span>ource<span class="se">\R</span>untime<span class="se">\C</span>oreUObject<span class="se">\P</span>ublic<span class="se">\U</span>Object<span class="se">\U</span>ObjectBaseUtility.h<span class="o">]</span><span class="w"> </span><span class="o">[</span>Line:<span class="w"> </span><span class="m">178</span><span class="o">]</span><span class="w"> </span>
-</code></pre></div>
-<p>大致如上，只说了!IsRooted() 这个方法报错，并没有说在哪里。</p>
-<h2 id="_2">分析</h2>
-<p>全局搜索相关信息，发现两个线索：</p>
+<div><hr>
+<p>为了更好地在Mkdocs中展示，分享，收藏蓝图片段，我开发了这个工具。</p>
+<p><a href="https://github.com/kisspread/uebp">https://github.com/kisspread/uebp</a></p>
+<p>同时，还有一个 obsidian 的插件，可以在 obsidian 中直接使用，方便写笔记。</p>
+<p><a href="https://github.com/kisspread/uebp-obsidian">https://github.com/kisspread/uebp-obsidian</a></p>
+<p>以下是一些用法和测试用例。</p>
+<p>A MkDocs plugin that renders Unreal Engine Blueprint nodes in your documentation. Based on the excellent <a href="https://github.com/blueprintue/blueprintue-self-hosted-edition">blueprintue-self-hosted-edition</a> project.</p>
+<h2 id="features">Features</h2>
 <ul>
-<li>报错发生在UObject的MakrASGarbage() 
-  <a class="glightbox" href="../../../assets/images/Debug_image-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-1.png"></a></li>
+<li>Render Unreal Engine Blueprint nodes in your MkDocs documentation</li>
+<li>Support both local blueprint text and blueprintue.com links</li>
+<li>Interactive node visualization with pan and zoom</li>
+<li>Node connection visualization</li>
+<li>Copy button for blueprint text</li>
 </ul>
+<h2 id="installation">Installation</h2>
+<p>Install the package with pip:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-blueprintue
+</code></pre></div>
+<h2 id="usage">Usage</h2>
+<p>The plugin supports three ways to include blueprints in your markdown:</p>
+<h3 id="1-code-block-recommended">1. Code Block (Recommended)</h3>
+<p>This format supports editor code folding and syntax highlighting. You can optionally specify a custom height:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="sb">```uebp</span><span class="w"> </span>height="500px"
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="s">Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_0"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s">   FunctionReference=(MemberName="PrintString",bSelfContext=True)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">   NodePosX=0</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">   NodePosY=0</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s">   NodeGuid=A0000000000000000000000000000000</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">End Object</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sb">```</span>
+</code></pre></div>
+<p>The height parameter is optional and can be specified in:
+- Pixels: <code>height="500px"</code>
+- Em units: <code>height="30em"</code>
+- Viewport height: <code>height="50vh"</code></p>
+<p>If not specified, a default height of 643px will be used.</p>
+<h3 id="2-inline-blueprint-text">2. Inline Blueprint Text</h3>
+<p>For shorter blueprints, you can use the inline syntax:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>![uebp]{{{Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_0" ... End Object}}}
+</code></pre></div>
+<p>Note: The inline syntax cannot be used inside code blocks.</p>
+<h3 id="3-blueprintuecom-links">3. Blueprintue.com Links</h3>
+<p>You can embed blueprints from blueprintue.com using their share links:</p>
+<p>For example:
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>![uebp]{{{https://blueprintue.com/render/your-blueprint-id/}}}
+</code></pre></div>
+<h2 id="configuration">Configuration</h2>
+<p>You can configure the plugin in your <code>mkdocs.yml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">plugins</span><span class="p">:</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">blueprintue</span><span class="p">:</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nt">css_path</span><span class="p">:</span><span class="w"> </span><span class="s">'custom/css/path'</span><span class="w">  </span><span class="c1"># Optional: custom path to CSS files</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">js_path</span><span class="p">:</span><span class="w"> </span><span class="s">'custom/js/path'</span><span class="w">    </span><span class="c1"># Optional: custom path to JavaScript files</span>
+</code></pre></div>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>This plugin is based on <a href="https://github.com/blueprintue/blueprintue-self-hosted-edition">blueprintue-self-hosted-edition</a>, a fantastic project that provides the core functionality for rendering Unreal Engine Blueprint nodes. We are grateful to the original authors for their excellent work.</p>
+<p>The blueprint rendering functionality has been extracted and adapted from the original project to work as a MkDocs plugin, while maintaining the same high quality and interactive features of the original implementation.</p>
+<h2 id="some-test-cases-for-development">Some Test Cases for Development</h2>
+<h3 id="0-code-block-style">0. Code Block Style</h3>
+<div class="bue-render">
+            <div class="playground" id="bue_container_6eb0232f"></div>
+            <textarea id="bue_data_c9cb2e14_data" style="display:none">Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_0"
+   FunctionReference=(MemberName="PrintString",bSelfContext=True)
+   NodePosX=0
+   NodePosY=0
+   NodeGuid=A0000000000000000000000000000000
+End Object</textarea>
+            <script>
+            (function() {
+                function initBlueprintRenderer() {
+                    const textarea = document.getElementById('bue_data_c9cb2e14_data');
+                    const container = document.getElementById('bue_container_6eb0232f');
+                    if (!textarea || !container) return;
+                    if (!window.blueprintUE || !window.blueprintUE.render || !window.blueprintUE.render.Main) {
+                        setTimeout(initBlueprintRenderer, 100);
+                        return;
+                    }
+                    try {
+                        new window.blueprintUE.render.Main(textarea.value, container, {height:"643px"}).start();
+                    } catch(e) {
+                        console.error('Error initializing blueprint renderer:', e);
+                    }
+                };
+                if (document.readyState === 'complete') {
+                    initBlueprintRenderer();
+                } else {
+                    window.addEventListener('load', initBlueprintRenderer);
+                }
+            })();
+            </script>
+        </div>
+
+<h3 id="1code-block-style-in-item">1.Code block Style In Item</h3>
 <ul>
-<li>以上log出自于GatherTextCommandlet 这样的命令行小程序
-  <a class="glightbox" href="../../../assets/images/Debug_image-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-3.png"></a></li>
+<li>test
+ <br>
+<div class="bue-render">
+            <div class="playground" id="bue_container_762c47f4"></div>
+            <textarea id="bue_data_eee1b2b5_data" style="display:none">Begin Object Class=/Script/BlueprintGraph.K2Node_FunctionEntry Name="K2Node_FunctionEntry_0" ExportPath="/Script/BlueprintGraph.K2Node_FunctionEntry'/Game/YMyth/Scripts/EUB_Reparent.EUB_Reparent:Reparent.K2Node_FunctionEntry_0'"
+      MetaData=(Category=NSLOCTEXT("", "0BB938DA40D01C31C087C781AA32C359", "AssetsTools"),bCallInEditor=True)
+      LocalVariables(0)=(VarName="NewLocalVar",VarGuid=D6485B7348F22D545358DBB9D32BD8E5,VarType=(PinCategory="bool"),FriendlyName="New Local Var",Category=NSLOCTEXT("KismetSchema", "Default", "Default"),PropertyFlags=5)
+      ExtraFlags=201457664
+      FunctionReference=(MemberName="Reparent")
+      bIsEditable=True
+      NodePosX=-576
+      NodePosY=-160
+      NodeGuid=569AFD7742C04F4DBB29C4BCA53E3C6B
+      CustomProperties Pin (PinId=DDFE266444E0867C353956AE6D8BF054,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_3 32442B704250EA76702B54BD34EDB28B,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=9F616CC2469EE419F2782E948821970B,PinName="NewClass",Direction="EGPD_Output",PinType.PinCategory="class",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_Knot_0 799C79824CDB5B36FF22A8A5E5F2A924,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties UserDefinedPin (PinName="NewClass",PinType=(PinCategory="class",PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'"),DesiredPinDirection=EGPD_Output)
+   End Object
+   Begin Object Class=/Script/BlueprintGraph.K2Node_CallFunction Name="K2Node_CallFunction_3" ExportPath="/Script/BlueprintGraph.K2Node_CallFunction'/Game/YMyth/Scripts/EUB_Reparent.EUB_Reparent:Reparent.K2Node_CallFunction_3'"
+      FunctionReference=(MemberParent="/Script/CoreUObject.Class'/Script/Blutility.EditorUtilityLibrary'",MemberName="GetSelectedAssets")
+      NodePosX=-416
+      NodePosY=-160
+      NodeGuid=B3C52AB049B04542D551A789D6616C5F
+      CustomProperties Pin (PinId=32442B704250EA76702B54BD34EDB28B,PinName="execute",PinToolTip="\nExec",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_FunctionEntry_0 DDFE266444E0867C353956AE6D8BF054,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=5E7C44C94C42D2912A232483BD4335AC,PinName="then",PinToolTip="\nExec",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_MacroInstance_0 1EBBA14142FF2284F9BB3783967A9EA6,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=B969F7D344A5327547DC5A965C7F7D1E,PinName="self",PinFriendlyName=NSLOCTEXT("K2Node", "Target", "Target"),PinToolTip="Target\nEditor Utility Library Object Reference",PinType.PinCategory="object",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/Blutility.EditorUtilityLibrary'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,DefaultObject="/Script/Blutility.Default__EditorUtilityLibrary",PersistentGuid=00000000000000000000000000000000,bHidden=True,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=B6EDFA104E498D86131472950BAA9289,PinName="ReturnValue",PinToolTip="Return Value\nArray of Object References\n\nGets the set of currently selected assets",Direction="EGPD_Output",PinType.PinCategory="object",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=Array,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_MacroInstance_0 2BDB2A61497B7F0456302193D08D629E,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   End Object
+   Begin Object Class=/Script/BlueprintGraph.K2Node_MacroInstance Name="K2Node_MacroInstance_0" ExportPath="/Script/BlueprintGraph.K2Node_MacroInstance'/Game/YMyth/Scripts/EUB_Reparent.EUB_Reparent:Reparent.K2Node_MacroInstance_0'"
+      MacroGraphReference=(MacroGraph="/Script/Engine.EdGraph'/Engine/EditorBlueprintResources/StandardMacros.StandardMacros:ForEachLoop'",GraphBlueprint="/Script/Engine.Blueprint'/Engine/EditorBlueprintResources/StandardMacros.StandardMacros'",GraphGuid=99DBFD5540A796041F72A5A9DA655026)
+      NodePosX=-192
+      NodePosY=-160
+      NodeGuid=037C72AB4CFE12E44744F9B1C55BA907
+      CustomProperties Pin (PinId=1EBBA14142FF2284F9BB3783967A9EA6,PinName="Exec",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_3 5E7C44C94C42D2912A232483BD4335AC,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=2BDB2A61497B7F0456302193D08D629E,PinName="Array",PinType.PinCategory="object",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=Array,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_3 B6EDFA104E498D86131472950BAA9289,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=0A29109E400291BF23B8C091BF5491D9,PinName="LoopBody",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_4 2536DFAC4AD1CC94793AC3BC7E0229E9,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=4E4BEF17426B29B1AFF038AC012664AB,PinName="Array Element",Direction="EGPD_Output",PinType.PinCategory="object",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_4 48C711ED41A67ECE79E44D86319A189E,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=F241CE6B47B524A41BA6CBAB936B8E2A,PinName="Array Index",Direction="EGPD_Output",PinType.PinCategory="int",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+      CustomProperties Pin (PinId=862A1DAD4DC338F072CDEEA9B95CCA35,PinName="Completed",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_1 6C2C96394222813F8C8020856BEAF1D3,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
+   End Object</textarea>
+            <script>
+            (function() {
+                function initBlueprintRenderer() {
+                    const textarea = document.getElementById('bue_data_eee1b2b5_data');
+                    const container = document.getElementById('bue_container_762c47f4');
+                    if (!textarea || !container) return;
+                    if (!window.blueprintUE || !window.blueprintUE.render || !window.blueprintUE.render.Main) {
+                        setTimeout(initBlueprintRenderer, 100);
+                        return;
+                    }
+                    try {
+                        new window.blueprintUE.render.Main(textarea.value, container, {height:"643px"}).start();
+                    } catch(e) {
+                        console.error('Error initializing blueprint renderer:', e);
+                    }
+                };
+                if (document.readyState === 'complete') {
+                    initBlueprintRenderer();
+                } else {
+                    window.addEventListener('load', initBlueprintRenderer);
+                }
+            })();
+            </script>
+        </div>
+</li>
 </ul>
-<p>但无法调试MakrASGarbage，因为 多语言工具的GatherTextCommandlet 是一个独立进程，无法在Rider当前attach的编辑器里打断点。</p>
-<p>直接修改源码加入log也不妥，这个方法是Uobject的，几乎会导致整个编辑器重新编译，（2700个文件重新编译）。不如找个方法直接打断点</p>
-<p>搜索UCommandlet如何调试，发现了这个：<a href="https://youtrack.jetbrains.com/issue/RIDER-89943">https://youtrack.jetbrains.com/issue/RIDER-89943</a></p>
-<p>大致就是Rider目前还没有快捷调试UCommandlet的功能，但还是可以通过附加 -waitforattach 来调试。</p>
-<h2 id="_3">开始解决</h2>
-<p>先找到这个Commandlet 的使用说明：
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">FString</span><span class="w"> </span><span class="nx">UGatherTextCommandlet</span><span class="o">::</span><span class="nx">UsageText</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">(</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"GatherTextCommandlet usage...\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    &lt;GameName&gt; GatherTextCommandlet -Config=&lt;path to config ini file&gt; [-Preview -EnableSCC -DisableSCCSubmit -GatherType=&lt;All | Source | Asset | Metadata&gt;]\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    \r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    &lt;path to config ini file&gt; Full path to the .ini config file that defines what gather steps the commandlet will run.\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    Preview\t Runs the commandlet and its child commandlets in preview. Some commandlets will not be executed in preview mode. Use this to dump all generated warnings without writing any files. Using this switch implies -DisableSCCSubmit\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    EnableSCC\t Enables revision control and allows the commandlet to check out files for editing.\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    DisableSCCSubmit\t Prevents the commandlet from submitting checked out files in revision control that have been edited.\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"    GatherType\t Only performs a gather on the specified type of file (currently only works in preview mode). Source only runs commandlets that gather source files. Asset only runs commandlets that gather asset files. All runs commandlets that gather both source and asset files. Leaving this param out implies a gather type of All."</span><span class="p">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nx">TEXT</span><span class="p">(</span><span class="s2">"Metadata only runs commandlets that gather metadata files. All runs commandlets that gather both source and asset files. Leaving this param out implies a gather type of All.\r\n"</span><span class="p">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="p">);</span>
+<h3 id="2-dont-affect-other-code-blocks">2. Don't affect other code blocks</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// Copyright Epic Games, Inc. All Rights Reserved.</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"LyraConfirmationScreen.h"</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="cp">#if WITH_EDITOR</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"CommonInputSettings.h"</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"Editor/WidgetCompilerLog.h"</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="cp">#endif</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1">// Create Attribute set</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">UPCGParamData</span><span class="o">*</span><span class="w"> </span><span class="n">ParamData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NewObject</span><span class="o">&lt;</span><span class="n">UPCGParamData</span><span class="o">&gt;</span><span class="p">();</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">// Create an int32 attribute</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">FPCGMetadataAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;*</span><span class="w"> </span><span class="n">Attribute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">CreateAttribute</span><span class="o">&lt;</span><span class="n">int32</span><span class="o">&gt;</span><span class="p">(</span><span class="n">TEXT</span><span class="p">(</span><span class="s">"ChosenPointsNum"</span><span class="p">),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1">// Assign value</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">Attribute</span><span class="o">-&gt;</span><span class="n">SetValue</span><span class="p">(</span><span class="n">ParamData</span><span class="o">-&gt;</span><span class="n">Metadata</span><span class="o">-&gt;</span><span class="n">AddEntry</span><span class="p">(),</span><span class="w"> </span><span class="n">NumberOfElementsToKeep</span><span class="p">);</span><span class="w"> </span>
 </code></pre></div>
-<p>多年的Android开发经验告诉我，可以在rider的Run configuration里增加一个配置:
-<a class="glightbox" href="../../../assets/images/Debug_image-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-2.png"></a>
-把上面使用说明的命令行参数填进去，并附加 <strong>-waitforattach</strong>, 最好把运行前 build project的步骤去掉，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。</p>
-<p>打好断点，运行。
-成功跳转到了报错的地方：<a class="glightbox" href="../../../assets/images/Debug_image.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image.png"></a></p>
-<p>理论上，这里不可能在命令行模式得到执行，但实际上它执行了，我怀疑是CDO的自动销毁。
-<a class="glightbox" href="../../../assets/images/Debug_image-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-4.png"></a>  </p>
-<p>为了跳过这个错误，一种解决办法：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">IsRooted</span><span class="p">())</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="n">MarkAsGarbage</span><span class="p">();</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
+<h3 id="3-no-conversion-inside-code-blocks">3. No conversion inside code blocks</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>   ![uebp]{{{node text}}}
 </code></pre></div>
-<p>基本上，这样能解决。</p>
-<h2 id="_4">还有高手</h2>
-<p>Assertion failed: IsValid()</p>
-<p>解决了上面IsRooted()的问题，依然有别的错误，还好这题我会，之前遇到过。 
-<a class="glightbox" href="../../../assets/images/Debug_image-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-5.png"></a></p>
-<p>这是因为很多第三方插件没有判断 当前是否是命令行模式，只要是命令行模式里设计到UI相关的操作，一定会报错。</p>
-<p>解决办法：找到所有涉及UI的插件，在载入和卸载时判断一下，如果是命令行模式，则不载入，也不卸载。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">FGASAttachEditorModule::StartupModule</span><span class="p">()</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="p">{</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsRunningCommandlet</span><span class="p">())</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="c1">// 在命令行模式下，不生成菜单和SlateUI</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">//</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kt">void</span><span class="w"> </span><span class="n">FGASAttachEditorModule</span><span class="o">::</span><span class="n">ShutdownModule</span><span class="p">()</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="p">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsRunningCommandlet</span><span class="p">())</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="c1">//直接返回</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="p">}</span>
-</code></pre></div>
-<p>重新编译</p>
-<p><a class="glightbox" href="../../../assets/images/Debug_image-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-6.png"></a></p>
-<p>终于正常了</p>
-<p><a class="glightbox" href="../../../assets/images/Debug_image-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="alt text" src="../../../assets/images/Debug_image-7.png"></a></p></div>
+<h3 id="4-inline-url-test">4. inline url test</h3>
+<div class="bue-render"><iframe src="https://blueprintue.com/render/50aau0g_/" scrolling="no" allowfullscreen style="width: 100%; height: 643px; border: none;"></iframe></div>
+
+<ul>
+<li><div class="bue-render"><iframe src="https://blueprintue.com/render/50aau0g_/" scrolling="no" allowfullscreen style="width: 100%; height: 643px; border: none;"></iframe></div></li>
+</ul></div>
 
 
 
@@ -2828,7 +3128,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 18, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 26, 2024</span>
   </span>
 
     
@@ -2838,7 +3138,7 @@
     <span class="md-icon" title="创建日期">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">August 17, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 26, 2024</span>
   </span>
 
     
