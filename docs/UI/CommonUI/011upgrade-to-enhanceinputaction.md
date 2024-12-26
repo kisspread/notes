@@ -12,14 +12,21 @@ comments:true
 
 ### 使用 
 
-`TObjectPtr<UInputAction> TriggeringEnhancedInputAction;`
+```cpp
+	/** 
+	 *	The enhanced input action that is bound to this button. The common input manager will trigger this button to 
+	 *	click if the action was pressed 
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (EditCondition = "CommonInput.CommonInputSettings.IsEnhancedInputSupportEnabled", EditConditionHides))
+	TObjectPtr<UInputAction> TriggeringEnhancedInputAction;
+ ```   
 
  而不是`FDataTableRowHandle TriggeringInputAction;`
 
-这个Action, 可以设置给 CommonUI的CommonBaseButton
+这个Action, 可以设置给 CommonUI的CommonBaseButton，完成绑定。
 
 
-在Button内部，TriggeringEnhancedInputAction 最终会通过SetEnhancedInputAction设置给InputActionWidget
+同时，在Button内部，TriggeringEnhancedInputAction 会通过SetEnhancedInputAction设置给InputActionWidget，用于显示快捷键。InputActionWidget不是必须的，这是一个可选项。
 
 ```cpp
 	UPROPERTY(BlueprintReadOnly, Category = Input, meta = (BindWidget, OptionalWidget = true, AllowPrivateAccess = true))
