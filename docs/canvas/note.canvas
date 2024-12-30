@@ -1,7 +1,6 @@
 {
 	"nodes":[
-		{"id":"f0f8e40d259671dc","type":"file","file":"Basic/SlateUI&UMG/ListView.md","x":-760,"y":-200,"width":1300,"height":1000,"color":"4"},
-		{"id":"0f39a5680060bade","x":-760,"y":860,"width":960,"height":720,"type":"file","file":"canvas/demo.md.md"}
+		{"id":"0f39a5680060bade","type":"file","file":"canvas/demo.md.md","x":-760,"y":860,"width":960,"height":720}
 	],
 	"edges":[]
 }
