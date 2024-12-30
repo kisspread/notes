@@ -1,9 +1,9 @@
-body {
+/* body {
     font-family: 'LXGW WenKai', sans-serif;
     font-weight: bold;
-}
+} */
 
-:root {
+/* :root {
     --md-code-font:"LXGW WenKai", monospace;
 }
 
@@ -15,28 +15,28 @@ body {
 .md-nav__item--section>.md-nav__link[for] {
     font-family: "Concert One", "LXGW WenKai", sans-serif; 
     font-weight: bold;
-}
+} */
 
 [data-md-color-scheme="zerosoul"] {
-    --md-primary-fg-color:        #ef5552;
-    --md-primary-fg-color--light: #f4c4c4;
+    --md-primary-fg-color:        #0a7085;
+    --md-primary-fg-color--light: #ffffff;
     --md-primary-fg-color--dark:  #90030C;
 
     --md-accent-fg-color: #00bda4;
     --md-accent-fg-color--transparent: #00bda41a;
     --md-accent-bg-color: #fff;
-    --md-accent-bg-color--light: #ffffffb3;
+    --md-accent-bg-color--light: #ffffffff;
 
     --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
-    --md-default-bg-color:               rgb(244, 243, 239);
+    --md-default-bg-color:               rgb(255, 255, 255);
 
     --md-admonition-fg-color: var(--md-default-fg-color);
-    --md-admonition-bg-color:  rgb(247, 246, 244);
+    --md-admonition-bg-color:  rgb(255, 255, 255);
 
-    --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
-    --md-code-bg-color:                 rgb(238, 241, 235);
+    /* --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
+    --md-code-bg-color:                 rgb(238, 241, 235); */
   
-    --md-code-hl-color:                  hsla(#{hex2hsl($clr-blue-a200)}, 1);
-    --md-code-hl-color--light:           hsla(#{hex2hsl($clr-blue-a200)}, 0.1);
+    /* --md-code-hl-color:                  hsla(#{hex2hsl($clr-blue-a200)}, 1);
+    --md-code-hl-color--light:           hsla(#{hex2hsl($clr-blue-a200)}, 0.1); */
 
   }
