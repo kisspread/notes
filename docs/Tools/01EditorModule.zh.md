@@ -1,5 +1,7 @@
-title:Auto Created Cooldown GE
-comments:true
+---
+title: Auto Created Cooldown GE
+comments:  true
+---
 
 大部分技能的冷却都是非常简单的配置，我不想每个简单的GE 都去手动创建，所以这里我写了一个自动创建的 Asset Action。
 

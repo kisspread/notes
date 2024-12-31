@@ -1,5 +1,5 @@
 ---
-Title: 编辑器BUG
+title: 编辑器BUG
 comments: true
 ---
  

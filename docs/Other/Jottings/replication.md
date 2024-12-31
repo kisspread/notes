@@ -1,5 +1,7 @@
+---
 title: Replication
-comments:true
+comments:  true
+---
 
 ### Network Prediction plugin
 ![alt text](../assets/images/jottings_image.png)

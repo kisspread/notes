@@ -1,5 +1,7 @@
+---
 title: slate 入门
-comments:true
+comments:  true
+---
 
 ![alt text](../../assets/images/Pasted%20image%2020241011175926.png)
 

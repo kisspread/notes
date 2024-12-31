@@ -1,5 +1,6 @@
-tile:UAsset 版本feature 判断
-
+---
+title: UAsset 版本feature 判断
+---
 
 `Summary.GetFileVersionUE() >= EUnrealEngineObjectUE5Version::ADD_SOFTOBJECTPATH_LIST` 这种比较方法的原理，以及它在 Unreal Engine 中所起的作用。
 

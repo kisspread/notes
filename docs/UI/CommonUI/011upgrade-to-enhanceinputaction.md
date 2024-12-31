@@ -1,5 +1,6 @@
-title:UE5 使用UInputAction 代替 FDataTableRowHandle
-comments:true
+---
+title: UE5 使用UInputAction 代替 FDataTableRowHandle
+comments:  true
 ----
 
 开启EnhancedInput支持，这样就可以在CommonUI中使用EnhancedInputAction（就是UInputAction）

@@ -1,8 +1,9 @@
-Title: UE Programming idiom
-comments: true
-
 ---
-这里记录一些 常见的UE/C++ 编程习惯，设计模式
+title: UE Programming idiom
+comments: true
+---
+ 
+# 这里记录一些 常见的UE/C++ 编程习惯，设计模式
 
 ## RAII
 

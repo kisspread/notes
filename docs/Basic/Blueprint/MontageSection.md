@@ -1,5 +1,7 @@
-Title:  Multi section Montage Anim Notify Not Fire In Client
+---
+title:  Multi section Montage Anim Notify Not Fire In Client
 comments: true
+---
 
 
 在多人游戏里，montage动画如果有定义了多个section，如果是服务端在gameplay ability 里面触发该动画，那么只有第一section里面的动画notify 会发送到 client，其他section的 的 notify 只会 在 server 调用，我认为这是一个引擎内部的bug。

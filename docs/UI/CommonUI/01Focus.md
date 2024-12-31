@@ -1,5 +1,7 @@
+---
 title: CommonUI 的Focus 导致的问题
-comments:true
+comments:  true
+---
 
 !!! note 
      加入了commonUI后，总有一些意想不到的问题，研究了一下。

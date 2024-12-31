@@ -1,5 +1,7 @@
-title:一些概念和简写搜集
-comments:true
+---
+title: 一些概念和简写搜集
+comments:  true
+---
 
 ## Abbreviation
 

@@ -1,10 +1,12 @@
+---
 title: Using macro to define Native Gameplay Tag
-comments:true
+comments:  true
+---
 
 !!! note 
     This post base on Aura GAS Course
 
----
+ 
 ## GamePlayTag
 
 这里记录 gameplay tag的一些用法

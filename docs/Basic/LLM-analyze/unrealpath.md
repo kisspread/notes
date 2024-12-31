@@ -1,5 +1,6 @@
+---
 title: UE5 handle Path
-comments:true
+comments:  true
 ---
 
 `FPackageName` 类提供了丰富的静态方法，用于处理各种类型的路径转换和操作，包括本地路径、长包名、短包名、对象路径和导出文本路径之间的相互转换，以及对路径的分解、组合、校验等操作。 掌握这些方法，可以帮助你在 Unreal Engine 中高效地管理和操作资源。

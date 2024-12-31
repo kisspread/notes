@@ -1,5 +1,8 @@
-
-## Rider debugger 技巧
+---
+title: Rider C++调试技巧
+comments: true
+---
+# Rider debugger 技巧
 
 ### 断点判断当前进程是服务端还是客户端,不依赖UELog：
 

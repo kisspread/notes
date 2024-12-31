@@ -1,7 +1,8 @@
-title: Nesting actor components isn't exactly straightforward.
-comments:true
-
 ---
+title: Nesting actor components isn't exactly straightforward.
+comments:  true
+---
+ 
 
 
 ### Nesting actor components isn't exactly straightforward.

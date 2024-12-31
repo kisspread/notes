@@ -1,5 +1,7 @@
-Title: CommonUI Gamepad Mouse Missing
-Comments:true
+---
+title: CommonUI Gamepad Mouse Missing
+comments:  true
+---
 
 最近发现，FUIInputConfig设置了不隐藏鼠标，但是一用手柄，鼠标立即消失。
 

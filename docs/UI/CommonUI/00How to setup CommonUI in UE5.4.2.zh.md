@@ -1,9 +1,10 @@
-Title:How to Setup CommonUI in UE5.4.2 结合增强输入
-comments:true
+---
+title: How to Setup CommonUI in UE5.4.2 结合增强输入
+comments:  true
+---
 
 目前为止，commonUI的文档非常简陋，并未明确告诉我们如何正确配置。我花了好长时间才搞明白，在这里把主要过程记录一下。
-
----
+ 
 
 ### Activate 的概念
 Activatable Widget是 Common UI 的重要概念。 这里可以简单地理解为激活了就会显示，deactivate就是隐藏。还有：

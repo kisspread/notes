@@ -1,6 +1,7 @@
-Title: UE C++ Actor Usage
+---
+title: UE C++ Actor Usage
 comments: true
-
+---
 
 ### Actor Lifecycle
 

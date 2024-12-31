@@ -1,5 +1,7 @@
-title:Gas Common Pitfalls
-comments:true
+---
+title: Gas Common Pitfalls
+comments:  true
+---
 
 ## GASComponent
 
@@ -98,12 +100,12 @@ LogAura: Warning: Client:Projectile BeginPlay
 
 调试日志,摘取一段OnReceivedMontageAttackAction只在client出现的片段：
 ```js
-LogAura: Warning: Client         ,UAuraGameplayAbility::PlayDefaultMontage ,Is WaitGamplayEventFinished?:false
-LogAura: Warning: DedicatedServer,UAuraGameplayAbility::PlayDefaultMontage ,Is WaitGamplayEventFinished?:false
-LogAura: Warning: Client         ,UAuraGameplayAbility::OnReceivedMontageAttackAction ,Is WaitGamplayEventFinished?:false
-LogAura: Warning: Client         ,UAuraGameplayAbility::OnMontageBlendOut ,Is WaitGamplayEventFinished?:false
+LogAura: Warning: Client         ,UAuraGameplayAbility::PlayDefaultMontage ,Is WaitGamplayEventFinished? :false
+LogAura: Warning: DedicatedServer,UAuraGameplayAbility::PlayDefaultMontage ,Is WaitGamplayEventFinished? :false
+LogAura: Warning: Client         ,UAuraGameplayAbility::OnReceivedMontageAttackAction ,Is WaitGamplayEventFinished? :false
+LogAura: Warning: Client         ,UAuraGameplayAbility::OnMontageBlendOut ,Is WaitGamplayEventFinished? :false
 LogAura: Warning: Client         ,UAuraGameplayAbility::EndAbility ,Is WaitGamplayEventFinished?:true
-LogAura: Warning: DedicatedServer,UAuraGameplayAbility::OnMontageBlendOut ,Is WaitGamplayEventFinished?:false
+LogAura: Warning: DedicatedServer,UAuraGameplayAbility::OnMontageBlendOut ,Is WaitGamplayEventFinished? :false
 LogAura: Warning: DedicatedServer,UAuraGameplayAbility::EndAbility ,Is WaitGamplayEventFinished?:true
 ```
 可以看到 task 并没有结束，但就是收不到 蒙太奇发出的事件通知。而且是有概率的。

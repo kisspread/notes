@@ -1,5 +1,7 @@
-title:CommonActionWidget Usage
-comments:true
+---
+title: CommonActionWidget Usage
+comments:  true
+---
 
 ## 支持 held progress 动画
 一直没成功，一层层调试，找到了原因。

@@ -1,6 +1,6 @@
+---
 title: Git LFS
-comments:true
-
+comments: true
 ---
 
 ## git lfs 统计文件磁盘占用

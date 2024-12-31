@@ -1,5 +1,7 @@
-Title: CommonActionWidget ActionBar Support 'Hold'
-Comments:true
+---
+title: CommonActionWidget ActionBar Support 'Hold'
+comments:  true
+---
 
 
 同样的问题，Enhanced Input 默认情况，不支持ActionBar 里的 BoundButton 通过 Enhanced Trigger 的 Hold 来触发。

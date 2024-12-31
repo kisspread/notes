@@ -1,6 +1,6 @@
 ---
-title:Modeling with Blender
-comments:true
+title: Modeling with Blender
+comments:  true
 ---
 
 ## 问题合集
