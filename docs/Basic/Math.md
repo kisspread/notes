@@ -18,61 +18,61 @@ comments:true
 齐次坐标是为了解决 平移无法写成矩阵乘法的形式构建出来的3x3矩阵，同时让让功能多样化。
 
 - 平移
-   $$
+   $
    T(tx, ty) = \begin{pmatrix}
    1 & 0 & tx \\
    0 & 1 & ty \\
    0 & 0 & 1
    \end{pmatrix}
-  $$
+  $
 
 - 缩放
-  $$
+  $
    S(sx, sy) = \begin{pmatrix}
    sx & 0 & 0 \\
    0 & sy & 0 \\
    0 & 0 & 1
    \end{pmatrix}
-  $$
+  $
 
 - 旋转
-   $$
+  $
    R(\theta) = \begin{pmatrix}
    \cos\theta & -\sin\theta & 0 \\
    \sin\theta & \cos\theta & 0 \\
    0 & 0 & 1
    \end{pmatrix}
-   $$
+  $
 
 - 沿$x$轴方向的剪切：
-     $$
+  $
      Sh_x(sh_x) = \begin{pmatrix}
      1 & sh_x & 0 \\
      0 & 1 & 0 \\
      0 & 0 & 1
      \end{pmatrix}
-     $$
+  $
      其中，$sh_x$是沿$x$轴方向的剪切因子。
    
 - 沿$y$轴方向的剪切：
-     $$
+  $
      Sh_y(sh_y) = \begin{pmatrix}
      1 & 0 & 0 \\
      sh_y & 1 & 0 \\
      0 & 0 & 1
      \end{pmatrix}
-     $$
+  $
 
 ### 结合律
 矩阵乘法不可以进行交换律，但有结合律
 
-$$
+$
 M = T(tx, ty) \cdot R(\theta)
-$$
+$
 
 计算这个乘积：
 
-$$
+$
 M = \begin{pmatrix}
 1 & 0 & tx \\
 0 & 1 & ty \\
@@ -84,37 +84,37 @@ M = \begin{pmatrix}
 \sin\theta & \cos\theta & 0 \\
 0 & 0 & 1
 \end{pmatrix}
-$$
+$
 
 进行矩阵乘法：
 
-$$
+$
 M = \begin{pmatrix}
 1 \cdot \cos\theta + 0 \cdot \sin\theta + tx \cdot 0 & 1 \cdot -\sin\theta + 0 \cdot \cos\theta + tx \cdot 0 & 1 \cdot 0 + 0 \cdot 0 + tx \cdot 1 \\
 0 \cdot \cos\theta + 1 \cdot \sin\theta + ty \cdot 0 & 0 \cdot -\sin\theta + 1 \cdot \cos\theta + ty \cdot 0 & 0 \cdot 0 + 1 \cdot 0 + ty \cdot 1 \\
 0 \cdot \cos\theta + 0 \cdot \sin\theta + 1 \cdot 0 & 0 \cdot -\sin\theta + 0 \cdot \cos\theta + 1 \cdot 0 & 0 \cdot 0 + 0 \cdot 0 + 1 \cdot 1
 \end{pmatrix}
-$$
+$
 
 简化结果：
 
-$$
+$
 M = \begin{pmatrix}
 \cos\theta & -\sin\theta & tx \\
 \sin\theta & \cos\theta & ty \\
 0 & 0 & 1
 \end{pmatrix}
-$$
+$
 
 因此，复合变换矩阵 $M$ 就是：
 
-$$
+$
 M = \begin{pmatrix}
 \cos\theta & -\sin\theta & tx \\
 \sin\theta & \cos\theta & ty \\
 0 & 0 & 1
 \end{pmatrix}
-$$
+$
 
 这个矩阵可以用于将二维点先旋转 $\theta$ 角度，然后平移 $(tx, ty)$。
 
@@ -125,33 +125,33 @@ $$
 
 计算函数 $y = x$ 在区间 $[0, 1]$ 上的定积分：
 
-$$
+$
 I = \int_{0}^{1} x \, dx
-$$
+$
 即使忘了 积分的基本规则，也能回想起三角形的面积公式作为互补验证。找出它的原函数：
-$$
+$
 \int x \, dx = \frac{x^2}{2} + C
-$$
+$
 将 $x$ 从 $0$ 积分到 $1$：
 
-$$
+$
 I = \left[ \frac{x^2}{2} \right]_{0}^{1} = \frac{1^2}{2} - \frac{0^2}{2} = \frac{1}{2}
-$$
+$
 定积分可以精准地算出积分值。而蒙特卡洛积分是离散的，算出的值也是大概值。下面请GPT来解释：
 
 
 ### 数学背景
 蒙特卡洛积分的基本思想是通过随机采样来估计积分值。假设我们要计算一个函数 $f(x)$ 在区间 $[a, b]$ 上的积分：
 
-$$
+$
 I = \int_{a}^{b} f(x) \, dx
-$$
+$
 
 蒙特卡洛方法通过在区间 $[a, b]$ 上随机采样 $N$ 个点 $x_i$，然后计算这些点上的函数值的平均值来近似积分：
 
-$$
+$
 I \approx \frac{b-a}{N} \sum_{i=1}^{N} f(x_i)
-$$
+$
 ### 几何解释
 
 虽然蒙特卡洛方法使用离散的采样点，但其几何解释仍然可以理解为曲线 $y = f(x)$ 与 $x$ 轴之间的面积。具体原因如下：
@@ -163,9 +163,9 @@ $$
 
 假设我们要计算函数 $f(x) = x^2$ 在区间 $[0, 1]$ 上的积分：
 
-$$
+$
 I = \int_{0}^{1} x^2 \, dx
-$$
+$
 
 使用蒙特卡洛方法：
 
@@ -175,9 +175,9 @@ $$
 
 公式为：
 
-$$
+$
 I \approx \frac{1-0}{N} \sum_{i=1}^{N} x_i^2 = \frac{1}{N} \sum_{i=1}^{N} x_i^2
-$$
+$
 
 尽管我们是通过离散的采样点来进行计算，但最终结果仍然是对连续函数 $f(x) = x^2$ 在区间 $[0, 1]$ 上积分的一个近似值，也就是曲线 $y = x^2$ 与 $x$ 轴之间的面积。
 

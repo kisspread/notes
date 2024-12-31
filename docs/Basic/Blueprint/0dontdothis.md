@@ -1,6 +1,6 @@
-Title: 虚幻引擎编辑器各种bug操作记录
+---
+title: 虚幻引擎编辑器各种bug操作记录
 comments: true
-
 ---
 
 ### Blueprint

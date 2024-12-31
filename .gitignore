@@ -3,3 +3,11 @@ docs/.obsidian
 docs/task
 docs/Excalidraw
 docs/assets/obisdian
+
+node_modules
+dist
+cache
+.temp
+.DS_Store
+package-lock.json
+pnpm-lock.yaml
