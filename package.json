@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "markdown-it-mathjax3": "^4.3.2",
+    "vite": "^6.0.6",
+    "vite-plugin-vitepress-auto-nav": "^3.0.0",
+    "vitepress": "^1.5.0",
+    "vitepress-sidebar": "^1.30.2"
+  },
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  }
+}
