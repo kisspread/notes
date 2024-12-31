@@ -1,6 +1,7 @@
-title:My Understanding of GAS
-comments:true
-
+---
+title: y Understanding of GAS
+comments: true
+---
 
 GAS 就是Gameplay Ability System，但Gameplay是个很难翻译的单词，
 它在这里更多表示的是： **在程序里的游戏逻辑，设定，机制等**。

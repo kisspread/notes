@@ -1,5 +1,7 @@
-Title: A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
+---
+title: A Brief Analysis of Common C++ Classes for Custom Nodes in UE5.4 PCG
 comments: true
+---
 
 ## **UPCGData**
 - Equivalent to the "UObject" of PCG, most PCG classes are derived from it.

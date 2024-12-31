@@ -1,5 +1,7 @@
-title:Gas Cooldown Effect
-comments:true
+---
+title: Gas Cooldown Effect
+comments:  true
+---
 
 I dont't want to create Cooldown effect  for every Ability. So I want to find a way to create a Cooldown effect for all spells. To dynamically create a Cooldown effect for all spells. But finilly I found we can't do that. I writon a article about this.
 

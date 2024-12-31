@@ -1,5 +1,7 @@
+---
 title: Math In Game
-comments:true
+comments: true
+---
 
 ## [Matrix](https://www.bilibili.com/video/BV1X7411F744?p=2)
 

@@ -1,12 +1,12 @@
-Title: CommonUI In Cropout Demo
-Comments:true
+---
+title: CommonUI In Cropout Demo
+comments:  true
+---
 
 Cropout是虚幻官方开源的一个类似的RTS的游戏，和Lyra 一样使用了CommonUI，而Cropout是相对简单的纯蓝图项目。
 
 官网:[https://www.unrealengine.com/en-US/blog/cropout-casual-rts-game-sample-project](https://www.unrealengine.com/en-US/blog/cropout-casual-rts-game-sample-project)
-
-
----
+ 
 
 
 ## Layer

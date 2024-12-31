@@ -1,5 +1,7 @@
-Title: CommonActionWidget ActionBar Support 'Hold'
-Comments:true
+---
+title: CommonActionWidget ActionBar Support 'Hold'
+comments:  true
+---
 
 
 Basically, the Enhanced Input by default doesn't support triggering BoundButton in the ActionBar using Hold through Enhanced Trigger.

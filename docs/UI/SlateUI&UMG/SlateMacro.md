@@ -1,7 +1,8 @@
+---
 title: Slate Macro
 comment: true
-
 ---
+
 ### slate的构造：
 
 要理解这些宏是什么，就要知道under the hood到底生成了什么，才能知道他们的作用。

@@ -1,5 +1,7 @@
-Title:  Blueprint Relevant
+---
+title: Blueprint Relevant
 comments: true
+---
 
 不限于蓝图，C++也有。记录一下
 

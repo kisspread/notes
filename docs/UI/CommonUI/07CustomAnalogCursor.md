@@ -1,5 +1,7 @@
-Title: The CommonUI Gamepad FaceButton-Bottom is already taken.
-Comments:true
+---
+title: The CommonUI Gamepad FaceButton-Bottom is already taken.
+comments:  true
+---
 
 When using CommonUI, the FaceButton-Bottom is already reserved by the system to simulate a Mouse Left Click. It's quite annoying, so I dug into the code and "fixed" the issue.
 

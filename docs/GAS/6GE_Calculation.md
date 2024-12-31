@@ -1,5 +1,8 @@
+---
 title: GAS GE Custom Calculation
-comments:true
+comments:  true
+---
+
 
 ![alt text](../assets/images/6GE_Calculation_image-1.png)
 

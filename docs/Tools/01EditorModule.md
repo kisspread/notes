@@ -1,5 +1,7 @@
-title:Auto Created Cooldown GE
-comments:true
+---
+title: uto Created Cooldown GE
+comments:  true
+---
 
 Most skill cooldowns are quite simple to configure, and I don't want to manually create a separate GE for every simple case. Therefore, I wrote an asset action to automate the creation process.
 

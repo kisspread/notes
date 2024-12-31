@@ -1,5 +1,7 @@
-Title: CommonUI Debug 
-Comments:true
+---
+title: CommonUI Debug 
+comments:  true
+---
 
 ## 按键绑定调试技巧记录
 

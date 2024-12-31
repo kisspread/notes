@@ -1,4 +1,8 @@
+---
 title: Subsystem 
+---
+
+# Subsystem
 
 了解 subsystem的构建过程非常重要，比如很多Subsystem不需要手动创建和调用，只需直接继承它，运行时就会被调用。Subsystem本身是一套生命周期绑定机制，就像Android的Activity有非常多的生命周期，如果功能都写在activitiy里面，就会变得非常臃肿，难以迁移和优化, 于是Android推出很多 lifecycle 关联机制，这个subsystem是异曲同工的，不过我感觉subsystem的设计理念更加优雅。
 这里简单记录

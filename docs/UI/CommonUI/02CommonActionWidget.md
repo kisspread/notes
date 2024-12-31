@@ -1,5 +1,7 @@
-Title: How to Use CommonActionWidget
-Comments:true
+---
+title: How to Use CommonActionWidget
+comments:  true
+---
 
 ## Support for Held Progress Animation
 I have been trying to make it work without success, but after debugging layer by layer, I finally found the reason.

@@ -1,7 +1,9 @@
-Title:Base Shader
-comments:ture
-
 ---
+title: Base Shader
+comments: ture
+---
+
+
 在线 shader编辑器（GLSL）
 
 [https://thebookofshaders.com/edit.php](https://thebookofshaders.com/edit.php)

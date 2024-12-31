@@ -1,6 +1,7 @@
-title:嵌套actor component 并没有那么直接
-comments:true
-
+---
+title: 嵌套actor component 并没有那么直接
+comments:  true
+---
 
 ### 嵌套actor component 并没有那么直接
 

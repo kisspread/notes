@@ -1,5 +1,7 @@
+---
 title: Make Enhanced Input Trriger Support "hold" 
-comments:true
+comments:  true
+---
 
 In the last post, I mentioned that the CommonUI [Enhanced Input Trigger does not support the "Hold" action](./EnhancedInput.md/#2). Here is my solution: create a class derived from "CommonBaseButton" to make the Enhanced Input Trigger support the "Hold" action **without modifying the UE source code.**
 

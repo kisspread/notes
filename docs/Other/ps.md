@@ -1,6 +1,7 @@
+---
 title: powershell commands
-comments:true
-
+comments:  true
+---
 
 ### PowerShell 
 

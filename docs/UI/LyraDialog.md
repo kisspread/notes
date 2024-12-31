@@ -1,7 +1,8 @@
-title:UE5 Lyra Dialog
-comments:true
-
 ---
+title: UE5 Lyra Dialog
+comments:  true
+---
+
 
 
 ## Lyra Common Game Dialog
