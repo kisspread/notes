@@ -25,4 +25,4 @@ comments:  true
 ### 法向朝向没问题，但模型着色时候，出现伪影，黑斑
 1. 尝试平滑着色
 2. 如果上一步不像，点击 数据，几何数据，清除自定义拆边法向数据 就可以了。（clear custom spilt normals data）
-![alt text](../assets/images/blender_image.png)
+![alt text](../../assets/images/blender_image.png)

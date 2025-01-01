@@ -4,25 +4,16 @@ layout: home
 
 hero:
   name: "Zerol Dev Notes"
-  text: "My Dev Game Notes"
-  tagline: My great project tagline
+  text: "My Game Dev Notes"
+  tagline: Abstraktionen in der Wirklichkeit geltend machen, heißt Wirklichkeit zerstören. </br>对现实的抽象就是对现实的毁灭 -- Hegel
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
-
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      text: My UE Tools
+      link: /Tools/00
+    # - theme: alt
+    #   text: Showcase(In Progress)
+    #   link: /showcase
 ---
-
 Hey traveler!
 
 I mainly share various problems encountered in the development and learning process of the game **Unreal Engine 5**. Feel free to discuss!

@@ -1,5 +1,5 @@
 ---
-title: uto Created Cooldown GE
+title: Auto Created Cooldown GE
 comments:  true
 ---
 
