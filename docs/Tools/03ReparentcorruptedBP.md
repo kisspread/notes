@@ -1,9 +1,9 @@
 ---
 title: UE5 Reparent corrupted BP
 comments:  true
-----
+---
 
-When we rename a BP, or move a BP to another folder, it will be corrupted, and not able to open and edit, The BP asset shows its parent as "None".
+When we rename a BP, or move a BP to another folder, sometimes it will be corrupted, and not able to open and edit, The BP asset shows its parent as "None".
 
 This tool allows you to reparent a corrupted BP to a new parent without restarting the editor.
 
