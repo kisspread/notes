@@ -12,8 +12,10 @@ comments:  true
 ---
 
 ### 思路
-!!! note
-    之前的实践告诉我，我们最好不要在运行时[动态创建GE](../GAS/5CooldownGE.md),所以这里就直接用Asset Action自动创建。
+
+::: warning
+之前的实践告诉我，我们最好不要在运行时[动态创建GE](../GAS/5CooldownGE.md),所以这里就直接用Asset Action自动创建。
+::: 
 
 在Gamepaly Ability 里面定义冷却时间字段，然后右键 找个自定义 Action然后自动创建一个GE。除了创建GE本身，还有创建一个对应的cool down Tag.
 

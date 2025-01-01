@@ -27,12 +27,13 @@ comments:  true
   - 服务器端在 Pawn 的 PossessedBy() 函数中初始化
   - 客户端在 Pawn 的 OnRep_PlayerState() 函数中初始化
 
-!!! warning
-    这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState。（ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character）
-    ![alt text](<../assets/images/4GAS Trap_image-3.png>)
-    调试的时候会发现，BeginPlay里，服务端和客户端AvatarActor的类型不一致，同样的代码出现了不同的表现。
+::: warning
+这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState。（ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character）
+![alt text](<../assets/images/4GAS Trap_image-3.png>)
+调试的时候会发现，BeginPlay里，服务端和客户端AvatarActor的类型不一致，同样的代码出现了不同的表现。
 
-    BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。最好是重写InitAbilityActorInfo，在这里进行判断。
+BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。最好是重写InitAbilityActorInfo，在这里进行判断。
+::: 
 
 ### gameplaytag 和 gameplay effect 的 replication policy
 - **过早调用`waitGameplayTag`会导致注册失败**：The initialization of GASComponent is after `BeginPlay`. If a node like `WaitGameplay` is called after `BeginPlay`, it usually can't register events to GAS because the GAS Component is null. This applies to both the server and client. 所有应该在on commponent created 之后调用。
@@ -64,9 +65,9 @@ WaitGpEventTask->Activate();
 
 原因：创建出来的Task并没有被Ability引用，这里只是局部变量，一段时间后就会被垃圾回收。改成类成员变量即可。
 
-!!! note 
+::: warning
     很多时候会想当然地认为，改变量会在构造函数里被引用，所以只写局部变量，导致类似的错误。
-
+:::
 
 ## Multiplayer
 
@@ -144,52 +145,55 @@ Queued vs BranchingPoint:
 
 大致就是说：Queued模式效率高，但容忍有不精确的情况，BranchingPoint模式低效，但精确。但也没有解释为什么会有概率丢失。
 
-!!! 让AI总结
-    **Montage Tick Type 有两个选项**：
+::: details AI 总结
 
-    **Queued（队列模式）:**
 
-    特点：异步、性能更好，但精确度较低。
-    工作方式：通知被添加到队列中，在评估阶段结束时一起处理。
+**Montage Tick Type 有两个选项**：
 
-    适用场景：
+**Queued（队列模式）:**
 
-    对帧精确度要求不高的情况。
-    通知执行有轻微帧不准确是可以接受的。
-    适合用于非关键的视觉或音效触发。
+特点：异步、性能更好，但精确度较低。
+工作方式：通知被添加到队列中，在评估阶段结束时一起处理。
 
-    **优点**：性能开销较小，适合处理大量非关键通知。
+适用场景：
 
-    **缺点**：可能导致轻微的时间不准确，不适合精确的游戏逻辑控制。
+对帧精确度要求不高的情况。
+通知执行有轻微帧不准确是可以接受的。
+适合用于非关键的视觉或音效触发。
 
-    **Branching Point（分支点模式）:**
+**优点**：性能开销较小，适合处理大量非关键通知。
 
-    特点：同步、精确度高，但性能开销较大。
+**缺点**：可能导致轻微的时间不准确，不适合精确的游戏逻辑控制。
 
-    工作方式：通知在遇到时立即执行，确保最大的帧精确度。
+**Branching Point（分支点模式）:**
 
-    适用场景：
+特点：同步、精确度高，但性能开销较大。
 
-    需要精确控制执行时间的情况。
-    通知用于执行其他事件的受控序列。
-    用于做出影响游戏玩法的决策。
-    例如：基于此通知进行分支决策。
+工作方式：通知在遇到时立即执行，确保最大的帧精确度。
 
-    **优点**：
+适用场景：
 
-     - 提供最高的帧精确度。
-     - 适合复杂的游戏逻辑和精确的事件序列。
+需要精确控制执行时间的情况。
+通知用于执行其他事件的受控序列。
+用于做出影响游戏玩法的决策。
+例如：基于此通知进行分支决策。
 
-    **缺点**：相对较高的性能开销，特别是在处理大量通知时。
+**优点**：
 
-    选择建议：
+  - 提供最高的帧精确度。
+  - 适合复杂的游戏逻辑和精确的事件序列。
 
-    对于大多数视觉和音效通知，Queued 模式通常就足够了。
-    对于涉及重要游戏逻辑、需要精确时间控制的通知，或者在通知基础上进行复杂决策的情况，应该使用 Branching Point 模式。
-    在开发过程中，如果发现通知的时间精确度问题，可以考虑从 Queued 切换到 Branching Point。
+**缺点**：相对较高的性能开销，特别是在处理大量通知时。
 
-    总结：
+选择建议：
 
-    **Queued**：适合一般用途，性能好但精确度较低。
-    **Branching Point**：适合需要高精度控制的情况，特别是在影响游戏玩法或进行复杂决策时。
- 
+对于大多数视觉和音效通知，Queued 模式通常就足够了。
+对于涉及重要游戏逻辑、需要精确时间控制的通知，或者在通知基础上进行复杂决策的情况，应该使用 Branching Point 模式。
+在开发过程中，如果发现通知的时间精确度问题，可以考虑从 Queued 切换到 Branching Point。
+
+总结：
+
+**Queued**：适合一般用途，性能好但精确度较低。
+**Branching Point**：适合需要高精度控制的情况，特别是在影响游戏玩法或进行复杂决策时。
+asdf
+:::  

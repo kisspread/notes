@@ -28,10 +28,10 @@ UAttributeSet，UGameplayAbility和UGameplayEffect**分别代表数据，行为�
 
 **UGameplayEffect**：过程，每个GE都是一组数据的计算方法，可以是赋值，也可以是逻辑运算。
 
-!!! info Data-Driven
-    - 数据的变化通过应用UGameplayEffect来驱动，它规定了数据的计算规则。
-    - 通过行为来使用各种规格的 UGameplayEffect，以此为基础实现data-driven。
-
+::: tip Data-Drive
+- 数据的变化通过应用UGameplayEffect来驱动，它规定了数据的计算规则。
+- 通过行为来使用各种规格的 UGameplayEffect，以此为基础实现data-driven。
+:::
 ### GAS的调味品：
 
 - **UAbilitySystemComponent**：Actor组件，让actor拥有GAS接口。
@@ -45,8 +45,9 @@ UAttributeSet，UGameplayAbility和UGameplayEffect**分别代表数据，行为�
 
 数据的**载体**，在这里定义具体的数据字段，并提供各种数据变化的回调
 
-!!! info 
-    初次接触这个类的源码，感觉是比较难理解的，主要它用到了UE的反射机制。
+::: tip 
+初次接触这个类的源码，感觉是比较难理解的，主要它用到了UE的反射机制。
+::: 
 
 ### FGameplayAttributeData
 
@@ -189,10 +190,12 @@ void OnRep_Strength(const FGameplayAttributeData& Old) const;
 
 
 ## UGameplayEffect
-!!! info
+
+::: tip
     UGameplayEffect是GAS的**过程**，可用它配置**数据计算方法**，也就是数值运算的过程。还可以配置各种component，来自定义技能的逻辑“过程”，比如打各种tag，GE持续时间内获得新GA。
     
     GE就像设计好的函数，方法，供GA去调用。一个GA里可能会调用好几个GE；一个GE也可能会被多个GA调用
+:::
 
 5.3里，不需要给UGameplayEffect定义C++ 子类，这个版本的GE 开放了 GE component功能，也就是组合优于继承，用各种component的组合，来满足开发者需要自定义的“过程”。
 
@@ -322,11 +325,12 @@ GE自带10个 Component，还有一个 只显示描述的 Text Only Component
 
 
 ## UGameplayAbility
-!!! info
-    定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类. 
 
-    GA 不关心具体过程，过程由GE担任，GA关心如何调度这些GE。
+::: tip
+定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类. 
 
+GA 不关心具体过程，过程由GE担任，GA关心如何调度这些GE。
+::: tip
 
 ### FGameplayAbilitySpec 
 
