@@ -1,4 +1,4 @@
-﻿site
+site
 docs/.obsidian
 docs/task
 docs/Excalidraw
@@ -10,5 +10,4 @@ cache
 .temp
 .DS_Store
 package-lock.json
-pnpm-lock.yaml
 vitepress
