@@ -7,7 +7,7 @@ import { useRouter } from 'vitepress'
 import { useData } from 'vitepress'
 import './style.css'
 import GiscusComment from './components/GiscusComment.vue';
-
+import CopyRight from './components/CopyRight.vue'
 
 export default {
   extends: DefaultTheme,
@@ -15,6 +15,7 @@ export default {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-after': () => h(GiscusComment),
+      'doc-footer-before': () => h(CopyRight),
     })
   },
   enhanceApp({ app, router, siteData }) {
