@@ -3,8 +3,9 @@ title: Make DataAsset setup with Default Values
 comments:  true
 ---
 
-!!! note 
-    This post base on Aura GAS Course
+::: warning
+This post base on Aura GAS Course
+::: 
 
 ---
 

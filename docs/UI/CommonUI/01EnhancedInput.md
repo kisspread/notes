@@ -3,10 +3,10 @@ title: EnhancedInput 和 commonUI 配合的数据配置
 comments:  true
 ---
 
-!!! warning 
-    本篇是记录向，没做阅读优化，排版的时间顺序有点乱，慎看，仅供参考。
+::: warning
+本篇是记录向，没做阅读优化，排版的时间顺序有点乱，慎看，仅供参考。
+:::
 
----
 
 ## TurnOn
 
@@ -29,9 +29,9 @@ Project->Game->Common Input Settings:
 利用这个特性，就可以在菜单显示的时候，并屏蔽掉默认的游戏 Input。
 被屏蔽，是为了更好地支持 CommonUI 对EnhancedInput，CommonUI 通过一类叫做RegisterUIActionBinding的方法来绑定输入。
 
-!!! note 
-    不过，这个行为，在CommonUI加入进来，是可以修改的！即使是Menu模式，依然触发输入
-
+::: warning
+不过，这个行为，在CommonUI加入进来，是可以修改的！即使是Menu模式，依然触发输入
+:::
 
 ## InputAction
 每个InputAction的配置里，有一项Player Mappable Key Setting. 这是提供给CommonUI修改配置的地方。

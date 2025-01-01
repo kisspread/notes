@@ -3,8 +3,9 @@ title: CommonUI 的Focus 导致的问题
 comments:  true
 ---
 
-!!! note 
-     加入了commonUI后，总有一些意想不到的问题，研究了一下。
+::: warning
+加入了commonUI后，总有一些意想不到的问题，研究了一下。
+:::
 
 总结一下可能遇到的问题：
 
@@ -138,8 +139,9 @@ UMG_API void OnAddedToFocusPath(FFocusEvent InFocusEvent);
 bool IsGameViewportInFocusPathWithoutCapture() const;
 ```
 
-!!! note
-    官方说这个函数的名字很搞笑。。
+::: warning
+官方说这个函数的名字很搞笑。。
+:::
 
 这段注释解释了函数 `IsGameViewportInFocusPathWithoutCapture` 的作用：
 
@@ -180,8 +182,9 @@ The navigation method uses either `FSlateApplication::GetNavigationDirectionFrom
 
 The navigation direction is captured and included in the `FReply::Handled` reply, which is sent through` FReply::SetNavigation`.
 
-!!! note
+::: warning
     FReply can carry a lot of contextual information. For more see the information on FReply in the Input Routing section below.
+:::
 
 Slate starts processing the FReply using `FSlateApplication::ProcessReply`, which causes navigation to occur. If a navigation event is loosely defined by direction, then `_FSlateApplication::AttemptNavigation` _attempts to find the correct widget to navigate to.
 

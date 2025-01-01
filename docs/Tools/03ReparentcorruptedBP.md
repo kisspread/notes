@@ -12,7 +12,7 @@ This tool allows you to reparent a corrupted BP to a new parent without restarti
 this is the most common way
 
 - using [CoreRedirects], put it in the `DefaultEngine.ini`
-  ```.ini
+  ```ini
   [CoreRedirects]
     +ClassRedirects=(OldName="Pawn",NewName="MyPawn",InstanceOnly=true)
     +ClassRedirects=(OldName="/Script/MyModule.MyOldClass",NewName="/Script/MyModule.MyNewClass")

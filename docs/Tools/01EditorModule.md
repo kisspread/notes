@@ -12,8 +12,10 @@ The code is about 200 lines long and can serve as a template for other actions. 
 ---
 
 ### Idea
-!!! note
-    Previous experience has shown that it's best not to [dynamically create GE at runtime](../GAS/5CooldownGE.md), so I opted to create them directly using Asset Action.
+
+::: warning
+Previous experience has shown that it's best not to [dynamically create GE at runtime](../GAS/5CooldownGE.md), so I opted to create them directly using Asset Action.
+::: 
 
 In the Gameplay Ability, define a cooldown time field, then right-click to find a custom action to automatically create a GE. In addition to creating the GE itself, a corresponding cooldown tag will also be created.
 

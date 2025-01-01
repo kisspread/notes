@@ -3,9 +3,9 @@ title: Using Engine built-in Widget Pool
 comments:  true
 ---
 
-!!! note 
-    this post is base on Aura GAS Course
-    
+::: warning 
+this post is base on Aura GAS Course
+:::   
 ---
 
  ![alt text](../assets/images/WidgetPool_image.png)
