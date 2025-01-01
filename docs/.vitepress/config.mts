@@ -60,13 +60,14 @@ const sidebar = generateSidebar(dynamicSidebarConfigFunction(dynamicNavItems()))
 //   searchProvider: 'local', // enable search with auto translation
 //   debugPrint: true 
 // }; 
+const base = '/notes/';
 
 const vitePressOptions: UserConfig = {
-  base: '/notes/',
+  base,
   title: "Zerol Dev Notes",
   description: "My Dev Notes is a personal knowledge base documenting my programming journey across game development, web, and utility tools. ",
   srcExclude,
-  head: [["link", { rel: "icon", href: "/logo.png" }]],
+  head: [["link", { rel: "icon", href: `${base}/logo.png` }]],
   ignoreDeadLinks: true,
   // locales: {
   //   root: {

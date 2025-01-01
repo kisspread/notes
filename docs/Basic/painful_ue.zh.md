@@ -62,4 +62,4 @@ void AMyCharacter::AMyCharacter()
 
 **简单地说，actorcomponent是支持嵌套的。但你只能在actor里去执行里的嵌套逻辑，而不能在component里去执行。**
 
-----
+---
