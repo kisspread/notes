@@ -9,37 +9,38 @@ const props = defineProps<{
   isUrl?: boolean
 }>()
 
-const { isDark } = useData()
+const { isDark, site } = useData()
 const containerId = `bue_container_${Math.random().toString(36).substring(2, 10)}`
 const containerRef = ref<HTMLElement | null>(null)
 
 onMounted(() => {
   // 动态加载所需的脚本和样式
-  if (!document.querySelector('script[src="/uebp/render.js"]')) {
+  const basePath = site.value.base
+  if (!document.querySelector('script[src="' + basePath + 'uebp/render.js"]')) {
     const script = document.createElement('script')
-    script.src = '/uebp/render.js'
+    script.src = basePath + 'uebp/render.js'
     script.defer = true
     document.head.appendChild(script)
   }
 
-  if (!document.querySelector('script[src="/uebp/copy-button.js"]')) {
+  if (!document.querySelector('script[src="' + basePath + 'uebp/copy-button.js"]')) {
     const copyScript = document.createElement('script')
-    copyScript.src = '/uebp/copy-button.js'
+    copyScript.src = basePath + 'uebp/copy-button.js'
     copyScript.defer = true
     document.head.appendChild(copyScript)
   }
 
-  if (!document.querySelector('link[href="/uebp/render.css"]')) {
+  if (!document.querySelector('link[href="' + basePath + 'uebp/render.css"]')) {
     const style = document.createElement('link')
     style.rel = 'stylesheet'
-    style.href = '/uebp/render.css'
+    style.href = basePath + 'uebp/render.css'
     document.head.appendChild(style)
   }
 
-  if (!document.querySelector('link[href="/uebp/copy-button.css"]')) {
+  if (!document.querySelector('link[href="' + basePath + 'uebp/copy-button.css"]')) {
     const copyStyle = document.createElement('link')
     copyStyle.rel = 'stylesheet'
-    copyStyle.href = '/uebp/copy-button.css'
+    copyStyle.href = basePath + 'uebp/copy-button.css'
     document.head.appendChild(copyStyle)
   }
 
@@ -84,7 +85,7 @@ async function copyCode() {
 </script>
 
 <template>
-  <div class="bue-container" :class="{ 'is-dark': isDark }">
+  <div class="bue-container" :class="{ 'is-dark': false }">
     <template v-if="!isUrl">
       <div class="copy-btn-wrapper">
         <button class="copy-button" @click="copyCode" :class="{ copied }">
@@ -114,7 +115,7 @@ async function copyCode() {
   position: relative;
   margin: 1rem 0;
   background-color: var(--vp-code-block-bg);
-  border-radius: 8px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -152,7 +153,7 @@ async function copyCode() {
 }
 
 .bue-render {
-  padding: 1rem;
+  padding: 0rem;
 }
 
 .is-dark .bue-render {
