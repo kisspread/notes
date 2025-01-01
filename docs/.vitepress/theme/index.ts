@@ -6,12 +6,15 @@ import UEBP from './uebp/components/UEBP.vue'
 import { useRouter } from 'vitepress'
 import { useData } from 'vitepress'
 import './style.css'
+import GiscusComment from './components/GiscusComment.vue';
+
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
     return h(DefaultTheme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
+      'doc-after': () => h(GiscusComment),
     })
   },
   enhanceApp({ app, router, siteData }) {
