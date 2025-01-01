@@ -3,7 +3,8 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import UEBP from './uebp/components/UEBP.vue'
-
+import { useRouter } from 'vitepress'
+import { useData } from 'vitepress'
 import './style.css'
 
 export default {
@@ -16,6 +17,12 @@ export default {
   enhanceApp({ app, router, siteData }) {
     // ...
     app.component('UEBP', UEBP)
- 
-  }
+  },
+  setup() {
+    const route = useRouter()
+    route.onBeforePageLoad = (to) => {
+      
+    }
+     
+}
 } satisfies Theme

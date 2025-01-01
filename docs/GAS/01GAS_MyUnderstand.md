@@ -1,7 +1,9 @@
 ---
-title: y Understanding of GAS
+title: My Understanding of GAS
 comments: true
 ---
+
+# My Understanding of GAS
 
 GAS 就是Gameplay Ability System，但Gameplay是个很难翻译的单词，
 它在这里更多表示的是： **在程序里的游戏逻辑，设定，机制等**。
@@ -11,7 +13,7 @@ GAS 就是Gameplay Ability System，但Gameplay是个很难翻译的单词，
 
 GAS 可以翻译为 **游戏赋能系统**
 
----
+ 
 
 ## Gameplay Ability System
 GAS代码量非常多，但开发过程主要接触的不算多，根据开发过程遇到的，我总结了以下的概念：
