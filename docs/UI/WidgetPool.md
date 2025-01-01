@@ -17,7 +17,9 @@ I found a built-in widget pool in the UE source code, so I think we can use it f
 ### Scenario
 Too many floating texts are being created and destroyed at the same time.
  
-![type:video](../assets/video/floating_text.mp4)
+<video src="../assets/video/floating_text.mp4" controls autoplay loop>
+  Your browser does not support the video tag.
+</video>
 
 ### Main Functions
 DynamicEntryBox(5.2-5.4)

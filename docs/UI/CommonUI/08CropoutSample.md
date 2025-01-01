@@ -76,8 +76,9 @@ Cropout 的commonUI没有使用5.4提供的Enhanced Input支持，落后一个�
 - Game Layer: 设置 支持可激活 ![alt text](../../assets/images/08CropoutSample_image-13.png)
   
 - 效果：InputConfig会自动激活了
-  ![type:video](../../assets/images/08CropoutSample_image-12.mp4)
-
+  <video src="../../assets/images/08CropoutSample_image-12.mp4" controls autoplay loop> 
+    Your browser does not support the video tag.
+  </video>
 ## FaceButton Bottom
 由于原项目使用的是 SetInputMode 来设置 输入模式，所以
 它的 Xbox手柄 A键 没有被 模拟成 左键点击。
