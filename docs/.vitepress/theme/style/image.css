@@ -1,0 +1,12 @@
+/* Default image styles */
+.vp-doc img {
+  max-width: min(100%, 700px);
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Override max-width when explicit width is set */
+.vp-doc img[width] {
+  max-width: none;
+}

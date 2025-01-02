@@ -2,7 +2,10 @@
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
-
+/* index.css */
+@import "./style/custom-block.css";
+@import "./style/codeblock.css";
+@import "./style/image.css";
 /**
  * Colors
  *
@@ -137,3 +140,19 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+
+:root {
+  --vp-layout-max-width: 1680px;
+}
+
+.VPDoc:not(.has-sidebar) .container {
+  max-width: 1584px !important;
+}
+
+.VPDoc:not(.has-sidebar) .content {
+  max-width: 1264px !important;
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 1168px !important;
+}
