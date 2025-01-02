@@ -5,8 +5,6 @@ comments:  true
 
 I dont't want to create Cooldown effect  for every Ability. So I want to find a way to create a Cooldown effect for all spells. To dynamically create a Cooldown effect for all spells. But finilly I found we can't do that. I writon a article about this.
 
----
-
 ## UGameplayAbility
 Some related code in UGameplayAbility.cpp. At the beginning, I think we can simply override `GetCooldownGameplayEffect` to return my own Cooldown GE.
 

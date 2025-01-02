@@ -7,7 +7,6 @@ comments:  true
 This post base on Aura GAS Course
 ::: 
 
----
 
 In the Aura Course, we have to manually input all the RPG Attribute Items into the DataAsset, which is pretty boring and repetitive. So, I believe we can generate default values based on the existing information, eliminating the need for manual input and achieving semi-automation.
 

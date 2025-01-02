@@ -4,17 +4,21 @@ comments:  true
 ---
 
 
+# GAS GE 自定义计算过程
+
 ![alt text](../assets/images/6GE_Calculation_image-1.png)
 
-### 简介
+目前，UE源码提供两个父类用于自定义GE的计算过程，分别是`UGameplayModMagnitudeCalculation`和`UGameplayEffectExecutionCalculation`
+
+### 简单理解
 
 - 单值设置，继承 `UGameplayModMagnitudeCalculation` 对应蓝图里的Modifiers，支持属性改变时自动触发更新（Infinite）
 - 多值设置，继承 `UGameplayEffectExecutionCalculation` 对应蓝图里的Executions，不支持Infinite，需要设置一个period.
 
 #### UGameplayModMagnitudeCalculation
 
-这是修改器自定义计算的实现类，修改器（modifier）是针对单个属性进行设置的，自定义即使也只是允许捕获多个值。
-蓝图里只能捕获一个属性，用了个这个类，可以允许捕获多个值。
+这是修改器自定义计算的实现类，修改器（modifier）是针对单个属性进行设置的。
+蓝图里只能捕获一个属性，用了个这个类，可以允许捕获多个值。比如最大生命值，需要捕获其他属性的值，来计算最终值。
 
 MMCs can be used in any duration of GameplayEffects - Instant, Duration, Infinite, or Periodic.
 支持任何持续时间，包括持续、无限、周期。
@@ -88,16 +92,20 @@ Execution（ UGameplayEffectExecutionCalculation）：默认情况下，只在 G
 GE是的数值游戏，GE可以看成是一个数值计算函数。比如`GE_FireDamage(A,B)`,必然有参与的双方A和B，其中A是源属性，B是目标属性。那么计算过程就要获得A的火属性伤害，和B的火属性防御。
 
 #### 实际样子
+
 UE不传递AttributeSet本身，而是传递字段的引用。
-所以，这个函数在UE里是类似这样的：
+所以，`GE_FireDamage(A,B)`这个函数在UE里是类似这样的：
+
 `GE_FireDamage(FireDamgeFromARef,FireResistanceFromBRef)`
 
 这里FireDamgeFromARef的形式，就类似“捕获”。也可以理解成路径。
 
 ### UE里实现的捕获
+
 为了更灵活地获取属性值，在运行过程中读取出来，供后续去使用。这个过程就叫做捕获。
 
 先看样例代码
+
 ```cpp
 	VigorDef.AttributeToCapture = UAuraAttributeSet::GetVigorAttribute();
 	VigorDef.AttributeSource = EGameplayEffectAttributeCaptureSource::Target;
@@ -110,6 +118,7 @@ VigorDef是一个`FGameplayEffectAttributeCaptureDefinition`
 #### FGameplayEffectAttributeCaptureDefinition
 
 用于描述GAS属性捕获定义，包含捕获源和目标属性，以及是否使用快照。
+
 ```cpp
 	/** Gameplay attribute to capture */
 	UPROPERTY(EditDefaultsOnly, Category=Capture)

@@ -3,9 +3,11 @@ title: Gas Common Pitfalls
 comments:  true
 ---
 
-## GASComponent
+# 一些踩过的GAS陷阱，误区
 
-### AbilitySystemComponent AvatarActor C/S 类型不一致
+### 1. AvatarActor 客户端和服务端 类型不一致
+
+容易先入为主地认为，主角的GAS Component 里，AvatarActor是Character，OwnerActor是PlayerState，并且整个生命周期都保持相同，其实是错误的。
 
 #### AvatarActor 的基本概念:
 
@@ -28,14 +30,22 @@ comments:  true
   - 客户端在 Pawn 的 OnRep_PlayerState() 函数中初始化
 
 ::: warning
-这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState。（ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character）
+这里有个陷阱，当PlayerState 拥有ASC时，ASC默认的AvatarActor和OwnerActor都是PlayerState！！！因为源码就是这样赋值的：请看下面代码
 ![alt text](<../assets/images/4GAS Trap_image-3.png>)
+
+因此，ASC 在beginplay的时候，获得是AvatarActor是PS而不是Character。
+
 调试的时候会发现，BeginPlay里，服务端和客户端AvatarActor的类型不一致，同样的代码出现了不同的表现。
 
 BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState能保证ASC的AvatarActor和OwnerActor是正确设置的。最好是重写InitAbilityActorInfo，在这里进行判断。
 ::: 
 
-### gameplaytag 和 gameplay effect 的 replication policy
+### 2. gameplaytag 和 replication policy
+
+::: tip
+多人游戏里，不要相信任何BeginPlay，这是个很尴尬的生命周期
+:::
+
 - **过早调用`waitGameplayTag`会导致注册失败**：The initialization of GASComponent is after `BeginPlay`. If a node like `WaitGameplay` is called after `BeginPlay`, it usually can't register events to GAS because the GAS Component is null. This applies to both the server and client. 所有应该在on commponent created 之后调用。
    ![alt text](<../assets/images/4GAS Trap_image.png>)
 
@@ -48,7 +58,7 @@ BeginPlay是个很尴尬的生命周期，只有PossessedBy和OnRep_PlayerState�
  - 总结，通过GameplayTag来判断某个角色是否有激活的GE是最妥当的，因为它是多端复制的，而无法通过actor 是否有激活的GE来判断。
 
 
-### GameplayTask
+### 3. GameplayTask
 
 Ability是永久，但某个Task一段时间后无法收到回调，看起来像自动自动结束了
 
@@ -66,12 +76,15 @@ WaitGpEventTask->Activate();
 原因：创建出来的Task并没有被Ability引用，这里只是局部变量，一段时间后就会被垃圾回收。改成类成员变量即可。
 
 ::: warning
-    很多时候会想当然地认为，改变量会在构造函数里被引用，所以只写局部变量，导致类似的错误。
+很多时候会想当然地认为，改变量会在构造函数里被引用，所以只写局部变量，导致类似的错误。
 :::
 
-## Multiplayer
 
-### UAudioComponent
+### 4. UAudioComponent
+
+::: tip
+服务端很多视效，音效相关的组件，都不会在DedicatedServer创建。
+:::
 
 UAudioComponent 不会在DedicatedServer创建，调用以下代码只会返回空指针，而其他端正常创建。
 ```cpp
@@ -80,7 +93,7 @@ LoopingAudioComponent = UGameplayStatics::SpawnSoundAttached(FlyingSound, GetRoo
 所以这类组件都要进行非空判断再做操作。
 
 
-### 先后问题
+### 5. 先后问题
 服务端SpawnActor后，立即对它执行网络多播操作，在多人游戏里可能导致先后问题。
 这里log显示客户端的beginplay比SpeedUpProjectile慢。
 ```js
@@ -93,7 +106,7 @@ LogAura: Warning: Client:Projectile BeginPlay
 - 如果可以spawn actor后，不要立即执行。
 - 如果必须立即执行，只能在BeginPlay里做记号，写额外的逻辑处理。因为网络先后问题是不能避免的。
 
-### PIE模式 dedicated server anim notify 有概率丢失
+### 6. PIE模式 dedicated server anim notify 有概率丢失
 
 经过多次测试，这种问题，只在PIE模式下出现，在独立窗口下不会出现。（PIE模式总能测出各种隐藏bug，找bug神器）
 
