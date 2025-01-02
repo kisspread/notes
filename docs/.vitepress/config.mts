@@ -64,6 +64,9 @@ const base = '/notes/';
 
 const vitePressOptions: UserConfig = {
   base,
+  sitemap: {
+    hostname: `https://kisspread.github.io/${base}`,
+  },
   title: "Zerol Dev Notes",
   description: "My Dev Notes is a personal knowledge base documenting my programming journey across game development, web, and utility tools. ",
   srcExclude,
@@ -87,6 +90,7 @@ const vitePressOptions: UserConfig = {
 
   markdown: {
     math: true,
+    lineNumbers: true,
     config: (md) => {
       md.use(markdownItUEBP)
     }
@@ -97,7 +101,7 @@ const vitePressOptions: UserConfig = {
     search: {
       provider: "local",
     },
-    outline: [2, 3],
+    outline: [2, 4],
     footer: {
       message: "Zerol Dev Notes.",
       copyright: `Copyright &copy; 2022 - 2025 by <a href="https://github.com/kisspread"><b>Zero Soul</b></a> </br>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.en"> <i>CC-BY-NC-SA 4.0 </i></a> International.`,
