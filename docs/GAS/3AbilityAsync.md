@@ -3,8 +3,11 @@ title: Use AbilityAsync Instead of UBlueprintAsyncActionBase
 comments:  true
 ---
 
+### Use AbilityAsync Instead of UBlueprintAsyncActionBase
 
 GAS Course introduces UBlueprintAsyncActionBase, I found some subClass maybe useful.
+
+
 ![alt text](../assets/images/3AbilityAsync_image.png)
 
 Derived from UAbilityAsync, we can reduce some code.

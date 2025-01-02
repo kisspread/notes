@@ -192,9 +192,9 @@ void OnRep_Strength(const FGameplayAttributeData& Old) const;
 ## UGameplayEffect
 
 ::: tip
-    UGameplayEffect是GAS的**过程**，可用它配置**数据计算方法**，也就是数值运算的过程。还可以配置各种component，来自定义技能的逻辑“过程”，比如打各种tag，GE持续时间内获得新GA。
-    
-    GE就像设计好的函数，方法，供GA去调用。一个GA里可能会调用好几个GE；一个GE也可能会被多个GA调用
+UGameplayEffect是GAS的**过程**，可用它配置**数据计算方法**，也就是数值运算的过程。还可以配置各种component，来自定义技能的逻辑“过程”，比如打各种tag，GE持续时间内获得新GA。
+
+GE就像设计好的函数，方法，供GA去调用。一个GA里可能会调用好几个GE；一个GE也可能会被多个GA调用
 :::
 
 5.3里，不需要给UGameplayEffect定义C++ 子类，这个版本的GE 开放了 GE component功能，也就是组合优于继承，用各种component的组合，来满足开发者需要自定义的“过程”。
@@ -311,6 +311,7 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
 
 
 ### GEComponents 
+
 ![alt text](../assets/images/01GAS_MyUnderstand_image-2.png)
 
 GE自带10个 Component，还有一个 只显示描述的 Text Only Component
@@ -330,7 +331,7 @@ GE自带10个 Component，还有一个 只显示描述的 Text Only Component
 定义具体的行为，何时执行，如何执行，是否持续执行，是否只在服务端执行，诸如此类. 
 
 GA 不关心具体过程，过程由GE担任，GA关心如何调度这些GE。
-::: tip
+:::
 
 ### FGameplayAbilitySpec 
 
