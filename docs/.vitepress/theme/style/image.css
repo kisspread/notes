@@ -4,9 +4,24 @@
   height: auto;
   display: block;
   margin: 1rem auto; /* 使用 margin: auto 实现水平居中 */
+  border: 1px solid #eeeded;
+  box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%); 
 }
 
 /* Override max-width when explicit width is set */
 .vp-doc img[width] {
+  max-width: none;
+}
+
+._notes_Basic_101 img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+  width: 600px;
+
+}
+
+.vp-doc ._notes_Basic_101 img[width] {
   max-width: none;
 }
