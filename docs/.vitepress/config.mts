@@ -2,6 +2,8 @@ import { defineConfig, UserConfig } from 'vitepress'
 import { generateSidebar } from 'vitepress-sidebar';
 import { VitePressSidebarOptions } from 'vitepress-sidebar/types';
 import { markdownItUEBP } from './theme/uebp/markdown-it-uebp';
+import lightbox from "vitepress-plugin-lightbox"
+
 // import { withI18n } from 'vitepress-i18n';
 
 // import { withI18n } from 'vitepress-i18n';
@@ -93,6 +95,7 @@ const vitePressOptions: UserConfig = {
     lineNumbers: true,
     config: (md) => {
       md.use(markdownItUEBP)
+      md.use(lightbox, {});
     }
   },
   
@@ -101,7 +104,7 @@ const vitePressOptions: UserConfig = {
     search: {
       provider: "local",
     },
-    outline: [2, 4],
+    outline: [2, 5],
     footer: {
       message: "Zerol Dev Notes.",
       copyright: `Copyright &copy; 2022 - 2025 by <a href="https://github.com/kisspread"><b>Zero Soul</b></a> </br>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/deed.en"> <i>CC-BY-NC-SA 4.0 </i></a> International.`,

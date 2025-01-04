@@ -4,6 +4,7 @@
     "vite": "^6.0.6",
     "vite-plugin-vitepress-auto-nav": "^3.0.0",
     "vitepress": "^1.5.0",
+    "vitepress-plugin-lightbox": "^1.0.2",
     "vitepress-sidebar": "^1.30.2"
   },
   "scripts": {
@@ -12,6 +13,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "@giscus/vue": "^3.1.1"
+    "@giscus/vue": "^3.1.1",
+    "medium-zoom": "^1.1.0"
   }
 }

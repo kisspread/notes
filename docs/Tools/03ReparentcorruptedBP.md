@@ -40,6 +40,9 @@ This solution allows you to reparent a corrupted BP to a new parent without rest
 - Using Editor Utility Blueprints
 - create a new Editor Utility Blueprint from `Asset Action Utily`
 - add a new function named "Reparent"
+
+::: code-group
+
   ![alt text](../assets/images/03ReparentCrouptedBP_image.png)
   ```uebp height="400"
       Begin Object Class=/Script/BlueprintGraph.K2Node_FunctionEntry Name="K2Node_FunctionEntry_0" ExportPath="/Script/BlueprintGraph.K2Node_FunctionEntry'/Game/YMyth/Scripts/EUB_Reparent.EUB_Reparent:Reparent.K2Node_FunctionEntry_0'"
@@ -138,7 +141,8 @@ This solution allows you to reparent a corrupted BP to a new parent without rest
     CustomProperties Pin (PinId=F217F60242843E5CA38E4293BDD931E3,PinName="OutputPin",Direction="EGPD_Output",PinType.PinCategory="class",PinType.PinSubCategory="",PinType.PinSubCategoryObject="/Script/CoreUObject.Class'/Script/CoreUObject.Object'",PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,PinType.bIsUObjectWrapper=False,PinType.bSerializeAsSinglePrecisionFloat=False,LinkedTo=(K2Node_CallFunction_0 61DDC063484F66BDF73DECBE23645353,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
   End Object
   ```
-  - [or visit here](https://dev.epicgames.com/community/snippets/xrmR/unreal-engine-reparent-bp-assets)
+  :::
+  <!-- - [or visit here](https://dev.epicgames.com/community/snippets/xrmR/unreal-engine-reparent-bp-assets) -->
 - select the BP you want to fix, click the "Reparent" button at `Scripted Asset Actions`
   ![alt text](../assets/images/03ReparentcorruptedBP_image-1.png)
   
