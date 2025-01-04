@@ -1,9 +1,9 @@
 /* Default image styles */
 .vp-doc img {
-  max-width: min(100%, 700px);
+  /* max-width: min(100%, 700px); */
   height: auto;
   display: block;
-  margin: 1rem 0;
+  margin: 1rem auto; /* 使用 margin: auto 实现水平居中 */
 }
 
 /* Override max-width when explicit width is set */

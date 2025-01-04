@@ -8,11 +8,13 @@ import { useData } from 'vitepress'
 import './style.css'
 import GiscusComment from './components/GiscusComment.vue';
 import CopyRight from './components/CopyRight.vue'
+import Layout from './Layout.vue'
+
 
 export default {
   extends: DefaultTheme,
   Layout: () => {
-    return h(DefaultTheme.Layout, null, {
+    return h(Layout, {}, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-after': () => h(GiscusComment),
       'doc-footer-before': () => h(CopyRight),
