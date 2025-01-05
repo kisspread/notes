@@ -46,6 +46,17 @@ Script Stack (0 frames) :
 
 大致就是Rider目前还没有快捷调试UCommandlet的功能，但还是可以通过附加 -waitforattach 来调试。
 
+::: tip
+###### 更新：
+
+**最新版Rider 已经支持调试UCommandlet，可以直接调试，无需附加 -waitforattach**
+
+###### One more thing:
+如果Rider 里看不到UE Log, 因为结束太快，可以试试：
+
+`system("pause");`
+:::
+
 ## 开始解决
 
 先找到这个Commandlet 的使用说明：
@@ -66,7 +77,7 @@ const FString UGatherTextCommandlet::UsageText
 
 多年的Android开发经验告诉我，可以在rider的Run configuration里增加一个配置:
 ![alt text](../assets/images/Debug_image-2.png)
-把上面使用说明的命令行参数填进去，并附加 **-waitforattach**, 最好把运行前 build project的步骤去掉，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。
+把上面使用说明的命令行参数填进去，并附加 **-waitforattach**, 最好把运行前 build project的步骤去掉，不然每次都会build一次，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。（如果改了代码，还是需要build一下）
 
 打好断点，运行。
 成功跳转到了报错的地方：![alt text](../assets/images/Debug_image.png)
