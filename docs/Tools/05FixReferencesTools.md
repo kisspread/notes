@@ -97,6 +97,10 @@ bool UYMythEdTools::ReplaceAssetReference(const FString& AssetToFixPath, const F
 
  ```   
 
+### 完整代码
+
+[https://github.com/kisspread/RefsFixedUp](https://github.com/kisspread/RefsFixedUp)
+
 ## references
 
 - https://hakuya.me/learning/unreal/UE%20%E8%B5%84%E4%BA%A7%E5%AF%BC%E5%87%BA%E5%92%8C%E5%8A%A0%E8%BD%BD/
