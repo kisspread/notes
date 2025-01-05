@@ -102,3 +102,5 @@ bool UYMythEdTools::ReplaceAssetReference(const FString& AssetToFixPath, const F
 - https://hakuya.me/learning/unreal/UE%20%E8%B5%84%E4%BA%A7%E5%AF%BC%E5%87%BA%E5%92%8C%E5%8A%A0%E8%BD%BD/
 
 - https://www.cnblogs.com/wosun/p/18534983
+
+- [资源归并](https://dev.epicgames.com/documentation/en-us/unreal-engine/replace-references-tool?application_version=4.27)

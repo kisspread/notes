@@ -20,10 +20,11 @@ this is the most common way
     +ClassRedirects=(OldName="AnimNotify_PlayParticleEffect_C",NewName="/Script/Engine.AnimNotify_PlayParticleEffect",OverrideClassName="/Script/CoreUObject.Class")
     
     +EnumRedirects=(OldName="ENumbers",NewName="ELetters",ValueChanges=(("NumberTwo","LetterB"),("NumberThree","LetterC")))
-    
- 	+FunctionRedirects=(OldName="MyOldActor.OldFunction",NewName="MyNewActor.NewFunction")
-    +FunctionRedirects=(OldName="MyActor.OldFunction",NewName="NewFunction")  
 
+    +PackageRedirects=(OldName="OldPlugin",NewName="/NewPlugin/",MatchSubstring=true)
+    +PackageRedirects=(OldName="/Game/DeletedContentPackage",Removed=true)
+    +FunctionRedirects=(OldName="MyOldActor.OldFunction",NewName="MyNewActor.NewFunction")
+    +FunctionRedirects=(OldName="MyActor.OldFunction",NewName="NewFunction")  
     +StructRedirects=(OldName="MyStruct",NewName="MyNewStruct")
   
   ```  
