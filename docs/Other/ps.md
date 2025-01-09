@@ -30,3 +30,26 @@ comments:  true
 ```sh
 [Environment]::SetEnvironmentVariable("MyVariable", "MyValue", "Machine")
 ```
+
+
+#### 创建快捷方式
+
+不跨分区支持
+
+```sh
+New-Item -ItemType SymbolicLink -Path "X:\NewLinkFolder" -Target "X:\YourExistingFolder"
+```
+
+or 
+
+跨分区支持/D, 性能较差	
+
+```sh
+cmd /c mklink /D "X:\NewLinkFolder" "X:\YourExistingFolder"
+```
+
+不跨分区支持/J, 性能较好
+
+```sh
+cmd /c mklink /J "X:\NewLinkFolder" "X:\YourExistingFolder"
+```
