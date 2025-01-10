@@ -183,7 +183,7 @@ The navigation method uses either `FSlateApplication::GetNavigationDirectionFrom
 The navigation direction is captured and included in the `FReply::Handled` reply, which is sent through` FReply::SetNavigation`.
 
 ::: warning
-    FReply can carry a lot of contextual information. For more see the information on FReply in the Input Routing section below.
+FReply can carry a lot of contextual information. For more see the information on FReply in the Input Routing section below.
 :::
 
 Slate starts processing the FReply using `FSlateApplication::ProcessReply`, which causes navigation to occur. If a navigation event is loosely defined by direction, then `_FSlateApplication::AttemptNavigation` _attempts to find the correct widget to navigate to.
