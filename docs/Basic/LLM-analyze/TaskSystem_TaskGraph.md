@@ -231,16 +231,15 @@ auto Task2 = UE::Tasks::Launch(
 
 虽然任何可调用对象也可以使用，但 lambda 函数通常用作任务体。
 
-
 ```cpp
 void Func() {}
-		Launch(UE_SOURCE_LOCATION, &Func);
+        Launch(UE_SOURCE_LOCATION, &Func);
 
-		struct FFunctor
-		{
-			void operator()() {}
-		};
-		Launch(UE_SOURCE_LOCATION, FFunctor{});
+        struct FFunctor
+        {
+            void operator()() {}
+        };
+        Launch(UE_SOURCE_LOCATION, FFunctor{});
 ```
 
 FTask是实际任务的句柄，类似于智能指针。它使用引用计数来管理其生命周期。启动任务会启动其生命周期并分配所需的资源。要释放持有的引用，您可以使用以下命令“重置”任务句柄：
@@ -324,6 +323,59 @@ TaskSystem特别适合以下场景：
 3. 简单的异步操作
 4. 需要良好错误处理
 5. 团队开发合作项目
+
+### 引擎内部使用示例
+
+#### 1. 表格合并任务 (TableMergeTask)
+
+这是一个来自引擎Trace系统的实际例子，展示了TaskSystem和TaskGraph如何协同工作：
+
+\Engine\Source\Developer\TraceServices\Private\Model\TableMergeTask.cpp  
+
+```cpp
+// 在TraceServices命名空间中
+void FTableMergeService::MergeTables(
+    const TSharedPtr<IUntypedTable>& TableA, 
+    const TSharedPtr<IUntypedTable>& TableB, 
+    TableDiffCallback InCallback)
+{
+    // 使用TaskSystem启动表格合并任务
+    UE::Tasks::Launch(
+        UE_SOURCE_LOCATION, 
+        FTableMergeTask(TableA, TableB, InCallback)
+    );
+}
+```
+
+这个例子展示了几个重要特点：
+
+1. **TaskSystem的简单性**：使用`Launch`函数一行代码就能启动复杂的异步任务
+
+2. **自定义任务对象**：`FTableMergeTask`是一个函数对象，包含：
+   - 输入数据（TableA和TableB）
+   - 回调函数（用于处理结果）
+   - 实现了operator()来执行实际的合并操作
+
+3. **TaskSystem与TaskGraph的集成**：任务完成后，使用TaskGraph将结果转发到游戏线程：
+```cpp
+// 使用TaskGraph在GameThread上执行回调
+FFunctionGraphTask::CreateAndDispatchWhenReady(
+    [Callback = this->Callback, Params]()
+    {
+        Callback(Params);
+    },
+    TStatId(),
+    nullptr,
+    ENamedThreads::GameThread
+);
+```
+
+这个示例很好地展示了：
+- 如何使用TaskSystem处理耗时的后台操作
+- 如何在需要特定线程上下文时（如UI更新）切换到TaskGraph
+- TaskSystem和TaskGraph如何在实际场景中互补使用：
+  * TaskSystem处理高层的任务抽象和管理
+  * TaskGraph处理底层的线程特定操作
 
 ## 系统对比
 
