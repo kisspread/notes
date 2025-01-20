@@ -11,3 +11,7 @@ cache
 .DS_Store
 package-lock.json
 vitepress
+
+
+# windsurf rules
+.windsurfrules
