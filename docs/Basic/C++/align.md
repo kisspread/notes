@@ -143,3 +143,15 @@ Alignment 是 8
 //                                    |                 |
 //                               当前位置          对齐后位置
 ```
+
+其他对齐：
+
+看不太懂，暂时不理会
+```cpp
+// PLATFORM_CACHE_LINE_SIZE 通常是 64 或 128 字节（取决于CPU架构）
+
+struct MS_ALIGN(PLATFORM_CACHE_LINE_SIZE) FAlignedDecomposedValue  // MSVC编译器使用
+{
+    FDecomposedValue Value;
+} GCC_ALIGN(PLATFORM_CACHE_LINE_SIZE);    // GCC编译器使用
+```
