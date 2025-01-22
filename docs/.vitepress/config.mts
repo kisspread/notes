@@ -3,6 +3,8 @@ import { generateSidebar } from 'vitepress-sidebar';
 import { VitePressSidebarOptions } from 'vitepress-sidebar/types';
 import { markdownItUEBP } from './theme/uebp/markdown-it-uebp';
 import lightbox from "vitepress-plugin-lightbox"
+import { withMermaid } from "vitepress-plugin-mermaid";
+
 
 // import { withI18n } from 'vitepress-i18n';
 
@@ -133,5 +135,5 @@ const vitePressOptions: UserConfig = {
 
 
 
-export default defineConfig(vitePressOptions);
+export default defineConfig(withMermaid(vitePressOptions));
 // export default defineConfig(withI18n(vitePressOptions, vitePressI18nOptions));
