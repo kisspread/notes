@@ -359,13 +359,24 @@ struct Entity {
 #### UE的 SOA 实现：
 UE实际采用"Chunk-based Archetype"模式，每个FEntityAllocation对应一个原型（Archetype），内部采用SOA，但不同原型之间独立
 
+FEntityAllocation 就是Chunk-based 设计的：
+
 ```cpp
 struct FEntityAllocation {
-    // ...其他成员...
-    uint8* ComponentData;  // 指向所有组件数据的起始位置
+    uint16 Capacity;    // chunk的容量
+    uint16 Size;        // 当前使用量
+    uint8* ComponentData; // chunk的数据区，指向所有组件数据的起始位置
 };
 
-// 内存布局
+// 同一个chunk中的实体组件数据紧密排列
+┌─────────────────────┐
+│ Chunk (Allocation)  │
+├─────────────────────┤
+│ Position[1024]      │ <- 连续的1024个Position
+│ Velocity[1024]      │ <- 连续的1024个Velocity
+└─────────────────────┘
+
+// 多种Archetype下的内存布局
 Archetype A (Position, Velocity)
 ┌───────────────┐
 │ Position[0..N]│
@@ -377,6 +388,32 @@ Archetype B (Position, Color)
 │ Position[0..M]│
 │ Color   [0..M]│
 └───────────────┘
+
+// Chunk 的扩容
+static const uint16 MaxCapacity = 64;  // 默认最大容量
+uint16 DefaultCapacity = 4;           // 默认初始容量
+
+具体实现比较复杂，在：
+FEntityAllocation* GrowAllocation(int32 AllocationIndex, int32 MinNumToGrowBy)
+{
+    // 1. 创建新的更大的Allocation
+    // 2. 迁移数据
+    // 3. 更新引用
+}
+
+// 数据迁移
+// 两种迁移方式：
+if (bOnlyTagComponentsChanged)
+{
+    // 1. 如果只改变了标签组件，直接"偷"原来的内存
+    Dest = CreateEntityAllocation(NewComponentMask, Source->GetCapacity(), Source->GetMaxCapacity(), Source);
+}
+else
+{
+    // 2. 如果改变了数据组件，需要重新分配并复制
+    Dest = CreateEntityAllocation(NewComponentMask, Source->GetCapacity(), Source->GetMaxCapacity());
+    // ... 复制数据 ...
+}
 ```
 
 #### UE 的方式更加灵活
