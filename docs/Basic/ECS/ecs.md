@@ -7,6 +7,8 @@ comments:  true
 
 最近，研究UMG Widget 动画更新流程，发现 播放动画的UUMGSequencePlayer其实基于ECS架构来实现的，记录一下。
 
+这里先记录探索过程，跳过可直接查看 [ECS 在 MovieScene 中的实现](#ecs-anchor)
+
 ## 两种播放模式
 
 - CVarUserWidgetUseParallelAnimation
@@ -200,7 +202,7 @@ graph TD
 ```
 :::    
 
-## ECS 在 MovieScene 中的实现
+## ECS 在 MovieScene 中的实现 {#ecs-anchor}
 
 ### Entity（实体）系统：
 
