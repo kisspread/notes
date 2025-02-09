@@ -229,7 +229,7 @@ struct FEntityLocation
     FMovieSceneEntityID ParentID;        // 父实体ID（用于层级关系）
 }
 
-// 真正代表实体的数据块（需要对齐后放进缓存行的那个）
+// 真正代表实体的数据块（内存块，chunk）
 struct FEntityAllocation
 {
     uint32 UniqueID;                     // 唯一标识符
@@ -242,7 +242,7 @@ struct FEntityAllocation
     uint8* ComponentData;                // 组件数据
 };
 
-// 初始化一个实体分配，一堆内存对齐工作
+// 初始化一个实体分配，一堆内存对齐，大小统计工作
 static FEntityAllocation* Initialize(const FEntityManager& EntityManager, const FComponentMask& EntityComponentMask, const FEntityAllocationInitializationInfo& InitInfo)
 	{
 		const FEntityAllocationWriteContext WriteContext(EntityManager);
@@ -265,7 +265,7 @@ static FEntityAllocation* Initialize(const FEntityManager& EntityManager, const 
 		Allocation->Capacity = InitInfo.InitialCapacity;
 		Allocation->MaxCapacity = InitInfo.MaxCapacity;
 		Allocation->SerialNumber = WriteContext.GetSystemSerial();
-// 省略1000行代码...
+// 省略10000行代码...
 
 
 ```
@@ -280,7 +280,7 @@ FMovieSceneEntityID -> FEntityLocation -> FEntityAllocation
   2. `FEntityLocation::AllocationIndex`指向`EntityAllocations`稀疏数组
 
 **FEntityAllocation的内存布局**
-
+很明显，这就是一个chunk
 ```sh
 FEntityAllocation
 ├── ComponentHeaders[]           // 组件类型信息数组
@@ -295,6 +295,8 @@ FEntityAllocation
 #### 原型 (Archetypes)
 - 相同组件构成的实体会被分配到同一个 FEntityAllocation
 - 当一个 FEntityAllocation 满了，会创建新的
+
+(Mass Entity 也是差不多的做法)
 
 ```sh
 // 实体类型A（有Position和Velocity组件）
@@ -324,6 +326,9 @@ class FEntityManager {
     TArray<FComponentMask> EntityAllocationMasks;
 };
 
+（Mass Entity 实现了更容易使用的掩码查询系统）
+
+// chunk 定义
 struct FEntityAllocation {
     uint16 Size;        // 当前使用的实体数量
     uint16 Capacity;    // 总容量
@@ -346,10 +351,11 @@ if (Allocation->Size >= Allocation->Capacity) {
 - 更好的内存局部性
 
 #### 印象中是SOA (Struct of Arrays) 布局：
-看起来和传统的ECS有些不一样。
+
+（实际实现看起来和印象中ECS有一点点不一样）
 
 ```cpp
-// AOS方式
+// 理论上的SOA方式
 struct Entity {
     Component1 comp1[capacity];
     Component2 comp2[capacity];
@@ -362,6 +368,8 @@ struct Entity {
 UE实际采用"Chunk-based Archetype"模式，每个FEntityAllocation对应一个原型（Archetype），内部采用SOA，但不同原型之间独立
 
 FEntityAllocation 就是Chunk-based 设计的：
+
+（由于要处理的数据类型比较动态，UE的SOA并没有明确的“组件数组”，而是一个uint8的指针地址）
 
 ```cpp
 struct FEntityAllocation {
@@ -437,12 +445,12 @@ Position* allPositions = (Position*)ComponentData;
 ```
 3. 内存对齐：
 ```cpp
-// 每个组件类型之间有缓存行对齐
+// 这里可以看出，组件的最小对齐大小是CACHE_LINE_SIZE
 uint8 Alignment = FMath::Max<uint8>(PLATFORM_CACHE_LINE_SIZE, TypeInfo.Alignment);
 ComponentDataPtr = Align(ComponentDataPtr, Alignment);
 ```
 
-#### 最终的内存布局：
+#### 最终的“数据块”内存布局：
 ```sh
 // 假设我们有3个实体，每个实体有3种组件
 FEntityAllocation 内存布局（实际物理内存）：
