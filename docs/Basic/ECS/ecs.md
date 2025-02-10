@@ -444,6 +444,8 @@ Position* allPositions = (Position*)ComponentData;
 // 可以直接遍历allPositions[0]到allPositions[Size-1]
 ```
 3. 内存对齐：
+
+（Align函数的使用看这里：[UE5内存对齐](../C++/align.md#ue-的-align-模板函数)）
 ```cpp
 // 这里可以看出，组件的最小对齐大小是CACHE_LINE_SIZE
 uint8 Alignment = FMath::Max<uint8>(PLATFORM_CACHE_LINE_SIZE, TypeInfo.Alignment);

@@ -13,7 +13,7 @@ comments: true
 这里参考了quabqi大佬的[UE5的MASS框架-2](https://zhuanlan.zhihu.com/p/446937133)文章，需要注意几点：
 - MassEntity 这个主模块，目前已经不是Plugin，在5.5已经在正式在源码的Runtime文件夹里。
 - 最新的UE5版本，大部分api使用FMassEntityManager来调用，而不是直接用UMassEntitySubsystem了。
-
+- MassEntity 模块虽然被标记为弃用（UE5.5），但官方的示例代码，依旧在这个弃用plugin里面，需要开启才能进行demo测试。
 :::
 
 ## 一、快速上手
@@ -94,6 +94,127 @@ Manager.BatchCreateEntities(Archetype, 100, Enemies);
 FMassEntityHandle NewItem = EntityManager.CreateEntity(Archetype);
 
 ```
+
+布局示意图：
+
+:::details 测试代码（UE5.5）
+```cpp
+ */
+struct FMessTest
+{
+	FMassArchetypeHandle Archetype1;
+	FMassArchetypeHandle Archetype2;
+	FMassArchetypeHandle Archetype3;
+
+	TArray<FMassEntityHandle> Entities;
+
+	UMassEntitySubsystem* System;
+
+	void Init(UWorld* InWorld)
+	{
+		System = NewObject<UMassEntitySubsystem>(InWorld);
+		FMassEntityManager& EntityManager = System->GetMutableEntityManager();
+
+
+		const UScriptStruct* FragmentTypes[] = { FFloatFragment::StaticStruct(), FInt32Fragment::StaticStruct() };
+
+		// 创建原型 (Create Archetypes)
+		// 可以这么理解,这里是动态定义结构体: Archetype1 是 float 类型的结构体, Archetype2 是 int32 类型的结构体, Archetype3 是 两个成员 float 和 int 组成的结构体
+  
+		
+		Archetype1 = EntityManager.CreateArchetype({ FFloatFragment::StaticStruct()});
+		Archetype2 = EntityManager.CreateArchetype({ FInt32Fragment::StaticStruct() });
+		Archetype3 = EntityManager.CreateArchetype({
+			FFloatFragment::StaticStruct(),
+			FInt32Fragment::StaticStruct()
+		});
+
+		// 创建Entity (Create Entities)
+		EntityManager.BatchCreateEntities(Archetype1, 100, Entities);
+		EntityManager.BatchCreateEntities(Archetype2, 200, Entities);
+		EntityManager.BatchCreateEntities(Archetype3, 150, Entities);
+		
+		// 给所有 Float 赋值 20 (Set all Float values to 20)
+		FMassExecutionContext ExeContext = EntityManager.CreateExecutionContext(/*DeltaSeconds=*/0.f);
+		FMassEntityQuery Query;
+		Query.AddRequirement<FFloatFragment>(EMassFragmentAccess::ReadWrite);
+		Query.ForEachEntityChunk(EntityManager, ExeContext, [](FMassExecutionContext& Context) -> void
+		{
+			int32 Num = Context.GetNumEntities(); // 250个 (250 entities)
+			TArrayView<FFloatFragment> Floats = Context.GetMutableFragmentView<FFloatFragment>();
+		
+			for (int32 Index = 0; Index < Num; ++Index)
+			{
+				Floats[Index].Value = 20.f;
+			}
+		});
+
+	}
+};
+```
+:::
+```sh
+================================================================================
+EntityManager
+│
+├── Archetypes (通过 CreateArchetype() 创建不同的内存布局原型)
+│   │
+│   ├── Archetype1 (FMassArchetypeHandle)
+│   │   │
+│   │   ├── SharedFragment (所有此Archetype下的Entity共享)
+│   │   │   └── [SharedValue1][SharedValue2]...
+│   │   │
+│   │   └── Chunks (每个 Chunk 按 [float] 结构线性排列)
+│   │       │
+│   │       ├── Chunk1: 
+│   │       │   ├── ChunkFragment: [ChunkValueA][ChunkValueB]...
+│   │       │   └── [20.0][20.0][20.0]... (100个 float 值)
+│   │       │
+│   │       └── Chunk2:
+│   │           ├── ChunkFragment: [ChunkValueC][ChunkValueD]...
+│   │           └── ...
+│   ├── Archetype2
+│   │   │
+│   │   ├── SharedFragment (所有此Archetype下的Entity共享)
+│   │   │   └── ...
+│   │   └── Chunks (每个 Chunk 按 [int32] 结构线性排列)
+│   │       │
+│   │       ├── Chunk1:
+│   │       │   ├── ChunkFragment: [ChunkValueE]...
+│   │       │   └── [0][0][0]... (200个 int32 初始值)
+│   │       │
+│   │       ├── Chunk2:
+│   │       │      ├── ChunkFragment: ...
+│   │       └── ...
+│   └── Archetype3
+│       │
+│       ├── SharedFragment (所有此Archetype下的Entity共享)
+│       │    └── ...
+│       └── Chunks (每个 Chunk 按 [float + int32] 交错排列)
+│           │
+│           ├── Chunk1:
+│           │    ├── ChunkFragment: [ChunkValueF]...
+│           │    └── [20.0][0][20.0][0]... (150组 float+int32 pairs)
+│           │
+│           ├── Chunk2:
+│           │   ├──  ChunkFragment: ...
+│           └── ...
+│
+└── EntitiesHandle (通过 BatchCreateEntities() 创建的总实体列表)
+    │
+    └── 实体通过两个指针定位数据：
+        Entity → Archetype → Chunk
+                  │         │
+                  │         └── 访问 ChunkFragment
+                  │
+                  └── 通过 SharedFragment 查找共享数据
+
+================================================================================
+
+``` 
+
+借用Unity的图：
+![alt text](../../assets/images/Mass_image-2.png)
 
 
 ### 1. 为什么需要Fragment？

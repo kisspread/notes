@@ -13,7 +13,7 @@ comments: true
 
 **Subsystem需要告知Mass系统，它的并发特性。**
 
-源码里使用模板描述自身能力的例子，TMassExternalSubsystemTraits“特化”：
+使用结构体模板TMassExternalSubsystemTraits来“特化” UMyWorldSubsystem：
 ```cpp
 template<>
 struct TMassExternalSubsystemTraits<UMyWorldSubsystem> final
@@ -150,6 +150,165 @@ void UMyProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionCont
 注意：ProcessorRequirements也需要添加Subsystem, 否则会报错
 
 
+
+
+
+### Fragment FQA
+
+首先，放个Mass Sample的一个案例：
+```cpp
+// 这是一个成员比较多的Fragment
+USTRUCT(BlueprintType)
+struct MASSCOMMUNITYSAMPLE_API FInterpLocationFragment : public FMassFragment
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	FVector TargetLocation = FVector::ZeroVector; // Target location for interpolation
+
+	UPROPERTY(EditAnywhere)
+	FVector StartingLocation = FVector::ZeroVector; // Starting location for interpolation
+
+	UPROPERTY(EditAnywhere)
+	float Duration = 1.0f; // Duration of the interpolation
+
+	bool bForwardDirection = true; // Flag to indicate the direction of interpolation
+
+	float Time = 0.0f; // Current time of the interpolation
+};
+// MovementProcessor执行
+
+void UMSInterpMovementProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+	EntityQuery.ForEachEntityChunk(EntityManager, Context, [&,this](FMassExecutionContext& Context)
+	{
+		const int32 QueryLength = Context.GetNumEntities();
+
+		// Get mutable views of the required fragments.
+		TArrayView<FInterpLocationFragment> InterpLocations = Context.GetMutableFragmentView<FInterpLocationFragment>();
+		TArrayView<FTransformFragment> Transforms = Context.GetMutableFragmentView<FTransformFragment>();
+		TConstArrayView<FOriginalTransformFragment> OriginalTransforms = Context.GetFragmentView<FOriginalTransformFragment>();
+
+		for (int32 i = 0; i < QueryLength; ++i)
+		{
+			FInterpLocationFragment& InterpFragment = InterpLocations[i];
+			FTransform& Transform = Transforms[i].GetMutableTransform();
+
+			const float DeltaTime = Context.GetDeltaTimeSeconds();
+			// Update interpolation time
+			InterpFragment.Time = InterpFragment.Time+(DeltaTime/InterpFragment.Duration);
+			
+			// reverse direction and swap
+			if (InterpFragment.Time > 1.0f)
+			{
+				InterpFragment.bForwardDirection = !InterpFragment.bForwardDirection;
+				InterpFragment.Time = FMath::Abs(InterpFragment.Time-InterpFragment.Duration);
+				Swap(InterpFragment.StartingLocation,InterpFragment.TargetLocation);
+			}
+
+			// Calculate new Location.
+			auto NewLocation = FMath::Lerp<FVector>(
+				InterpFragment.StartingLocation,
+				InterpFragment.TargetLocation,
+				InterpFragment.Time) + OriginalTransforms[i].Transform.GetLocation();
+			
+			// set new location
+			Transform.SetLocation(NewLocation);
+		}
+	});
+}
+```
+#### 如何分析内存布局
+
+以FInterpLocationFragment为例，假如这就是Entity的全部，那么最大的成员类型是 `FVector` 16 bytes, 既总大小一定是16的倍数。这里把最大的成员类型放在前面，已是最优的内存布局。
+- 因为后面的 Duration, bForwardDirection, Time 加起来都不够FVector的大，他们的排列顺序已经无关紧要。
+- bForwardDirection 占用了一个字节，但后续的Time是4字节对齐，所以要填充3比特padding。
+```sh
++----------------------------------------------+
+| Offset 0 - 15    | TargetLocation (FVector)  | // 16 bytes
++----------------------------------------------+
+| Offset 16 - 31   | StartingLocation (FVector)| // 16 bytes
++----------------------------------------------+
+| Offset 32 - 35   | Duration (float)          | // 4 bytes
++----------------------------------------------+
+| Offset 36        | bForwardDirection (bool)  | // 1 byte
++----------------------------------------------+
+| Offset 37 - 39   | Padding (alignment)       | // 3 bytes
++----------------------------------------------+
+| Offset 40 - 43   | Time (float)              | // 4 bytes
++----------------------------------------------+
+| Offset 44 - 47   | Padding (for 16-byte alignment) | // 4 bytes
++----------------------------------------------+
+Total size: ~48 bytes
+
+```
+
+#### 合理的Fragment刀法
+
+上面这个例子与我印象中ECS倡导的SOA（Structure of Arrays）设计理念有所不同，它的结构更接近AOS（Array of Structures）布局。
+
+```cpp
+// AOS风格（案例方案）
+struct FInterpLocationFragment {
+    FVector A, B;  // 连续内存
+    float FTime;
+};
+
+// SOA风格（理论最优）
+struct FLocationA { TArray<FVector> Data; };
+struct FLocationB { TArray<FVector> Data; };
+struct FTime { TArray<float> Data; };
+```
+
+但仔细思考，Mass框架底层已经是SOA实现（Chunk内存布局），**因此Fragment内部的AOS设计不会破坏SOA优势**，反而是正确的选择
+
+##### 热数据聚合
+当多个字段在同一个Processor中连续访问且存在高频交互时，优先选择聚合，也就是都放在同一个`Archetype` 里面。
+
+问题是：每个变量都切成一个`Fragment`再组合成原型，还是 把 “热数据” 都放进同一个`Fragment`里面再组合成原型？
+
+我感觉实践上，后者会更常见。因为不用创建那么多的Fragment，实际上也不违反 组合优于继承。Archetype 之间最终还要继续排列组合。
+
+##### 冷数据分离
+
+假如有个FHealthFragment, 那么在游戏逻辑里Health的数据更新必然（大概率）和Location的数据更新不在同一个频道（频率）上。
+
+两者之间，互为冷数据，是原型拆分策略的最好选择。
+
+例子：
+```
+// 移动相关原型 (高频更新)
+FMassArchetypeHandle ArchetypeMovement = EntityManager.CreateArchetype({
+    FTransformFragment::StaticStruct(), 
+    FVelocityFragment::StaticStruct(),
+    FObjectBindingTag::StaticStruct() // 绑定到逻辑对象
+});
+
+// 状态相关原型 (低频更新)
+FMassArchetypeHandle ArchetypeStatus = EntityManager.CreateArchetype({
+    FHealthFragment::StaticStruct(),
+    FStatusEffectFragment::StaticStruct(),
+    FObjectBindingTag::StaticStruct() 
+});
+```
+
+##### 如何组合
+
+- Fragment之间的“组合”, 是Mass提供的一种更细的刀法，方便更细粒度的控制，更好地复用数据和函数（参考官方Flower和Crop的例子，两个不同的原型（构成不同），但大量函数如AddItemToGrid和各自System的Execute 都能统一使用）。
+- Archetype之间的“组合”, 则是更注重业务逻辑。比如上面的 Health 和 Location, 他都可以是某个对象（Actor）的“部件”。
+
+##### Cache Miss
+回到最开始的代码例子:
+
+如果FInterpLocationFragment就是原型的全部， 而在 `ForEachEntityChunk` 中全部该切片全部变量都被“使用”,也就都是“热数据”。那么这个设计就是非常合理的。
+
+理论上,FInterpLocationFragment也必须是该原型的全部构成，如果还有其他Fragment，由于 `Chunk`是根据`Archetype`分类的，那么在上面这个`ForEachEntityChunk`中，必然引入了没用上的变量，导致cache miss。
+
+##### 原型的深意
+
+（原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象）
+
+综上，原型的真正意思是：驱动特定逻辑所需的最小数据集合。
 
 ## References
 - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
