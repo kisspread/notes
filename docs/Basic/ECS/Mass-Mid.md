@@ -384,5 +384,111 @@ Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组�
    - Mass提供了多个基础处理器类型供继承和扩展
    - 例如：可视化处理器和LOD处理器
 
+### 创建Entity 
+
+在Mass中创建Entity有两种主要方式：原始方式（Raw）和延迟方式（Deferred）。通常推荐使用延迟方式，因为它更符合Mass的设计理念。
+
+#### 1. 原始方式（Raw）
+
+这种方式直接操作EntityManager，主要用于演示或特殊场景：
+
+1. **创建Archetype**
+   ```cpp
+   // 创建包含指定Fragment的Archetype
+   FMassArchetype Archetype = EntityManager->CreateArchetype({
+       FTransformFragment::StaticStruct(),
+       FMassVelocityFragment::StaticStruct()
+   });
+   ```
+
+2. **创建Entity**
+   ```cpp
+   // 使用Archetype创建Entity
+   FMassEntityHandle NewEntity = EntityManager->CreateEntity(Archetype);
+   ```
+
+3. **修改Entity**
+   ```cpp
+   // 添加Tag
+   EntityManager->AddTagToEntity(NewEntity, FMSGravityTag::StaticStruct());
+   
+   // 添加Fragment
+   EntityManager->AddFragmentToEntity(NewEntity, FSampleColorFragment::StaticStruct());
+   
+   // 修改Fragment数据
+   EntityManager->GetFragmentDataChecked<FMassVelocityFragment>(NewEntity).Value = FMath::VRand() * 100.0f;
+   EntityManager->GetFragmentDataChecked<FSampleColorFragment>(NewEntity).Color = FColor::Blue;
+   ```
+
+#### 2. 延迟方式（Deferred Command）
+
+这是推荐的创建和修改Entity的方式，它通过命令队列来处理操作：
+
+
+
+1. **预留Entity**
+   ```cpp
+   // 预留Entity句柄，防止被其他处理器占用
+   FMassEntityHandle ReservedEntity = EntityManager->ReserveEntity();
+   ```
+
+2. **创建Entity的不同方式**
+   ```cpp
+   // 方式1：基础创建
+   EntityManager->Defer().PushCommand<FMassCommandBuildEntity>(
+       ReservedEntity,
+       MyColorFragment
+   );
+
+   // 方式2：创建并添加多个Fragment
+   EntityManager->Defer().PushCommand<FMassCommandAddFragmentInstances>(
+       ReservedEntity,
+       MyColorFragment,
+       MyTransformFragment
+   );
+
+   // 方式3：创建带共享Fragment的Entity
+   FMSExampleSharedFragment SharedFragment;
+   SharedFragment.SomeKindaOfData = FMath::Rand() * 10000.0f;
+   
+   // 获取或创建共享Fragment
+   const FConstSharedStruct& SharedFragmentStruct = 
+       EntityManager->GetOrCreateConstSharedFragment(SharedFragment);
+   
+   FMassArchetypeSharedFragmentValues SharedValues;
+   SharedValues.AddConstSharedFragment(SharedFragmentStruct);
+
+   EntityManager->Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(
+       ReservedEntity, 
+       MoveTemp(SharedValues), 
+       MyTransformFragment, 
+       MyColorFragment
+   );
+   ```
+:::tip FMassCommandBuildEntityWithSharedFragments 命令
+`FMassCommandBuildEntityWithSharedFragments` 是Mass系统中的Command之一
+
+**使用场景**
+   - 当需要创建带有共享Fragment的Entity时使用
+   - 支持同时添加多个普通Fragment和共享Fragment
+```cpp
+template<typename TSharedFragmentValues, typename... TOthers>
+struct FMassCommandBuildEntityWithSharedFragments : public FMassBatchedCommand
+```
+:::
+
+3. **刷新命令**
+   ```cpp
+   // 需要立即执行时，可以手动刷新命令（通常不需要）
+   if (!EntityManager->IsProcessing())
+   {
+       EntityManager->FlushCommands();
+   }
+   ```
+
+:::tip 调试技巧
+在编辑器中使用 `mass.PrintEntityFragments 1` 命令可以查看Entity的Fragment信息。
+:::
+
 ## References
 - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
