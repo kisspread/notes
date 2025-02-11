@@ -310,5 +310,79 @@ FMassArchetypeHandle ArchetypeStatus = EntityManager.CreateArchetype({
 
 综上，原型的真正意思是：驱动特定逻辑所需的最小数据集合。
 
+
+### Processor
+
+Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组合多个用户定义的查询（queries）来计算和处理实体。
+
+(也就是说，一个Processor可以包含多个Query)
+
+#### 基本特性
+
+1. **自动注册机制**
+   - 所有继承自UMassProcessor的类都会自动注册到Mass系统
+   - 默认添加到`EMassProcessingPhase::PrePhsysics`处理阶段
+
+2. **处理阶段**
+   处理器可以配置在不同的处理阶段执行，对应不同的`ETickingGroup`：
+
+   | 处理阶段 | 对应TickingGroup | 说明 |
+   |----------|-----------------|------|
+   | PrePhysics | TG_PrePhysics | 物理模拟开始前执行 |
+   | StartPhysics | TG_StartPhysics | 开始物理模拟的特殊阶段 |
+   | DuringPhysics | TG_DuringPhysics | 与物理模拟并行执行 |
+   | EndPhysics | TG_EndPhysics | 结束物理模拟的特殊阶段 |
+   | PostPhysics | TG_PostPhysics | 刚体和布料模拟后执行 |
+   | FrameEnd | TG_LastDemotable | 帧末尾的兜底阶段 |
+
+#### 配置选项
+
+在处理器的构造函数中，可以配置以下内容：
+
+1. **注册控制**
+   ```cpp
+   bAutoRegisterWithProcessingPhases = true;  // 是否自动注册到处理阶段
+   ```
+
+2. **处理阶段设置**
+   ```cpp
+   ProcessingPhase = EMassProcessingPhase::PrePhysics;  // 设置处理阶段
+   ```
+
+3. **执行顺序控制**
+   ```cpp
+   // 使用内置的移动处理器组
+   ExecutionOrder.ExecuteInGroup = UE::Mass::ProcessorGroupNames::Movement;
+   // 设置在指定处理器之后执行
+   ExecutionOrder.ExecuteAfter.Add(TEXT("MSMovementProcessor"));
+   ```
+
+4. **执行环境控制**
+   ```cpp
+   // 设置在哪些环境下执行（客户端/服务器/单机）
+   ExecutionFlags = (int32)(EProcessorExecutionFlags::Client | EProcessorExecutionFlags::Standalone);
+   ```
+
+5. **线程控制**
+   ```cpp
+   bRequiresGameThreadExecution = true;  // 是否需要在游戏主线程执行
+   ```
+
+####  重要说明
+
+1. **依赖图**
+   - Mass系统会根据处理器的执行规则创建依赖图
+   - 确保处理器按正确的顺序执行
+   - 例如：移动处理器需要在其他处理器之前执行
+
+2. **多线程支持**
+   - 默认情况下所有处理器都支持多线程
+   - 可以通过设置`bRequiresGameThreadExecution = true`强制在主线程执行
+   - 需要注意线程安全问题
+
+3. **扩展性**
+   - Mass提供了多个基础处理器类型供继承和扩展
+   - 例如：可视化处理器和LOD处理器
+
 ## References
 - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
