@@ -5,6 +5,8 @@ comments: true
 
 # MassEntity 中级篇
 
+中级篇主要是对常用概念的梳理，细节使用等
+
 ## 常用概念
 
 ### Subsystem
@@ -100,7 +102,7 @@ struct TStructOpsTypeTraits<FHitResult> : public TStructOpsTypeTraitsBase2<FHitR
 另外，奇异递归模板也属于 元编程。详见 [奇异递归模板](../C++/CRTP.md)
 :::
 
-#### 2. Processors中使用自定义UWorldSubsystem
+#### 2. Processors中Query自定义UWorldSubsystem
 
 从UE 5.1开始，Mass增强了API，允许你在Processors中直接使用UWorldSubsystem。这提供了一种创建封装功能的强大方式，可以用来操作实体（Entities）或其他游戏逻辑。
 
@@ -317,6 +319,7 @@ Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组�
 
 (也就是说，一个Processor可以包含多个Query)
 
+
 #### 基本特性
 
 1. **自动注册机制**
@@ -368,6 +371,27 @@ Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组�
    bRequiresGameThreadExecution = true;  // 是否需要在游戏主线程执行
    ```
 
+来看一个例子：
+
+```cpp
+UMyProcessor::UMyProcessor()
+{
+	// 这个处理器只需存在就会自动注册到Mass！这是所有处理器的默认行为。
+	bAutoRegisterWithProcessingPhases = true;
+	// 显式设置处理阶段
+	ProcessingPhase = EMassProcessingPhase::PrePhysics;
+	// 使用内置的移动处理器组
+	ExecutionOrder.ExecuteInGroup = UE::Mass::ProcessorGroupNames::Movement;
+	// 你还可以定义其他需要在此处理器之前或之后运行的处理器
+	ExecutionOrder.ExecuteAfter.Add(TEXT("MSMovementProcessor"));
+	// 仅在客户端和独立模式下执行
+	ExecutionFlags = (int32)(EProcessorExecutionFlags::Client | EProcessorExecutionFlags::Standalone);
+	// 此处理器不应多线程化,既运行在主线程里
+	bRequiresGameThreadExecution = true;
+}
+
+```
+
 ####  重要说明
 
 1. **依赖图**
@@ -405,6 +429,10 @@ Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组�
    ```cpp
    // 使用Archetype创建Entity
    FMassEntityHandle NewEntity = EntityManager->CreateEntity(Archetype);
+
+   // 批量生成100个敌人
+   TArray<FMassEntityHandle> Enemies;
+   EntityManager->BatchCreateEntities(Archetype, 100, Enemies);
    ```
 
 3. **修改Entity**
@@ -418,7 +446,11 @@ Mass Entity Processor是Mass框架中处理实体的核心组件。它通过组�
    // 修改Fragment数据
    EntityManager->GetFragmentDataChecked<FMassVelocityFragment>(NewEntity).Value = FMath::VRand() * 100.0f;
    EntityManager->GetFragmentDataChecked<FSampleColorFragment>(NewEntity).Color = FColor::Blue;
+
    ```
+:::tip 调试技巧
+在编辑器中使用 `mass.PrintEntityFragments 1` 命令可以查看Entity的Fragment信息。
+:::
 
 #### 2. 延迟方式（Deferred Command）
 
@@ -486,9 +518,353 @@ struct FMassCommandBuildEntityWithSharedFragments : public FMassBatchedCommand
    }
    ```
 
-:::tip 调试技巧
-在编辑器中使用 `mass.PrintEntityFragments 1` 命令可以查看Entity的Fragment信息。
-:::
+### Query
+
+Processor可以定义多个FMassEntityQuery，并且应该重写ConfigureQueries以向处理器头文件中定义的不同的查询添加规则：
+
+一个例子，可以看到有两种查询配置：`EMassFragmentPresence` 和 `EMassFragmentAccess`
+```cpp
+void UMyProcessor::ConfigureQueries()
+{
+    //各种类查询的写法
+	MyQuery.AddTagRequirement<FMoverTag>(EMassFragmentPresence::All);
+	MyQuery.AddRequirement<FHitLocationFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::Optional);
+	MyQuery.AddSubsystemRequirement<UMassDebuggerSubsystem>(EMassFragmentAccess::ReadWrite);
+    // 把Query注册到Processor的生命周期里
+	MyQuery.RegisterWithProcessor(*this);
+
+	ProcessorRequirements.AddSubsystemRequirement<UMassDebuggerSubsystem>(EMassFragmentAccess::ReadWrite);
+}
+
+```
+#### 访问要求（EMassFragmentAccess）
+
+查询可以为Fragment和Subsystems定义读/写访问要求：
+
+| `EMassFragmentAccess` | 描述                                                              |
+| --------------------- | ----------------------------------------------------------------- |
+| `None`                | 不需要绑定。                                                          |
+| `ReadOnly`            | 我们想读取Fragment/Subsystem的数据。                                  |
+| `ReadWrite`           | 我们想读取和写入Fragment/Subsystem的数据。                                |
+
+*    `FMassFragment`使用`AddRequirement`来添加对Fragment的访问和存在要求。
+*   `FMassSharedFragment`使用`AddSharedRequirement`。
+*    `UWorldSubsystem`使用`AddSubsystemRequirement`。
+
+```cpp
+void UMyProcessor::ConfigureQueries()
+{
+	// 实体必须具有FTransformFragment，并且我们正在读取和写入它 (EMassFragmentAccess::ReadWrite)
+	MyQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadWrite);
+		
+	// 实体必须具有FMassForceFragment，并且我们只读取它 (EMassFragmentAccess::ReadOnly)
+	MyQuery.AddRequirement<FMassForceFragment>(EMassFragmentAccess::ReadOnly);
+
+	// 实体必须具有一个可以读取和写入的公共FClockSharedFragment
+	MyQuery.AddSharedRequirement<FClockSharedFragment>(EMassFragmentAccess::ReadWrite);
+
+	// 实体必须具有一个可以读取和写入的UMassDebuggerSubsystem
+	MyQuery.AddSubsystemRequirement<UMassDebuggerSubsystem>(EMassFragmentAccess::ReadWrite);
+
+	// 使用UMyProcessor注册查询
+	MyQuery.RegisterWithProcessor(*this);
+}
+
+```
+
+`ForEachEntityChunk`可以使用以下函数根据访问要求访问`ReadOnly`或`ReadWrite`数据：
+
+| `EMassFragmentAccess` | 类型             | 函数                        | 描述                                                                                       |
+| --------------------- | ---------------- | --------------------------- | ------------------------------------------------------------------------------------------ |
+| `ReadOnly`            | Fragment         | `GetFragmentView`           | 返回一个只读的`TConstArrayView`，其中包含我们的`ReadOnly` Fragment的数据。                   |
+| `ReadWrite`           | Fragment         | `GetMutableFragmentView`    | 返回一个可写的`TArrayView`，其中包含我们的`ReadWrite` Fragment的数据。                      |
+| `ReadOnly`            | Shared Fragment  | `GetConstSharedFragment`    | 返回对我们的只读共享Fragment的常量引用。                                                     |
+| `ReadWrite`           | Shared Fragment  | `GetMutableSharedFragment`  | 返回对我们的可写共享Fragment的引用。                                                       |
+| `ReadOnly`            | Subsystem        | `GetSubsystemChecked`       | 返回对我们的World Subsystem的只读常量引用。                                                    |
+| `ReadWrite`           | Subsystem        | `GetMutableSubsystemChecked` | 返回对我们的可写共享World Subsystem的引用。                                                   |
+
+示例如下：
+
+```c++
+MyQuery.ForEachEntityChunk(EntityManager, Context, [this, World = EntityManager.GetWorld()](FMassExecutionContext& Context)
+{
+	UMassDebuggerSubsystem& Debugger = Context.GetMutableSubsystemChecked<UMassDebuggerSubsystem>(World);
+
+	const auto TransformList = Context.GetFragmentView<FTransformFragment>();
+	const auto ForceList = Context.GetMutableFragmentView<FMassForceFragment>();
+
+	for (int32 EntityIndex = 0; EntityIndex < Context.GetNumEntities(); ++EntityIndex)
+	{
+		FTransform& TransformToChange = TransformList[EntityIndex].GetMutableTransform();
+		const FVector DeltaForce = Context.GetDeltaTimeSeconds() * ForceList[EntityIndex].Value;
+		TransformToChange.AddToTranslation(DeltaForce);
+		Debugger.AddShape(EMassEntityDebugShape::Box, TransformToChange.GetLocation(), 10.f);
+	}
+});
+```
+
+**注意：** Tag没有访问要求，因为它们不包含数据。
+
+#### 存在要求（EMassFragmentPresence）
+
+**核心概念:**
+
+查询可以为Fragment和Tag定义存在要求：
+
+| `EMassFragmentPresence` | 描述                                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| `All`                   | 所有必需的Fragment/Tag必须存在。默认的存在要求。                                                       |
+| `Any`                   | 至少有一个标记为Any的Fragment/Tag必须存在。                                                             |
+| `None`                  | 不能存在任何必需的Fragment/Tag。                                                                     |
+| `Optional`              | 如果Fragment/Tag存在，我们将使用它，但它不需要存在。                                                     |
+
+##### Tag中的存在要求
+
+要向Tag添加存在规则，请使用`AddTagRequirement`。
+
+```c++
+void UMyProcessor::ConfigureQueries()
+{
+	// 在考虑迭代实体时，可以包含指定的Tag (可选)
+	MyQuery.AddTagRequirement<FOptionalTag>(EMassFragmentPresence::Optional);
+	// 实体必须至少具有FHorseTag或FSheepTag， any 意味着至少有一个
+	MyQuery.AddTagRequirement<FHorseTag>(EMassFragmentPresence::Any);
+	MyQuery.AddTagRequirement<FSheepTag>(EMassFragmentPresence::Any);
+	MyQuery.RegisterWithProcessor(*this);
+}
+```
+`ForEachChunk`可以使用`DoesArchetypeHaveTag`来确定当前原型是否包含该Tag：
+
+```c++
+MyQuery.ForEachEntityChunk(EntityManager, Context, [](FMassExecutionContext& Context)
+{
+	if(Context.DoesArchetypeHaveTag<FOptionalTag>())
+	{
+		// 我确实有FOptionalTag标签！
+	}
+
+	// 与标记为Any的Tag相同
+	if(Context.DoesArchetypeHaveTag<FHorseTag>())
+	{
+		// 我确实有FHorseTag标签！
+	}
+	if(Context.DoesArchetypeHaveTag<FSheepTag>())
+	{
+		// 我确实有FSheepTag标签！
+	}
+});
+```
+
+##### Fragment中的存在要求
+
+Fragment和Shared Fragment可以通过`AddRequirement`和`AddSharedRequirement`中的附加`EMassFragmentPresence`参数分别定义存在规则。
+
+```c++
+void UMyProcessor::ConfigureQueries()
+{
+	// 在迭代实体时，可以有的Fragment
+	MyQuery.AddRequirement<FMyOptionalFragment>(EMassFragmentAccess::ReadWrite, EMassFragmentPresence::Optional);
+	// 实体必须至少具有FHorseFragment或FSheepFragment
+	MyQuery.AddRequirement<FHorseFragment>(EMassFragmentAccess::ReadWrite, EMassFragmentPresence::Any);
+	MyQuery.AddRequirement<FSheepFragment>(EMassFragmentAccess::ReadWrite, EMassFragmentPresence::Any);
+	MyQuery.RegisterWithProcessor(*this);
+}
+```
+
+`ForEachChunk`可以使用`Optional`/`Any` Fragment的`TArrayView`的长度来确定当前块在访问之前是否包含该Fragment：
+
+```c++
+MyQuery.ForEachEntityChunk(EntityManager, Context, [](FMassExecutionContext& Context)
+{
+	const auto OptionalFragmentList = Context.GetMutableFragmentView<FMyOptionalFragment>();
+	const auto HorseFragmentList = Context.GetMutableFragmentView<FHorseFragment>();	
+	const auto SheepFragmentList = Context.GetMutableFragmentView<FSheepFragment>();
+	for (int32 i = 0; i < Context.GetNumEntities(); ++i)
+	{
+		// 如果OptionalFragmentList不为空，则表示当前块中存在可选Fragment数组
+		if(OptionalFragmentList.Num() > 0)
+		{
+			// 现在我们知道可以安全地进行计算了
+			OptionalFragmentList[i].DoOptionalStuff();
+		}
+
+		// 与标记为Any的Fragment相同
+		if(HorseFragmentList.Num() > 0)
+		{
+			HorseFragmentList[i].DoHorseStuff();
+		}
+		if(SheepFragmentList.Num() > 0)
+		{
+			SheepFragmentList[i].DoSheepStuff();
+		}		
+	}
+});
+```
+
+### Deferred Command
+
+（上面提到过Derfer方法，但是没有说明如何使用，这里是一种应用场景）
+
+（初级篇的农场例子，也是演示了`Context.Defer().AddTag`的使用，那个例子更详细）
+
+在`ForEachEntityChunk`中，我们可以访问当前的执行上下文。`FMassExecutionContext`使我们能够获取实体数据并改变其组成。以下代码将`FDead`标签添加到任何具有`Health`变量小于或等于0的`FHealthFragment`的实体，同时，正如我们在`ConfigureQueries`中定义的那样，在添加`FDead`标签后，该实体将不再被考虑进行迭代（`EMassFragmentPresence::None`）：
+
+**查询“非死”个体，标记生命值低于0的个体为死亡：**
+```c++
+void UDeathProcessor::ConfigureQueries()
+{
+	// 此查询中处理的所有实体都必须具有FHealthFragment Fragment
+	DeclareDeathQuery.AddRequirement<FHealthFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::All);
+	// 此查询处理的实体不应具有FDead标签，因为此查询会添加FDead标签
+	DeclareDeathQuery.AddTagRequirement<FDead>(EMassFragmentPresence::None);
+	DeclareDeathQuery.RegisterWithProcessor(*this);
+}
+
+void UDeathProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+	DeclareDeathQuery.ForEachEntityChunk(EntityManager, Context, [&,this](FMassExecutionContext& Context)
+	{
+		auto HealthList = Context.GetFragmentView<FHealthFragment>();
+
+		for (int32 EntityIndex = 0; EntityIndex < Context.GetNumEntities(); ++EntityIndex)
+		{
+			if(HealthList[EntityIndex].Health <= 0.f)
+			{
+				// 在刷新延迟命令时向此实体添加标签
+				FMassEntityHandle EntityHandle = Context.GetEntity(EntityIndex);
+				Context.Defer().AddTag<FDead>(EntityHandle);
+			}
+		}
+	});
+}
+```
+
+为了延迟实体修改，我们需要获取我们希望修改的实体的句柄（`FMassEntityHandle`），这可以通过`FMassExecutionContext`上下文获得。可以通过两种不同的方法访问它:
+
+| 单复数   | 代码                                                   |
+| -------- | ------------------------------------------------------ |
+| 单数     | `FMassEntityHandle EntityHandle = Context.GetEntity(EntityIndex);` |
+| 复数     | `auto EntityHandleArray = Context.GetEntities();`      |
+
+有了执行上下文和Handle，我们可以延迟修改实体了。
+Fragments:
+
+```c++
+Context.Defer().AddFragment<FMyFragment>(EntityHandle);
+Context.Defer().RemoveFragment<FMyFragment>(EntityHandle);
+```
+
+Tags:
+
+```c++
+Context.Defer().AddTag<FMyTag>(EntityHandle);
+Context.Defer().RemoveTag<FMyTag>(EntityHandle);
+Context.Defer().SwapTags<FOldTag, FNewTag>(EntityHandle);
+```
+
+销毁实体：
+
+```c++
+Context.Defer().DestroyEntity(EntityHandle);
+Context.Defer().DestroyEntities(EntityHandleArray);
+```
+
+
+#### 高级修改操作
+
+（前面的CreateEntity也有一些例子，这里再补充一些）
+
+##### `FMassCommandAddFragmentInstances`
+
+延迟向现有实体添加新的Fragment数据。
+
+在下面的示例中，我们使用HitResult数据修改`FHitResultFragment`，并使用新颜色修改`FSampleColorFragment` Fragment，并将它们添加（或如果已存在则设置）到现有实体。
+
+```c++
+FHitResultFragment HitResultFragment;
+FSampleColorFragment ColorFragment = FSampleColorFragment(Color);
+
+// 在现有实体上设置Fragment数据
+EntityManager->Defer().PushCommand<FMassCommandAddFragmentInstances>(Entity, ColorFragment, HitResultFragment);
+
+// 它也可以添加单个Fragment实例，并且应该安全地设置现有Fragment上的数据
+EntityManager->Defer().PushCommand<FMassCommandAddFragmentInstances>(Entity, SomeOtherFragment);
+```
+
+##### `FMassCommandBuildEntity`
+
+延迟创建实体并向其添加带有数据的Fragment列表。
+
+```c++
+FTransformFragment MyTransformFragment;
+MyTransformFragment.SetTransform(FTransform::Identity);
+
+// 我们构建一个新实体并一步添加数据！
+EntityManager->Defer().PushCommand<FMassCommandBuildEntity>(ReserverdEntity, MyTransformFragment, SomeOtherFragment);
+));
+```
+
+###### `FMassCommandBuildEntityWithSharedFragments`
+
+类似于`FMassCommandBuildEntity`，但它需要一个`FMassArchetypeSharedFragmentValues`结构来设置实体上的共享Fragment值。这需要一些额外的工作来查找或创建共享Fragment。
+
+```c++
+FMassArchetypeSharedFragmentValues SharedFragmentValues;
+// 这也是Trait用来创建其共享Fragment信息的方式
+FConstSharedStruct& SharedFragment = EntityManager->GetOrCreateConstSharedFragment(MySharedFragment);
+SharedFragmentValues.AddConstSharedFragment(SharedFragment);
+
+// 这里需要MoveTemp...
+EntityManager->Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(EntityHandle, MoveTemp(SharedFragmentValues), TransformFragment, AnotherFragmentEtc);
+```
+
+##### `FMassDeferredSetCommand`
+
+延迟执行作为参数传入的`TFunction` lambda表达式。它对于执行其他命令未涵盖的Mass相关操作非常有用。这是处理Actor修改的一种智能方法，因为[这些通常需要在主线程上进行](https://vkguide.dev/docs/extra-chapter/multithreading/#ways-of-using-multithreading-in-game-engines)。
+
+```c++
+EntityManager->Defer().PushCommand<FMassDeferredSetCommand>(
+   [&](FMassEntityManager& Manager)
+  {
+      	// 这会在刷新延迟命令时运行
+      	MyActor.DoGameThreadWork();
+      	// 常规的Mass Manager调用也可以在这里进行。例如：
+  	EntityManager.BuildEntity(ReservedEntity, InstanceStructs, EntityTemplate.GetSharedFragmentValues());
+  });
+```
+
+**注意：** `TFunction` lambda表达式确实有一个`FMassEntityManager&`作为函数参数，你应该在每个使用此命令的lambda表达式中包含它。
+
+所谓`FMassDeferredCreateCommand`、`FMassDeferredSetCommand`等类似命名的类型都经过模板化以设置特定的`EMassCommandOperationType`:
+
+```c++
+using FMassDeferredCreateCommand = FMassDeferredCommand<EMassCommandOperationType::Create>;
+using FMassDeferredAddCommand = FMassDeferredCommand<EMassCommandOperationType::Add>;
+using FMassDeferredRemoveCommand = FMassDeferredCommand<EMassCommandOperationType::Remove>;
+using FMassDeferredChangeCompositionCommand = FMassDeferredCommand<EMassCommandOperationType::ChangeComposition>;
+using FMassDeferredSetCommand = FMassDeferredCommand<EMassCommandOperationType::Set>;
+using FMassDeferredDestroyCommand = FMassDeferredCommand<EMassCommandOperationType::Destroy>;
+```
+
+这些旨在将延迟命令组织成不同的操作类型。例如：我们希望在更改实体上的Fragment之前创建实体！
+以下是它们以及在刷新命令时按顺序执行的操作：
+
+| 操作            |                                                |
+| --------------- | ---------------------------------------------- |
+| `Create`          | 创建新实体。                                     |
+| `Add`             | 添加Fragment/Tag。                              |
+| `Remove`          | 移除Fragment/Tag。                              |
+| `ChangeComposition` | 添加和移除Tag/Fragment。                          |
+| `Set`             | 更改Fragment数据（也添加Fragment）。                |
+| `None`            | 默认值，始终最后执行。                           |
+
+
+
+
+
+
+
+
 
 ## References
 - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
