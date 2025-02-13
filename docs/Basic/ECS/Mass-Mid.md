@@ -310,7 +310,7 @@ FMassArchetypeHandle ArchetypeStatus = EntityManager.CreateArchetype({
 
 （原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象）
 
-综上，原型的真正意思是：驱动特定逻辑所需的最小数据集合。
+综上，原型的真正意思是：**驱动特定逻辑所需的最小数据集合**
 
 
 ### Processor
@@ -392,9 +392,9 @@ UMyProcessor::UMyProcessor()
 
 ```
 
-####  重要说明
+####  基于依赖图的多线程
 
-1. **依赖图**
+1. **依赖图（Dependency Graph）**
    - Mass系统会根据处理器的执行规则创建依赖图
    - 确保处理器按正确的顺序执行
    - 例如：移动处理器需要在其他处理器之前执行
@@ -407,6 +407,83 @@ UMyProcessor::UMyProcessor()
 3. **扩展性**
    - Mass提供了多个基础处理器类型供继承和扩展
    - 例如：可视化处理器和LOD处理器
+
+
+:::warning 注意
+基于处理器依赖图的 Per-Processor 多线程处理，必须开启`mass.FullyParallel 1`
+:::
+
+##### 依赖图多线程图解：
+```sh
+处理器依赖图示例：
+
+InputProcessor (或者Actor Tick)
+     ↓
+MovementProcessor   →   CollisionProcessor
+     ↓                    ↓
+AnimationProcessor      PhysicsProcessor
+     ↓                    ↓
+RenderProcessor     ←   EffectsProcessor
+
+```
+RenderProcessor 需要等待前面的处理器完成
+
+#### 基于`ParallelForEachEntityChunk`的多线程
+在`ParallelForEachEntityChunk`中，引擎会使用[TaskGraph](../LLM-analyze/TaskSystem_TaskGraph.md)来动态分配任务，动态平衡工作负载。
+
+```cpp
+// 假设有1000个chunks的处理场景
+void ProcessEntities()
+{
+    const int32 TotalChunks = 1000;
+    
+    // 系统可能的处理方式：
+    // 1. 检测系统资源（例如8个物理核心）
+    // 2. 决定创建16-32个任务（而不是8个或1000个）
+    // 3. 每个任务处理30-60个chunks
+    // 4. 通过任务系统动态调度这些任务
+    
+    MyQuery.ParallelForEachEntityChunk(
+        EntityManager,
+        Context,
+        [](FMassExecutionContext& Context)
+        {
+            // 处理当前任务分配的chunks
+            // 每个任务实际处理的chunk数量是动态的
+        }
+    );
+}
+```
+
+
+区别：
+- ParallelForEachEntityChunk：在单个处理器内部，对实体的处理进行并行化
+- Per-Processor threading：在处理器层面进行并行化，多个处理器可以同时执行
+
+:::warning 注意
+基于`ParallelForEachEntityChunk`的多线程处理，必须开启`mass.AllowQueryParallelFor`
+:::
+
+##### `ParallelForEachEntityChunk`图解
+
+```sh
+1000个Chunks的处理流程：
+
+[Chunks Array] (1000 chunks)
+       ↓
+[Task Graph System]
+       ↓
+动态创建任务
+       ↓
+╔════════════════════════════╗
+║ Thread Pool                ║
+║ ┌─────┐ ┌─────┐ ┌─────┐    ║
+║ │Task1│ │Task2│ │Task3│    ║
+║ └─────┘ └─────┘ └─────┘    ║
+║       ...more...           ║
+╚════════════════════════════╝
+
+```
 
 ### 创建Entity 
 
