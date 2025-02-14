@@ -227,7 +227,8 @@ public:
         TSharedRef<DownloadManager> SafeThis = AsShared();
         AsyncTask(ENamedThreads::AnyBackgroundThreadNormal, [SafeThis]() {
             // 安全！因为 lambda 捕获了 SafeThis，引用计数会保持对象存活
-            SafeThis->ProcessDownload();
+            SafeThis->ProcessDownload(); 
+            //作用域结束， 任务完成，释放SafeThis（refcount=0）
         });
     }
 };
@@ -236,9 +237,9 @@ void Example()
 {
     {
         // 注意，必须使用 MakeShared 来创建智能指针
-        TSharedRef<DownloadManager> Manager = MakeShared<DownloadManager>();
-        Manager->StartDownload("http://example.com/file.zip");
-    } // <- 作用域结束
+        TSharedRef<DownloadManager> Manager = MakeShared<DownloadManager>(); //MakeShared()创建对象（refcount=1）
+        Manager->StartDownload("http://example.com/file.zip"); //内部AsShared()获得SafeThis（refcount=2）
+    } // <- 作用域结束, (refcount=2-1=1）
 
     // 场景1：如果使用 this，此时 DownloadManager 已经被销毁，后台任务访问无效内存
     // 场景2：如果使用 SafeThis，即使这里离开了作用域：
