@@ -306,11 +306,197 @@ FMassArchetypeHandle ArchetypeStatus = EntityManager.CreateArchetype({
 
 理论上,FInterpLocationFragment也必须是该原型的全部构成，如果还有其他Fragment，由于 `Chunk`是根据`Archetype`分类的，那么在上面这个`ForEachEntityChunk`中，必然引入了没用上的变量，导致cache miss。
 
-##### 原型的深意
 
-（原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象）
+### Archetype
+
+#### 原型的深意
+
+原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象。
+
+![alt text](../../assets/images/Mass-Mid_image.png)
+如图，速度和位置，就是执行运动逻辑的最小数据集，每次遍历，都要计算这两个变量。不带入其他数据，遍历就是高效的。
 
 综上，原型的真正意思是：**驱动特定逻辑所需的最小数据集合**
+
+::: warning
+>Processors can change an Entity's composition by adding or removing Fragments or Tags. However, changing the composition of an Entity while it is being processed would result in that Entity being moved from one Archetype to another.
+
+Processors可以通过添加或删除Fragments或Tags来更改Entity的组成。但是，在处理Entity时更改其组成**会导致该Entity从一个原型移动到另一个原型**。
+
+:::
+
+#### 给原型命名
+
+命名后的原型，对调试非常友好。
+```cpp
+	FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
+	ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
+	FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
+		TArray<const UScriptStruct*>{
+			FFarmWaterFragment::StaticStruct(),
+			FFarmCropFragment::StaticStruct(),
+		}, ArchetypeCreationParamsCrop);
+```
+
+### Chunk
+
+Chunk是每次遍历的数据块单位，如`ForEachEntityChunk`, 每个Chunk都会执行该遍历来操作内部的全部Entity，且Chunk之间可并行运行，提高效率。
+
+`Chunk-Base`的设计就是为了加速Mass Entity的效率。
+
+#### Chunk 大小
+默认配置是128KB
+```cpp
+UPROPERTY(EditDefaultsOnly, Category = Mass, config, AdvancedDisplay)
+int32 ChunkMemorySize = 128 * 1024;// KBytes
+// 设置默认配置
+void UMassEntitySettings::PostInitProperties()
+{
+	Super::PostInitProperties();
+	ChunkMemorySize = UE::Mass::SanitizeChunkMemorySize(ChunkMemorySize);
+}
+```
+
+根据配置动态配置Chunk大小的一种写法，详情查阅 EditorDataStorage Plugin源码
+
+```cpp
+UE::Editor::DataStorage::TableHandle UEditorDataStorage::RegisterTable(TConstArrayView<const UScriptStruct*> ColumnList, const FName Name)
+{
+	using namespace UE::Editor::DataStorage;
+
+	if (ActiveEditorEntityManager && !TableNameLookup.Contains(Name))
+	{
+		TableHandle Result = Tables.Num();
+		FMassArchetypeCreationParams ArchetypeCreationParams;
+		ArchetypeCreationParams.DebugName = Name;
+		ArchetypeCreationParams.ChunkMemorySize = GetTableChunkSize(Name);
+		Tables.Add(ActiveEditorEntityManager->CreateArchetype(ColumnList, ArchetypeCreationParams));
+		if (Name.IsValid())
+		{
+			TableNameLookup.Add(Name, Result);
+		}
+		return Result;
+	}
+	return InvalidTableHandle;
+}
+```
+
+::: tip EditorDataStorage Plugin
+>A central extendable data storage for editors and their corresponding data with support for viewing and editing through a collection of widgets.
+
+- 基于Mass Entity的插件，是一个可扩展的中央数据存储，用于编辑器及其相应的数据，并支持通过一组小部件进行查看和编辑。
+
+:::
+
+::: tip 为什么同原型的Chunk固定大小
+数据连续性和缓存友好，典型的空间换时间
+- 连续内存布局：固定大小的 chunk 能保证同一块内存里存放大量实体数据，这样数据在内存中是连续的。
+- 缓存预取 **(Prefetch)**：CPU 在遍历连续内存时能更好地利用预取机制，大幅提高 L1/L2 缓存的命中率，降低内存延迟。
+- SIMD 加速：连续的数据还便于利用 SIMD 指令做批量处理。
+- 无动态判断：固定大小让迭代逻辑简单，无需在遍历过程中判断当前 chunk 的大小或者是否还有更多数据。
+- 频繁分配：动态大小需要不断调整内存分配，可能引发频繁的分配和释放操作，这在高并发下会严重拖慢性能。
+- 散乱内存：动态 chunk 可能导致实体数据分散在内存的不同区域，破坏了数据局部性，降低 CPU 预取效率。
+- 额外判断：遍历时需要动态判断每个 chunk 实际存储了多少实体，代码逻辑更复杂，难以优化到极致。
+
+**Chunk-Base的结构易操作且高效:**
+> 当删除掉其中一个Entity时，内部的其他Entity并不会移动，所以这个Entity会在Chunk中空出来，这时如果再Add新的Entity会复用这个空出来的内存，当删除掉Chunk中所有Entity时，Chunk的内存会自动释放掉。整个数据结构实现，相当于是TSparseArray和TChunkedArray的结合，因为UE没有自带这种泛型容器，所以这里就单独实现了。
+:::
+
+#### Chunk和CPU缓存
+我的电脑16核心，L1总大小1MB，L2总大小8MB:
+![alt text](../../assets/images/cacheline_image.png)
+
+也就是，每个核心分配到64KB。
+```sh
+每个核心的L1缓存分配：
+- L1 指令缓存 (L1i): 32KB
+- L1 数据缓存 (L1d): 32KB
+总计每核心：64KB
+
+16个核心总共：1MB L1缓存
+```
+
+也就是，每个核心能用于装载数据的实际大小只有32KB， 明显小于虚幻默认chunk大小128KB。执行一次chunk遍历，L1至少要加载4次数据。
+
+但这并不会影响性能(不至于需要担心)：
+- 数据会在L2/L3 预载（Prefetch）。
+- 数据在 Chunk 中是连续存储 的，这有助于 CPU 进行顺序读取和预取，大幅减少随机访问的开销
+- 每个核心都在处理自己那部分 Chunk
+
+- L1 缓存放不下整个 Chunk 并不意味着性能一定很差；现代 CPU 通过多级缓存和预取机制，依然能让 Chunk-based 的数据访问获得可观的效率。
+- 关键在于：把实体数据打包在一起（Data-Oriented 设计），迭代时尽量线性访问，这样才能充分利用缓存局部性。
+
+#### Chunk 造成的浪费
+
+Chunk 就像一辆高速列车，满载率非常重要，如果经常装不满就会造成内存浪费。
+
+乘客就是entity，如果每次处理的entity都是带着大包小包的大胖子，吞吐量就会大大下降，为了最大化吞吐量，entity要尽可能设计得小而美。
+
+使用Mass Debugger 可以查看到Chunk的内存浪费以及entity大小等信息，如图所示:
+- entity数量太少，大量内存浪费：
+ ![alt text](../../assets/images/Mass-Advanced_image-3.png)
+- entity本身太大（280B），一个chunk 只能装下467个。
+ ![alt text](../../assets/images/Mass-Advanced_image-2.png)
+- entity体积适中，一次遍历就是3000多个，非常高效：
+ ![alt text](../../assets/images/Mass-Mid_image-2.png)
+
+
+
+
+
+
+### Entity 
+前面说了，Chunk是一辆座位非常多的列车，乘客就是entity，如果每次寻找乘客的时候都要遍历整个列车逐个排查，乘务员得跑断腿，效率低下。
+
+FMassEntityHandle 是一个指向Chunk内存中实体数据的指针，它的作用就相当于一本小册子记录了实体的位置，找人只需要遍历小册子就可以了，不需要跑遍整个列车。
+
+#### FEntityData
+它的真身在这里，`FEntityData`:
+![alt text](../../assets/images/Mass-Mid_image-1.png){width=50%}
+
+之所以还要一个序列号，是为了区分 新老entities
+
+```cpp
+// 数组块，默认大小是 16384 = 16 * 1024，既 16KB，因为大部分CPU的L1d缓存大小是16kb的倍数。
+/** An array that uses multiple allocations to avoid allocation failure due to fragmentation. */
+template<typename InElementType, uint32 TargetBytesPerChunk = 16384, typename AllocatorType = FDefaultAllocator >
+class TChunkedArray
+```
+
+> SerialNumber，作用就是某个Index上的Entity被删除后，再创建个新的Entity，如果原来Index指向的EntityData和EntityHandle序列号不匹配，就可以明确EntityHandle指向的是老的Entity而不是新的，这样就避免了只用Index标记Entity导致的冲突问题。-- quabqi
+
+```cpp
+struct FEntityData
+{
+	TSharedPtr<FMassArchetypeData> CurrentArchetype; // 指向Chunk内存中的位置
+	int32 SerialNumber = 0;
+	
+	~FEntityData();
+	void Reset();
+	bool IsValid() const;
+};
+```
+
+#### FMassEntityHandle
+是留给调用者的寻址存根
+```cpp
+// 返回给调用者时，才变成了FMassEntityHandle
+for (int32 EntityIndex = StartingIndex; EntityIndex < Entities.Num(); ++EntityIndex)
+{
+	Entities[EntityIndex].SerialNumber = SerialNumber;
+	OutEntityHandles[CurrentEntityHandleIndex++] = { EntityIndex, SerialNumber };
+}
+```
+
+
+
+
+
+
+
+
+
+
 
 
 ### Processor
@@ -945,3 +1131,4 @@ using FMassDeferredDestroyCommand = FMassDeferredCommand<EMassCommandOperationTy
 
 ## References
 - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
+- [官网文档](https://dev.epicgames.com/documentation/en-us/unreal-engine/overview-of-mass-entity-in-unreal-engine)
