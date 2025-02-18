@@ -258,6 +258,10 @@ Tag的优势：
 -   **快速筛选**：基于位掩码的比较，比数据比较快很多
 -   **组合查询**：灵活的过滤器组合，比如上面的敌人和死亡
 
+::: warning 注意
+Tag 不同的Entity，虽然会用相同的“Base” Archetype，但实际上会被当做不同Archetype来处理, 也就是 `ForEachEntityChunk`时，处于不同的Chunk中。也就是，即使只有一个entity的tag是另类的，也会创建一个128kb的chunk来装载这一个entity。
+:::
+
 #### 2.1 Fragment和Tag区别
 
 | 特性     | Fragment      | Tag           |
@@ -756,9 +760,32 @@ graph TB
 
 Actor 的 `BeginPlay` 函数中 增加最后一步：
 ```cpp
-// 3. 创建原型
-FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(TArray<const UScriptStruct*>{ FFarmWaterFragment::StaticStruct(), FFarmCropFragment::StaticStruct(), FHarvestTimerFragment::StaticStruct(), FFarmVisualFragment::StaticStruct(), FFarmGridCellData::StaticStruct() });
-FMassArchetypeHandle FlowerArchetype = EntityManager.CreateArchetype(TArray<const UScriptStruct*>{ FFarmWaterFragment::StaticStruct(), FFarmFlowerFragment::StaticStruct(), FHarvestTimerFragment::StaticStruct(), FFarmVisualFragment::StaticStruct(), FFarmGridCellData::StaticStruct() });
+// 3. 创建原型， 给原型命名方便调试
+	FMassEntityManager& EntityManager = SharedEntityManager.Get();
+	EntityManager.Initialize();
+	EntityManager.SetDebugName("TestFarmPlot");
+	FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
+	ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
+
+	FMassArchetypeCreationParams ArchetypeCreationParamsFlower;
+	ArchetypeCreationParamsFlower.DebugName = "FlowerArchetype";
+
+	FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
+		TArray<const UScriptStruct*>{
+			FFarmWaterFragment::StaticStruct(),
+			FFarmCropFragment::StaticStruct(),
+			FHarvestTimerFragment::StaticStruct(),
+			FFarmVisualFragment::StaticStruct(),
+			FFarmGridCellData::StaticStruct()
+		}, ArchetypeCreationParamsCrop);
+	FMassArchetypeHandle FlowerArchetype = EntityManager.CreateArchetype(
+		TArray<const UScriptStruct*>{
+			FFarmWaterFragment::StaticStruct(),
+			FFarmFlowerFragment::StaticStruct(),
+			FHarvestTimerFragment::StaticStruct(),
+			FFarmVisualFragment::StaticStruct(),
+			FFarmGridCellData::StaticStruct()
+		}, ArchetypeCreationParamsFlower);
 
 // 4. 创建实体
 for (uint16 Y = 0; Y < GridHeight; ++Y) {
