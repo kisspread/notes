@@ -155,7 +155,50 @@ void UMyProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionCont
 
 
 
-### Fragment FQA
+### Fragment
+
+Fragment在Mass Entity中是数据的基本单位，它们通过Deferred Command被组织到不同的Chunk中。以下是一个典型的Fragment示例：
+
+```cpp
+// 这是一个成员比较多的Fragment
+USTRUCT(BlueprintType)
+struct MASSCOMMUNITYSAMPLE_API FInterpLocationFragment : public FMassFragment
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	FVector TargetLocation = FVector::ZeroVector; // Target location for interpolation
+
+	UPROPERTY(EditAnywhere)
+	FVector StartingLocation = FVector::ZeroVector; // Starting location for interpolation
+
+	UPROPERTY(EditAnywhere)
+	float Duration = 1.0f; // Duration of the interpolation
+
+	bool bForwardDirection = true; // Flag to indicate the direction of interpolation
+
+	float Time = 0.0f; // Current time of the interpolation
+};
+```
+
+#### Fragment的组织方式
+
+1. **基于Chunk的数据组织**
+   - Fragment不是简单地组合，而是通过Deferred Command被分类并放入不同的Chunk中
+   - 同类型的Fragment会被放在连续的内存块（Chunk）中，这样可以提高缓存命中率
+   - Chunk的大小是固定的，这有助于内存管理和性能优化
+
+2. **热数据处理**
+   - 对于频繁一起访问的数据，建议放在同一个Fragment中
+   - 这种方式可以减少Chunk之间的跨块访问，提高性能
+   - 实际上是在"数据分离"和"访问局部性"之间找平衡
+
+3. **Fragment的设计原则**
+   - 根据数据的访问模式来设计Fragment
+   - 高频交互的数据应该放在一起
+   - 通过Deferred Command来管理Fragment的生命周期和组织方式
+
+#### 使用示例
 
 首先，放个Mass Sample的一个案例：
 ```cpp
@@ -269,35 +312,119 @@ struct FTime { TArray<float> Data; };
 
 问题是：每个变量都切成一个`Fragment`再组合成原型，还是 把 “热数据” 都放进同一个`Fragment`里面再组合成原型？
 
-我感觉实践上，后者会更常见。因为不用创建那么多的Fragment，实际上也不违反 组合优于继承。Archetype 之间最终还要继续排列组合。
+我感觉实践上，后者会更常见。因为不用创建那么多的Fragment，实际上也不违反 组合优于继承。Archetype 之间最终还要继续排列组合。但理论上，切得更细，更容易后期调整逻辑（延迟命令切分实体），需要开发者对游戏逻辑的理解上有更多的“高瞻远瞩”。
 
 ##### 冷数据分离
 
 假如有个FHealthFragment, 那么在游戏逻辑里Health的数据更新必然（大概率）和Location的数据更新不在同一个频道（频率）上。
 
-两者之间，互为冷数据，是原型拆分策略的最好选择。
+两者之间，互为冷数据，是fragment拆分策略的最好选择。
 
 例子：
-```
-// 移动相关原型 (高频更新)
+```cpp
+// 移动相关原型 (高频更新)，可在适当时机加入 状态相关的 fragment，entity会自动转移到新的Archetype创建的chunk里面）
 FMassArchetypeHandle ArchetypeMovement = EntityManager.CreateArchetype({
     FTransformFragment::StaticStruct(), 
     FVelocityFragment::StaticStruct(),
-    FObjectBindingTag::StaticStruct() // 绑定到逻辑对象
 });
 
-// 状态相关原型 (低频更新)
+// 状态相关原型 (低频更新) 
 FMassArchetypeHandle ArchetypeStatus = EntityManager.CreateArchetype({
     FHealthFragment::StaticStruct(),
     FStatusEffectFragment::StaticStruct(),
-    FObjectBindingTag::StaticStruct() 
 });
 ```
 
-##### 如何组合
 
-- Fragment之间的“组合”, 是Mass提供的一种更细的刀法，方便更细粒度的控制，更好地复用数据和函数（参考官方Flower和Crop的例子，两个不同的原型（构成不同），但大量函数如AddItemToGrid和各自System的Execute 都能统一使用）。
-- Archetype之间的“组合”, 则是更注重业务逻辑。比如上面的 Health 和 Location, 他都可以是某个对象（Actor）的“部件”。
+##### 动态Fragment分配的实践案例
+
+在实际游戏开发中，我们可能需要根据游戏状态动态地改变实体的组成。这里是一个具体的例子，展示如何高效地处理这种情况：
+
+假设在一个游戏中，我们有大量的敌人实体，但只有靠近玩家的敌人才需要生命值系统。这种情况下，我们可以：
+
+1. **基础移动原型**
+```cpp
+// 所有敌人的基础原型，只包含移动必需的数据
+FMassArchetypeHandle ArchetypeMovement = EntityManager.CreateArchetype({
+    FTransformFragment::StaticStruct(), 
+    FVelocityFragment::StaticStruct(),
+});
+```
+
+2. **动态添加生命值**
+```cpp
+void UProximityHealthProcessor::ConfigureQueries()
+{
+    // 查询基础移动实体，但不包含生命值的实体
+    ProximityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);
+    ProximityQuery.AddRequirement<FVelocityFragment>(EMassFragmentAccess::ReadOnly);
+    // 确保不查询已经有生命值的实体
+    ProximityQuery.AddRequirement<FHealthFragment>(EMassFragmentPresence::None);
+    ProximityQuery.RegisterWithProcessor(*this);
+}
+
+void UProximityHealthProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+    const FVector PlayerLocation = GetPlayerLocation(); // 获取玩家位置
+
+    ProximityQuery.ForEachEntityChunk(EntityManager, Context, [&](FMassExecutionContext& Context)
+    {
+        auto TransformList = Context.GetFragmentView<FTransformFragment>();
+
+        for (int32 EntityIndex = 0; EntityIndex < Context.GetNumEntities(); ++EntityIndex)
+        {
+            const FVector EntityLocation = TransformList[EntityIndex].GetTransform().GetLocation();
+            
+            // 检查是否在玩家附近
+            if (FVector::Distance(EntityLocation, PlayerLocation) < ProximityThreshold)
+            {
+                FMassEntityHandle EntityHandle = Context.GetEntity(EntityIndex);
+                // 动态添加生命值Fragment，这会自动将实体移动到新的Chunk
+                Context.Defer().AddFragment<FHealthFragment>(EntityHandle);
+            }
+        }
+    });
+}
+```
+
+3. **死亡处理**
+```cpp
+void UDeathProcessor::ConfigureQueries()
+{
+    // 此查询中处理的所有实体都必须具有FHealthFragment
+    DeclareDeathQuery.AddRequirement<FHealthFragment>(EMassFragmentAccess::ReadOnly, EMassFragmentPresence::All);
+    // 此查询处理的实体不应具有FDead标签
+    DeclareDeathQuery.AddTagRequirement<FDead>(EMassFragmentPresence::None);
+    DeclareDeathQuery.RegisterWithProcessor(*this);
+}
+
+void UDeathProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+    DeclareDeathQuery.ForEachEntityChunk(EntityManager, Context, [&](FMassExecutionContext& Context)
+    {
+        auto HealthList = Context.GetFragmentView<FHealthFragment>();
+
+        for (int32 EntityIndex = 0; EntityIndex < Context.GetNumEntities(); ++EntityIndex)
+        {
+            if(HealthList[EntityIndex].Health <= 0.f)
+            {
+                FMassEntityHandle EntityHandle = Context.GetEntity(EntityIndex);
+                Context.Defer().AddTag<FDead>(EntityHandle);
+            }
+        }
+    });
+}
+```
+
+这种设计的优势在于：
+1. 基础移动数据在同一个Chunk中，提高缓存命中率
+2. 只有靠近玩家的敌人才会被分配生命值，减少内存使用
+3. 死亡实体会被自动移到单独的Chunk中，不会影响活着的实体的处理
+4. 所有的数据变化都通过Deferred Command处理，保证了数据一致性
+
+当实体通过`Context.Defer().AddFragment`添加新的Fragment时，Mass Entity系统会自动将实体从原来的Chunk移动到新的Chunk中，这个过程是原子的，实体的数据会被完整地转移，而不是复制。EntityHandle会继续保持有效，只是现在指向了新的Chunk中的位置。
+
+
 
 ##### Cache Miss
 回到最开始的代码例子:
@@ -864,6 +991,7 @@ MyQuery.ForEachEntityChunk(EntityManager, Context, [this, World = EntityManager.
 		Debugger.AddShape(EMassEntityDebugShape::Box, TransformToChange.GetLocation(), 10.f);
 	}
 });
+
 ```
 
 **注意：** Tag没有访问要求，因为它们不包含数据。
@@ -895,6 +1023,7 @@ void UMyProcessor::ConfigureQueries()
 	MyQuery.AddTagRequirement<FSheepTag>(EMassFragmentPresence::Any);
 	MyQuery.RegisterWithProcessor(*this);
 }
+
 ```
 `ForEachChunk`可以使用`DoesArchetypeHaveTag`来确定当前原型是否包含该Tag：
 
@@ -932,6 +1061,7 @@ void UMyProcessor::ConfigureQueries()
 	MyQuery.AddRequirement<FSheepFragment>(EMassFragmentAccess::ReadWrite, EMassFragmentPresence::Any);
 	MyQuery.RegisterWithProcessor(*this);
 }
+
 ```
 
 `ForEachChunk`可以使用`Optional`/`Any` Fragment的`TArrayView`的长度来确定当前块在访问之前是否包含该Fragment：
@@ -1012,14 +1142,14 @@ void UDeathProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionC
 有了执行上下文和Handle，我们可以延迟修改实体了。
 Fragments:
 
-```c++
+```cpp
 Context.Defer().AddFragment<FMyFragment>(EntityHandle);
 Context.Defer().RemoveFragment<FMyFragment>(EntityHandle);
 ```
 
 Tags:
 
-```c++
+```cpp
 Context.Defer().AddTag<FMyTag>(EntityHandle);
 Context.Defer().RemoveTag<FMyTag>(EntityHandle);
 Context.Defer().SwapTags<FOldTag, FNewTag>(EntityHandle);
@@ -1027,7 +1157,7 @@ Context.Defer().SwapTags<FOldTag, FNewTag>(EntityHandle);
 
 销毁实体：
 
-```c++
+```cpp
 Context.Defer().DestroyEntity(EntityHandle);
 Context.Defer().DestroyEntities(EntityHandleArray);
 ```
@@ -1085,7 +1215,7 @@ EntityManager->Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(E
 
 延迟执行作为参数传入的`TFunction` lambda表达式。它对于执行其他命令未涵盖的Mass相关操作非常有用。这是处理Actor修改的一种智能方法，因为[这些通常需要在主线程上进行](https://vkguide.dev/docs/extra-chapter/multithreading/#ways-of-using-multithreading-in-game-engines)。
 
-```c++
+```cpp
 EntityManager->Defer().PushCommand<FMassDeferredSetCommand>(
    [&](FMassEntityManager& Manager)
   {
