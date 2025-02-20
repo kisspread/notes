@@ -16,7 +16,7 @@ comments:  true
     "Enabled": true
 },
 ```
-2. 使用CommonUI自带的GameViewportClient, 这步不能漏洞，它是CommonUI模拟输入的核心
+2. 使用CommonUI自带的GameViewportClient, 这步不能漏，它是CommonUI模拟输入的核心实现
 ```ini
 [/Script/Engine.Engine]
 GameViewportClientClassName=/Script/CommonUI.CommonGameViewportClient  
@@ -24,11 +24,9 @@ GameViewportClientClassName=/Script/CommonUI.CommonGameViewportClient
 ![alt text](../../assets/images/000CommonUI_image-1.png)
 
 3. 启用EnhancedInput支持
-```json
-{
-    "Name": "EnhancedInput",
-    "Enabled": true
-}
+```ini
+DefaultPlayerInputClass=/Script/EnhancedInput.EnhancedPlayerInput
+DefaultInputComponentClass=/Script/EnhancedInput.EnhancedInputComponent
 ```
 
 4. 启用 CommonUI 的EnhancedInput支持 和 默认前进后退热键配置
@@ -38,7 +36,7 @@ bEnableEnhancedInputSupport=True
 InputData=/Game/Blueprints/Inputs/CommonInput/B_CommonUI_DefaultAction.B_CommonUI_DefaultAction_C
 bAllowOutOfFocusDeviceInput=True
 ```
-（这里还需要创建两个InputAction）
+创建两个InputAction，默认的前进后退
 ![alt text](../../assets/images/000CommonUI_image-2.png){width=70%}
 
 5. 配置CommonUI 平台相关的图标
@@ -54,9 +52,11 @@ bCanChangeGamepadType=True
 +ControllerData=/Game/Blueprints/Inputs/Platform/GamepadXboxSeriesX/CommonInput_Gamepad_XSX.CommonInput_Gamepad_XSX_C
 +ControllerData=/Game/Blueprints/Inputs/Platform/KeyboardMouse/CommonInput_KeyboardMouse.CommonInput_KeyboardMouse_C
 ```
+注意：DefaultGamepadName=XSX 和这里的名字要对应
+![alt text](../../assets/images/000CommonUI_image-5.png){width=40%}
 
-3-5 都在这里配置：
-![alt text](../../assets/images/000CommonUI_image.png)
+4-5 都在这里配置：
+![alt text](../../assets/images/000CommonUI_image.png){width=75%}
 
 
 ## 配置自响应输入模式
@@ -75,7 +75,7 @@ CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00
 
 最简单的做法，只创建一个stack。
 - 创建一个RootLayout，放置一个`UCommonActivatableWidgetStack`, 设置沾满全屏
-- 写个PUsh方法，支持把其他页面推入栈中
+- 写个Push方法，支持把其他页面推入栈顶
 
 ### HUB 页面配置
 - 需要的话，还可以勾选隐藏鼠标
@@ -92,6 +92,7 @@ CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00
 - “Support Activation Focus”设置为true。
 - 支持回退响应 和 自动激活
   ![alt text](../../assets/images/000CommonUI_image-3.png)
+- 有必要的话，可以重写回退方法，如弹窗暂停窗口，默认的回退方法就是“出栈”  
 
 
 ## 常见问题
