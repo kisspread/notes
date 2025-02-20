@@ -11,6 +11,12 @@ common UI 经常遇到 绑定好了按键后，手柄无效，键盘有效，或
 - ShowDebug EnhancedInput 这个命令可以实时看到key触发的到底是哪个action，以及用灰色表示被覆盖的action
 ![alt text](../../assets/images/01CUIHowDebug_image-1.png)
 
+- `CommonUI.Debug.TraceConfigOnScreen true` 和 `CommonUI.Debug.TraceConfigChanges true`
+![alt text](../../assets/images/01EnhancedInput_image-9.png)
+ 
+（上面的调试信息，是通过控制台打开的。这两个都要设置为true）
+ 
+
 
 ### 断点位置
 
