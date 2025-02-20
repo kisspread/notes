@@ -63,7 +63,7 @@ bCanChangeGamepadType=True
 
 没有使用CommonUI时，需要自己手动调用 `setInputMode`相关的方法，来决定当前操作是游戏还是UI。如，显示菜单时，需要显示鼠标和忽略角色的移动控制。
 
-CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00How%20to%20setup%20CommonUI%20in%20UE5.4.2.zh.md)
+CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00How%20to%20setup%20CommonUI%20in%20UE5.4.2_zh.md)
 
 我们可以把 每一个 `Activatable Widget` 都当做一个页面（不过一个屏幕里可能同时存在多个），每个页面在视图顶部既“激活时”，它的输入配置将被自动应用到全局。当他们不是激活状态时，后一个页面的输入配置将被应用到全局。
 
