@@ -17,6 +17,5 @@
   "dependencies": {
     "@giscus/vue": "^3.1.1",
     "medium-zoom": "^1.1.0",
-    "pnpm": "^10.4.1"
   }
 }
