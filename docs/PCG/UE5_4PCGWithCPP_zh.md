@@ -31,12 +31,12 @@ comments: true
 
     - Pin的数据类，用于描述Pin的数据。被执行时，需要从FPCGContext获得连接进来的数据。“有多少线连进来，就有多少FPCGTaggedData”
     - 有个数据字段`TObjectPtr<const UPCGData> Data`，可以根据自己的需要，cast 成自己要的派生类
-    - 输入数据 需要用 `Outputs.Add_GetRef(Input)` 关联一下 input
+    - 使用 `Outputs.Add_GetRef(Input)` 来添加输出
   
         ``` cpp
         //step1 从执行的上下文里获得Outputs
         TArray<FPCGTaggedData>& Outputs = Context->OutputData.TaggedData;
-        //step2 关联Input
+        //step2 以Input 为模板，创建并添加到Outputs
         FPCGTaggedData& ChosenTaggedData = Outputs.Add_GetRef(Input);
         //step3 完成配置
         ChosenTaggedData.Data = ChosenPointsData;
@@ -56,7 +56,7 @@ comments: true
     ChosenPoints.Reserve(NumberOfElementsToKeep);
     ```
 ## **UPCGParamData**
-  - 是蓝图里的Attribute Set类型, 也是FPCGTaggedData 的Data 类型选项之一
+  - 是蓝图里的Attribute Set类型, 参数 类型
   - 创建一个int32 类型 代码示例，形式有点像Key-Value
   
     ``` cpp

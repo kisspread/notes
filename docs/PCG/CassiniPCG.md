@@ -5,6 +5,8 @@ comments:  true
 
 # UE 5.5 PCG新功能
 
+（其实很多功能并不是特别新，在前几版就有，只是在这个视频里总结。）
+
 source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 ## **Attributes（属性）** 
