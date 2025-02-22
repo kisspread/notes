@@ -25,7 +25,7 @@ comments: true
     ### **FPCGTaggedData**
     - The data class for pins, used to describe the data of the pins. When executed, it is necessary to obtain the incoming data from FPCGContext. "The number of connections corresponds to the number of FPCGTaggedData."
     - There is a data field `TObjectPtr<const UPCGData> Data`, which can be cast to the desired derived class as needed.
-    - To link input data, use `Outputs.Add_GetRef(Input)`:
+    - use `Outputs.Add_GetRef(Input)` add to the input:
         ```cpp
         // Step 1: Obtain Outputs from the execution context
         TArray<FPCGTaggedData>& Outputs = Context->OutputData.TaggedData;
