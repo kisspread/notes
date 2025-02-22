@@ -6,6 +6,10 @@ comments:  true
 # PCG 基础
 ![alt text](../assets/images/PCG_Base_image.png)
 
+此前写过一篇[常用类浅析](./UE5_4PCGWithCPP_zh.md)，但过于简单，写一篇细致一点的，重新温习一下。
+
+
+
 ## PCG节点的数据类型
 
 根据官网说法，PCG框架中的数据分为以下几种类型：
