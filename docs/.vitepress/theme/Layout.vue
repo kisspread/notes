@@ -31,9 +31,15 @@ watchEffect(() => {
 </script>
 
 <template>
-  <DefaultTheme.Layout />
+  <DefaultTheme.Layout>
+    <template #doc-after>
+      <slot name="doc-after"/>
+    </template>
+    <template #doc-footer-before>
+      <slot name="doc-footer-before"/>
+    </template>
+  </DefaultTheme.Layout>
 </template>
-
 <style>
 .medium-zoom-overlay {
   backdrop-filter: blur(5rem);

@@ -1,6 +1,6 @@
 ---
 title: PCG 基础
-comments:  true
+comments: true
 ---
 
 # PCG 基础
