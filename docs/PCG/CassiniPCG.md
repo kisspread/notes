@@ -90,7 +90,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 
-## **形状语法（Grammar Syntax）**
+## **形状语法（Grammar Syntax）** {grammar-anchor}
 ![alt text](../assets/images/CassiniPCG_image-5.png)
  
 有点类似基础的正则表达式用法。
