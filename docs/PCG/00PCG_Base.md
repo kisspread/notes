@@ -1,12 +1,13 @@
 ---
-title: PCG 基础
+title: PCG 基础篇
 comments: true
 ---
 
-# PCG 基础
+# PCG 基础篇：概念浅析
+
 ![alt text](../assets/images/PCG_Base_image.png)
 
-此前写过一篇[常用类浅析](./UE5_4PCGWithCPP_zh.md)，但过于简单，写一篇细致一点的，重新温习一下。
+此前写过一篇[常用类浅析](./Old/UE5_4PCGWithCPP_zh.md)，但过于简单，写一篇细致一点的，重新温习一下。
 
 
 
@@ -344,6 +345,7 @@ enum class EPCGDataType : uint32
 	RenderTarget = 1 << 6,
 	BaseTexture = Texture | RenderTarget UMETA(Hidden),
 	Surface = Landscape | BaseTexture,
+
 
 	Volume = 1 << 7,
 	Primitive = 1 << 8,
