@@ -1,12 +1,11 @@
 ---
-title: UE 5.5 PCG 新功能记录
+title: UE 5.5 PCG New Features
 comments:  true
 ---
 
-# UE 5.5 PCG新功能
+# UE 5.5 PCG New Features Introduction
 
 （其实很多功能并不是特别新，在前几版就有，只是在这个视频里总结。）
-
 source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 ## **Attributes（属性）** 
@@ -86,56 +85,9 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 3. **原始截面/重复截面（Primitive cross-section / Duplicate cross-sections）**  
    - 基于**足迹（Footprint）** 创建切片，并沿指定方向拉伸（Extrude），或者从原始图元（Primitives）生成新的形状。
+   
+[详细](./01PCG_Mid.md#grammar浅析)
 
-
-
-
-## **形状语法（Grammar Syntax）** {grammar-anchor}
-![alt text](../assets/images/CassiniPCG_image-5.png)
- 
-有点类似基础的正则表达式用法。
-
-### **1. Tokens（标记）**
-#### **基础元素**
-- **Literal（字面量）**: **任何不包含空格的字符串**，例如 `Entrance, Corridor`
-- **Sequence（序列）**: **按顺序排列的元素**，使用 **`[ ]`** 表示  
-  **示例**: `[a, b, c]` → 必须按照 `a → b → c` 的顺序执行
-
-#### **选择机制**
-- **Stochastic choice（随机选择）**: **使用 `{ }` 选择其中一个元素**，每个元素出现的概率相等  
-  **示例**: `{a, b, c}` → 可能是 `a`，也可能是 `b` 或 `c`
-- **Priority choice（优先级选择）**: **使用 `< >`，按从左到右的优先级选择**  
-  **示例**: `<a, b, c>` → `a` 优先，如果 `a` 不可用，则尝试 `b`，否则是 `c`
- 
-
-### **2. Repetitions（重复规则，默认 1 次）**
-#### **固定次数**
-- `[a, b, c]3` → `a, b, c` 按顺序重复 3 次
-
-#### **不确定次数**
-- **`Zero or more（0 次或更多）`**: `a*` → `a` 可能 **不出现**，也可能出现 **任意次数**
-- **`One or more（1 次或更多）`**: `{a, b, c}+` → 至少选择一个 `a`、`b` 或 `c`
- 
-
-### **3. Weight in stochastic choices（加权随机选择，默认权重为 1）**
-在 `{}` 选择时，可以给某些选项 **增加权重（更高概率被选中）**：
-- **格式**: `{选项:权重}`
-- **示例**:  
-  `{a:3, [b, c]*:2, {d, e}+ :1}`  
-  - `a` 的权重为 3（更容易被选中）
-  - `[b, c]*` 的权重为 2
-  - `{d, e}+` 的权重为 1（最低）
- 
-
-### **4. Examples（示例解析）**
-- **`[A, B*, C]`** → `A` 开始，`B` 可能出现 **任意次数**，然后 `C` 结束
-- **`[Entrance, {Corridor, Doors}*, Exit]`** →  
-  **`Entrance` 开始**，中间是 **随机的 `Corridor` 或 `Doors`，可重复多次**，最后是 **`Exit`**
-- **`[Entrance, {Corridor+:2, Doors*}, Exit]`** →  
-  `Corridor` **至少出现 2 次**，`Doors` **可能出现 0 次或多次**
-- **`{[Entrance, Corridor, Exit], [Entrance, [Corridor, Doors]*, Exit]}`** →  
-  可能是 **`Entrance → Corridor → Exit`**，也可能是 **`Entrance → Corridor 或 Doors 多次 → Exit`**
- 
 
 ## **Interops（交互操作）** 
 ![alt text](../assets/images/CassiniPCG_image-6.png)

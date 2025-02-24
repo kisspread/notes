@@ -5,7 +5,7 @@ comments:  true
 
 # PCG Simple Demo show case
 
-[地编测试](./00.md#pcg-dungeon)
+[地编测试](../00.md#pcg-dungeon)
 
 ```uebp height="800"
 Begin Object Class=/Script/PCGEditor.PCGEditorGraphNodeInput Name="PCGEditorGraphNodeInput_0" ExportPath="/Script/PCGEditor.PCGEditorGraphNodeInput'/Game/YMyth/PCG/PCG_Panel.PCG_Panel:PCGEditorGraph_0.PCGEditorGraphNodeInput_0'"
