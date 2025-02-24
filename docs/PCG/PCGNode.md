@@ -111,7 +111,7 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 
 此时，球还是用上图的剔除配置：
 
-让球和其他图元接触，也会理解产生新的横截面
+让球和其他图元接触，也会立即产生新的横截面
 ![{alt text}](../assets/images/PCGNode_image-21.png){width=75%}
 如上图，产生了两个横截面。（当接触面积很大，再把融合阈值调小，就会出现更多的横截面）
 
