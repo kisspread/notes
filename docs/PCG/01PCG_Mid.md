@@ -325,7 +325,7 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
 ---
 
 ### Select Grammar 条件语法
-通常作用于线段，对不同长度的线段使用不同的匹配语法。比如在生成建筑时，某面墙过短，那就应该使用不包含大门的语法规则。
+通常作用于线段，对不同长度的线段使用不同的匹配语法(也可以用于选择不同的index)。比如在生成建筑时，某面墙过短，那就应该使用不包含大门的语法规则。
 ![alt text](../assets/images/01PCG_Mid_image-10.png){width=70%}
 
 上面的 延展横截面节点更像是是“纵向生长”，而 Select Grammar节点则提供了“横向生长”的能力，两者配合可以实现“纵横生长”动态生成效果。

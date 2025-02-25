@@ -8,20 +8,20 @@ comments:  true
 比较随意的记录。
 
 ## Merge 合并
-![alt text](../assets/images/PCGNode_image-4.png)
+![alt text](../assets/images/PCGNode_image-4.png){width=30%}
 ```js
 //类似数组合并
 merge([a,a] ,[b]) = [a,a,b]
 ```
 
 ## Copy Points
-![alt text](../assets/images/PCGNode_image-5.png)
+![alt text](../assets/images/PCGNode_image-5.png){width=70%}
 这是很迷惑的名字，直面意思是复制点，实际上的意思大概是：
 
 > Copy Points 节点是PCG系统中一个重要的点操作节点，其主要功能是将源点（Source Points）复制到目标点（Target Points）上。这个节点最常见的使用场景是：以相对位置的方式，将输入源的点附加到目标点上，其中目标点作为输入源点的轴心点（Pivot）。
 
 详细用法参考B站Up [ZzxxH](https://space.bilibili.com/19131632/) 总结的图：
-![alt text](../assets/images/PCGNode_image-6.png)
+![alt text](../assets/images/PCGNode_image-6.png){width=70%}
 
 ::: details 详细说明
 ### 点的复制模式
@@ -69,6 +69,12 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 :::
 
 
+## Attribute Partition 属性分组
+这个其实就是 函数式编程里的 `GroupBy`, 根据输入的属性值进行归组
+![alt text](../assets/images/04PCGNode_image.png){width=60%}
+- Assign Index Partition : 分配一个序号
+
+
 
 
 ## Grammar相关节点
@@ -80,7 +86,7 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 
 ## Intersection 交集
 可以添加多个secondary input
-![alt text](../assets/images/PCGNode_image-3.png)
+![alt text](../assets/images/PCGNode_image-3.png){width=60%}
  
 1. **主输入（Primary Input）**  
    - 主要输入 `Primary Input Pin` 是交集计算的起点，每个输入都会被单独计算。  
