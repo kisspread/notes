@@ -38,15 +38,37 @@ PerInstanceCustomData 的一个主要优势是性能优化。通过将数据存�
 - 1. PerInstanceCustomData 浮点数版
 - 2. PerInstanceCustomData 向量版
 
+案例：PCG debug 里 母材质，可以看到用于可视化的调试的值不知颜色值本身，还有密度，半长度等。
+![alt text](../assets/images/05PCG材质_image-5.png){width=60%}
+
 ### PCG里配置 PerInstanceCustomData
 ![alt text](../assets/images/05PCG材质_image-1.png){width=60%}
 两种配置模式：
 - 直接从属性集里，根据名称获取，然后设置到实例里。
 - Regex 从属性集里，根据正则自动设置到实例里。 
 
-### 其他补充
-- PerInstanceCustomData的数据存储在实例缓冲区(instance buffer)中
-- 这些数据只能在顶点着色器(Vertex Shader)中直接访问
-- 如果需要在像素着色器(Pixel Shader)中使用这些数据，需要使用VertexInterpolator节点进行转换
+### 补充 VertexInterpolator
+ 这个节点也经常和PerInstanceCustomData结合使用
+![alt text](../assets/images/05PCG材质_image-2.png){width=30%}
+UE的VertexInterpolator材质节点主要用于在顶点着色器和像素着色器之间传递数据
+
+他的左边是VS顶点着色器，右边是PS像素着色器
+
+使用VertexInterpolator 会让该部分的（应该是左边的）节点强制在VS里运行，而不是PS里运行。
+
+如果 网格体的顶点数量比较少，使用VertexInterpolator节点可以帮助提高性能。
+
+如图，
+- 未使用VertexInterpolator节点 ：
+![alt text](../assets/images/05PCG材质_image-3.png){width=60%}
+
+- 使用VertexInterpolator节点 ：
+![alt text](../assets/images/05PCG材质_image-4.png){width=60%}
+
+可以看见像素着色器的指令数量大大减少。
+
+
+
+ 
 
  
