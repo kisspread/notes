@@ -8,6 +8,7 @@ comments:  true
 比较随意的记录。
 
 ## Merge 合并
+是把多个列表合并成一个列表。
 ![alt text](../assets/images/PCGNode_image-4.png){width=30%}
 ```js
 //类似数组合并
@@ -74,11 +75,70 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 ![alt text](../assets/images/04PCGNode_image.png){width=60%}
 - Assign Index Partition : 分配一个序号
 
+## Filter Data By Index 和 FilterElementsByIndex
+这个节点有个输出，选中的 和 未选中的
 
+Data 是值列表的数组，不是属性集的列表。
+
+如果要获取属性集的列表，可以使用 `FilterElementsByIndex`
+
+![alt text](../assets/images/04PCGNode_image-3.png){width=80%}
+
+都支持选中语法：
+- 8   （返回索引为8的值）
+- 1:8  （返回索引1到7的值）
+- :8   （返回索引0到7的值）
+- -1   (返回倒数第一个值）
+- -8:   (返回倒数第8到倒数第1)
+- 1:5,10:15   （返回索引1到5，索引10到15的值）
 
 
 ## Grammar相关节点
 [Grammar相关节点](./01PCG_Mid.md#grammar浅析)
+
+## Attract 吸附节点
+给定一个搜索距离，寻找最近或者的的远的点
+
+[案例](./03PCG_Advanced.md#用2个attract-配合创建起点和终点)
+![alt text](../assets/images/04PCGNode_image-1.png){width=60%}
+
+支持3个吸引模式：
+1. Closest Mode
+- 功能：将源点吸引到最近的目标点
+- 实现原理：在指定搜索半径内使用点的Position（Transform.Location）计算欧几里得距离
+- 使用场景：需要简单的就近吸引时使用
+
+2. MinAttribute Mode
+- 功能：吸引到属性值最小的目标点
+- 实现原理：在搜索半径内比较目标点的指定属性值，选择最小值
+- 支持任何可比较的属性类型
+- 使用场景：例如将物体吸引到最低高度的位置
+
+3. MaxAttribute Mode
+- 功能：吸引到属性值最大的目标点
+- 实现原理：在搜索半径内比较目标点的指定属性值，选择最大值
+- 支持任何可比较的属性类型
+- 使用场景：例如将物体吸引到密度最大的区域
+
+（目前应该是有bug，选择MinAttribute和MaxAttribute的时候，设置了可以比大小的属性，但还是没有效果。）
+
+所以通常还是用Closest Mode，
+使用weight控制位置插值，weight越大，插值越近目标值。
+
+源码：`OutputValue = FMath::Lerp(SourceValue, TargetValue, Alpha);` alpha 就是 weight。
+
+使用weight的时候，这个配置不能没有：
+![alt text](../assets/images/04PCGNode_image-2.png){width=60%}
+
+### 参数
+- `Distance`: 搜索半径，决定吸引的作用范围
+- `Weight`: 吸引强度(0-1)
+  - 0: 保持在原始位置（不吸引）
+  - 1: 完全吸引到目标位置
+- `bRemoveUnattractedPoints`: 是否移除未被吸引的点
+- `TargetAttribute`: MinAttribute和MaxAttribute模式下用于比较的属性
+- `SourceWeightAttribute`/`TargetWeightAttribute`: 源点和目标点的权重属性
+
 
 
 ## Difference 差集
