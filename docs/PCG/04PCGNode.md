@@ -7,13 +7,31 @@ comments:  true
 
 比较随意的记录。
 
+约定一些术语表达
+
+| 中文翻译 | 原文 | 说明 |
+| --- | --- | --- |
+| 属性 | Attribute | 每个输出都有自己的属性，可以理解为表头 |
+| 属性行 | Point Data / Metadata  | 同一个输出里都有相同的表头，但数据不一样，多个Point就有多行 |
+| 属性集（表） | Attribute Set | 属性 + 全部属性行 形成的一张表格 |
+| 集组 | Attribute Sets / Attributes | 属性集作为元素的数组 |
+
 ## Merge 合并
-是把多个列表合并成一个列表。
+是把多个属性集合并成一个属性集。
 ![alt text](../assets/images/PCGNode_image-4.png){width=30%}
 ```js
 //类似数组合并
 merge([a,a] ,[b]) = [a,a,b]
 ```
+
+## Reduce 归约
+归约支持多个模式，sum，average,max,min,Join
+![alt text](../assets/images/04PCGNode_image-4.png){width=50%}
+```js
+//类似函数式编程里的reduce
+reduce([a,b,c],Math::Sum) = a + b + c
+```
+- Merger Output Attributes: 用于把集组合并成单一的属性集
 
 ## Copy Points
 ![alt text](../assets/images/PCGNode_image-5.png){width=70%}
@@ -73,14 +91,25 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 ## Attribute Partition 属性分组
 这个其实就是 函数式编程里的 `GroupBy`, 根据输入的属性值进行归组
 ![alt text](../assets/images/04PCGNode_image.png){width=60%}
+```js
+// 类似GroupBy`操作
+GroupBy([{id:1, type:"A"}, {id:2, type:"A"}, {id:3, type:"B"}], "type") = {
+    "A": [{id:1, type:"A"}, {id:2, type:"A"}],
+    "B": [{id:3, type:"B"}]
+}
+```
 - Assign Index Partition : 分配一个序号
 
+
 ## Filter Data By Index 和 FilterElementsByIndex
-这个节点有个输出，选中的 和 未选中的
 
-Data 是值列表的数组，不是属性集的列表。
+Filter Data By Index节点有个输出，选中的 和 未选中的
 
-如果要获取属性集的列表，可以使用 `FilterElementsByIndex`
+名字里的Data是集组的意思，该节点用于在集组里面筛选出自己要的 属性集
+
+如果要获取属性集里的点数据，可以使用 `FilterElementsByIndex`
+
+但FilterElementsByIndex 节点只输出 选中的
 
 ![alt text](../assets/images/04PCGNode_image-3.png){width=80%}
 
