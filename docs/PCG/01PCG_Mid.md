@@ -169,11 +169,17 @@ PCG Graph里点数据默认只有以上这些。
 - 需要配置模块数据，供 Grammar 解析使用
   ![alt text](../assets/images/PCGNode_image-8.png){width=70%}
 
+模块数据可以作为GraphSettings进行配置：
+![alt text](../assets/images/01PCG_Mid_image-13.png)  
+类名是 PCGSubdivide Module 或者 PCGSubdivide SubModule, 一个是数组，一个单元素
+
 模块数据：  
 - size，点的占位大小，影响采样间隔
 - Symbol， 一个key，既对应表达式的符号
 - Scalable 是否拉伸去填满空隙，比如size 50,但分配给你的空间有剩余
 - DebugColor 调试时的颜色, 暂时不知道有没有快速使用这个调试颜色的办法。
+
+需要注意的是，Module里并没有Mesh相关的配置，后续需要自己根据Symbol去获取对应的Mesh。
 
 调试颜色目前是使用 额外的Remap节点来实现：
 ![alt text](../assets/images/01PCG_Mid_image-3.png){width=50%}

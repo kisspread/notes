@@ -5,31 +5,176 @@ comments:  true
 
 # PCG 常用节点记录
 
-比较随意的记录。
+## 约定
 
 约定一些术语表达
 
 | 中文翻译 | 原文 | 说明 |
 | --- | --- | --- |
 | 属性 | Attribute | 每个输出都有自己的属性，可以理解为表头 |
-| 属性行 | Point Data / Metadata  | 同一个输出里都有相同的表头，但数据不一样，多个Point就有多行 |
-| 属性集（表） | Attribute Set | 属性 + 全部属性行 形成的一张表格 |
-| 集组 | Attribute Sets / Attributes | 属性集作为元素的数组 |
+| 属性行(表行) | Point Data / Metadata  | 同一个输出里都有相同的表头，但数据不一样，多个Point就有多行 |
+| 属性集（表） | Attribute Set | 属性 + 全部属性行 形成的一张表格(方便表述可以简称表) |
+| 集组（表组） | Attribute Sets / Attributes | 属性集作为元素的数组，存放每一张完整表的数组 |
 
+约定符号表示：
+
+**表组**
+![alt text](../assets/images/04PCGNode_image-6.png){width=20%}
+- 大写字母命名：`A,B,C`
+- 空表组：`{}`
+- 表组里3个不同表：`A:{a,b,c}`,或者直接`{a,b,c}`
+
+**表**
+![alt text](../assets/images/04PCGNode_image-7.png){width=70%}
+- 小写字母表示表：`a,b,c`
+- a表里全部行：`[a...]`
+
+**行**
+![alt text](../assets/images/04PCGNode_image-8.png){width=70%}
+- 表行：`a(1)`
+- 行属性：`a(1).Position`
+
+## 基础操作
+
+### 常量
+![alt text](../assets/images/04PCGNode_image-9.png){width=20%}
+![alt text](../assets/images/04PCGNode_image-10.png){width=20%}
+- 可以通过 `Create Attribute` 节点 创建一个常量
+- 通过 指定`outputTarget` 来个输出命名
+
+### 操作
+PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节点为例，对于乘法来说，并不是所有属性都可以进行乘法，所以实际上只能针对某一个属性进行乘法，所以默认的操作对象是行的最后一个属性`@Last`，我把这种默认操作，叫**尾操作**。 节点里也可以手动指定其他属性。
+
+因此，PCG的大部分操作都可以归纳为**选中表的其中一列进行操作**
+
+归纳一些大部分的情况：
+
+**表之间操作的局限性：必须N:N**（大部分情况下）
+
+- 图下图，两者行数必须相等，才能实现“两两相乘”：
+  ![alt text](../assets/images/04PCGNode_image-26.png){width=80%}
+  图中展示行数不同的表之间进行相乘，会报错，无论是2对3，还是1对3操作，都报错。表之间数据必须一一对应。copy points是特殊实现，可以无视这个限制。详见[copy points](#copy-points)。
+
+- 常量可以和任意行数表操作：
+  ![alt text](../assets/images/04PCGNode_image-13.png){width=40%}
+  每行都和该常量相乘，非常好理解。
+
+**表组之间的局限性：必须1:N，N:1，N:N**（大部分情况下）
+- 表组数量必须相同，或者其中一方的数量为1
+  ![alt text](../assets/images/04PCGNode_image-12.png){width=80%}
+  如图，使用归组操作把点分成3组后，和两组表的相乘操作，就会报错。
+
+  另外，copy points也是特殊的，但需要勾选N:M支持，否则会也报错。
+  ![alt text](../assets/images/04PCGNode_image-11.png){width=80%}
+
+### 赋值
+
+- 写回：`@source`
+  ![alt text](../assets/images/04PCGNode_image-15.png){width=40%}
+  大部分操作都支持写回`@source`, output target使用`@source`表示写回默认输出数据，图这里默认输出是InputA，可以修改为InputB.
+
+- 重写: 使用`Remap`节点 
+  ![alt text](../assets/images/04PCGNode_image-16.png){width=40%}
+  图中展示用尾操作，把数据写入`@color`里面。
+
+- 添加：显式使用`Add Attribute`节点
+  ![alt text](../assets/images/04PCGNode_image-17.png){width=50%}
+  上面的2种操作也能把属性添加到末尾，但这个方法更加强大，可以添加各种支持的数据，比如Texture等。  
+
+### 读取
+
+- 获取表的某一行：`a(2)`
+  ![alt text](../assets/images/04PCGNode_image-18.png){width=60%}
+  
+
+- 获取表组的某个表：`A(2)`
+  ![alt text](../assets/images/04PCGNode_image-19.png){width=60%}
+
+- 获取行的某个属性：`a(1).Color`
+  ![alt text](../assets/images/04PCGNode_image-14.png){width=60%} 
+
+
+### 删除
+![alt text](../assets/images/04PCGNode_image-20.png){width=60%}
+没啥好说的，直接用`Delete Attribute`节点，就是 `Add Attribute`节点的反向操作。
+
+还有个`Attribute Remove Duplicates` 删除重复的属性
+
+
+### 条件控制
+都是相对静态的控制，PCG本身无法修改判断值。但可以用代码，比如蓝图在运行时修改，改变数据流向来产生变化，相当于一个静态开关。
+- Branch:  给数据下游提供2个分支
+  ![alt text](../assets/images/04PCGNode_image-21.png){width=60%}
+ 
+
+- Select:  选取其中一个上游
+  ![alt text](../assets/images/04PCGNode_image-22.png){width=60%}
+   
+  Select相对branch更加灵活一些：
+  ![alt text](../assets/images/04PCGNode_image-24.png){width=60%} 
+
+### 循环
+
+Loop 是针对表组来操作的。如果需要循环，需要向把要处理的数据，整理成表组结构。
+
+Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
+![alt text](../assets/images/04PCGNode_image-25.png){width=30%}
+
+使用心得：
+- Normal：默认，一般用于数据处理，使用体感上和Loop没啥区别，完全可用使用它作为默认。
+- Loop：结果和Normal一样，过程不太一样，看源码好像是Loop能够并行
+- feedback：提供上一次循环的数据。如果要用上的话，输入和输出都要定义这个PIN，
+- 使用类型只需要在输入的Pin配置好即可，输出Pin 即使全部使用默认的Normal也可以，代码内部是会自动匹配的。
+
+例子：
+
+循环体：创建一个点，合并到一起再输出； 累加自定义数据Data，输出到Feedback。只配置了输入Pin的自定义数据Data为feedback，其他都是默认。
+![alt text](../assets/images/04PCGNode_image-27.png){width=60%}
+
+调用结果：每个表都多了一个行，尾部也增加了一个经过累加的自定义数据Data
+![alt text](../assets/images/04PCGNode_image-23.png){width=60%}
+
+### 函数
+PCG 并没有函数这回事，但提供了类似的东西，Subgraph 可用于复用通用逻辑。和Loop没啥太大区别，都要另外创建一个文件来写节点，只是不能循环。另外创建文件感觉还是挺不方便的，希望官方能够把它做得更像函数一些。
+
+---
+
+（以下是节点的使用）
 ## Merge 合并
-是把多个属性集合并成一个属性集。
+把全部输入进来的表组，合并成**单个**大表（属性集）。
 ![alt text](../assets/images/PCGNode_image-4.png){width=30%}
 ```js
-//类似数组合并
-merge([a,a] ,[b]) = [a,a,b]
+//伪代码
+merge({a,a},{b}) = [a...,a...,b...]
 ```
+:::warning
+- 如果表头的数量不一样，表头也会进行合并：
+
+多出来的一方，作为另一方的默认值，（谁带来的就用谁作为默认值）:
+
+A表头`[花瓣个数，花颜色]`, B表头`[花瓣个数，花的种类]`
+
+合并后，每一行的值：`[花瓣个数，A花颜色，B花的种类]`
+:::
+
+## Gather 收集
+和Merge不同，Gather不会合并每行的数据，而是把输入的表组都合并在一起。
+![alt text](../assets/images/04PCGNode_image-5.png){width=30%}
+```js
+//伪代码
+gather({a,a},{b},{c}) = {a,a,b,c}
+```
+- Dependency Only: 该输入不会被合并到最终结果，仅作为依赖，类似异步编程里，需要等待某个流水线的也完成后，才能开始合并。
+
+
+
 
 ## Reduce 归约
 归约支持多个模式，sum，average,max,min,Join
 ![alt text](../assets/images/04PCGNode_image-4.png){width=50%}
 ```js
 //类似函数式编程里的reduce
-reduce([a,b,c],Math::Sum) = a + b + c
+reduce([a...],Math::Sum) = a1.x + a2.x + a3.x + ...
 ```
 - Merger Output Attributes: 用于把集组合并成单一的属性集
 
@@ -43,7 +188,7 @@ reduce([a,b,c],Math::Sum) = a + b + c
 ![alt text](../assets/images/PCGNode_image-6.png){width=70%}
 
 ::: details 详细说明
-### 点的复制模式
+###### 点的复制模式
 
 1. **笛卡尔积模式** (bCopyEachSourceOnEveryTarget = true)
 ```cpp
@@ -65,7 +210,7 @@ NumIterations = FMath::Max(NumSources, NumTargets);
 - 支持 N:N, 1:N 和 N:1 的映射关系
 - 产生 max(N, M) 个输出点
 
-### 元数据处理
+###### 元数据处理
 
 1. **元数据继承模式**
 ```cpp
@@ -111,6 +256,10 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 
 但FilterElementsByIndex 节点只输出 选中的
 
+区别：
+- FilterDataByIndex: A(index) 这是表组
+- FilterElementsByIndex: a(index) 这是表
+
 ![alt text](../assets/images/04PCGNode_image-3.png){width=80%}
 
 都支持选中语法：
@@ -120,6 +269,13 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 - -1   (返回倒数第一个值）
 - -8:   (返回倒数第8到倒数第1)
 - 1:5,10:15   （返回索引1到5，索引10到15的值）
+
+## Attribute ReMap 属性重映射
+这是一个修改自身属性的节点，非常常用
+
+## Trig 三角函数节点
+三角函数节点，可以用于计算正弦、余弦、正切等函数
+其中atan2 非常常用。atan2(y,x) 可用计算角度。
 
 
 ## Grammar相关节点
@@ -159,7 +315,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 使用weight的时候，这个配置不能没有：
 ![alt text](../assets/images/04PCGNode_image-2.png){width=60%}
 
-### 参数
+###### 参数
 - `Distance`: 搜索半径，决定吸引的作用范围
 - `Weight`: 吸引强度(0-1)
   - 0: 保持在原始位置（不吸引）
