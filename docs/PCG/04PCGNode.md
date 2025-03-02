@@ -120,11 +120,19 @@ Loop 是针对表组来操作的。如果需要循环，需要向把要处理的
 Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
 ![alt text](../assets/images/04PCGNode_image-25.png){width=30%}
 
-使用心得：
+###### Pin 状态
+- Advanced：默认会自动隐藏
+- Normal：不会自动隐藏
+- Required：必须连接
+
+###### Pin使用模式：
 - Normal：默认，一般用于数据处理，使用体感上和Loop没啥区别，完全可用使用它作为默认。
-- Loop：结果和Normal一样，过程不太一样，看源码好像是Loop能够并行
+- Loop：结果和Normal一样，过程不太一样，如果你知道哪部分需要循环，最好使用这个模式。
 - feedback：提供上一次循环的数据。如果要用上的话，输入和输出都要定义这个PIN，
-- 使用类型只需要在输入的Pin配置好即可，输出Pin 即使全部使用默认的Normal也可以，代码内部是会自动匹配的。
+- 这3使用模式只需要在输入的Pin配置好即可，而输出Pin 即使全部使用默认的Normal也可以，代码内部是会自动匹配的。
+
+
+
 
 例子：
 
