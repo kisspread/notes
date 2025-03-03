@@ -14,7 +14,7 @@ comments:  true
 | 属性 | Attribute | 每个输出都有自己的属性，可以理解为表头 |
 | 属性行(表行) | Point Data / Metadata  | 同一个输出里都有相同的表头，但数据不一样，多个Point就有多行 |
 | 属性集（表） | Attribute Set | 属性 + 全部属性行 形成的一张表格(方便表述可以简称表) |
-| 集组（表组） | Attribute Sets / Attributes | 属性集作为元素的数组，存放每一张完整表的数组 |
+| 集组（表组） | Attribute Sets / Attributes / Data | 属性集作为元素的数组，存放每一张完整表的数组 |
 
 约定符号表示：
 
@@ -132,7 +132,8 @@ Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
 - 这3使用模式只需要在输入的Pin配置好即可，而输出Pin 即使全部使用默认的Normal也可以，代码内部是会自动匹配的。
 
 
-
+###### 和 Select结合组成更动态的判断
+![alt text](../assets/images/04PCGNode_image-28.png)
 
 例子：
 
@@ -143,7 +144,15 @@ Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
 ![alt text](../assets/images/04PCGNode_image-23.png){width=60%}
 
 ### 函数
-PCG 并没有函数这回事，但提供了类似的东西，Subgraph 可用于复用通用逻辑。和Loop没啥太大区别，都要另外创建一个文件来写节点，只是不能循环。另外创建文件感觉还是挺不方便的，希望官方能够把它做得更像函数一些。
+PCG 并没有函数这回事，但提供了类似的一些类似的东西：
+
+- Subgraph 可用于复用通用逻辑。和Loop没啥太大区别，都要另外创建一个文件来写节点，只是不能循环。另外创建文件感觉还是挺不方便的，希望官方能够把它做得更像函数一些。
+
+- Custom Node，自定义节点，可以用于实现复杂的逻辑，蓝图和C++ 都能创建。
+
+- CustomHLSL Node，可以调用GPU并行计算一些参数，SDF也是支持的，也相当于一种“函数”。
+
+
 
 ---
 
