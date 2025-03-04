@@ -69,13 +69,16 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 
 ### 赋值
 
+- 直接赋值：`Set`
+  ![alt text](../assets/images/04PCGNode_image-29.png)
+
 - 写回：`@source`
   ![alt text](../assets/images/04PCGNode_image-15.png){width=40%}
   大部分操作都支持写回`@source`, output target使用`@source`表示写回默认输出数据，图这里默认输出是InputA，可以修改为InputB.
 
 - 重写: 使用`Remap`节点 
   ![alt text](../assets/images/04PCGNode_image-16.png){width=40%}
-  图中展示用尾操作，把数据写入`@color`里面。
+  图中展示用尾操作，把数据写入`@color`里面。ReMap还能随机过渡。
 
 - 添加：显式使用`Add Attribute`节点
   ![alt text](../assets/images/04PCGNode_image-17.png){width=50%}
