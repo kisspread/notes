@@ -188,6 +188,12 @@ PCG Graph里点数据默认只有以上这些。
 每个module都能设置调试颜色，效果如图：
 ![alt text](../assets/images/01PCG_Mid_image-4.png){width=50%}
 
+Subdivide Spline生成的线段，也是用点表示：
+- 点的位置在线段的中心点，使用时候，通常要结合`Reset Point Center` 来将点移动到线段的起点上 
+ ![alt text](../assets/images/01PCG_Mid_image-14.png)
+ 
+
+
 
 ---
 

@@ -7,6 +7,35 @@ comments: true
 
 记录以下相关应用
 
+## PCG 利用LocalCenter调整Mesh到包围盒中心
+PCG Spawn Mesh的时候，如果Mesh的枢轴点刚好在Bounds的中心，这种情况是最好操作的，只要控制好点与点之间的间距，模型就不会重叠。
+
+但是，通常情况下，Mesh的pivot点经常是乱七八糟的，各种位置都有，所以需要进行调整。
+
+#### Pivot 原理
+默认情况下，Mesh 最原始的 Pivot点就是（0，0，0）,此时 pivot点就是包围盒的中心。这就是我们需要的理想状态。
+$$
+LocalCenter = \vec{Pivot} = (0,0,0) =  (BoundsMax + BoundsMin) /2 
+$$
+
+乱七八糟的Pivot点，是通过偏移量来实现的：
+$$
+NewLocalCenter = Offset + Pivot(0,0,0) = PivotOffset
+$$ 
+
+所以，PCG的LocalCenter属性 就是Pivot的偏移量。
+
+知道了原理，就可以通过减去PivotOffset来让Pivot点回到Bounds的中心，回到理想状态。
+
+最后，因为这个偏移量是个本地向量，而PCG点的Position都是世界坐标，且都有自己的Transform属性，所以得对`PivotOffset`进行`Transform.TransformDirection`来应用方向转换。（PivotOffset是一个相对量，只需要方向变换，不需要位置变换）
+
+#### PCG操作
+- 使用`$LocalCenter`记录Mesh的几何中心，如果是0代表没有任何偏移，如果是其他值，说明是乱七八糟的Pivot点
+  ![alt text](../assets/images/03PCG_Advanced_image-14.png)
+
+- 由于偏移量是个本地向量，而PCG点的位置是世界位置，还不能直接减去PivotOffset，先使用`Transform.TransformDirection`来换算 
+  ![alt text](../assets/images/03PCG_Advanced_image-15.png)
+
 ## PCG自适应铺地板
 ![alt text](../assets/images/03PCG_Advanced_image-8.png)
 地板宽度通常是固定，所以对应输入的样条线区域，还需进行调整，有以下步骤：
