@@ -88,10 +88,8 @@ PCG中最常见的类型，最频繁交互的类型，如图，到处都是这�
 
 #### 复合数据 (Composite Data)
 
-复合数据是集合运算的结果，例如并集、交集和差集。比如上面图里的`Difference`节点的输出和输入。
-针对Difference节点来说，它输出的数据类是`UPCGDifferenceData`,也是 `UPCGSpatialData` 的子类。
-
-这个大类型在蓝图里没啥好讲的，需要细讲的是它的具体类如`UPCGDifferenceData`。
+复合数据是集合运算的结果，例如并集、交集和差集。比如上图里的`Difference`节点的输出和输入。
+针对Difference这类节点来说，它输出的数据类是`UPCGDifferenceData`,也是 `UPCGSpatialData` 的子类，所以可是使用`ToPoint`节点。
  
 
 #### 属性集 (Attribute Sets)
