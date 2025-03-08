@@ -29,12 +29,36 @@ $$
 
 最后，因为这个偏移量是个本地向量，而PCG点的Position都是世界坐标，且都有自己的Transform属性，所以得对`PivotOffset`进行`Transform.TransformDirection`来应用方向转换。（PivotOffset是一个相对量，只需要方向变换，不需要位置变换）
 
-#### PCG操作
+#### 任意位置的Pivot居中调整
 - 使用`$LocalCenter`记录Mesh的几何中心，如果是0代表没有任何偏移，如果是其他值，说明是乱七八糟的Pivot点
   ![alt text](../assets/images/03PCG_Advanced_image-14.png)
 
 - 由于偏移量是个本地向量，而PCG点的位置是世界位置，还不能直接减去PivotOffset，先使用`Transform.TransformDirection`来换算 
   ![alt text](../assets/images/03PCG_Advanced_image-15.png)
+
+#### 任意位置的Pivot，调整到X方向最边界，Y方向居中
+
+默认情况下，Mesh的Pivot点在包围盒中心，即LocalCenter = (0,0,0)。
+
+如果我们想要将Pivot调整到X方向的最边界（可以是最左或最右），Y方向居中，Z方向保持原样，需要计算从当前Pivot位置到目标位置的偏移量。
+既：
+$$
+目标向量 = ((Xmin - Xmax)/2, 0, 0) = 已有偏移量(LocalCenter) + 调整向量
+$$
+
+1. 包围盒中心到X最左边界的向量是：
+   ```
+   目标向量 = 左边界向量 = (Xmin - (Xmax+Xmin)/2, 0, 0) = ((Xmin - Xmax)/2, 0, 0) = -$Extents.X
+   ```
+2. 如果Pivot已有偏移(LocalCenter)，我们需要计算额外的调整向量：
+   ```
+   
+   调整向量 = 目标向量 - LocalCenter
+   ```
+   其中，目标向量可以是左边界向量或右边界向量，取决于我们想要将Pivot调整到哪一侧。
+![alt text](../assets/images/03PCG_Advanced_image-16.png){width=80%}
+最终，这个调整向量是本地坐标系下的，需要使用Transform.TransformDirection转换到世界坐标系，然后`+`到PCG点的Position。
+
 
 ## PCG自适应铺地板
 ![alt text](../assets/images/03PCG_Advanced_image-8.png)

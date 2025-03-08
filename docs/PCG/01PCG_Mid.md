@@ -155,14 +155,15 @@ PCG Graph里点数据默认只有以上这些。
 
 ## Grammar 相关节点
 
-目前好像就4个 
+目前好像就5个 
 - Subdivide Spline 细分样条
+- Subdivide Segment 细分线段
 - Primitive Cross-section 图元横截面
 - Duplicate Cross-sections 延展横截面
 - Select Grammar 匹配语法
 
 ### Subdivide Spline 细分样条
-（简单理解为，指定重复规则，比如围栏，围墙）
+（简单理解为，指定重复规则，比如围栏，围墙, Subdivide Segment类似效果）
 
 ![alt text](../assets/images/PCGNode_image-7.png){width=70%}
 给样条线制定撒点规则（让参数的点根据规则分布，或者说带上“标签”），规则来自 [Grammar 字符串](#grammar-anchor)。
