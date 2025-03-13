@@ -433,6 +433,111 @@ void UDeathProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionC
 
 理论上,FInterpLocationFragment也必须是该原型的全部构成，如果还有其他Fragment，由于 `Chunk`是根据`Archetype`分类的，那么在上面这个`ForEachEntityChunk`中，必然引入了没用上的变量，导致cache miss。
 
+### SharedFragment
+我的理解，用于不需要在每个Entity上都存储的数据，也就是不需要在`ForEachEntityChunk`中访问的数据。比如LOD的可见性检查的距离。
+```cpp
+USTRUCT()
+struct FVisibilityDistanceSharedFragment : public FMassSharedFragment
+{
+	GENERATED_BODY()
+	
+	UPROPERTY()
+	float Distance;
+};
+```
+
+#### 添加SharedFragment
+需要用到一些术语，记录一下。
+一些术语：
+- CRC：循环冗余校验
+CRC是"循环冗余校验"（Cyclic Redundancy Check）的缩写，CRC是一种用于生成数据哈希值的算法。`UE::StructUtils::GetStructCrc32`函数计算给定结构体的CRC32哈希值，为Shared Fragment创建唯一标识符。
+
+:::tip UE_DEPRECATED
+旧版本GetOrCreateSharedFragment需要一个Hash值，5.5版本后，已经不需要。
+```cpp
+	template<typename T, typename... TArgs>
+	UE_DEPRECATED(5.5, "This method will no longer be exposed. Use GetOrCreateSharedFragment instead.")
+	const FSharedStruct& GetOrCreateSharedFragmentByHash(const uint32 Hash, TArgs&&... InArgs)
+```    
+:::
+
+#####  普通 SharedFragment
+一些操作记录
+```cpp
+/**
+    * Returns or creates a shared struct associated to a given shared fragment set of values
+    * identified internally by a CRC.
+    * Use this overload when an instance of the desired shared fragment type is available and
+    * that can be used directly to compute a CRC (i.e., UE::StructUtils::GetStructCrc32)
+    *	e.g.
+    */
+    USTRUCT()
+    struct FIntSharedFragment : public FMassSharedFragment
+    {
+    	GENERATED_BODY()
+    
+    	UPROPERTY()
+    		int32 Value = 0;
+    };
+    
+    FIntSharedFragment Fragment;
+    Fragment.Value = 123;
+
+    //没有指定 Entity，全局共享
+    const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment(Fragment);
+    
+    //带参数的版本，新版本内部自动计算CRC
+    const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment<FIntSharedFragment>(FConstStructView::Make(Params), Params);
+
+
+    
+```
+##### ConstSharedFragment
+比如ISMC引用，这种不会变化，就保存在ConstSharedFragment中, 可以提高性能。
+```cpp
+/**
+    * Returns or creates a shared struct associated to a given shared fragment set of values
+    * identified internally by a CRC.
+    * Use this overload when values can be provided as constructor arguments for the desired const shared fragment type and
+    * that can be used directly to compute a CRC (i.e., UE::StructUtils::GetStructCrc32)
+    *	e.g.,
+    */
+USTRUCT()
+struct FIntConstSharedFragment : public FMassConstSharedFragment
+{
+    GENERATED_BODY()
+
+    FIntConstSharedFragment(const int32 InValue) : Value(InValue) {}
+    
+    UPROPERTY()
+    int32 Value = 0;
+};
+//没有指定 Entity，全局共享
+const FConstSharedStruct SharedStruct = EntityManager.GetOrCreateConstSharedFragment<FIntConstSharedFragment>(123);
+
+//指定 Entity	 
+const FConstSharedStruct& SharedFragmentStruct = FConstSharedStruct::Make(FIntSharedFragment);
+FMassArchetypeSharedFragmentValues SharedValues;
+SharedValues.AddConstSharedFragment(SharedFragmentStruct);
+
+EntityManager.AddConstSharedFragmentToEntity(YourEntity, SharedFragmentStruct);
+// 或者直接在创建的时候指定 （测试发现，指定了共享后，entity所在原型会移动到新的原型）
+FMassEntityHandle Your_Entity = EntityManager.CreateEntity(Your_Archetype,SharedValues);
+
+
+//获取 都要带Const,不然编译报错
+//需要在AddConstSharedRequirement
+EntityQuery.AddConstSharedRequirement<FIntSharedFragment>(EMassFragmentPresence::All);
+
+//const定义的，只能用GetConstSharedFragment访问
+EntityQuery.ForEachEntityChunk(EntityManager, Context, [this](FMassExecutionContext& Context)
+{
+    auto FIntSharedFragment = Context.GetConstSharedFragment<FIntSharedFragment>();
+}
+
+//或者使用`FMassCommandBuildEntityWithSharedFragments`在defer中加入
+EntityManager.Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(YourEntity, MoveTemp(SharedValues));
+```
 
 ### Archetype
 
