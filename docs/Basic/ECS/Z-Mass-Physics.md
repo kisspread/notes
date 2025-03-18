@@ -1,6 +1,6 @@
 # Mass Entities 物理系统实现思路
 
-Mass Entities 框架通过与 Chaos 物理系统的集成来实现物理效果，主要包含以下核心组件和工作流程：
+Mass Entities 框架通过与 Chaos 物理系统的集成来实现物理效果 
 
 ## 核心组件
 
@@ -9,7 +9,7 @@ Mass Entities 框架通过与 Chaos 物理系统的集成来实现物理效果�
 核心物理片段和标记的定义：
 
 ```cpp
-// 核心物理片段，包含指向 Chaos 物理粒子的句柄
+// 核心物理片段，包含指向 Chaos 物理粒子 
 USTRUCT(BlueprintType)
 struct MASSCOMMUNITYSAMPLE_API FMSMassPhysicsFragment : public FMassFragment 
 {
@@ -275,56 +275,7 @@ class MASSCOMMUNITYSAMPLE_API UMSPhysicsCleanupProcessor : public UMassObserverP
 };
 ```
 
-## 特性与技术细节
-
-1. **模拟方式**：
-   - 支持运动学和动力学两种模拟模式
-   - 可以通过标记控制实体的物理行为方式
-
-2. **性能考虑**：
-   - 批量处理物理体更新
-   - 使用 Chaos 物理引擎的高性能特性
-
-3. **调试支持**：
-   ```cpp
-   #if CHAOS_DEBUG_DRAW
-   TAutoConsoleVariable<bool> CVMSDrawChaosBodies(
-       TEXT("ms.drawchaosbodies"),
-       false,
-       TEXT("draw debug info for all mass chaos bodies"));
-   #endif
-   ```
-
-4. **多版本兼容**：
-   ```cpp
-   #if ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 4
-   if (Body_External.UpdateKinematicFromSimulation())
-   {
-       Body_External.SetKinematicTarget(NewPose + FTransform(Forces[i].Value));
-   }
-   #endif
-   ```
-
-## 示例应用场景
-
-1. 大规模实体物理模拟（如粒子、碎片）
-2. 性能敏感的物理系统（如人群模拟）
-3. 基于 ECS 的游戏中需要物理交互的实体
-
-## 使用注意事项
-
-1. 物理处理需要在游戏线程执行：
-   ```cpp
-   bRequiresGameThreadExecution = true;
-   ```
-
-2. 变换同步时需要考虑执行顺序：
-   ```cpp
-   ExecutionOrder.ExecuteInGroup = UE::Mass::ProcessorGroupNames::UpdateWorldFromMass;
-   ExecutionOrder.ExecuteAfter.Add(UE::Mass::ProcessorGroupNames::Movement);
-   ```
-
-3. 实体需要正确设置物理相关标记以获得期望的行为：
-   - `FMSSimulatesPhysicsTag` 用于动力学模拟
-   - `FMSUpdateKinematicFromSimulationTag` 用于运动学模拟
-   - `FMSChaosToMassTag` 或 `FMSMassToChaosTag` 用于变换同步
+ 
+ ## Reference
+ - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
+ 
