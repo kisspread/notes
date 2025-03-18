@@ -455,9 +455,9 @@ CRC是"循环冗余校验"（Cyclic Redundancy Check）的缩写，CRC是一种�
 :::tip UE_DEPRECATED
 旧版本GetOrCreateSharedFragment需要一个Hash值，5.5版本后，已经不需要。
 ```cpp
-	template<typename T, typename... TArgs>
-	UE_DEPRECATED(5.5, "This method will no longer be exposed. Use GetOrCreateSharedFragment instead.")
-	const FSharedStruct& GetOrCreateSharedFragmentByHash(const uint32 Hash, TArgs&&... InArgs)
+template<typename T, typename... TArgs>
+UE_DEPRECATED(5.5, "This method will no longer be exposed. Use GetOrCreateSharedFragment instead.")
+const FSharedStruct& GetOrCreateSharedFragmentByHash(const uint32 Hash, TArgs&&... InArgs)
 ```    
 :::
 
@@ -465,32 +465,30 @@ CRC是"循环冗余校验"（Cyclic Redundancy Check）的缩写，CRC是一种�
 一些操作记录
 ```cpp
 /**
-    * Returns or creates a shared struct associated to a given shared fragment set of values
-    * identified internally by a CRC.
-    * Use this overload when an instance of the desired shared fragment type is available and
-    * that can be used directly to compute a CRC (i.e., UE::StructUtils::GetStructCrc32)
-    *	e.g.
-    */
-    USTRUCT()
-    struct FIntSharedFragment : public FMassSharedFragment
-    {
-    	GENERATED_BODY()
-    
-    	UPROPERTY()
-    		int32 Value = 0;
-    };
-    
-    FIntSharedFragment Fragment;
-    Fragment.Value = 123;
+* Returns or creates a shared struct associated to a given shared fragment set of values
+* identified internally by a CRC.
+* Use this overload when an instance of the desired shared fragment type is available and
+* that can be used directly to compute a CRC (i.e., UE::StructUtils::GetStructCrc32)
+*	e.g.
+*/
+USTRUCT()
+struct FIntSharedFragment : public FMassSharedFragment
+{
+    GENERATED_BODY()
 
-    //没有指定 Entity，全局共享
-    const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment(Fragment);
-    
-    //带参数的版本，新版本内部自动计算CRC
-    const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment<FIntSharedFragment>(FConstStructView::Make(Params), Params);
+    UPROPERTY()
+        int32 Value = 0;
+};
 
+FIntSharedFragment Fragment;
+Fragment.Value = 123;
 
-    
+//没有指定 Entity，全局共享
+const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment(Fragment);
+
+//带参数的版本，新版本内部自动计算CRC
+const FSharedStruct SharedStruct = EntityManager.GetOrCreateSharedFragment<FIntSharedFragment>(FConstStructView::Make(Params), Params);
+
 ```
 ##### ConstSharedFragment
 比如ISMC引用，这种不会变化，就保存在ConstSharedFragment中, 可以提高性能。
@@ -537,7 +535,93 @@ EntityQuery.ForEachEntityChunk(EntityManager, Context, [this](FMassExecutionCont
 
 //或者使用`FMassCommandBuildEntityWithSharedFragments`在defer中加入
 EntityManager.Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(YourEntity, MoveTemp(SharedValues));
+
 ```
+
+:::details 几种Struct封装的区别
+
+**FInstancedStruct、FSharedStruct、FStructView、FConstStructView 都是UE对结构体指针的封装。**
+
+###### FInstancedStruct
+FInstancedStruct 是 Unreal Engine 中用于实现 结构体多态 的特殊容器，允许在 USTRUCT 中动态存储不同类型的结构体实例。（通过Make模板函数实现类型擦除）
+
+FInstancedStruct 会创建并拥有结构体的一个实例，负责管理其生命周期。
+
+> FInstancedStruct works similarly as instanced UObject* property but is USTRUCTs.
+
+```cpp
+// 基本用法之一，可在编辑器在使用，并限制基类
+UPROPERTY(EditAnywhere, Category = Foo, meta = (BaseStruct = "/Script/ModuleName.TestStructBase"))
+FInstancedStruct Test;
+UPROPERTY(EditAnywhere, Category = Foo, meta = (BaseStruct = "/Script/ModuleName.TestStructBase"))
+TArray<FInstancedStruct> TestArray; 
+USTRUCT(BlueprintType, meta = (HasNativeMake = "/Script/Engine.BlueprintInstancedStructLibrary.MakeInstancedStruct")) 
+struct COREUOBJECT_API FInstancedStruct;
+
+// 创建一个 FInstancedStruct 的实例，内部存储 FMyStruct 数据
+FInstancedStruct Instanced = FInstancedStruct::Make<FMyStruct>();
+
+// 获取可变引用来修改数据
+FMyStruct& MyInstance = Instanced.GetMutable<FMyStruct>();
+MyInstance.Value = 42;
+
+// 现在 Instanced 拥有的数据 Value 为 42，当 Instanced 离开作用域时，数据会自动析构。
+```
+###### FSharedStruct
+FSharedStruct 使用共享所有权，通过引用计数来管理数据。多个 FSharedStruct 可以共享同一份数据，类比TSharedRef智能指针。
+
+> FSharedStruct works similarly as a `TSharedPtr<FInstancedStruct>` but avoids the double pointer indirection.
+
+```cpp
+// 创建一个 FSharedStruct 的实例，内部存储 FMyStruct 数据
+FSharedStruct Shared = FSharedStruct::Make<FMyStruct>();
+
+// 获取可变引用修改数据
+FMyStruct& MyShared = Shared.GetMutable<FMyStruct>();
+MyShared.Value = 100;
+
+// 只要还有其它 FSharedStruct 引用相同数据，该数据不会被销毁。
+
+// make 函数是个模板函数，有好几个重载， 这里记录常用的2个
+	/** Creates a new FSharedStruct from templated struct type. This will create a new instance of the shared struct memory. */
+	template<typename T>
+	static FSharedStruct Make()
+	{
+		FSharedStruct SharedStruct;
+		SharedStruct.InitializeAs<T>();
+		return SharedStruct;
+	}
+
+	/** Creates a new FSharedStruct from templated struct instance. This will create a new instance of the shared struct memory. */
+	template<typename T>
+	static FSharedStruct Make(const T& Struct)
+	{
+		FSharedStruct SharedStruct;
+		SharedStruct.InitializeAs(Struct);
+		return SharedStruct;
+	}
+
+```
+另外，对比于`TSharedPtr<FInstancedStruct>`，`FSharedStruct`可以避免双重指针。FSharedStruct Make方法是个模板函数，实现了类型擦除机制，可以存储任意类型的结构体，而不需要用户关心具体的类型细节，同时内置了共享所有权和引用计数管理。这使得它能更方便地在多处共享同一个数据实例。
+
+ 
+
+###### FConstStructView
+FConstStructView 可类型检查（UScriptStruct 指针），不能修改（const指针），不关心内存管理（不拥有），灵活切换实例，这种封装让指针访问更安全
+
+>FConstStructView is "typed" struct pointer, it contains const pointer to struct plus UScriptStruct pointer.
+FConstStructView does not own the memory and will not free it when of scope.
+It should be only used to pass struct pointer in a limited scope, or when the user controls the lifetime of the struct being stored.
+E.g. instead of passing ref or pointer to a FInstancedStruct, you should use FConstStructView or FStructView to pass around a view to the contents.
+FConstStructView is passed by value.
+FConstStructView is similar to FStructOnScope, but FConstStructView is a view only (FStructOnScope can either own the memory or be a view)
+FConstStructView prevents mutation of the actual struct data however the struct being pointed at can be changed to point at a different instance of a struct. To also prevent this use const FConstStructView.
+
+###### FStructView
+FStructView 不拥有数据，它仅仅是对外部已有数据的一个可变视图， 就是FConstStructView的可变版本。
+
+
+:::
 
 ### Archetype
 
@@ -561,13 +645,53 @@ Processors可以通过添加或删除Fragments或Tags来更改Entity的组成。
 
 命名后的原型，对调试非常友好。
 ```cpp
-	FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
-	ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
-	FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
-		TArray<const UScriptStruct*>{
-			FFarmWaterFragment::StaticStruct(),
-			FFarmCropFragment::StaticStruct(),
-		}, ArchetypeCreationParamsCrop);
+// 通过ScriptStruct列表创建原型，列表支持MassTag 和 MassFragment
+FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
+ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
+FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
+    TArray<const UScriptStruct*>{
+        FFarmWaterFragment::StaticStruct(),
+        FFarmCropFragment::StaticStruct(),
+    }, ArchetypeCreationParamsCrop);
+
+//通过SharedValue 创建带SharedFragment的原型
+FMassEntityHandle ISMC_Entity = EntityManager.CreateEntity(ISMC_Archetype, SharedValues);
+
+//通过自己构造，这种方法可以支持SharedFragment
+TemplateData.GetArchetypeCreationParams().DebugName = FName(GetTemplateName());
+const FMassArchetypeHandle ArchetypeHandle = EntityManager.CreateArchetype(GetCompositionDescriptor(), TemplateData.GetArchetypeCreationParams());
+
+//构造CompositionDescriptor
+FMassArchetypeCompositionDescriptor Composition(FragmentInstanceList, FMassTagBitSet(), FMassChunkFragmentBitSet(), FMassSharedFragmentBitSet(), FMassConstSharedFragmentBitSet());
+for (const FConstSharedStruct& SharedFragment : SharedFragmentValues.GetConstSharedFragments())
+{
+    Composition.ConstSharedFragments.Add(*SharedFragment.GetScriptStruct());
+}
+for (const FSharedStruct& SharedFragment : SharedFragmentValues.GetSharedFragments())
+{
+    Composition.SharedFragments.Add(*SharedFragment.GetScriptStruct());
+}
+```
+需要注意的是，目前版本（5.5）通过TArray<const UScriptStruct*>不支持SharedFragment。SharedFragment如果没能成功创建，FMassArchetypeHandle会不一致，导致后续的CreateEntity创建的出来的原型类型名字是NONE，ChunkSize也变成默认值。调试发现是 GetOrCreateSuitableArchetype这个方法有bug （5.5），它好像刻意漏掉了CreationParams参数。
+
+一种解决方法是，自己实现GetOrCreateSuitableArchetype：
+```cpp
+FMassArchetypeHandle UMyMassEntitySubSystem::GetOrCreateSuitableArchetype(const FMassArchetypeHandle& ArchetypeHandle
+	, const FMassSharedFragmentBitSet& SharedFragmentBitSet
+	, const FMassConstSharedFragmentBitSet& ConstSharedFragmentBitSet
+	, const FMassArchetypeCreationParams& CreationParams)
+{
+	const FMassArchetypeData& ArchetypeData = FMassArchetypeHelper::ArchetypeDataFromHandleChecked(ArchetypeHandle);
+	if (SharedFragmentBitSet != ArchetypeData.GetSharedFragmentBitSet()
+		|| ConstSharedFragmentBitSet != ArchetypeData.GetConstSharedFragmentBitSet())
+	{
+		FMassArchetypeCompositionDescriptor NewDescriptor = ArchetypeData.GetCompositionDescriptor();
+		NewDescriptor.SharedFragments = SharedFragmentBitSet;
+		NewDescriptor.ConstSharedFragments = ConstSharedFragmentBitSet;
+		return EntityManager->CreateArchetype(NewDescriptor,CreationParams);
+	}
+	return ArchetypeHandle;
+}
 ```
 
 ### Chunk
@@ -902,6 +1026,43 @@ void ProcessEntities()
 ╚════════════════════════════╝
 
 ```
+
+#### 驱动Processor自动运行
+使用FMassProcessingPhaseManager来驱动Processor自动运行。
+
+一种方法是手动调用
+```cpp
+/** Sets bAutoRegisterWithProcessingPhases. Setting it to true will result in this processor class being always 
+    * instantiated to be automatically evaluated every frame. @see FMassProcessingPhaseManager
+    * Note that calling this function is only valid on CDOs. Calling it on a regular instance will fail an ensure and 
+    * have no other effect, i.e. CDO's value won't change */
+
+SetShouldAutoRegisterWithGlobalList(true);
+//或者 使用这个带数组的
+void UMassEntitySettings::AddToActiveProcessorsList(TSubclassOf<UMassProcessor> ProcessorClass)
+```
+
+另一种方法是使用FMassProcessingPhaseManager，推荐
+```cpp
+FMassProcessingPhaseManager PhaseManager;
+PhaseManager.Initialize(*this, ProcessingPhasesConfig, DependencyGraphFileName);
+PhaseManager.Start();
+```
+
+#### ObserverProcessor
+UMassObserverProcessor 是带监听的Processor，监听fragment的add 和 remove （both）来触发Execute
+
+```cpp
+UMSObserverOnAdd::UMSObserverOnAdd()
+{
+	ObservedType = FOriginalTransformFragment::StaticStruct(); // 要监听的Fragment类型
+	Operation = EMassObservedOperation::Add; // 监听Add和Remove
+	ExecutionFlags = (int32)(EProcessorExecutionFlags::All); // 执行World
+}
+```
+需要和 Deferred命令配合使用。
+
+
 
 ### 创建Entity 
 
