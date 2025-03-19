@@ -538,7 +538,32 @@ EntityManager.Defer().PushCommand<FMassCommandBuildEntityWithSharedFragments>(Yo
 
 ```
 
-:::details 几种Struct封装的区别
+:::warning 创建多个不同共享实例只有一份的情况
+#### CRC循环冗余校验注意事项
+一个组实例通常都需要分配不同值的同一个共享Fragment类型，但即使创建了多个该类型的共享实例，但发现它们在内存中仍然是同一个实例。
+
+这是因为MasssManager 的GetOrCreateConstSharedFragment 判断导致的：
+```cpp
+template<typename T>
+const FConstSharedStruct& GetOrCreateConstSharedFragment(const T& Fragment)
+{
+    static_assert(TIsDerivedFrom<T, FMassConstSharedFragment>::IsDerived,
+        "Given struct doesn't represent a valid const shared fragment type. Make sure to inherit from FMassConstSharedFragment or one of its child-types.");
+    const uint32 Hash = UE::StructUtils::GetStructCrc32(FConstStructView::Make(Fragment));
+    
+}
+```
+测试发现，CRC循环冗余校验，只会计算UPROPERTY标记的字段，不会计算其他字段。如果没有标记，不管值改成什么，CRC都不会变化，导致实例被识别为同一实例。
+
+所以，想要创建多个不同共享实例，必须在希望拥有变体的字段上标记UPROPERTY。
+
+**另外提一嘴，变体创建太多也不好，会导致chunk空间大量浪费。能用数组的，尽量用数组。**
+
+chunk的遍历是基于相同的原型进行的，sharedFragment的CRC不同原型就不同。可以的话尽量将“变体值”设计到数组里。
+
+:::
+
+:::details 几种Struct高级指针的封装的区别
 
 **FInstancedStruct、FSharedStruct、FStructView、FConstStructView 都是UE对结构体指针的封装。**
 
