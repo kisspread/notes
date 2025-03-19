@@ -1,3 +1,7 @@
+---
+title: MassEntity 和Chaos的集成
+comments: true
+---
 # Mass Entities 物理系统实现思路
 
 Mass Entities 框架通过与 Chaos 物理系统的集成来实现物理效果 

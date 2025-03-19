@@ -85,3 +85,12 @@ MSVC 提供了一个 [optimize pragma](https://learn.microsoft.com/zh-cn/cpp/pre
   - 比如顶点 (0, 0, 1) 和 (1, 1, 0) 的曼哈顿距离：|0-1| + |0-1| + |1-0| = 1 + 1 + 1 = 3
 
 - Octree: 八叉树搜索算法。它是一种三维空间划分的数据结构和搜索算法，主要3D场景管理,碰撞检测,点云数据处理
+
+
+- RobinHoodHashMap 
+  TRobinHoodHashMap is a container class within Unreal Engine's Core module, specifically designed for storing key-value pairs.在处理哈希冲突时，对比每个元素从其理想位置出发所经历的探测距离（也叫探针距离），将探测距离较长的元素“夺取”较短探测距离元素的位置，从而使整个哈希表中的探测距离尽可能均衡。这种方法可以在高负载因子的情况下保持较低的最坏情况查找时间，并提高整体性能。
+
+  It's an experimental container that employs Robin Hood hashing, a technique that aims to minimize the impact of collisions in hash tables by moving colliding elements to the next available slot.
+  
+
+  
