@@ -64,7 +64,7 @@ const sidebar = generateSidebar(dynamicSidebarConfigFunction(dynamicNavItems()))
 //   searchProvider: 'local', // enable search with auto translation
 //   debugPrint: true 
 // }; 
-const base = '/notes/';
+const base = '/notes';
 
 const vitePressOptions: UserConfig = {
   base,
