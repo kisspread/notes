@@ -64,12 +64,12 @@ const sidebar = generateSidebar(dynamicSidebarConfigFunction(dynamicNavItems()))
 //   searchProvider: 'local', // enable search with auto translation
 //   debugPrint: true 
 // }; 
-const base = '/notes';
+const base = '/notes/';
 
 const vitePressOptions: UserConfig = {
   base,
   sitemap: {
-    hostname: `https://kisspread.github.io/${base}`,
+    hostname: `https://kisspread.github.io${base}`,
   },
   title: "Zerol Dev Notes",
   description: "My Dev Notes is a personal knowledge base documenting my programming journey across game development, web, and utility tools. ",
