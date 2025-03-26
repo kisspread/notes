@@ -4,282 +4,96 @@ comments: true
 ---
 # Mass Entities 物理系统实现思路
 
-Mass Entities 框架通过与 Chaos 物理系统的集成来实现物理效果 
+MassSample 中的实现思路非常清晰，但MassSample是基于MassGamePlay的实现的，这里记录一下只使用MassEntity的情况下的实现思路，大致是一样的只有一点点小小的差别。
 
-## 核心组件
+为什么需要Chaos，虽然Niagara 的粒子也能开启碰撞，但只能模拟点粒子，对物理刚体的模拟效果非常有限。
 
-### 1. Fragment 与 Tag 定义
+## MassSample 存在的一个BUG
+如图，当entities数量超过64个时（不同配置的电脑不一致），Niagara渲染的Mesh会出现频繁的闪烁问题。这个问题导致我研究了好久，因为MassSample里面运行这个个项目是“没有BUG”的。
+而自己的项目却有。
+![alt text](../../assets/images/Z-Mass-Physics_image-2.png)
 
-核心物理片段和标记的定义：
+当在自己项目里面，使用相同配置的Niagara发射器却出现了疯狂闪烁问题。即使只是设置了一次数据，Niagara的GPU模拟依旧一直在闪烁。
 
-```cpp
-// 核心物理片段，包含指向 Chaos 物理粒子 
-USTRUCT(BlueprintType)
-struct MASSCOMMUNITYSAMPLE_API FMSMassPhysicsFragment : public FMassFragment 
-{
-    GENERATED_BODY()
+逐个配置排查，最终发现MassSample的config里关闭了默认的运动模糊，手动把它打开，成功重现这个BUG：
 
-    FMSMassPhysicsFragment() = default;
-    FPhysicsActorHandle SingleParticlePhysicsProxy;
+`r.DefaultFeature.MotionBlur 1` 
 
-    FMSMassPhysicsFragment(const FPhysicsActorHandle& ParticlePhysicsProxy)
-    {
-        SingleParticlePhysicsProxy = ParticlePhysicsProxy;
-    };
-};
+但直接关闭运动模糊，并不算真正从根本上解决这个问题，依然能看到贴图在轻微闪烁，说明Niagara系统依然认为这些Mesh的位置在变化。
 
-// 物理相关标记
-USTRUCT(BlueprintType)
-struct MASSCOMMUNITYSAMPLE_API FMSSimulatesPhysicsTag : public FMassTag
-{
-    GENERATED_BODY()
-};
+打开调试模式，确实能看到Niagara粒子的位置在变化，即使是更新了一个位置信息，这就说明 MassSample 给的发射器是有问题的。看了下issues，其他人也遇到过类似问题：
+https://github.com/Megafunk/MassSample/issues/48
 
-USTRUCT(BlueprintType)
-struct MASSCOMMUNITYSAMPLE_API FMSUpdateKinematicFromSimulationTag : public FMassTag
-{
-    GENERATED_BODY()
-};
+两者解决办法：
+1. 改用CPU模拟
+2. 死磕问题根源，解决GPU Niagara 下exec index 跳动
 
-USTRUCT(BlueprintType)
-struct MASSCOMMUNITYSAMPLE_API FMSChaosToMassTag : public FMassTag
-{
-    GENERATED_BODY()
-};
+我选择了第二种，偶然发现的，不清楚有没有更加简洁的解决办法。
 
-USTRUCT(BlueprintType)
-struct MASSCOMMUNITYSAMPLE_API FMSMassToChaosTag : public FMassTag
-{
-    GENERATED_BODY()
-};
-```
+因为默认的NiagaraID无法设置，在粒子spawn阶段自己定义一个新的：
+![alt text](../../assets/images/Z-Mass-Physics_image-3.png){width=70%}
 
-### 2. 碰撞数据管理
+在粒子的update阶段：使用自己的NiagaraID，弃用exec index：
+![alt text](../../assets/images/Z-Mass-Physics_image-5.png){width=70%}
 
-碰撞设置片段的定义：
 
-```cpp
-// 共享碰撞设置片段
-USTRUCT(BlueprintType)
-struct FSharedCollisionSettingsFragment : public FMassSharedFragment
-{
-    GENERATED_BODY()
 
-    UPROPERTY(EditAnywhere)
-    FBodyInstance BodyInstance;
-    
-    UPROPERTY(EditAnywhere)
-    FKAggregateGeom Geometry;
-};
-```
 
-## 工作流程
+## Niagara的局限性
+Niagara自碰撞的实现方式大概有两种，PBD 或者 RBD，PBD的密度约束方程适合任何物体，而RBD是对PBD的刚体实现，计算更加简单。UE5 ContentSample 自带一些 PBD 的实现。
 
-### 1. 初始化处理器 (UMSPhysicsInitProcessor)
+![alt text](../../assets/images/Z-Mass-Physics_image-1.png){width=50%}
 
-初始化处理器的实现：
+![alt text](../../assets/images/Z-Mass-Physics_image-4.png){width=50%}
 
-```cpp
-UCLASS()
-class MASSCOMMUNITYSAMPLE_API UMSPhysicsInitProcessor : public UMassObserverProcessor
-{
-    GENERATED_BODY()
-    
-    UMSPhysicsInitProcessor()
-    {
-        ObservedType = FMSMassPhysicsFragment::StaticStruct();
-        Operation = EMassObservedOperation::Add;
-        bRequiresGameThreadExecution = true;
-    }
+![alt text](../../assets/images/Z-Mass-Physics_image.png){width=30%}
 
-    virtual void ConfigureQueries() override
-    {
-        EntityQuery.AddRequirement<FMSMassPhysicsFragment>(EMassFragmentAccess::ReadWrite);
-        EntityQuery.AddRequirement<FTransformFragment>(EMassFragmentAccess::ReadOnly);
-        EntityQuery.AddSharedRequirement<FSharedCollisionSettingsFragment>(EMassFragmentAccess::ReadWrite, EMassFragmentPresence::Optional);
-        EntityQuery.AddConstSharedRequirement<FMSSharedStaticMesh>(EMassFragmentPresence::Optional);
-        EntityQuery.RegisterWithProcessor(*this);
-    }
-};
-```
+参考：
+- https://zhuanlan.zhihu.com/p/48737753
+- https://www.youtube.com/watch?v=wfWy08DbmYM
 
-物理体创建的核心函数：
+但这些实现都把碰撞简化成了小球体，对真正的刚体的模拟效果非常有限。尤其是一些长条形，质心不规则的物体，所以需要Chaos。
 
-```cpp
-FPhysicsActorHandle InitAndAddNewChaosBody(FActorCreationParams& ActorParams, 
-    const FBodyCollisionData& CollisionData, 
-    FKAggregateGeom* AggregateGeom,
-    float Density)
-{
-    FPhysicsActorHandle NewPhysHandle;
-    FPhysicsInterface::CreateActor(ActorParams, NewPhysHandle);
+## Chaos 的局限
 
-    // 设置物理属性
-    FPhysicsInterface::SetCcdEnabled_AssumesLocked(NewPhysHandle, false);
-    FPhysicsInterface::SetSmoothEdgeCollisionsEnabled_AssumesLocked(NewPhysHandle, false);
-    FPhysicsInterface::SetInertiaConditioningEnabled_AssumesLocked(NewPhysHandle, true);
-    FPhysicsInterface::SetIsKinematic_AssumesLocked(NewPhysHandle, !ActorParams.bSimulatePhysics);
-    FPhysicsInterface::SetMaxLinearVelocity_AssumesLocked(NewPhysHandle, MAX_flt);
+- Chaos 必须使用主线程来访问物理粒子，比如获取位置，设置休眠，销毁等。
+- 大量Chaos粒子如果开始进入碰撞解算阶段，碰撞频繁时期性能会急剧下降。
+- chaos 刚体的几何形状越复杂，计算量越大，性能最好是球体，其次是AABB盒体。(两者差别并不大)
+- 自动休眠的物理粒子，测试发现是基于屏幕空间的，距离玩家越近越能获得解算权重。虽然性能好，但模拟效果差。比如天上的物体，开启了重力模拟，但就是不会掉下来。只要玩家视角注视着它们，才会逐个掉下来，还不是一整片。
 
-    // 创建几何体
-    FGeometryAddParams CreateGeometryParams;
-    CreateGeometryParams.Geometry = AggregateGeom;
-    CreateGeometryParams.CollisionData = CollisionData;
-    CreateGeometryParams.Scale = FVector::One();
-    CreateGeometryParams.LocalTransform = Chaos::FRigidTransform3::Identity;
-    CreateGeometryParams.WorldTransform = ActorParams.InitialTM;
 
-    // 创建形状
-    TArray<Chaos::FImplicitObjectPtr> Geoms;
-    Chaos::FShapesArray Shapes;
-    ChaosInterface::CreateGeometry(CreateGeometryParams, Geoms, Shapes);
+## Mass 介入
 
-    // 设置几何体和形状
-    Chaos::FRigidBodyHandle_External& Body_External = NewPhysHandle->GetGameThreadAPI();
-    if (Geoms.Num() > 0)
-    {
-        if (Body_External.GetGeometry())
-        {
-            Body_External.MergeGeometry(MoveTemp(Geoms));
-        }
-        else
-        {
-            Chaos::FImplicitObjectUnion ChaosUnionPtr = Chaos::FImplicitObjectUnion(MoveTemp(Geoms));
-            Body_External.SetGeometry(ChaosUnionPtr.CopyGeometry());
-        }
-    }
+一种大量物体炸开的场景：
+- 这个瞬间，速度很快，玩家看不到穿模的问题，大量的实体直接使用Niagara的RBD来模拟，避免卡顿。
+- 对于靠近（飞向）玩家的实体，转化为Chaos的刚体，获得相较精确的物理模拟。理论上维持300左右的AABB碰撞盒不会造成卡顿。
 
-    // 更新形状边界
-    for (auto& Shape : Shapes)
-    {
-        Chaos::FRigidTransform3 WorldTransform = Chaos::FRigidTransform3(Body_External.X(), Body_External.R());
-        Shape->UpdateShapeBounds(WorldTransform);
-    }
-    Body_External.MergeShapesArray(MoveTemp(Shapes));
+Mass做的就是动态地计算，哪些实体需要转化为Chaos的刚体，哪些实体需要转化为Niagara的粒子。这个更新频率不需要每帧都做，根据需要调整。
 
-    return NewPhysHandle;
-}
-```
+UE5最新的Niagara支持读取GPU的粒子数据，难点在于重新设置回去，数组长度变化导致粒子索引不对应的问题，会导致画面闪烁。
 
-### 2. 变换同步处理器 (UMSChaosMassTranslationProcessorsProcessors)
+需要的处理器：
+- Chaos观察者处理器：用于把需要转化的entities，初始化Chaos的Handle。参考MassSample
+- Transform同步处理器：互相之间同步Transform， 比如chaos的transform同步给实体的ISM，或者Niagara粒子都行。（实测ISM的移动有些模糊，Niagara的粒子则没有这个问题，但ISM的性能更好一点点）
+- 转化判断处理器：用于把Niagara粒子转化为Chaos刚体，或者反过来。
+- 简化运动LOD处理器：可选，对于非常远的entities，用低频更新的Mass处理器直接计算位置。
 
-变换同步处理器的实现：
 
-```cpp
-UCLASS()
-class MASSCOMMUNITYSAMPLE_API UMSChaosMassTranslationProcessorsProcessors : public UMassProcessor
-{
-    GENERATED_BODY()
 
-    UMSChaosMassTranslationProcessorsProcessors()
-    {
-        ExecutionOrder.ExecuteInGroup = UE::Mass::ProcessorGroupNames::UpdateWorldFromMass;
-        ExecutionOrder.ExecuteAfter.Add(UE::Mass::ProcessorGroupNames::Movement);
-        bRequiresGameThreadExecution = true;
-    }
 
-    virtual void ConfigureQueries() override
-    {
-        // 配置查询
-        ChaosSimToMass = MSMassUtils::Query<FMSChaosToMassTag, const FMSMassPhysicsFragment, FTransformFragment>();
-        MassTransformsToChaosBodies = MSMassUtils::Query<FMSMassToChaosTag, FMSMassPhysicsFragment, const FTransformFragment>();
-        
-        UpdateChaosKinematicTargets = MassTransformsToChaosBodies;
-        UpdateChaosKinematicTargets.AddRequirement<FMassForceFragment>(EMassFragmentAccess::ReadOnly);
-    }
+## Subsystem
+实现一个UMassPhysicsSubSystem，继承自`UMassSubsystemBase`。必须是这个，而不是`UMassEntitySubsystem`（这个应该是Editor专用的），否则会创建多个子系统，导致观测者会有多次回调。
 
-    virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override
-    {
-        // 物理到Mass的同步
-        ChaosSimToMass.ForEachEntityChunk(EntityManager, Context, [this](FMassExecutionContext& Context)
-        {
-            auto PhysicsFragments = Context.GetFragmentView<FMSMassPhysicsFragment>();
-            auto Transforms = Context.GetMutableFragmentView<FTransformFragment>();
+- 使用它同一个管理全局的  `EntityManager`, `EntityManager = UE::Mass::Utils::GetEntityManagerChecked(*World).AsShared();`
+- 缓存全局的基础原型`Archetype`, 用于配置chunkSize 
 
-            for (int32 i = 0; i < Context.GetNumEntities(); i++)
-            {
-                FPhysicsActorHandle PhysicsHandle = PhysicsFragments[i].SingleParticlePhysicsProxy;
-                if (GetWorld()->GetPhysicsScene() && PhysicsHandle)
-                {
-                    Chaos::FRigidBodyHandle_External& Body_External = PhysicsHandle->GetGameThreadAPI();
-                    Transforms[i].GetMutableTransform() = FTransform(Body_External.R(), Body_External.X());
-                }
-            }
-        });
 
-        // 运动学目标更新
-        UpdateChaosKinematicTargets.ForEachEntityChunk(EntityManager, Context, [this](FMassExecutionContext& Context)
-        {
-            const auto& PhysicsFragments = Context.GetFragmentView<FMSMassPhysicsFragment>();
-            const auto& Transforms = Context.GetMutableFragmentView<FTransformFragment>();
-            const auto& Forces = Context.GetFragmentView<FMassForceFragment>();
 
-            for (int32 i = 0; i < Context.GetNumEntities(); i++)
-            {
-                FPhysicsActorHandle PhysicsHandle = PhysicsFragments[i].SingleParticlePhysicsProxy;
-                if (GetWorld()->GetPhysicsScene() && PhysicsHandle)
-                {
-                    const FTransform NewPose = Transforms[i].GetTransform();
-                    Chaos::FRigidBodyHandle_External& Body_External = PhysicsHandle->GetGameThreadAPI();
-                    
-                    Body_External.ClearKinematicTarget();
-                    if (Body_External.UpdateKinematicFromSimulation())
-                    {
-                        Body_External.SetKinematicTarget(NewPose + FTransform(Forces[i].Value));
-                    }
-                }
-            }
-        });
-    }
 
-protected:
-    FMassEntityQuery ChaosSimToMass;
-    FMassEntityQuery UpdateChaosKinematicTargets;
-    FMassEntityQuery MassTransformsToChaosBodies;
-};
-```
 
-### 3. 清理处理器 (UMSPhysicsCleanupProcessor)
 
-清理处理器的实现：
 
-```cpp
-UCLASS()
-class MASSCOMMUNITYSAMPLE_API UMSPhysicsCleanupProcessor : public UMassObserverProcessor
-{
-    GENERATED_BODY()
-    
-    UMSPhysicsCleanupProcessor()
-    {
-        ObservedType = FMSMassPhysicsFragment::StaticStruct();
-        Operation = EMassObservedOperation::Remove;
-        bRequiresGameThreadExecution = true;
-    }
 
-    virtual void ConfigureQueries() override
-    {
-        EntityQuery.AddRequirement<FMSMassPhysicsFragment>(EMassFragmentAccess::ReadWrite);
-        EntityQuery.RegisterWithProcessor(*this);
-    }
-
-    virtual void Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context) override
-    {
-        EntityQuery.ForEachEntityChunk(EntityManager, Context, [this](FMassExecutionContext& Context)
-        {
-            const auto PhysicsFragments = Context.GetFragmentView<FMSMassPhysicsFragment>();
-            for (int32 i = 0; i < Context.GetNumEntities(); i++)
-            {
-                if (PhysicsFragments[i].SingleParticlePhysicsProxy)
-                {
-                    GetWorld()->GetPhysicsScene()->RemoveActor(PhysicsFragments[i].SingleParticlePhysicsProxy);
-                }
-            }
-        });
-    }
-};
-```
-
- 
  ## Reference
  - [Mass社区Sample](https://github.com/Megafunk/MassSample/)
  
