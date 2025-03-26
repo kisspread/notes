@@ -11,6 +11,16 @@ This post base on Aura GAS Course
 
 这里记录 gameplay tag的一些用法
 
+### `GameplayTagFilter`限制编辑器候选Tag的父级
+source:`\Engine\Source\Runtime\GameplayTags\Private\GameplayTagsManager.cpp`
+```cpp
+UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(GameplayTagFilter="Attribute.Primary"))
+FGameplayTagContainer Tags;
+// or 
+UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(Categories="Attribute.Primary"))
+FGameplayTagContainer Test;
+```
+
 ### 获取GameplayTag最后一个节点的名字
 通常最后一个节点是个经常要用的string 或者 KEY，很有用
 ```cpp
