@@ -1052,6 +1052,12 @@ void ProcessEntities()
 
 ```
 
+##### `ParallelForEachEntityChunk` 内部实现
+![alt text](../../assets/images/Mass-Mid_image-3.png)
+看出两个点：
+1. AllowQueryParallelFor 会控制是否退回普通for循环
+2. `ParallelFor` 和`ParallelForWithTaskContext` 这两个引擎内置的并行函数，是Mass内部并行的一种方式。
+
 #### 驱动Processor自动运行
 使用FMassProcessingPhaseManager来驱动Processor自动运行。
 
