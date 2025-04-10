@@ -3,6 +3,14 @@ title: Math In Game
 comments: true
 ---
 
+## cross product
+叉乘的两个应用：
+- 判断左右
+- 判断里外
+![alt text](../assets/images/Math_image.png)
+比如光栅化就会用到，判断像素是否在三角形内部。如果是0，代表edge cases，自己决定。
+![alt text](../assets/images/Math_image-2.png)
+
 ## 四元数乘法
 四元数（Quaternion） 主要用于表示旋转，避免万向锁（Gimbal Lock）问题，同时提供更平滑的插值（如球面线性插值 Slerp）
 
