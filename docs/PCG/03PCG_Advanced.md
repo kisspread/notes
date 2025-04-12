@@ -7,13 +7,16 @@ comments: true
 
 记录以下相关应用
 
-## PCG 利用LocalCenter调整Mesh到包围盒中心
-PCG Spawn Mesh的时候，如果Mesh的枢轴点刚好在Bounds的中心，这种情况是最好操作的，只要控制好点与点之间的间距，模型就不会重叠。
+## PCG Spawn Mesh 时假装指定Pivot点
+PCG Spawn Mesh的时，Mesh的的pivot点是会和PCG的Position重合。但Mesh的Pivot多种多样，有的在中心，有的在边界，有的在角落，总之乱七八糟的，重新修改Mesh又费时费力，所以应该想办法在直接在PCG中调整。
 
-但是，通常情况下，Mesh的pivot点经常是乱七八糟的，各种位置都有，所以需要进行调整。
+那么，只要知道Mesh的Bound 和 它当前的Pivot，只要能根据目标位置，计算出一个偏移量，就能假装调整了Mesh 的Pivot
 
+#### 前提节点`BoundsFromMesh`
+该节点可以获取到Mesh的包围盒信息，包括最小值、最大值、中心点等。有了它就能计算出Pivot点的偏移量。
+ 
 #### Pivot 原理
-默认情况下，Mesh 最原始的 Pivot点就是（0，0，0）,此时 pivot点就是包围盒的中心。这就是我们需要的理想状态。
+默认情况下，Mesh 最原始的 Pivot点就是（0，0，0）,此时 pivot点就是包围盒的中心。假设这就是我们需要的理想状态（Pivot在BoundsBox中心）。
 $$
 LocalCenter = \vec{Pivot} = (0,0,0) =  (BoundsMax + BoundsMin) /2 
 $$
@@ -23,7 +26,7 @@ $$
 NewLocalCenter = Offset + Pivot(0,0,0) = PivotOffset
 $$ 
 
-所以，PCG的LocalCenter属性 就是Pivot的偏移量。
+所以，PCG的LocalCenter属性如果非0，就说明是被动过手脚的Pivot。
 
 知道了原理，就可以通过减去PivotOffset来让Pivot点回到Bounds的中心，回到理想状态。
 
