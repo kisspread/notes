@@ -1,0 +1,1 @@
+![alt text](../../assets/images/image_notes_image.png)
