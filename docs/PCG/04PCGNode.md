@@ -288,11 +288,18 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 
 都支持选中语法：
 - 8   （返回索引为8的值）
-- 1:8  （返回索引1到7的值）
+- 1:8  （返回索引1到7的值）  
 - :8   （返回索引0到7的值）
 - -1   (返回倒数第一个值)
 - -8:   (返回倒数第8到倒数第1)
 - 1:5,10:15   （返回索引1到5，索引10到15的值）
+
+:::warning 5.5 的FilterElementsByIndex 存在bug 
+如图，根据输入的index返回选择的点，输入3个点，选中其中3个index， 但结果只有2个点。
+![alt text](../assets/images/04PCGNode_image-33.png)
+把其中一个重复，也就是输入4个点，才能返回我想要的3个点。
+![alt text](../assets/images/04PCGNode_image-32.png)
+:::
 
 ## Attribute ReMap 属性重映射
 这是一个修改自身属性的节点，非常常用
