@@ -151,6 +151,23 @@ PCG Graph里点数据默认只有以上这些。
   `Corridor` **至少出现 2 次**，`Doors` **可能出现 0 次或多次**
 - **`{[Entrance, Corridor, Exit], [Entrance, [Corridor, Doors]*, Exit]}`** →  
   可能是 **`Entrance → Corridor → Exit`**，也可能是 **`Entrance → Corridor 或 Doors 多次 → Exit`**
+
+- 测试了一些其他情况：
+  - 权重写0，编辑器会崩溃
+
+  - `<[Win,W,Win]*, <Win,W,Ws>*>` 优先级嵌套不支持，正确的做法：`<[Win,W,Win], Win,W,Ws>*`, 另外，`<[Win,W,Win]*, Win,W,Ws>*`  这种情况会卡住编辑器
+
+  - 序列可以嵌套： 
+  <{[Win,W,Win]:2,[[Ws]2,W,[Ws]2]}, Win,W,Ws>*, 但对于相同长度线段的，种子是固定，比如4条线段，这个随机权重会让4条线段出来的结果都一样，并不是设想中随机的结果。
+
+  - 下面的写法都对：
+
+  {[Win,W,Win],[[Ws]+,W,[Ws]+]*}
+
+  {[Win,W,Win],[[Ws]2,W,[Ws]2]}
+
+  <[Win,W,Win],[Ws*,W,Ws*], Win,W,Ws>*
+ 
 ---
 
 ## Grammar 相关节点
