@@ -158,15 +158,16 @@ PCG Graph里点数据默认只有以上这些。
   - `<[Win,W,Win]*, <Win,W,Ws>*>` 优先级嵌套不支持，正确的做法：`<[Win,W,Win], Win,W,Ws>*`, 另外，`<[Win,W,Win]*, Win,W,Ws>*`  这种情况会卡住编辑器
 
   - 序列可以嵌套： 
-  <{[Win,W,Win]:2,[[Ws]2,W,[Ws]2]}, Win,W,Ws>*, 但对于相同长度线段的，种子是固定，比如4条线段，这个随机权重会让4条线段出来的结果都一样，并不是设想中随机的结果。
+  `<{[Win,W,Win]:2,[[Ws]2,W,[Ws]2]}, Win,W,Ws>*`, 但对于相同长度线段的，种子是固定，比如4条线段，这个随机权重会让4条线段出来的结果都一样，并不是设想中随机的结果。
 
   - 下面的写法都对：
-
+ ```
   {[Win,W,Win],[[Ws]+,W,[Ws]+]*}
 
   {[Win,W,Win],[[Ws]2,W,[Ws]2]}
 
   <[Win,W,Win],[Ws*,W,Ws*], Win,W,Ws>*
+```  
  
 ---
 
@@ -273,6 +274,7 @@ Subdivide Spline生成的线段，也是用点表示：
 - 需要配置它的key，后续节点根据它查找
   ![alt text](../assets/images/PCGNode_image-16.png){width=70%}
 
+
 举例说明：
 - 对于一个高度为100的正方体
 - 切片方向为向上(0,0,1)
@@ -352,13 +354,22 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
   ![alt text](../assets/images/PCGNode_image-20.png){width=80%}
 
 
+:::warning 精度bug
+需要注意的是，挤出向量的5.5存在精度bug，不管是Primitive Cross-section还是Duplicate Cross-sections，都有这个问题。
+
+复现过程：
+- 分别往4个方向挤出100，比如(100,0,0),(-100,0,0),(0,100,0),(0,-100,0)，也就是下一个样条线的生成位置距离差是100，
+- 会发现，X的反方向 总是无法正确挤出新的样条线。猜测是剩下的长度容纳不下“100”这个长度。
+- 修改Module的Size为99，就能正确在4个方向挤出100。
+:::
+
 ---
 
 ### Select Grammar 条件语法
 通常作用于线段，对不同长度的线段使用不同的匹配语法(也可以用于选择不同的index)。比如在生成建筑时，某面墙过短，那就应该使用不包含大门的语法规则。
 ![alt text](../assets/images/01PCG_Mid_image-10.png){width=70%}
 
-上面的 延展横截面节点更像是是“纵向生长”，而 Select Grammar节点则提供了“横向生长”的能力，两者配合可以实现“纵横生长”动态生成效果。
+上面的延展样条线节点更像是复制本身，并指定每个副本的Grammar，而 Select Grammar 节点则针对线段本身。Select Grammar 的输入是Points数据，而它拥有匹配并设置数据的能力，其实不一定要用来设置Grammar，还能当做条件赋值。
 
 #### Compared Value Attribute 匹配值
 

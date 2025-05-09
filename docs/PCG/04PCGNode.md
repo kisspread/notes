@@ -75,14 +75,18 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 
 - 直接赋值：`Set`
   ![alt text](../assets/images/04PCGNode_image-29.png)
+  - 需要注意的是，不是所有的属性都支持“Set”操作，比如 Rotator就不支持Set
 
 - 写回：`@source`
   ![alt text](../assets/images/04PCGNode_image-15.png){width=40%}
-  大部分操作都支持写回`@source`, output target使用`@source`表示写回默认输出数据，图这里默认输出是InputA，可以修改为InputB.
+  除了用Set赋值，绝大部分操作(比如加减乘除)都支持写回`@source`， 则也是一种赋值方式。output target使用`@source`表示写回默认输出数据，图这里默认输出是InputA，可以修改为InputB.
 
 - 重写: 使用`Remap`节点 
   ![alt text](../assets/images/04PCGNode_image-16.png){width=40%}
   图中展示用尾操作，把数据写入`@color`里面。ReMap还能随机过渡。
+
+- 更常用的赋值：`Copy Attribute`节点
+  - Set不支持的，它都能正确支持。该节点支持3种模式，可以N:N,就是Each to Each。但我在测试把属性复制到样条线数据的时候，发现它无法正确N:N，但Points数据的时候是正常的。
 
 - 添加：显式使用`Add Attribute`节点
   ![alt text](../assets/images/04PCGNode_image-17.png){width=50%}
