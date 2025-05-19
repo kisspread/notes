@@ -384,6 +384,11 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
    - 但如果勾选了 `Ignore Empty Secondary Input`，那么空的次要输入将不会影响计算，而是会跳过它们。
 
 
+## BoundFromMesh 应用Mesh的边界框
+
+该节点可以应用Mesh的边界框，但目前存在验证bug，承载Mesh信息的点本身不能有任何旋转，-0 也不行，否则无法应用。
+
+
 ## References
 
 - [拆解UE5 PCG 项目《CassiniSample》(一)](https://zhuanlan.zhihu.com/p/25563585263)
