@@ -7,6 +7,11 @@ comments: true
 
 记录以下相关应用
 
+## 闭合样条线判断内角外角
+闭合的直线样条线，形成的凸包有时需要判断拐角使用内角还是外角，因为拐角模型也是存在“手性”的， 内外需要区别判断或者使用不同模型。这个问题可以转换为，样条线的下一个点是左拐还是右拐。左右问题，可以使用`Cross Product`来判断。
+![alt text](../assets/images/03PCG_Advanced_image-24.png)
+
+
 ## PCG Spawn Mesh 时假装指定Pivot点
 PCG Spawn Mesh的时，Mesh的的pivot点是会和PCG的Position重合。但Mesh的Pivot多种多样，有的在中心，有的在边界，有的在角落，总之乱七八糟的，重新修改Mesh又费时费力，所以应该想办法在直接在PCG中调整。
 
@@ -134,3 +139,39 @@ val list = listOf("123", "45")
 println(list.flatMap { it.toList() }) // [1, 2, 3, 4, 5] 
 ```
 :::
+
+
+## PCG问题记录
+
+### 不生成，缓存错误，可以试试按住 Ctrl + 再点击 重新生成。
+![alt text](../assets/images/03PCG_Advanced_image-18.png)
+
+### 尽量使用PCG Stamp, 而不是PCG 原始 Actor，否则可能存在潜在的崩溃问题。
+![alt text](../assets/images/03PCG_Advanced_image-23.png)
+
+
+
+## Runtime PCG 
+
+大多数情况下，只需要在编辑器模式下使用PCG来构建数据，运行时使用这些构建好的数据即可。但需要和游戏环境互动的，就需要Runtime PCG了。
+
+比如走到哪就生成到哪，需要根据玩家位置来生成数据，或者根据场景内其他动态数据来生成数据。
+
+但运行时PCG其实BUG很多，毕竟感觉使用的人很少，很多问题要使用后才能发现，选择运行时PCG需要谨慎。
+
+### 一些运行时PCG遇到的问题记录
+
+#### 1. 部分LevelStream 关卡重新加载，需要刷新PCG缓存，否则生成的数据会出错
+![alt text](../assets/images/03PCG_Advanced_image-17.png)
+
+#### 2. 运行时PCG和编辑器PCG 存在不同逻辑，如运行时int32类型其实是按float类型处理的，导致精度问题。
+![alt text](../assets/images/03PCG_Advanced_image-19.png)
+
+编辑器时，显示的数据，全是int32类型：
+![alt text](../assets/images/03PCG_Advanced_image-20.png)
+
+运行时，显示的数据，全是float类型，导致运行时生成结果和编辑器存在严重偏差：
+ ![alt text](../assets/images/03PCG_Advanced_image-21.png)
+
+最终附加一个round节点，可以解决这个问题：
+![alt text](../assets/images/03PCG_Advanced_image-22.png)
