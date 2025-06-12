@@ -156,7 +156,7 @@ println(list.flatMap { it.toList() }) // [1, 2, 3, 4, 5]
 一种解决方案是：手动绑定Event，而不是通过编辑器详情页面创建。
 
 ### PCG 样条线采样器的一些说明
-![alt text](../../assets/images/blueprints_image.png){width=80%}
+![alt text](../assets/images/blueprints_image.png){width=80%}
 
 NextDirectionDelta： 是用当前点，来记录它的下一个点的方向变化增量，对比的轴是UpVector, 增量是用本地坐标系来对比（），增量被归一化为-1到1
 
