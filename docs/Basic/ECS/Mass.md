@@ -259,7 +259,7 @@ Tag的优势：
 -   **组合查询**：灵活的过滤器组合，比如上面的敌人和死亡
 
 ::: warning 注意
-Tag 不同的Entity，虽然会用相同的“Base” Archetype，但实际上会被当做不同Archetype来处理, 也就是 `ForEachEntityChunk`时，处于不同的Chunk中。也就是，即使只有一个entity的tag是另类的，也会创建一个128kb的chunk来装载这一个entity。
+Tag 不同的Entity，虽然会用相同的“Base” Archetype，但实际上会被当做不同Archetype来处理, 也就是 `ForEachEntityChunk`时，处于不同的Chunk中。也就是如果某个entity多了一个tag，那么它的原型其实是变了，即使Base Archetype没有变化，系统会为它专门创建一个128kb的chunk来装载这一个entity。
 :::
 
 #### 2.1 Fragment和Tag区别
