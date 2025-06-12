@@ -9,147 +9,231 @@ comments: true
 
 ## 常用概念
 
-### Subsystem
+### Archetype
 
-#### 1. Subsystem 并行描述
+#### 原型的深意
 
-**Subsystem需要告知Mass系统，它的并发特性。**
+原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象。
 
-使用结构体模板TMassExternalSubsystemTraits来“特化” UMyWorldSubsystem：
-```cpp
-template<>
-struct TMassExternalSubsystemTraits<UMyWorldSubsystem> final
-{
-    enum
-    {
-        ThreadSafeRead = true,  // 是否支持多线程读取
-        ThreadSafeWrite = false, // 是否支持多线程写入
-    };
-};
+![alt text](../../assets/images/Mass-Mid_image.png)
+如图，速度和位置，就是执行运动逻辑的最小数据集，每次遍历，都要计算这两个变量。不带入其他数据，遍历就是高效的。
 
-```
+综上，原型的真正意思是：**驱动特定逻辑所需的最小数据集合**
 
-因为在Mass中，Processors通常是并行执行的（利用多线程）。为了确保数据安全和避免竞争条件，Mass需要知道每个Processor会如何访问Subsystems（子系统）
-- 让Mass系统知道该Subsystem可以在哪些线程上访问
-- 帮助Mass系统计算处理器(Processor)和查询(Query)的依赖关系
+::: warning
+>Processors can change an Entity's composition by adding or removing Fragments or Tags. However, changing the composition of an Entity while it is being processed would result in that Entity being moved from one Archetype to another.
 
-完整例子：
-```cpp
-// 一个支持并行读取但不支持并行写入的Subsystem
-class UMyWorldSubsystem : public UWorldSubsystem 
-{
-public:
-    void Write(int32 InNumber)  // 写操作需要互斥访问
-    {
-        UE_MT_SCOPED_WRITE_ACCESS(AccessDetector);
-        Number = InNumber;
-    }
+Processors可以通过添加或删除Fragments或Tags来更改Entity的组成。但是，在处理Entity时更改其组成**会导致该Entity从一个原型移动到另一个原型**。
 
-    int32 Read() const  // 读操作可以并行
-    {
-        UE_MT_SCOPED_READ_ACCESS(AccessDetector);
-        return Number;
-    }
-};
-
-// 为该Subsystem定义traits
-template<>
-struct TMassExternalSubsystemTraits<UMyWorldSubsystem> final
-{
-    enum
-    {
-        ThreadSafeRead = true,   // 允许并行读取
-        ThreadSafeWrite = false, // 不允许并行写入
-    };
-};
-
-```
-:::details AccessDetector 宏
-源码里提供很多AccessDetector宏，用来描述访问的互斥性。需要慢慢研究：
-```cpp
-#define UE_MT_DECLARE_RW_ACCESS_DETECTOR(AccessDetector) FRWAccessDetector AccessDetector;
-#define UE_MT_DECLARE_RW_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FRWRecursiveAccessDetector AccessDetector;
-#define UE_MT_DECLARE_RW_FULLY_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FRWFullyRecursiveAccessDetector AccessDetector;
-#define UE_MT_DECLARE_MRSW_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FMRSWRecursiveAccessDetector AccessDetector;
-
-#define UE_MT_SCOPED_READ_ACCESS(AccessDetector) const FBaseScopedAccessDetector& PREPROCESSOR_JOIN(ScopedMTAccessDetector_,__LINE__) = MakeScopedReaderAccessDetector(AccessDetector);
-#define UE_MT_SCOPED_WRITE_ACCESS(AccessDetector) const FBaseScopedAccessDetector& PREPROCESSOR_JOIN(ScopedMTAccessDetector_,__LINE__) = MakeScopedWriterAccessDetector(AccessDetector);
-
-#define UE_MT_ACQUIRE_READ_ACCESS(AccessDetector) (AccessDetector).AcquireReadAccess();
-#define UE_MT_RELEASE_READ_ACCESS(AccessDetector) (AccessDetector).ReleaseReadAccess();
-#define UE_MT_ACQUIRE_WRITE_ACCESS(AccessDetector) (AccessDetector).AcquireWriteAccess();
-#define UE_MT_RELEASE_WRITE_ACCESS(AccessDetector) (AccessDetector).ReleaseWriteAccess();
-
-```
 :::
 
-:::tip 模板元编程
-这种利用Traits来描述能力的写法，并非Mass特有。
+#### 给原型命名
 
-UE内部有非常多类似的用法，如：
+命名后的原型，对调试非常友好。
 ```cpp
-template<>
-struct TStructOpsTypeTraits<FHitResult> : public TStructOpsTypeTraitsBase2<FHitResult>
-{
-	enum
-	{
-		WithNetSerializer = true,
-	};
-};
+// 通过ScriptStruct列表创建原型，列表支持MassTag 和 MassFragment
+FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
+ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
+FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
+    TArray<const UScriptStruct*>{
+        FFarmWaterFragment::StaticStruct(),
+        FFarmCropFragment::StaticStruct(),
+    }, ArchetypeCreationParamsCrop);
 
+//通过SharedValue 创建带SharedFragment的原型
+FMassEntityHandle ISMC_Entity = EntityManager.CreateEntity(ISMC_Archetype, SharedValues);
+
+//通过自己构造，这种方法可以支持SharedFragment
+TemplateData.GetArchetypeCreationParams().DebugName = FName(GetTemplateName());
+const FMassArchetypeHandle ArchetypeHandle = EntityManager.CreateArchetype(GetCompositionDescriptor(), TemplateData.GetArchetypeCreationParams());
+
+//构造CompositionDescriptor
+FMassArchetypeCompositionDescriptor Composition(FragmentInstanceList, FMassTagBitSet(), FMassChunkFragmentBitSet(), FMassSharedFragmentBitSet(), FMassConstSharedFragmentBitSet());
+for (const FConstSharedStruct& SharedFragment : SharedFragmentValues.GetConstSharedFragments())
+{
+    Composition.ConstSharedFragments.Add(*SharedFragment.GetScriptStruct());
+}
+for (const FSharedStruct& SharedFragment : SharedFragmentValues.GetSharedFragments())
+{
+    Composition.SharedFragments.Add(*SharedFragment.GetScriptStruct());
+}
+```
+需要注意的是，目前版本（5.5）通过TArray<const UScriptStruct*>不支持SharedFragment。SharedFragment如果没能成功创建，FMassArchetypeHandle会不一致，导致后续的CreateEntity创建的出来的原型类型名字是NONE，ChunkSize也变成默认值。调试发现是 GetOrCreateSuitableArchetype这个方法有bug （5.5），它好像刻意漏掉了CreationParams参数。
+
+一种解决方法是，自己实现GetOrCreateSuitableArchetype：
+```cpp
+FMassArchetypeHandle UMyMassEntitySubSystem::GetOrCreateSuitableArchetype(const FMassArchetypeHandle& ArchetypeHandle
+	, const FMassSharedFragmentBitSet& SharedFragmentBitSet
+	, const FMassConstSharedFragmentBitSet& ConstSharedFragmentBitSet
+	, const FMassArchetypeCreationParams& CreationParams)
+{
+	const FMassArchetypeData& ArchetypeData = FMassArchetypeHelper::ArchetypeDataFromHandleChecked(ArchetypeHandle);
+	if (SharedFragmentBitSet != ArchetypeData.GetSharedFragmentBitSet()
+		|| ConstSharedFragmentBitSet != ArchetypeData.GetConstSharedFragmentBitSet())
+	{
+		FMassArchetypeCompositionDescriptor NewDescriptor = ArchetypeData.GetCompositionDescriptor();
+		NewDescriptor.SharedFragments = SharedFragmentBitSet;
+		NewDescriptor.ConstSharedFragments = ConstSharedFragmentBitSet;
+		return EntityManager->CreateArchetype(NewDescriptor,CreationParams);
+	}
+	return ArchetypeHandle;
+}
 ```
 
-另外，奇异递归模板也属于 元编程。详见 [奇异递归模板](../C++/CRTP.md)
+### Chunk
+
+Chunk是每次遍历的数据块单位，如`ForEachEntityChunk`, 每个Chunk都会执行该遍历来操作内部的全部Entity，且Chunk之间可并行运行，提高效率。
+
+`Chunk-Base`的设计就是为了加速Mass Entity的效率。
+
+#### Chunk 大小
+默认配置是128KB
+```cpp
+UPROPERTY(EditDefaultsOnly, Category = Mass, config, AdvancedDisplay)
+int32 ChunkMemorySize = 128 * 1024;// KBytes
+// 设置默认配置
+void UMassEntitySettings::PostInitProperties()
+{
+	Super::PostInitProperties();
+	ChunkMemorySize = UE::Mass::SanitizeChunkMemorySize(ChunkMemorySize);
+}
+```
+
+根据配置动态配置Chunk大小的一种写法，详情查阅 EditorDataStorage Plugin源码
+
+```cpp
+UE::Editor::DataStorage::TableHandle UEditorDataStorage::RegisterTable(TConstArrayView<const UScriptStruct*> ColumnList, const FName Name)
+{
+	using namespace UE::Editor::DataStorage;
+
+	if (ActiveEditorEntityManager && !TableNameLookup.Contains(Name))
+	{
+		TableHandle Result = Tables.Num();
+		FMassArchetypeCreationParams ArchetypeCreationParams;
+		ArchetypeCreationParams.DebugName = Name;
+		ArchetypeCreationParams.ChunkMemorySize = GetTableChunkSize(Name);
+		Tables.Add(ActiveEditorEntityManager->CreateArchetype(ColumnList, ArchetypeCreationParams));
+		if (Name.IsValid())
+		{
+			TableNameLookup.Add(Name, Result);
+		}
+		return Result;
+	}
+	return InvalidTableHandle;
+}
+```
+
+::: tip EditorDataStorage Plugin
+>A central extendable data storage for editors and their corresponding data with support for viewing and editing through a collection of widgets.
+
+- 基于Mass Entity的插件，是一个可扩展的中央数据存储，用于编辑器及其相应的数据，并支持通过一组小部件进行查看和编辑。
+
 :::
 
-#### 2. Processors中Query自定义UWorldSubsystem
+::: tip 为什么同原型的Chunk固定大小
+数据连续性和缓存友好，典型的空间换时间
+- 连续内存布局：固定大小的 chunk 能保证同一块内存里存放大量实体数据，这样数据在内存中是连续的。
+- 缓存预取 **(Prefetch)**：CPU 在遍历连续内存时能更好地利用预取机制，大幅提高 L1/L2 缓存的命中率，降低内存延迟。
+- SIMD 加速：连续的数据还便于利用 SIMD 指令做批量处理。
+- 无动态判断：固定大小让迭代逻辑简单，无需在遍历过程中判断当前 chunk 的大小或者是否还有更多数据。
+- 频繁分配：动态大小需要不断调整内存分配，可能引发频繁的分配和释放操作，这在高并发下会严重拖慢性能。
+- 散乱内存：动态 chunk 可能导致实体数据分散在内存的不同区域，破坏了数据局部性，降低 CPU 预取效率。
+- 额外判断：遍历时需要动态判断每个 chunk 实际存储了多少实体，代码逻辑更复杂，难以优化到极致。
 
-从UE 5.1开始，Mass增强了API，允许你在Processors中直接使用UWorldSubsystem。这提供了一种创建封装功能的强大方式，可以用来操作实体（Entities）或其他游戏逻辑。
+**Chunk-Base的结构易操作且高效:**
+> 当删除掉其中一个Entity时，内部的其他Entity并不会移动，所以这个Entity会在Chunk中空出来，这时如果再Add新的Entity会复用这个空出来的内存，当删除掉Chunk中所有Entity时，Chunk的内存会自动释放掉。整个数据结构实现，相当于是TSparseArray和TChunkedArray的结合，因为UE没有自带这种泛型容器，所以这里就单独实现了。
+:::
 
-简单地说，就是Query里允许查询相关的Subsystem，然后在Executor中使用Subsystem， 如修改 Subsystem中的变量。
+#### Chunk和CPU缓存
+我的电脑16核心，L1总大小1MB，L2总大小8MB:
+![alt text](../../assets/images/cacheline_image.png)
 
+也就是，每个核心分配到64KB。
+```sh
+每个核心的L1缓存分配：
+- L1 指令缓存 (L1i): 32KB
+- L1 数据缓存 (L1d): 32KB
+总计每核心：64KB
 
-```cpp
-// MyProcessor.cpp
-#include "MyProcessor.h"
-#include "MyWorldSubsystem.h" // 包含你的Subsystem的头文件
-
-UMyProcessor::UMyProcessor()
-{
-	bAutoRegisterWithProcessingPhases = true;
-	ExecutionFlags = (int32)(EProcessorExecutionFlags::All);
-    ProcessingPhase = EMassProcessingPhase::PrePhysics;
-}
-
-void UMyProcessor::ConfigureQueries()
-{
-	// 添加Subsystem要求
-	MyEntityQuery.AddSubsystemRequirement<UMyWorldSubsystem>(EMassFragmentAccess::ReadWrite);
-	MyEntityQuery.RegisterWithProcessor(*this);
-    //ProcessorRequirements也需要添加
-    ProcessorRequirements.AddSubsystemRequirement<UMyWorldSubsystem>(EMassFragmentAccess::ReadWrite);
-}
-
-void UMyProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
-{
-    // UWorld* World = EntityManager.GetWorld(); //在lambda外获取world
-	MyEntityQuery.ForEachEntityChunk(EntityManager, Context, [/*World*/](FMassExecutionContext& Context)
-	{
-		// 获取你的Subsystem
-        // 在lambda里面, 使用Context.GetMutableSubsystemChecked, 无需传入World
-		UMyWorldSubsystem* MySubsystem = Context.GetMutableSubsystemChecked<UMyWorldSubsystem>();
-
-		// 使用你的Subsystem
-		MySubsystem->Write(42);
-		int32 Value = MySubsystem->Read();
-
-		// ... 其他逻辑 ...
-	});
-}
-
+16个核心总共：1MB L1缓存
 ```
 
-注意：ProcessorRequirements也需要添加Subsystem, 否则会报错
+也就是，每个核心能用于装载数据的实际大小只有32KB， 明显小于虚幻默认chunk大小128KB。执行一次chunk遍历，L1至少要加载4次数据。
+
+但这并不会影响性能(不至于需要担心)：
+- 数据会在L2/L3 预载（Prefetch）。
+- 数据在 Chunk 中是连续存储 的，这有助于 CPU 进行顺序读取和预取，大幅减少随机访问的开销
+- 每个核心都在处理自己那部分 Chunk
+
+- L1 缓存放不下整个 Chunk 并不意味着性能一定很差；现代 CPU 通过多级缓存和预取机制，依然能让 Chunk-based 的数据访问获得可观的效率。
+- 关键在于：把实体数据打包在一起（Data-Oriented 设计），迭代时尽量线性访问，这样才能充分利用缓存局部性。
+
+#### Chunk 造成的浪费
+
+Chunk 就像一辆高速列车，满载率非常重要，如果经常装不满就会造成内存浪费。
+
+乘客就是entity，如果每次处理的entity都是带着大包小包的大胖子，吞吐量就会大大下降，为了最大化吞吐量，entity要尽可能设计得小而美。
+
+使用Mass Debugger 可以查看到Chunk的内存浪费以及entity大小等信息，如图所示:
+- entity数量太少，大量内存浪费：
+ ![alt text](../../assets/images/Mass-Advanced_image-3.png)
+- entity本身太大（280B），一个chunk 只能装下467个。
+ ![alt text](../../assets/images/Mass-Advanced_image-2.png)
+- entity体积适中，一次遍历就是3000多个，非常高效：
+ ![alt text](../../assets/images/Mass-Mid_image-2.png)
+
+
+
+
+
+
+### Entity 
+前面说了，Chunk是一辆座位非常多的列车，乘客就是entity，如果每次寻找乘客的时候都要遍历整个列车逐个排查，乘务员得跑断腿，效率低下。
+
+FMassEntityHandle 是一个指向Chunk内存中实体数据的指针，它的作用就相当于一本小册子记录了实体的位置，找人只需要遍历小册子就可以了，不需要跑遍整个列车。
+
+#### FEntityData
+它的真身在这里，`FEntityData`:
+![alt text](../../assets/images/Mass-Mid_image-1.png){width=50%}
+
+之所以还要一个序列号，是为了区分 新老entities
+
+```cpp
+// 数组块，默认大小是 16384 = 16 * 1024，既 16KB，因为大部分CPU的L1d缓存大小是16kb的倍数。
+/** An array that uses multiple allocations to avoid allocation failure due to fragmentation. */
+template<typename InElementType, uint32 TargetBytesPerChunk = 16384, typename AllocatorType = FDefaultAllocator >
+class TChunkedArray
+```
+
+> SerialNumber，作用就是某个Index上的Entity被删除后，再创建个新的Entity，如果原来Index指向的EntityData和EntityHandle序列号不匹配，就可以明确EntityHandle指向的是老的Entity而不是新的，这样就避免了只用Index标记Entity导致的冲突问题。-- quabqi
+
+```cpp
+struct FEntityData
+{
+	TSharedPtr<FMassArchetypeData> CurrentArchetype; // 指向Chunk内存中的位置
+	int32 SerialNumber = 0;
+	
+	~FEntityData();
+	void Reset();
+	bool IsValid() const;
+};
+```
+
+#### FMassEntityHandle
+是留给调用者的寻址存根
+```cpp
+// 返回给调用者时，才变成了FMassEntityHandle
+for (int32 EntityIndex = StartingIndex; EntityIndex < Entities.Num(); ++EntityIndex)
+{
+	Entities[EntityIndex].SerialNumber = SerialNumber;
+	OutEntityHandles[CurrentEntityHandleIndex++] = { EntityIndex, SerialNumber };
+}
+```
+
+
+
+
+
 
 
 
@@ -157,7 +241,7 @@ void UMyProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionCont
 
 ### Fragment
 
-Fragment在Mass Entity中是数据的基本单位，它们通过Deferred Command被组织到不同的Chunk中。以下是一个典型的Fragment示例：
+Fragment在Mass Entity中是数据的包装单位，通常是预定义的，但也可以通过Deferred Command可以将fragment 组织到不同的Chunk中(既改变原型)。以下是一个典型的Fragment示例：
 
 ```cpp
 // 这是一个成员比较多的Fragment
@@ -183,20 +267,14 @@ struct MASSCOMMUNITYSAMPLE_API FInterpLocationFragment : public FMassFragment
 
 #### Fragment的组织方式
 
-1. **基于Chunk的数据组织**
-   - Fragment不是简单地组合，而是通过Deferred Command被分类并放入不同的Chunk中
-   - 同类型的Fragment会被放在连续的内存块（Chunk）中，这样可以提高缓存命中率
-   - Chunk的大小是固定的，这有助于内存管理和性能优化
+1. **Fragment之间的组合**
+   - Fragment之间可以通过”预定义的原型“，组合在一起形成原型；也可以通过Deferred Command 动态地组合在一起
+   - 在同个原型的Fragment，才会被放在连续的内存块（Chunk）中
 
-2. **热数据处理**
-   - 对于频繁一起访问的数据，建议放在同一个Fragment中
-   - 这种方式可以减少Chunk之间的跨块访问，提高性能
-   - 实际上是在"数据分离"和"访问局部性"之间找平衡
+2. **Fragment内的数据组织**
+   - 对于频繁一起访问的数据，建议放在同一个Fragment中，写起相关逻辑时更友好
+   - 但细分为更多的fragment种类，也能让逻辑和内存利用率更灵活
 
-3. **Fragment的设计原则**
-   - 根据数据的访问模式来设计Fragment
-   - 高频交互的数据应该放在一起
-   - 通过Deferred Command来管理Fragment的生命周期和组织方式
 
 #### 使用示例
 
@@ -265,7 +343,8 @@ void UMSInterpMovementProcessor::Execute(FMassEntityManager& EntityManager, FMas
 ```
 #### 如何分析内存布局
 
-以FInterpLocationFragment为例，假如这就是Entity的全部，那么最大的成员类型是 `FVector` 16 bytes, 既总大小一定是16的倍数。这里把最大的成员类型放在前面，已是最优的内存布局。
+
+Fragment并不是结构体，但可以看成结构体，以FInterpLocationFragment为例，假如这就是Entity的全部，那么最大的成员类型是 `FVector` 16 bytes, 既总大小一定是16的倍数。这里把最大的成员类型放在前面，已是最优的内存布局。
 - 因为后面的 Duration, bForwardDirection, Time 加起来都不够FVector的大，他们的排列顺序已经无关紧要。
 - bForwardDirection 占用了一个字节，但后续的Time是4字节对齐，所以要填充3比特padding。
 ```sh
@@ -286,11 +365,13 @@ void UMSInterpMovementProcessor::Execute(FMassEntityManager& EntityManager, FMas
 +----------------------------------------------+
 Total size: ~48 bytes
 
+（实际上，Fragment 拼装真正的数据的时候，会对成员进行排序）
+
 ```
 
 #### 合理的Fragment刀法
 
-上面这个例子与我印象中ECS倡导的SOA（Structure of Arrays）设计理念有所不同，它的结构更接近AOS（Array of Structures）布局。
+这种多成员的Fragment与传统ECS倡导的SOA（Structure of Arrays）设计理念有所不同，它的结构更接近AOS（Array of Structures）布局。
 
 ```cpp
 // AOS风格（案例方案）
@@ -305,7 +386,7 @@ struct FLocationB { TArray<FVector> Data; };
 struct FTime { TArray<float> Data; };
 ```
 
-但仔细思考，Mass框架底层已经是SOA实现（Chunk内存布局），**因此Fragment内部的AOS设计不会破坏SOA优势**，反而是正确的选择
+但仔细思考，Mass框架底层已经是SOA实现（Chunk内存布局），**因此Fragment内部的AOS设计不会破坏SOA优势**，比如FInterpLocationFragment在计算时候每个成员都要参与运算，如果是跨chunk，反而会增加额外的cache miss开销。
 
 ##### 热数据聚合
 当多个字段在同一个Processor中连续访问且存在高频交互时，优先选择聚合，也就是都放在同一个`Archetype` 里面。
@@ -648,232 +729,6 @@ FStructView 不拥有数据，它仅仅是对外部已有数据的一个可变�
 
 :::
 
-### Archetype
-
-#### 原型的深意
-
-原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象。
-
-![alt text](../../assets/images/Mass-Mid_image.png)
-如图，速度和位置，就是执行运动逻辑的最小数据集，每次遍历，都要计算这两个变量。不带入其他数据，遍历就是高效的。
-
-综上，原型的真正意思是：**驱动特定逻辑所需的最小数据集合**
-
-::: warning
->Processors can change an Entity's composition by adding or removing Fragments or Tags. However, changing the composition of an Entity while it is being processed would result in that Entity being moved from one Archetype to another.
-
-Processors可以通过添加或删除Fragments或Tags来更改Entity的组成。但是，在处理Entity时更改其组成**会导致该Entity从一个原型移动到另一个原型**。
-
-:::
-
-#### 给原型命名
-
-命名后的原型，对调试非常友好。
-```cpp
-// 通过ScriptStruct列表创建原型，列表支持MassTag 和 MassFragment
-FMassArchetypeCreationParams ArchetypeCreationParamsCrop;
-ArchetypeCreationParamsCrop.DebugName = "CropArchetype";
-FMassArchetypeHandle CropArchetype = EntityManager.CreateArchetype(
-    TArray<const UScriptStruct*>{
-        FFarmWaterFragment::StaticStruct(),
-        FFarmCropFragment::StaticStruct(),
-    }, ArchetypeCreationParamsCrop);
-
-//通过SharedValue 创建带SharedFragment的原型
-FMassEntityHandle ISMC_Entity = EntityManager.CreateEntity(ISMC_Archetype, SharedValues);
-
-//通过自己构造，这种方法可以支持SharedFragment
-TemplateData.GetArchetypeCreationParams().DebugName = FName(GetTemplateName());
-const FMassArchetypeHandle ArchetypeHandle = EntityManager.CreateArchetype(GetCompositionDescriptor(), TemplateData.GetArchetypeCreationParams());
-
-//构造CompositionDescriptor
-FMassArchetypeCompositionDescriptor Composition(FragmentInstanceList, FMassTagBitSet(), FMassChunkFragmentBitSet(), FMassSharedFragmentBitSet(), FMassConstSharedFragmentBitSet());
-for (const FConstSharedStruct& SharedFragment : SharedFragmentValues.GetConstSharedFragments())
-{
-    Composition.ConstSharedFragments.Add(*SharedFragment.GetScriptStruct());
-}
-for (const FSharedStruct& SharedFragment : SharedFragmentValues.GetSharedFragments())
-{
-    Composition.SharedFragments.Add(*SharedFragment.GetScriptStruct());
-}
-```
-需要注意的是，目前版本（5.5）通过TArray<const UScriptStruct*>不支持SharedFragment。SharedFragment如果没能成功创建，FMassArchetypeHandle会不一致，导致后续的CreateEntity创建的出来的原型类型名字是NONE，ChunkSize也变成默认值。调试发现是 GetOrCreateSuitableArchetype这个方法有bug （5.5），它好像刻意漏掉了CreationParams参数。
-
-一种解决方法是，自己实现GetOrCreateSuitableArchetype：
-```cpp
-FMassArchetypeHandle UMyMassEntitySubSystem::GetOrCreateSuitableArchetype(const FMassArchetypeHandle& ArchetypeHandle
-	, const FMassSharedFragmentBitSet& SharedFragmentBitSet
-	, const FMassConstSharedFragmentBitSet& ConstSharedFragmentBitSet
-	, const FMassArchetypeCreationParams& CreationParams)
-{
-	const FMassArchetypeData& ArchetypeData = FMassArchetypeHelper::ArchetypeDataFromHandleChecked(ArchetypeHandle);
-	if (SharedFragmentBitSet != ArchetypeData.GetSharedFragmentBitSet()
-		|| ConstSharedFragmentBitSet != ArchetypeData.GetConstSharedFragmentBitSet())
-	{
-		FMassArchetypeCompositionDescriptor NewDescriptor = ArchetypeData.GetCompositionDescriptor();
-		NewDescriptor.SharedFragments = SharedFragmentBitSet;
-		NewDescriptor.ConstSharedFragments = ConstSharedFragmentBitSet;
-		return EntityManager->CreateArchetype(NewDescriptor,CreationParams);
-	}
-	return ArchetypeHandle;
-}
-```
-
-### Chunk
-
-Chunk是每次遍历的数据块单位，如`ForEachEntityChunk`, 每个Chunk都会执行该遍历来操作内部的全部Entity，且Chunk之间可并行运行，提高效率。
-
-`Chunk-Base`的设计就是为了加速Mass Entity的效率。
-
-#### Chunk 大小
-默认配置是128KB
-```cpp
-UPROPERTY(EditDefaultsOnly, Category = Mass, config, AdvancedDisplay)
-int32 ChunkMemorySize = 128 * 1024;// KBytes
-// 设置默认配置
-void UMassEntitySettings::PostInitProperties()
-{
-	Super::PostInitProperties();
-	ChunkMemorySize = UE::Mass::SanitizeChunkMemorySize(ChunkMemorySize);
-}
-```
-
-根据配置动态配置Chunk大小的一种写法，详情查阅 EditorDataStorage Plugin源码
-
-```cpp
-UE::Editor::DataStorage::TableHandle UEditorDataStorage::RegisterTable(TConstArrayView<const UScriptStruct*> ColumnList, const FName Name)
-{
-	using namespace UE::Editor::DataStorage;
-
-	if (ActiveEditorEntityManager && !TableNameLookup.Contains(Name))
-	{
-		TableHandle Result = Tables.Num();
-		FMassArchetypeCreationParams ArchetypeCreationParams;
-		ArchetypeCreationParams.DebugName = Name;
-		ArchetypeCreationParams.ChunkMemorySize = GetTableChunkSize(Name);
-		Tables.Add(ActiveEditorEntityManager->CreateArchetype(ColumnList, ArchetypeCreationParams));
-		if (Name.IsValid())
-		{
-			TableNameLookup.Add(Name, Result);
-		}
-		return Result;
-	}
-	return InvalidTableHandle;
-}
-```
-
-::: tip EditorDataStorage Plugin
->A central extendable data storage for editors and their corresponding data with support for viewing and editing through a collection of widgets.
-
-- 基于Mass Entity的插件，是一个可扩展的中央数据存储，用于编辑器及其相应的数据，并支持通过一组小部件进行查看和编辑。
-
-:::
-
-::: tip 为什么同原型的Chunk固定大小
-数据连续性和缓存友好，典型的空间换时间
-- 连续内存布局：固定大小的 chunk 能保证同一块内存里存放大量实体数据，这样数据在内存中是连续的。
-- 缓存预取 **(Prefetch)**：CPU 在遍历连续内存时能更好地利用预取机制，大幅提高 L1/L2 缓存的命中率，降低内存延迟。
-- SIMD 加速：连续的数据还便于利用 SIMD 指令做批量处理。
-- 无动态判断：固定大小让迭代逻辑简单，无需在遍历过程中判断当前 chunk 的大小或者是否还有更多数据。
-- 频繁分配：动态大小需要不断调整内存分配，可能引发频繁的分配和释放操作，这在高并发下会严重拖慢性能。
-- 散乱内存：动态 chunk 可能导致实体数据分散在内存的不同区域，破坏了数据局部性，降低 CPU 预取效率。
-- 额外判断：遍历时需要动态判断每个 chunk 实际存储了多少实体，代码逻辑更复杂，难以优化到极致。
-
-**Chunk-Base的结构易操作且高效:**
-> 当删除掉其中一个Entity时，内部的其他Entity并不会移动，所以这个Entity会在Chunk中空出来，这时如果再Add新的Entity会复用这个空出来的内存，当删除掉Chunk中所有Entity时，Chunk的内存会自动释放掉。整个数据结构实现，相当于是TSparseArray和TChunkedArray的结合，因为UE没有自带这种泛型容器，所以这里就单独实现了。
-:::
-
-#### Chunk和CPU缓存
-我的电脑16核心，L1总大小1MB，L2总大小8MB:
-![alt text](../../assets/images/cacheline_image.png)
-
-也就是，每个核心分配到64KB。
-```sh
-每个核心的L1缓存分配：
-- L1 指令缓存 (L1i): 32KB
-- L1 数据缓存 (L1d): 32KB
-总计每核心：64KB
-
-16个核心总共：1MB L1缓存
-```
-
-也就是，每个核心能用于装载数据的实际大小只有32KB， 明显小于虚幻默认chunk大小128KB。执行一次chunk遍历，L1至少要加载4次数据。
-
-但这并不会影响性能(不至于需要担心)：
-- 数据会在L2/L3 预载（Prefetch）。
-- 数据在 Chunk 中是连续存储 的，这有助于 CPU 进行顺序读取和预取，大幅减少随机访问的开销
-- 每个核心都在处理自己那部分 Chunk
-
-- L1 缓存放不下整个 Chunk 并不意味着性能一定很差；现代 CPU 通过多级缓存和预取机制，依然能让 Chunk-based 的数据访问获得可观的效率。
-- 关键在于：把实体数据打包在一起（Data-Oriented 设计），迭代时尽量线性访问，这样才能充分利用缓存局部性。
-
-#### Chunk 造成的浪费
-
-Chunk 就像一辆高速列车，满载率非常重要，如果经常装不满就会造成内存浪费。
-
-乘客就是entity，如果每次处理的entity都是带着大包小包的大胖子，吞吐量就会大大下降，为了最大化吞吐量，entity要尽可能设计得小而美。
-
-使用Mass Debugger 可以查看到Chunk的内存浪费以及entity大小等信息，如图所示:
-- entity数量太少，大量内存浪费：
- ![alt text](../../assets/images/Mass-Advanced_image-3.png)
-- entity本身太大（280B），一个chunk 只能装下467个。
- ![alt text](../../assets/images/Mass-Advanced_image-2.png)
-- entity体积适中，一次遍历就是3000多个，非常高效：
- ![alt text](../../assets/images/Mass-Mid_image-2.png)
-
-
-
-
-
-
-### Entity 
-前面说了，Chunk是一辆座位非常多的列车，乘客就是entity，如果每次寻找乘客的时候都要遍历整个列车逐个排查，乘务员得跑断腿，效率低下。
-
-FMassEntityHandle 是一个指向Chunk内存中实体数据的指针，它的作用就相当于一本小册子记录了实体的位置，找人只需要遍历小册子就可以了，不需要跑遍整个列车。
-
-#### FEntityData
-它的真身在这里，`FEntityData`:
-![alt text](../../assets/images/Mass-Mid_image-1.png){width=50%}
-
-之所以还要一个序列号，是为了区分 新老entities
-
-```cpp
-// 数组块，默认大小是 16384 = 16 * 1024，既 16KB，因为大部分CPU的L1d缓存大小是16kb的倍数。
-/** An array that uses multiple allocations to avoid allocation failure due to fragmentation. */
-template<typename InElementType, uint32 TargetBytesPerChunk = 16384, typename AllocatorType = FDefaultAllocator >
-class TChunkedArray
-```
-
-> SerialNumber，作用就是某个Index上的Entity被删除后，再创建个新的Entity，如果原来Index指向的EntityData和EntityHandle序列号不匹配，就可以明确EntityHandle指向的是老的Entity而不是新的，这样就避免了只用Index标记Entity导致的冲突问题。-- quabqi
-
-```cpp
-struct FEntityData
-{
-	TSharedPtr<FMassArchetypeData> CurrentArchetype; // 指向Chunk内存中的位置
-	int32 SerialNumber = 0;
-	
-	~FEntityData();
-	void Reset();
-	bool IsValid() const;
-};
-```
-
-#### FMassEntityHandle
-是留给调用者的寻址存根
-```cpp
-// 返回给调用者时，才变成了FMassEntityHandle
-for (int32 EntityIndex = StartingIndex; EntityIndex < Entities.Num(); ++EntityIndex)
-{
-	Entities[EntityIndex].SerialNumber = SerialNumber;
-	OutEntityHandles[CurrentEntityHandleIndex++] = { EntityIndex, SerialNumber };
-}
-```
-
-
-
-
-
-
 
 
 
@@ -1092,6 +947,155 @@ UMSObserverOnAdd::UMSObserverOnAdd()
 }
 ```
 需要和 Deferred命令配合使用。
+
+
+
+### Subsystem
+
+#### 1. Subsystem 并行描述
+
+**Subsystem需要告知Mass系统，它的并发特性。**
+
+使用结构体模板TMassExternalSubsystemTraits来“特化” UMyWorldSubsystem：
+```cpp
+template<>
+struct TMassExternalSubsystemTraits<UMyWorldSubsystem> final
+{
+    enum
+    {
+        ThreadSafeRead = true,  // 是否支持多线程读取
+        ThreadSafeWrite = false, // 是否支持多线程写入
+    };
+};
+
+```
+
+因为在Mass中，Processors通常是并行执行的（利用多线程）。为了确保数据安全和避免竞争条件，Mass需要知道每个Processor会如何访问Subsystems（子系统）
+- 让Mass系统知道该Subsystem可以在哪些线程上访问
+- 帮助Mass系统计算处理器(Processor)和查询(Query)的依赖关系
+
+完整例子：
+```cpp
+// 一个支持并行读取但不支持并行写入的Subsystem
+class UMyWorldSubsystem : public UWorldSubsystem 
+{
+public:
+    void Write(int32 InNumber)  // 写操作需要互斥访问
+    {
+        UE_MT_SCOPED_WRITE_ACCESS(AccessDetector);
+        Number = InNumber;
+    }
+
+    int32 Read() const  // 读操作可以并行
+    {
+        UE_MT_SCOPED_READ_ACCESS(AccessDetector);
+        return Number;
+    }
+};
+
+// 为该Subsystem定义traits
+template<>
+struct TMassExternalSubsystemTraits<UMyWorldSubsystem> final
+{
+    enum
+    {
+        ThreadSafeRead = true,   // 允许并行读取
+        ThreadSafeWrite = false, // 不允许并行写入
+    };
+};
+
+```
+:::details AccessDetector 宏
+源码里提供很多AccessDetector宏，用来描述访问的互斥性。需要慢慢研究：
+```cpp
+#define UE_MT_DECLARE_RW_ACCESS_DETECTOR(AccessDetector) FRWAccessDetector AccessDetector;
+#define UE_MT_DECLARE_RW_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FRWRecursiveAccessDetector AccessDetector;
+#define UE_MT_DECLARE_RW_FULLY_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FRWFullyRecursiveAccessDetector AccessDetector;
+#define UE_MT_DECLARE_MRSW_RECURSIVE_ACCESS_DETECTOR(AccessDetector) FMRSWRecursiveAccessDetector AccessDetector;
+
+#define UE_MT_SCOPED_READ_ACCESS(AccessDetector) const FBaseScopedAccessDetector& PREPROCESSOR_JOIN(ScopedMTAccessDetector_,__LINE__) = MakeScopedReaderAccessDetector(AccessDetector);
+#define UE_MT_SCOPED_WRITE_ACCESS(AccessDetector) const FBaseScopedAccessDetector& PREPROCESSOR_JOIN(ScopedMTAccessDetector_,__LINE__) = MakeScopedWriterAccessDetector(AccessDetector);
+
+#define UE_MT_ACQUIRE_READ_ACCESS(AccessDetector) (AccessDetector).AcquireReadAccess();
+#define UE_MT_RELEASE_READ_ACCESS(AccessDetector) (AccessDetector).ReleaseReadAccess();
+#define UE_MT_ACQUIRE_WRITE_ACCESS(AccessDetector) (AccessDetector).AcquireWriteAccess();
+#define UE_MT_RELEASE_WRITE_ACCESS(AccessDetector) (AccessDetector).ReleaseWriteAccess();
+
+```
+:::
+
+:::tip 模板元编程
+这种利用Traits来描述能力的写法，并非Mass特有。
+
+UE内部有非常多类似的用法，如：
+```cpp
+template<>
+struct TStructOpsTypeTraits<FHitResult> : public TStructOpsTypeTraitsBase2<FHitResult>
+{
+	enum
+	{
+		WithNetSerializer = true,
+	};
+};
+
+```
+
+另外，奇异递归模板也属于 元编程。详见 [奇异递归模板](../C++/CRTP.md)
+:::
+
+#### 2. Processors中Query自定义UWorldSubsystem
+
+从UE 5.1开始，Mass增强了API，允许你在Processors中直接使用UWorldSubsystem。这提供了一种创建封装功能的强大方式，可以用来操作实体（Entities）或其他游戏逻辑。
+
+简单地说，就是Query里允许查询相关的Subsystem，然后在Executor中使用Subsystem， 如修改 Subsystem中的变量。
+
+
+```cpp
+// MyProcessor.cpp
+#include "MyProcessor.h"
+#include "MyWorldSubsystem.h" // 包含你的Subsystem的头文件
+
+UMyProcessor::UMyProcessor()
+{
+	bAutoRegisterWithProcessingPhases = true;
+	ExecutionFlags = (int32)(EProcessorExecutionFlags::All);
+    ProcessingPhase = EMassProcessingPhase::PrePhysics;
+}
+
+void UMyProcessor::ConfigureQueries()
+{
+	// 添加Subsystem要求
+	MyEntityQuery.AddSubsystemRequirement<UMyWorldSubsystem>(EMassFragmentAccess::ReadWrite);
+	MyEntityQuery.RegisterWithProcessor(*this);
+    //ProcessorRequirements也需要添加
+    ProcessorRequirements.AddSubsystemRequirement<UMyWorldSubsystem>(EMassFragmentAccess::ReadWrite);
+}
+
+void UMyProcessor::Execute(FMassEntityManager& EntityManager, FMassExecutionContext& Context)
+{
+    // UWorld* World = EntityManager.GetWorld(); //在lambda外获取world
+	MyEntityQuery.ForEachEntityChunk(EntityManager, Context, [/*World*/](FMassExecutionContext& Context)
+	{
+		// 获取你的Subsystem
+        // 在lambda里面, 使用Context.GetMutableSubsystemChecked, 无需传入World
+		UMyWorldSubsystem* MySubsystem = Context.GetMutableSubsystemChecked<UMyWorldSubsystem>();
+
+		// 使用你的Subsystem
+		MySubsystem->Write(42);
+		int32 Value = MySubsystem->Read();
+
+		// ... 其他逻辑 ...
+	});
+}
+
+```
+
+注意：ProcessorRequirements也需要添加Subsystem, 否则会报错
+
+
+
+
+
 
 
 
@@ -1547,9 +1551,6 @@ using FMassDeferredDestroyCommand = FMassDeferredCommand<EMassCommandOperationTy
 | `ChangeComposition` | 添加和移除Tag/Fragment。                          |
 | `Set`             | 更改Fragment数据（也添加Fragment）。                |
 | `None`            | 默认值，始终最后执行。                           |
-
-
-
 
 
 
