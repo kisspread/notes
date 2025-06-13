@@ -241,7 +241,7 @@ for (int32 EntityIndex = StartingIndex; EntityIndex < Entities.Num(); ++EntityIn
 
 ### Fragment
 
-Fragment在Mass Entity中是数据的包装单位，通常是预定义的，但也可以通过Deferred Command可以将fragment 组织到不同的Chunk中(既改变原型)。以下是一个典型的Fragment示例：
+Fragment在Mass Entity中是数据的包装单位，entity的fragment(s) 通常是预定义的，但也可以通过Deferred Command可以修改entity的fragment成分，（但这会把entity组织到不同的Chunk中，既改变原型）以下是一个典型的Fragment示例：
 
 ```cpp
 // 这是一个成员比较多的Fragment
