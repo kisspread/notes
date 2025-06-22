@@ -778,18 +778,7 @@ if ((Settings->Mode == EPCGDifferenceMode::Inferred &&
 }
 ```
 
-- **密度函数选择**：
-```cpp
-enum class EPCGDifferenceDensityFunction
-{
-    ClampedSubstraction,  // 限制减法：结果被限制在[0,1]范围内
-    Binary,              // 二元的：非黑既白
-    Minimum              // 最小值：取两个空间的最小密度值
-};
-```
-密度函数的用法比较复杂，不是很理解。可以参考：
-https://masonstevenson.dev/blog/unreal-pcg-difference-node-explained
-
+ 
 
 - **边界检查优化**：
 ```cpp
@@ -806,16 +795,6 @@ if (!GetBounds().Intersect(InDifference->GetBounds()))
 bool bDiffMetadata = true;  // 默认处理元数据
 bool bKeepZeroDensityPoints = false;  // 默认移除密度为0的点
 ```
-
-具体的差异结果：
- 
-- Discrete模式：离散模式，检查点是否在体积内，根据密度函数决定是否保留
-- Continuous模式：连续模式，保持体积特性
-
-Volume 之间是差异是顶点之间的差异，比如正方体会被切成8个小正方体，toPoints后，会生成8个点。 toPoints的点会因为世界位置的不同，存在不同的位置偏差，很难控制。
-经过测试，当前的Volume to Points的点，存在各种不在预期的行为，建议不要使用，感兴趣自己试试：
-![alt text](../assets/images/00PCG_Base_image-1.png)
- 
 
  
 ## PGC 并行（C++）

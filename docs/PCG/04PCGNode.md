@@ -362,7 +362,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 
 
 ## Difference 差集
-[详情](./00PCG_Base.md#节点分析)
+[详情](./04PCGNode2_Diff.md)
 
 ## Intersection 交集
 可以添加多个secondary input
