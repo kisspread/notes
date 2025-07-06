@@ -140,7 +140,7 @@ namespace PCGDifferenceDataUtils
 ![alt text](../assets/images/04PCGNode2_Diff_image-9.png){width=60%}
 
 结果：
-![alt text](../assets/images/04PCGNode2_Diff_image-10.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-10.png){width=60%} 
 
 可以看到，红色的部分是“雷”，灰色的程度表达出附近雷的数量，黑色的部分就是与雷直接覆盖的点，密度是0；
 
