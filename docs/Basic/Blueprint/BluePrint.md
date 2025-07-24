@@ -8,6 +8,17 @@ comments: true
 ## 蓝图操作问题
 记录使用蓝图时，遇到的操作问题
 
+### NavMesh 始终无法显示
+按P后，只显示白色的文字信息，而没有显示绿色区域，可以尝试以下步骤：
+1. 首先确认RecastNavMesh-Default 是否正确生成，如果没有，找到 WorldSettings，Navigation System Config,选择任意一种配置，找到Supported Agents Mask, 点击这个checkbox；然后撤销，查看是否生成。如果还是不生成，建议重新入NavMesh。
+
+2. 如果 RecastNavMesh-Default 正确生成，但是还是无法显示; 检查 Draw Filled Polys, 和 Draw Nav Mesh Edges是否勾选；如果还有其他修改过的值，全部恢复默认；
+
+3. 如果还是不显示，尝试手动点击 Build，Build Path；
+
+4. 如果 step1，2，3 都不能解决；在 RecastNavMesh-Default 上 搜索 `Ledge Slope Filter Mode`, 切换一下模式为其他，再改回Recast；此时应该可以显示了。
+
+
 ### 无法拖动 Components的到  蓝图graph 窗口
 
 拖动成员时，显示类似 “cannot find corresponding variable”
