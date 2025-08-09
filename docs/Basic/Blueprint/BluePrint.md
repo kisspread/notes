@@ -8,15 +8,26 @@ comments: true
 ## 蓝图操作问题
 记录使用蓝图时，遇到的操作问题
 
+### 蓝图循环
+蓝图是由最大支持的循环次数限制的，超过这个次数，就不处理。默认是1000,000次。
+![alt text](../../assets/images/BluePrint_image-4.png)
+
 ### NavMesh 始终无法显示
+
 按P后，只显示白色的文字信息，而没有显示绿色区域，可以尝试以下步骤：
 1. 首先确认RecastNavMesh-Default 是否正确生成，如果没有，找到 WorldSettings，Navigation System Config,选择任意一种配置，找到Supported Agents Mask, 点击这个checkbox；然后撤销，查看是否生成。如果还是不生成，建议重新入NavMesh。
 
 2. 如果 RecastNavMesh-Default 正确生成，但是还是无法显示; 检查 Draw Filled Polys, 和 Draw Nav Mesh Edges是否勾选；如果还有其他修改过的值，全部恢复默认；
 
-3. 如果还是不显示，尝试手动点击 Build，Build Path；
+3. 如果还是不显示，尝试手动点击 Build，Build Path；然后，找到RecastNavMesh-Default，搜索 `Runtime Genetaion`， 修改`Dynamic` 为 `Static`，反复切换；
 
 4. 如果 step1，2，3 都不能解决；在 RecastNavMesh-Default 上 搜索 `Ledge Slope Filter Mode`, 切换一下模式为其他，再改回Recast；此时应该可以显示了。
+
+### NavMesh 出现无法刷新的挖洞行为
+有些actor 会导致NavMesh无法刷新，拖动到哪里，挖洞哪里。
+<video controls src="../../assets/images/BluePrint_image-5.mp4" title="Title"></video>
+这是引擎的bug，切换地图或者重启引擎，就能解决。
+
 
 
 ### 无法拖动 Components的到  蓝图graph 窗口
