@@ -149,6 +149,9 @@ println(list.flatMap { it.toList() }) // [1, 2, 3, 4, 5]
 ### 尽量使用PCG Stamp, 而不是PCG 原始 Actor，否则可能存在潜在的崩溃问题。
 ![alt text](../assets/images/03PCG_Advanced_image-23.png)
 
+
+
+
 ### PCG (编辑器时)回调内存泄露
 
 官方的PCG回调，比如OnGenerated, 通过编辑器详情页面创建一个Event，是有问题的。会导致内存泄露，每次编译一次，都会创建一个新的Event，导致回调次数递增。
@@ -195,3 +198,19 @@ NextDirectionDelta： 是用当前点，来记录它的下一个点的方向变�
 
 最终附加一个round节点，可以解决这个问题：
 ![alt text](../assets/images/03PCG_Advanced_image-22.png)
+
+
+## PCG 5.6 之前创建 spline 数据丢失的问题
+5.5 bug 重现如下：
+1. 创建多组数据（多张表），查看Symbol，Size 数据 添加正常
+![alt text](../assets/images/03PCG_Advanced_image-25.png)
+
+2. 从点里面创建spline，刚刚添加的自定义数据全部丢失
+![alt text](../assets/images/03PCG_Advanced_image-26.png)
+
+5.6 正常：
+自定义数据没有丢失，也无需复制
+![alt text](../assets/images/03PCG_Advanced_image-27.png)
+
+但下一步 Sline line to Segments，自定义数据会丢失, 使用 copy all domain 可以解决
+![alt text](../assets/images/03PCG_Advanced_image-28.png)

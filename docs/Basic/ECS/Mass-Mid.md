@@ -7,6 +7,12 @@ comments: true
 
 中级篇主要是对常用概念的梳理，细节使用等
 
+::: warning 5.6 引入的MassQueryExecutor 部分代码可能需要调整
+Simplified Mass Processor API
+We’ve streamlined the way you build Mass processors by introducing a new query authoring workflow and simplified data iteration. This reduces boilerplate code, improves readability, and enhances debugging — making it easier and faster to develop with Mass. The new MassQueryExecutor also unifies and simplifies core functionality, helping bring the Mass framework more in line with familiar ECS patterns.
+
+:::
+
 ## 常用概念
 
 ### Archetype
