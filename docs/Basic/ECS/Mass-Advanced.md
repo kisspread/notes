@@ -13,6 +13,10 @@ comments: true
 ## MassEntity 工具补充
 
 ### FMassDebugger
+::: warning 5.6 重新设计了MassDebugger 界面更好看了
+![alt text](../../assets/images/Mass-Advanced_image-4.png){width=50%}
+:::
+
 `\Engine\Source\Runtime\MassEntity\Private\MassDebugger.cpp`
 
 调试工具，这里面有大量Entity相关的调试命令。也有一些调试方法，其中比较好用的是`SelectEntity`。它带了一个`OnEntitySelectedDelegate`，可以注册一个回调函数，当选中Entity时会触发。
