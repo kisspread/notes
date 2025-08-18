@@ -7,6 +7,29 @@ comments: true
 记录各种难缠的BUG以及解决过程
 
 
+## Unable to use default cache graph
+
+这是UE5.4之后的 新功能Zen Server导致的bug，有一定的触发概率，通常和电脑的代理程序冲突有关。 
+```txt
+0x00007ff95fa7b8a0 {UnrealEditor-DerivedDataCache.dll!DerivedData::Logging::Private::FStaticBasicLogRecord const `UE::DerivedData::FDerivedDataBackendGraph::FDerivedDataBackendGraph(void) __ptr64'[::E]::LOG_Static} {Format=0x00007ff95fa7b8c0þC þSL"Unable to use default cache graph '%s' because there are no %s nodes available.Add -DDC-ForceMemoryCache to the command line to bypass this if you need access to the editor settings to fix the cache configuration.", File=0x00007ff95fa7b5c0þC þS"C:\UnrealEngine\Engine\Source\Developer\DerivedDataCache\Private\DerivedDataBackends.cpp", Line=208, ...}
+```
+
+解决方法：
+1. 重启代理
+2. 重启UE
+3. 如果还是不行，尝试手动启动\UnrealEngine\Engine\Binaries\Win64\zen.exe 
+4. 还是不行，但又必须使用代理，尝试 -ddc=NoZenLocalFallback
+
+```
+UE_LOG(LogDerivedDataCache, Display,
+					TEXT("%s: Readiness check failed. "
+						"It will be deactivated until responsiveness improves. "
+						"If this is consistent, consider disabling this cache store through "
+						"the use of the '-ddc=NoZenLocalFallback' or '-ddc=InstalledNoZenLocalFallback' "
+						"commandline arguments."),
+					*GetName());
+```
+
 ## MultiUserClient
 
 文档： https://dev.epicgames.com/documentation/zh-cn/unreal-engine/multi-user-editing-overview-for-unreal-engine
