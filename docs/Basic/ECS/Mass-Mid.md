@@ -654,6 +654,8 @@ chunk的遍历是基于相同的原型进行的，sharedFragment的CRC不同原�
 
 **FInstancedStruct、FSharedStruct、FStructView、FConstStructView 都是UE对结构体指针的封装。**
 
+可以查看 quabqi大佬的 [StructUtils](https://zhuanlan.zhihu.com/c_1358890091050606592)了解更多信息。我这里做了简单记录。
+
 ###### FInstancedStruct
 FInstancedStruct 是 Unreal Engine 中用于实现 结构体多态 的特殊容器，允许在 USTRUCT 中动态存储不同类型的结构体实例。（通过Make模板函数实现类型擦除）
 
