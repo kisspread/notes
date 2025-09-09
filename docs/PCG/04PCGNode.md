@@ -47,10 +47,10 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 
 因此，PCG的大部分操作都可以归纳为**选中表的其中一列进行操作**
 
-归纳一些大部分的情况：
+以`multiply`乘法节点为例，归纳一些大部分的情况：
 
 **表之间操作的局限性：必须N:N**（大部分情况下）
-
+这里用`Merge Points`节点构建行数不同的表，图里接入了多少个点，就是有多少行。
 - 图下图，两者行数必须相等，才能实现“两两相乘”：
   ![alt text](../assets/images/04PCGNode_image-26.png){width=80%}
   图中展示行数不同的表之间进行相乘，会报错，无论是2对3，还是1对3操作，都报错。表之间数据必须一一对应。copy points是特殊实现，可以无视这个限制。详见[copy points](#copy-points)。
@@ -79,18 +79,18 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 
 - 写回：`@source`
   ![alt text](../assets/images/04PCGNode_image-15.png){width=40%}
-  除了用Set赋值，绝大部分操作(比如加减乘除)都支持写回`@source`， 则也是一种赋值方式。output target使用`@source`表示写回默认输出数据，图这里默认输出是InputA，可以修改为InputB.
+  除了用Set赋值，绝大部分操作(比如加减乘除)都支持写回`@source`， 则也是一种赋值方式。既把操作后的结果，赋值到其实一个输入源，output target使用`@source`表示写回默认输出数据，图这里默认写回的输入源是InputA，可以修改为InputB.
 
-- 重写: 使用`Remap`节点 
+- 重映射: 使用`Remap`节点 
   ![alt text](../assets/images/04PCGNode_image-16.png){width=40%}
-  图中展示用尾操作，把数据写入`@color`里面。ReMap还能随机过渡。
+  配合`Source`,把数据重写到另一个属性里，也可以重映射到设定的区间范围。图中展示用尾操作，把数据写入`@color`里面。remap还能在设定的区间内随机过渡。
 
 - 更常用的赋值：`Copy Attribute`节点
-  - Set不支持的，它都能正确支持。该节点支持3种模式，可以N:N,就是Each to Each。但我在测试把属性复制到样条线数据的时候，发现它无法正确N:N，但Points数据的时候是正常的。
+  - Set不支持的，它都能正确支持。该节点支持3种模式，可以N:N,就是Each to Each。（但我在测试把属性复制到样条线数据的时候，发现它无法正确N:N，而如果是Points数据的时候是正常的）
 
 - 添加：显式使用`Add Attribute`节点
   ![alt text](../assets/images/04PCGNode_image-17.png){width=50%}
-  上面的2种操作也能把属性添加到末尾，但这个方法更加强大，可以添加各种支持的数据，比如Texture等。  
+  字面意思，追加属性。如果`Output Target`设置为`@source`，则和`Set`一样，不再是追加，而是修改。为了避免歧义，修改就使用`Set`，追加就使用`Add Attribute`。
 
 ### 读取
 
@@ -305,8 +305,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 ![alt text](../assets/images/04PCGNode_image-32.png)
 :::
 
-## Attribute ReMap 属性重映射
-这是一个修改自身属性的节点，非常常用
+
 
 ## Trig 三角函数节点
 三角函数节点，可以用于计算正弦、余弦、正切等函数
