@@ -1,11 +1,9 @@
 ---
-title: Using macro to define Native Gameplay Tag
+title: Gameplay Tag
 comments:  true
 ---
 
-::: warning 
-This post base on Aura GAS Course
-::: 
+
  
 ## GamePlayTag
 
