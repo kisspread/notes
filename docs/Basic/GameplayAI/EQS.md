@@ -220,3 +220,26 @@ TObjectPtr<UEnvQueryGenerator> MyGenerator;
 `TObjectPtr` 是一个智能指针包装器 (smart pointer wrapper)，它能被垃圾回收系统 (Garbage Collection, GC) 感知。当它指向的 `UObject` 被销毁时，`TObjectPtr` 会**自动被置为 `nullptr`**！
 
 这就意味着，如果 `FEnvQueryInstance` 内部使用的是 `TObjectPtr<UEnvQueryGenerator>`，那么在蓝图编译导致旧Generator被销毁后，这个指针会自动变空。下一次访问时，`IsValid()` 检查就会失败，程序会走你写的安全退出逻辑，而不是崩溃。
+
+
+
+## StateTree 使用 EQS
+
+- 需要注意的是， EQS Task 默认绑定值居然是Controller, 而不是Pawn，所以很容易出问题，这里算个小陷阱。注释里说明得很清楚：Using Controller as query's owner is dangerous since Controller's location is usually not what you expect it to be! 如果默认绑定的是Controller， 位置会出错。
+
+- EQS 是异步的，所以Task 也是异步的。查询的返回值需要保存是父状态，判断是否有查询结果，可以用该Task的成功失败来决定接下来的状态路径。
+  ```cpp
+    bool bSuccess = false;
+	if (QueryResult && QueryResult->IsSuccessful())
+	{
+		//此处省略代码
+		//此处省略代码
+
+		bSuccess = true;
+	}
+
+	StrongContext.FinishTask(bSuccess ? EStateTreeFinishTaskType::Succeeded : EStateTreeFinishTaskType::Failed);
+  ```
+  可以看到 ，成功与否，只取决于QueryResult是否成功。
+  
+  而QueryResult是否成功，取决于EQS的NumValidItems是否大于0。
