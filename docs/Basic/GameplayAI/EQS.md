@@ -243,3 +243,40 @@ TObjectPtr<UEnvQueryGenerator> MyGenerator;
   可以看到 ，成功与否，只取决于QueryResult是否成功。
   
   而QueryResult是否成功，取决于EQS的NumValidItems是否大于0。
+
+
+ - EQS Task 需要绑定Result，否则会报错。
+    
+	代码里，`result`是`FStateTreePropertyRef`引用类型，起到泛型作用，通过`RefType`来限制`Result`的具体类型，支持Vector和Actor，以及通过`CanRefToArray`支持相关的容器类型。
+    ```cpp
+	USTRUCT()
+	struct FStateTreeRunEnvQueryInstanceData
+	{
+		GENERATED_BODY()
+
+		// Result of the query. If an array is binded, it will output all the created values otherwise it will output the best one.
+		UPROPERTY(EditAnywhere, Category = Out, meta = (RefType = "/Script/CoreUObject.Vector, /Script/Engine.Actor", CanRefToArray))
+		FStateTreePropertyRef Result;
+	};
+	```
+
+	赋值：通过`GetPtrTupleFromStrongExecutionContext`获取各种类型指针，判断指针是否为空，然后赋值。(这里也能看出，C++的开发效率很低，要写4种类型判断)
+	```cpp
+	auto [VectorPtr, ActorPtr, ArrayOfVector, ArrayOfActor] = InstanceDataPtr->Result.GetPtrTupleFromStrongExecutionContext<FVector,AActor*, TArray<FVector>, TArray<AActor*>>(StrongContext);
+	if (VectorPtr)
+	{
+		*VectorPtr = QueryResult->GetItemAsLocation(0);
+	}
+	else if (ActorPtr)
+	{
+		*ActorPtr = QueryResult->GetItemAsActor(0);
+	}
+	else if (ArrayOfVector)
+	{
+		QueryResult->GetAllAsLocations(*ArrayOfVector);
+	}
+	else if (ArrayOfActor)
+	{
+		QueryResult->GetAllAsActors(*ArrayOfActor);
+	}
+	```
