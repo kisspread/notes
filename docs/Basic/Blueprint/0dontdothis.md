@@ -37,7 +37,7 @@ UE_LOG(LogDerivedDataCache, Display,
 使用建议：https://dev.epicgames.com/documentation/zh-cn/unreal-engine/getting-started-with-multi-user-editing-in-unreal-engine#6-%E5%85%B1%E5%90%8C%E5%B7%A5%E4%BD%9C
 
 ### BUG：多人协作工具无法加入Session
-![alt text](../../assets/images/0dontdothis_image.png)
+![alt text](../../assets/images/0dontdothis_image.webp)
 > `Invalid version for 'DNAAssetVer' (expected '<none>', got '0'). Do you have an extra plugin enabled?`
 
 > --- UnrealEngine5.5.3
@@ -47,11 +47,11 @@ UE_LOG(LogDerivedDataCache, Display,
 - 同一个项目，相同的UE版本，理论上plugin都是相同的，所以首先就排除掉了正确答案，开始对联机方式尝试怀疑。
 - 由于使用了代理工具进行局域网联机，反复检查网络状态和相关配置，浪费了许多时间。
 - 然后有同学他是通过rider启动，恍然大悟，是riderLink！Rider启动会和直接启动产生插件差异，fixed +1
-  ![alt text](../../assets/images/0dontdothis_image-1.png)
+  ![alt text](../../assets/images/0dontdothis_image-1.webp)
 - 但依然无法加入。继续找工具，在根源分析错误代码，发现错误源自于一个叫做“RigLogic”的插件，可是项目文件里明明没有设置启动这个插件，不同电脑之间居然有差异？尝试是UE里取消掉这个插件，生成的是这段代码：
-  ![alt text](../../assets/images/0dontdothis_image-2.png)
+  ![alt text](../../assets/images/0dontdothis_image-2.webp)
 - 恍然大悟，不同电脑UE之间，插件的版本是不同的。最新下载的版本（5.5.3）已经不默认配套Bridge插件了，默认是Fab，而手动升级UE的电脑，已经有这个插件。终于解决UE给我们的下马威！
-  ![alt text](../../assets/images/0dontdothis_image-3.png)
+  ![alt text](../../assets/images/0dontdothis_image-3.webp)
   
 
 ## Blueprint

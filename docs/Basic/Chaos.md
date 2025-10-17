@@ -37,7 +37,7 @@ p.Chaos.Solver.DebugDraw.Cluster.Constraints 1
 
 ## Chaos 更新
 5.6 支持异步的物理状态的创建和销毁
-![alt text](../assets/images/Chaos_image.png)
-![alt text](../assets/images/Chaos_image-1.png)
+![alt text](../assets/images/Chaos_image.webp)
+![alt text](../assets/images/Chaos_image-1.webp)
 
 

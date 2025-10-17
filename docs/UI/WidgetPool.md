@@ -8,7 +8,7 @@ this post is base on Aura GAS Course
 :::   
 ---
 
- ![alt text](../assets/images/WidgetPool_image.png)
+ ![alt text](../assets/images/WidgetPool_image.webp)
 
 I found a built-in widget pool in the UE source code, so I think we can use it for the **Aura Damage Floating Text**. Because in some scenarios, characters may create a lot of floating widgets and then just remove them, which could cause a slight performance loss.
 
@@ -46,29 +46,29 @@ This is a piece of code from UDynamicEntryBox, showing us how to use a widget po
     
 ### Blueprint
 - create a UserWdiget, place a DynamicEntryWidget
-![alt text](../assets/images/WidgetPool_image-2.png)
+![alt text](../assets/images/WidgetPool_image-2.webp)
 
 - set the box type to overlay
-![alt text](../assets/images/WidgetPool_image-3.png)
+![alt text](../assets/images/WidgetPool_image-3.webp)
 - set the aura floating text widget class
-![alt text](../assets/images/WidgetPool_image-4.png)
+![alt text](../assets/images/WidgetPool_image-4.webp)
 
 
 
 ### CPP
 - Update AuraPlayerController, Update AuraPlayerController, no need to create and remove WidgetComponent anymore.
-![alt text](../assets/images/WidgetPool_image-1.png)
+![alt text](../assets/images/WidgetPool_image-1.webp)
 
 - Since it's difficult to notify DynamicBox to release the widget after the animation ends in Blueprint, I tried but found it challenging, so I switched to implementing it in C++ . I **Update UDamageTextComponent** like so:
- ![alt text](../assets/images/WidgetPool_image-5.png)
+ ![alt text](../assets/images/WidgetPool_image-5.webp)
   Make sure the log doesn't keep increasing in size. If it does, then the configuration is correct. Otherwise, it means new entries are being created continuously.
 
 - Attention, the instances of DynamicBox will be automatically destroyed when the reference count drops to 0 upon the death of the character. If you have other references to the floating widget elsewhere, you may need to manually clean them up.
 
 
 ### Usage
-  ![alt text](../assets/images/WidgetPool_image-6.png)
+  ![alt text](../assets/images/WidgetPool_image-6.webp)
 
 ### Other
 The DynamicBox has some other interesting features, such as radial.
-![alt text](../assets/images/WidgetPool_image-7.png)
+![alt text](../assets/images/WidgetPool_image-7.webp)

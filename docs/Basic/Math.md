@@ -7,9 +7,9 @@ comments: true
 叉乘的两个应用：
 - 判断左右
 - 判断里外
-![alt text](../assets/images/Math_image.png)
+![alt text](../assets/images/Math_image.webp)
 比如光栅化就会用到，判断像素是否在三角形内部。如果是0，代表edge cases，自己决定。
-![alt text](../assets/images/Math_image-2.png)
+![alt text](../assets/images/Math_image-2.webp)
 
 ## 四元数乘法
 四元数（Quaternion） 主要用于表示旋转，避免万向锁（Gimbal Lock）问题，同时提供更平滑的插值（如球面线性插值 Slerp）
@@ -236,7 +236,7 @@ void AMyCharacter::RotateTowardsTarget(FVector TargetLocation, float DeltaTime)
 
 ## [Matrix](https://www.bilibili.com/video/BV1X7411F744?p=2)
 
-![alt text](../assets/images/Math_image-1.png)
+![alt text](../assets/images/Math_image-1.webp)
 
 - 要能相乘，N要相同，然后结果 把N看出消掉了即可
 - 计算结果，加入是第i行，第j列，那么就去A找第i行的全部元素，和B第J列的全部元素，点积即可。

@@ -10,7 +10,7 @@ comments: true
 
 ### 蓝图循环
 蓝图是由最大支持的循环次数限制的，超过这个次数，就不处理。默认是1000,000次。
-![alt text](../../assets/images/BluePrint_image-4.png)
+![alt text](../../assets/images/BluePrint_image-4.webp)
 
 ### NavMesh 始终无法显示
 
@@ -33,10 +33,10 @@ comments: true
 ### 无法拖动 Components的到  蓝图graph 窗口
 
 拖动成员时，显示类似 “cannot find corresponding variable”
-![alt text](../../assets/images/BluePrint_image-2.png)
+![alt text](../../assets/images/BluePrint_image-2.webp)
 
 原因是，命名消失了，变成了 none，未命名的组件蓝图脚本里无法使用：
-![alt text](../../assets/images/BluePrint_image-3.png)
+![alt text](../../assets/images/BluePrint_image-3.webp)
 
 应该是热重载导致。重写编译试试，实在不行改个名字。
 
@@ -47,10 +47,10 @@ comments: true
 ### Event的变量覆盖
 当一个eventA 里面有延时节点的时候，要特别小心。如果延时节点要获取eventA 设置进来的参数，这个参数很可能被 多次调用的 eventA 覆盖，导致延时节点获得的值永远都是最新值。
 
-![alt text](../../assets/images/BluePrint_image.png)
+![alt text](../../assets/images/BluePrint_image.webp)
 多次调用时这里New Param 永远是最新值，旧的被覆盖，导致后续的节点获取的值出错。
 
-![alt text](../../assets/images/BluePrint_image-1.png)
+![alt text](../../assets/images/BluePrint_image-1.webp)
 这里也是错的，蓝图不是代码，没有像lambda那样 “捕获变量”，这里的New Param依旧会被新来的覆盖，对习惯代码的人来说非常反直觉。（这里还会导致多次bind的问题）
 
 

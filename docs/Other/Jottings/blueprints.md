@@ -16,4 +16,4 @@ comments:  true
 
 ## 巫师4 大世界带给UE5.6的优化总结
 
-![alt text](../../assets/images/blueprints_image-1.png)
+![alt text](../../assets/images/blueprints_image-1.webp)

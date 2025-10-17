@@ -73,7 +73,7 @@ L3 缓存：
 ```
 
 我的电脑16核心，L1总大小1MB:
-![alt text](../../assets/images/cacheline_image.png)
+![alt text](../../assets/images/cacheline_image.webp)
 
 也就是，每个核心分配到64KB。
 ```sh

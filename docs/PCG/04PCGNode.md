@@ -19,26 +19,26 @@ comments:  true
 约定符号表示：
 
 **表组**
-![alt text](../assets/images/04PCGNode_image-6.png){width=20%}
+![alt text](../assets/images/04PCGNode_image-6.webp){width=20%}
 - 大写字母命名：`A,B,C`
 - 空表组：`{}`
 - 表组里3个不同表：`A:{a,b,c}`,或者直接`{a,b,c}`
 
 **表**
-![alt text](../assets/images/04PCGNode_image-7.png){width=70%}
+![alt text](../assets/images/04PCGNode_image-7.webp){width=70%}
 - 小写字母表示表：`a,b,c`
 - a表里全部行：`[a...]`
 
 **行**
-![alt text](../assets/images/04PCGNode_image-8.png){width=70%}
+![alt text](../assets/images/04PCGNode_image-8.webp){width=70%}
 - 表行：`a(1)`
 - 行属性：`a(1).Position`
 
 ## 基础操作
 
 ### 常量
-![alt text](../assets/images/04PCGNode_image-9.png){width=20%}
-![alt text](../assets/images/04PCGNode_image-10.png){width=20%}
+![alt text](../assets/images/04PCGNode_image-9.webp){width=20%}
+![alt text](../assets/images/04PCGNode_image-10.webp){width=20%}
 - 可以通过 `Create Attribute` 节点 创建一个常量
 - 通过 指定`outputTarget` 来个输出命名
 
@@ -52,61 +52,61 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 **表之间操作的局限性：必须N:N**（大部分情况下）
 这里用`Merge Points`节点构建行数不同的表，图里接入了多少个点，就是有多少行。
 - 图下图，两者行数必须相等，才能实现“两两相乘”：
-  ![alt text](../assets/images/04PCGNode_image-26.png){width=80%}
+  ![alt text](../assets/images/04PCGNode_image-26.webp){width=80%}
   图中展示行数不同的表之间进行相乘，会报错，无论是2对3，还是1对3操作，都报错。表之间数据必须一一对应。copy points是特殊实现，可以无视这个限制。详见[copy points](#copy-points)。
 
 - 常见例外：常量可以和任意行数表操作：
-  ![alt text](../assets/images/04PCGNode_image-13.png){width=40%}
+  ![alt text](../assets/images/04PCGNode_image-13.webp){width=40%}
   每行都和该常量相乘，非常好理解。
 
 - 常见例外：`Add Attribute`无视N:N的限制
- ![alt text](../assets/images/04PCGNode_image-31.png){width=60%}
+ ![alt text](../assets/images/04PCGNode_image-31.webp){width=60%}
    Array表只有2条数据，而Array2有5条，无法一一对应，数据会在不足时重复使用，类似取余。
 
 **表组之间的局限性：必须1:N，N:1，N:N**（大部分情况下）
 - 表组数量必须相同，或者其中一方的数量为1
-  ![alt text](../assets/images/04PCGNode_image-12.png){width=80%}
+  ![alt text](../assets/images/04PCGNode_image-12.webp){width=80%}
   如图，使用归组操作把点分成3组后，和两组表的相乘操作，就会报错。
 
   另外，copy points也是特殊的，但需要勾选N:M支持，否则会也报错。
-  ![alt text](../assets/images/04PCGNode_image-11.png){width=80%}
+  ![alt text](../assets/images/04PCGNode_image-11.webp){width=80%}
 
 ### 赋值
 
 - 直接赋值：`Set`
-  ![alt text](../assets/images/04PCGNode_image-29.png)
+  ![alt text](../assets/images/04PCGNode_image-29.webp)
   - 需要注意的是，不是所有的属性都支持“Set”操作，比如 Rotator就不支持Set
 
 - 写回：`@source`
-  ![alt text](../assets/images/04PCGNode_image-15.png){width=40%}
+  ![alt text](../assets/images/04PCGNode_image-15.webp){width=40%}
   除了用Set赋值，绝大部分操作(比如加减乘除)都支持写回`@source`， 则也是一种赋值方式。既把操作后的结果，赋值到其实一个输入源，output target使用`@source`表示写回默认输出数据，图这里默认写回的输入源是InputA，可以修改为InputB.
 
 - 重映射: 使用`Remap`节点 
-  ![alt text](../assets/images/04PCGNode_image-16.png){width=40%}
+  ![alt text](../assets/images/04PCGNode_image-16.webp){width=40%}
   配合`Source`,把数据重写到另一个属性里，也可以重映射到设定的区间范围。图中展示用尾操作，把数据写入`@color`里面。remap还能在设定的区间内随机过渡。
 
 - 更常用的赋值：`Copy Attribute`节点
   - Set不支持的，它都能正确支持。该节点支持3种模式，可以N:N,就是Each to Each。（但我在测试把属性复制到样条线数据的时候，发现它无法正确N:N，而如果是Points数据的时候是正常的）
 
 - 添加：显式使用`Add Attribute`节点
-  ![alt text](../assets/images/04PCGNode_image-17.png){width=50%}
+  ![alt text](../assets/images/04PCGNode_image-17.webp){width=50%}
   字面意思，追加属性。如果`Output Target`设置为`@source`，则和`Set`一样，不再是追加，而是修改。为了避免歧义，修改就使用`Set`，追加就使用`Add Attribute`。
 
 ### 读取
 
 - 获取表的某一行：`a(2)`
-  ![alt text](../assets/images/04PCGNode_image-18.png){width=60%}
+  ![alt text](../assets/images/04PCGNode_image-18.webp){width=60%}
   
 
 - 获取表组的某个表：`A(2)`
-  ![alt text](../assets/images/04PCGNode_image-19.png){width=60%}
+  ![alt text](../assets/images/04PCGNode_image-19.webp){width=60%}
 
 - 获取行的某个属性：`a(1).Color`
-  ![alt text](../assets/images/04PCGNode_image-14.png){width=60%} 
+  ![alt text](../assets/images/04PCGNode_image-14.webp){width=60%} 
 
 
 ### 删除
-![alt text](../assets/images/04PCGNode_image-20.png){width=60%}
+![alt text](../assets/images/04PCGNode_image-20.webp){width=60%}
 没啥好说的，直接用`Delete Attribute`节点，就是 `Add Attribute`节点的反向操作。
 
 还有个`Attribute Remove Duplicates` 删除重复的属性
@@ -115,21 +115,21 @@ PCG的操作，就是处理表，一行一行地处理。以`multiply`乘法节�
 ### 条件控制
 都是相对静态的控制，PCG本身无法修改判断值。但可以用代码，比如蓝图在运行时修改，改变数据流向来产生变化，相当于一个静态开关。
 - Branch:  给数据下游提供2个分支
-  ![alt text](../assets/images/04PCGNode_image-21.png){width=60%}
+  ![alt text](../assets/images/04PCGNode_image-21.webp){width=60%}
  
 
 - Select:  选取其中一个上游
-  ![alt text](../assets/images/04PCGNode_image-22.png){width=60%}
+  ![alt text](../assets/images/04PCGNode_image-22.webp){width=60%}
    
   Select相对branch更加灵活一些：
-  ![alt text](../assets/images/04PCGNode_image-24.png){width=60%} 
+  ![alt text](../assets/images/04PCGNode_image-24.webp){width=60%} 
 
 ### 循环
 
 Loop 是针对表组来操作的。如果需要循环，需要向把要处理的数据，整理成表组结构。
 
 Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
-![alt text](../assets/images/04PCGNode_image-25.png){width=30%}
+![alt text](../assets/images/04PCGNode_image-25.webp){width=30%}
 
 ###### Pin 状态
 - Advanced：默认会自动隐藏
@@ -144,15 +144,15 @@ Loop需要配置 Pin的使用类型，有3种：Normal，Loop，和 feedback
 
 
 ###### 和 Select结合组成更动态的判断
-![alt text](../assets/images/04PCGNode_image-28.png)
+![alt text](../assets/images/04PCGNode_image-28.webp)
 
 例子：
 
 循环体：创建一个点，合并到一起再输出； 累加自定义数据Data，输出到Feedback。只配置了输入Pin的自定义数据Data为feedback，其他都是默认。
-![alt text](../assets/images/04PCGNode_image-27.png){width=60%}
+![alt text](../assets/images/04PCGNode_image-27.webp){width=60%}
 
 调用结果：每个表都多了一个行，尾部也增加了一个经过累加的自定义数据Data
-![alt text](../assets/images/04PCGNode_image-23.png){width=60%}
+![alt text](../assets/images/04PCGNode_image-23.webp){width=60%}
 
 ### 函数
 PCG 并没有函数这回事，但提供了类似的一些类似的东西：
@@ -170,7 +170,7 @@ PCG 并没有函数这回事，但提供了类似的一些类似的东西：
 （以下是节点的使用）
 ## Merge 合并
 把全部输入进来的表组，合并成**单个**大表（属性集）。
-![alt text](../assets/images/PCGNode_image-4.png){width=30%}
+![alt text](../assets/images/PCGNode_image-4.webp){width=30%}
 ```js
 //伪代码
 merge({a,a},{b}) = [a...,a...,b...]
@@ -187,7 +187,7 @@ A表头`[花瓣个数，花颜色]`, B表头`[花瓣个数，花的种类]`
 
 ## Gather 收集
 和Merge不同，Gather不会合并每行的数据，而是把输入的表组都合并在一起。
-![alt text](../assets/images/04PCGNode_image-5.png){width=30%}
+![alt text](../assets/images/04PCGNode_image-5.webp){width=30%}
 ```js
 //伪代码
 gather({a,a},{b},{c}) = {a,a,b,c}
@@ -199,7 +199,7 @@ gather({a,a},{b},{c}) = {a,a,b,c}
 
 ## Reduce 归约
 归约支持多个模式，sum，average,max,min,Join
-![alt text](../assets/images/04PCGNode_image-4.png){width=50%}
+![alt text](../assets/images/04PCGNode_image-4.webp){width=50%}
 ```js
 //类似函数式编程里的reduce
 reduce([a...],Math::Sum) = a1.x + a2.x + a3.x + ...
@@ -207,13 +207,13 @@ reduce([a...],Math::Sum) = a1.x + a2.x + a3.x + ...
 - Merger Output Attributes: 用于把集组合并成单一的属性集
 
 ## Copy Points
-![alt text](../assets/images/PCGNode_image-5.png){width=70%}
+![alt text](../assets/images/PCGNode_image-5.webp){width=70%}
 这是很迷惑的名字，直面意思是复制点，实际上的意思大概是：
 
 > Copy Points 节点是PCG系统中一个重要的点操作节点，其主要功能是将源点（Source Points）复制到目标点（Target Points）上。这个节点最常见的使用场景是：以相对位置的方式，将输入源的点附加到目标点上，其中目标点作为输入源点的轴心点（Pivot）。
 
 详细用法参考B站Up [ZzxxH](https://space.bilibili.com/19131632/) 总结的图：
-![alt text](../assets/images/PCGNode_image-6.png){width=70%}
+![alt text](../assets/images/PCGNode_image-6.webp){width=70%}
 
 ::: details 详细说明
 ###### 点的复制模式
@@ -263,7 +263,7 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 
 ## Attribute Partition 属性分组
 这个其实就是 函数式编程里的 `GroupBy`, 根据输入的属性值进行归组
-![alt text](../assets/images/04PCGNode_image.png){width=60%}
+![alt text](../assets/images/04PCGNode_image.webp){width=60%}
 ```js
 // 类似GroupBy`操作
 GroupBy([{id:1, type:"A"}, {id:2, type:"A"}, {id:3, type:"B"}], "type") = {
@@ -288,7 +288,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 - FilterDataByIndex: A(index) 这是表组
 - FilterElementsByIndex: a(index) 这是表
 
-![alt text](../assets/images/04PCGNode_image-3.png){width=80%}
+![alt text](../assets/images/04PCGNode_image-3.webp){width=80%}
 
 都支持选中语法：
 - 8   （返回索引为8的值）
@@ -300,9 +300,9 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 
 :::warning 5.5 的FilterElementsByIndex 存在bug 
 如图，根据输入的index返回选择的点，输入3个点，选中其中3个index， 但结果只有2个点。
-![alt text](../assets/images/04PCGNode_image-33.png)
+![alt text](../assets/images/04PCGNode_image-33.webp)
 把其中一个重复，也就是输入4个点，才能返回我想要的3个点。
-![alt text](../assets/images/04PCGNode_image-32.png)
+![alt text](../assets/images/04PCGNode_image-32.webp)
 :::
 
 
@@ -319,7 +319,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 给定一个搜索距离，寻找最近或者的的远的点
 
 [案例](./03PCG_Advanced.md#用2个attract-配合创建起点和终点)
-![alt text](../assets/images/04PCGNode_image-1.png){width=60%}
+![alt text](../assets/images/04PCGNode_image-1.webp){width=60%}
 
 支持3个吸引模式：
 1. Closest Mode
@@ -347,7 +347,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 源码：`OutputValue = FMath::Lerp(SourceValue, TargetValue, Alpha);` alpha 就是 weight。
 
 使用weight的时候，这个配置不能没有：
-![alt text](../assets/images/04PCGNode_image-2.png){width=60%}
+![alt text](../assets/images/04PCGNode_image-2.webp){width=60%}
 
 ###### 参数
 - `Distance`: 搜索半径，决定吸引的作用范围
@@ -365,7 +365,7 @@ Filter Data By Index节点有个输出，选中的 和 未选中的
 
 ## Intersection 交集
 可以添加多个secondary input
-![alt text](../assets/images/PCGNode_image-3.png){width=60%}
+![alt text](../assets/images/PCGNode_image-3.webp){width=60%}
  
 1. **主输入（Primary Input）**  
    - 主要输入 `Primary Input Pin` 是交集计算的起点，每个输入都会被单独计算。  

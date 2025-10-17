@@ -316,7 +316,7 @@
  - 学习如何进行[远程调试](https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging-cpp?view=vs-2019)，你可以附加到同一网络上任何计算机或控制台上的游戏（甚至如果他们在同一VPN上，可以连接到家里的人）。
    - 你可以使非Shipping构建在崩溃或断言前等待程序员远程附加到进程并查看情况。
        
-       ![Untitled](../../../assets/images/Untitled.png)
+       ![Untitled](../../../assets/images/Untitled.webp)
        
    - 通过配置，在`DefaultEngine.ini`中：`[Engine.ErrorHandling] bPromptForRemoteDebugging=True`或`[Engine.ErrorHandling] bPromptForRemoteDebugOnEnsure=True`。
    - 通过命令行：`-PromptRemoteDebug`或`-PromptRemoteDebugEnsure.`
@@ -538,7 +538,7 @@
  
  - 关卡流送的帧预算是高度可定制的，查看[UDN线程](https://udn.unrealengine.com/s/question/0D52L00004ludzoSAA/level-streaming-async-settings)。
    
-   ![](../../../assets/images/Untitled_1.png)
+   ![](../../../assets/images/Untitled_1.webp)
    
  - 始终使用`EndPlay`而不是`UnloadEvent`进行游戏逻辑。
  如果你曾经禁用cvar`s.ForceGCAfterLevelStreamedOut`以消除关卡卸载时的卡顿，这将延迟关卡卸载直到GC运行，而不是立即卸载。`UnloadEvent`仅在关卡实际卸载时调用，因此禁用cvar后，它可能在GC决定运行时发生，最多可能延迟一分钟。只需使用`EndPlay`清理即可解决该问题。

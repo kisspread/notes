@@ -6,7 +6,7 @@ comments: true
 # PCG 材质相关
 
 ## TransformPosition
-![alt text](../assets/images/005PCG材质_image.png){width=60%}
+![alt text](../assets/images/005PCG材质_image.webp){width=60%}
 PCG 大量使用 InstanceMesh， 所以材质里也有专门针对它的TransformPosition的设置。
 
 - Instance & Particle Space to Absolute World Space
@@ -21,7 +21,7 @@ TransformPosition 的输入就是自身的原点，通常使用 0 0 0就够了�
 
 ### 例子
 - 上下起伏的球面效果
-![alt text](../assets/images/005PCG材质_image-1.png){width=90%} 
+![alt text](../assets/images/005PCG材质_image-1.webp){width=90%} 
 1. 利用Instance & Particle Space to Absolute World Space，和 Sine结合，构造每个实例的独特相位，xyz不同，所以每个都不同样。
 2. Instance & Particle Space to Local Space 和 归一化结合，就是是 V - 0, 也就是指向球心的向量，结合上面的相位，实现错落有致的上下起伏效果。
 
@@ -34,22 +34,22 @@ PerInstanceCustomData 是一个在 Unreal Engine 中用于实例化静态网格�
 PerInstanceCustomData 的一个主要优势是性能优化。通过将数据存储在实例本身而不是材质实例上，它降低了场景中重复几何体的绘制调用数量
 
 材质里，PerInstanceCustomData有两个版本:
-![alt text](../assets/images/05PCG材质_image.png){width=30%}
+![alt text](../assets/images/05PCG材质_image.webp){width=30%}
 - 1. PerInstanceCustomData 浮点数版
 - 2. PerInstanceCustomData 向量版
 
 案例：PCG debug 里 母材质，可以看到用于可视化的调试的值不知颜色值本身，还有密度，半长度等。
-![alt text](../assets/images/05PCG材质_image-5.png){width=60%}
+![alt text](../assets/images/05PCG材质_image-5.webp){width=60%}
 
 ### PCG里配置 PerInstanceCustomData
-![alt text](../assets/images/05PCG材质_image-1.png){width=60%}
+![alt text](../assets/images/05PCG材质_image-1.webp){width=60%}
 两种配置模式：
 - 直接从属性集里，根据名称获取，然后设置到实例里。
 - Regex 从属性集里，根据正则自动设置到实例里。 
 
 ### 补充 VertexInterpolator
  这个节点也经常和PerInstanceCustomData结合使用
-![alt text](../assets/images/05PCG材质_image-2.png){width=30%}
+![alt text](../assets/images/05PCG材质_image-2.webp){width=30%}
 UE的VertexInterpolator材质节点主要用于在顶点着色器和像素着色器之间传递数据
 
 他的左边是VS顶点着色器，右边是PS像素着色器
@@ -60,10 +60,10 @@ UE的VertexInterpolator材质节点主要用于在顶点着色器和像素着色
 
 如图，
 - 未使用VertexInterpolator节点 ：
-![alt text](../assets/images/05PCG材质_image-3.png){width=60%}
+![alt text](../assets/images/05PCG材质_image-3.webp){width=60%}
 
 - 使用VertexInterpolator节点 ：
-![alt text](../assets/images/05PCG材质_image-4.png){width=60%}
+![alt text](../assets/images/05PCG材质_image-4.webp){width=60%}
 
 可以看见像素着色器的指令数量大大减少。
 

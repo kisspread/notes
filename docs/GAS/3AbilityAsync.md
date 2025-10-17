@@ -8,7 +8,7 @@ comments:  true
 GAS Course introduces UBlueprintAsyncActionBase, I found some subClass maybe useful.
 
 
-![alt text](../assets/images/3AbilityAsync_image.png)
+![alt text](../assets/images/3AbilityAsync_image.webp)
 
 Derived from UAbilityAsync, we can reduce some code.
 

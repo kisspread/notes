@@ -317,7 +317,7 @@ The preferred structure then for a proper “native” project would be:
 - Learn to do [remote debugging](https://docs.microsoft.com/en-us/visualstudio/debugger/remote-debugging-cpp?view=vs-2019), you can attach to the game on any computer or console on the same network (even to people's homes if they're on the same VPN).
     - You can make non-shipping builds wait just before crashing or asserting for a programmer to remotely attach to the process and see what's going on.
         
-        ![](../../../assets/images/Untitled.png)
+        ![](../../../assets/images/Untitled.webp)
         
         - Via config, in `DefaultEngine.ini`: `[Engine.ErrorHandling] bPromptForRemoteDebugging=True` or `[Engine.ErrorHandling] bPromptForRemoteDebugOnEnsure=True`.
         - Via command line: `-PromptRemoteDebug` or `-PromptRemoteDebugEnsure.`
@@ -540,7 +540,7 @@ t.UnacceptableFrameTimeThreshold=33.9`
 
 - Frame budgets for level streaming are extremely customizable, check [UDN thread](https://udn.unrealengine.com/s/question/0D52L00004ludzoSAA/level-streaming-async-settings).
     
-    ![](../../../assets/images/Untitled_1.png)
+    ![](../../../assets/images/Untitled_1.webp)
     
 - Always use `EndPlay` instead of `UnloadEvent` for gameplay logic.
 If you ever disable the cvar `s.ForceGCAfterLevelStreamedOut` to remove hitches on level unloads then that will delay level unloading until the GC runs instead of immediately. `UnloadEvent` only gets called when the level actually unloads, so with the cvar disabled it can happen up to a minute later, basically whenever the GC decides to run. Just using `EndPlay` to clean up gets around that problem.

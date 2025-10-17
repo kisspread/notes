@@ -7,7 +7,7 @@ comments:  true
 一直没成功，一层层调试，找到了原因。
 
 - require held 和  UIHold Data配置正确
-    ![alt text](../../assets/images/CommonActionWidget_image.png)
+    ![alt text](../../assets/images/CommonActionWidget_image.webp)
 - 必须是支持 hold 类型的trigger 的action 才支持 绑定 held
 
     ``` cpp
@@ -38,5 +38,5 @@ comments:  true
                         }
     ```
     所以，打开 对应的InputAction, 增加对Hold的支持：
-    ![alt text](../../assets/images/CommonActionWidget_image-1.png)
+    ![alt text](../../assets/images/CommonActionWidget_image-1.webp)
     

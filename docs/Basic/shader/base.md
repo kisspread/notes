@@ -57,24 +57,24 @@ comments: ture
 
 节点形式，虚幻定义了  常量 constant，还有标量scalar
 一维常量 如果作为 参数，那么就叫做标量 scalar （怪怪的，又没人解释一下）
-![alt text](../../assets/images/base_image-5.png)
+![alt text](../../assets/images/base_image-5.webp)
 
 节点需要注意的地方：
 
 - 常向量虽然有1-4维，但是转为参数，都是用4维参数代替。
-  ![alt text](../../assets/images/base_image-6.png)
+  ![alt text](../../assets/images/base_image-6.webp)
 
 - Parameter最顶部的白色节点，只有RGB。而 常量是正常的RGBA。需要RGBA需要自行构造。
-  ![alt text](../../assets/images/base_image-7.png)
+  ![alt text](../../assets/images/base_image-7.webp)
 
 
 操作通道：
 
 - 对比上面两个文本语言，可视化的Node并不那么灵活。
 - 向量分量选择器，Unreal 需要用到 Mask 节点实现
-  ![alt text](../../assets/images/base_image-8.png)
+  ![alt text](../../assets/images/base_image-8.webp)
 - swizzling 重排序RGB，内部也是用Mask 和 Append 实现，而且只有 XYZ -> YXZ
-  ![alt text](../../assets/images/base_image-9.png)
+  ![alt text](../../assets/images/base_image-9.webp)
   
 
 
@@ -128,7 +128,7 @@ float2 result = step(edge, x);
 >
 >    `gl_FragColor = vec4(vec3(step(vec2(0.2,0.2), st),0),1.0);`
 >    测试结果：
->    ![alt text](../../assets/images/base_image.png)
+>    ![alt text](../../assets/images/base_image.webp)
 >
 >    所以，可能的返回值有：0，1，（1，1） ， （1，0），（1，0，1），（1，1，1，0） 都是有可能的。
 
@@ -224,7 +224,7 @@ void main() {
     gl_FragColor = vec4(color, 1.0);
 }
 ```
-![alt text](../../assets/images/base_image-10.png)
+![alt text](../../assets/images/base_image-10.webp)
 
 
 
@@ -262,7 +262,7 @@ SDF 是 用正负区分里外的图形，
 
 ##### 两个smoothstep “错位相减”，就能形成边缘柔和的线条。
 
-![alt text](../../assets/images/base_image-1.png)
+![alt text](../../assets/images/base_image-1.webp)
 
 如上图，想要在x=0.5形成一条平行于Y轴竖线，深入解析：
 
@@ -275,19 +275,19 @@ SDF 是 用正负区分里外的图形，
  - x={0.5, 0.5+edge} 时，左边已经都是最大值1，右边的smoothstep逐渐变化到1，相减的结果就是1逐渐变化到0.
  - 这就形成了以x=0.5为中线的左右镜像对称。
 
- ![alt text](../../assets/images/base_image-2.png)
+ ![alt text](../../assets/images/base_image-2.webp)
 
 
 - 另外两个 smoothstep 相乘也能构造 直线
 
-  ![alt text](../../assets/images/base_image-3.png)
+  ![alt text](../../assets/images/base_image-3.webp)
 
 ##### plot 绘制函数
 
 利用 两个smoothstep相减能形成边缘柔和的线条的原理，可以绘制出函数图像。
 
 代码：
-![alt text](../../assets/images/base_image-4.png)
+![alt text](../../assets/images/base_image-4.webp)
 
 
 ```glsl
@@ -359,7 +359,7 @@ Mix 的作用是把两个值 a 和 b 混合，返回一个值，这个值是 a �
 
 #### 用例
 
-![alt text](../../assets/images/base_image-11.png)
+![alt text](../../assets/images/base_image-11.webp)
 
 
 ### 多个SDF

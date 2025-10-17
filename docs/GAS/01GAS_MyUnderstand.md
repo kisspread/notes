@@ -81,7 +81,7 @@ FGameplayAttribute是用来描述单个属性的结构体，内部保存了一�
 - 第二个宏是生成属性访问器的帮助宏
 - 第三个宏是生成属性设置器的帮助宏
 - 第四个宏是生成属性初始化器的帮助宏
-  ![alt text](../assets/images/01GAS_MyUnderstand_image.png)
+  ![alt text](../assets/images/01GAS_MyUnderstand_image.webp)
 
 最终定义一个属性差不多是这样：
 ```cpp
@@ -146,7 +146,7 @@ void OnRep_Strength(const FGameplayAttributeData& Old) const;
 5. 在UGameplayEffectExecutionCalculation里使用
 
     `DEFINE_ATTRIBUTE_CAPTUREDEF` 宏创建属性访问器 和 属性捕获定义
-    ![alt text](../assets/images/01GAS_MyUnderstand_image-1.png)
+    ![alt text](../assets/images/01GAS_MyUnderstand_image-1.webp)
 
 ### AttributeSet几个重要函数回调
 
@@ -312,7 +312,7 @@ GE 通常需要创建特定的Spec规格来包装更多的数据，规格里包�
 
 ### GEComponents 
 
-![alt text](../assets/images/01GAS_MyUnderstand_image-2.png)
+![alt text](../assets/images/01GAS_MyUnderstand_image-2.webp)
 
 GE自带10个 Component，还有一个 只显示描述的 Text Only Component
 

@@ -14,7 +14,7 @@ Android的RadioGroup是控件, 并没有单独抽象出“可选组”的逻辑�
 
 
 
-![alt text](../../assets/images/09WidgetGroup_image.png)
+![alt text](../../assets/images/09WidgetGroup_image.webp)
 
 控件组基类 只提供 增删功能，非常简洁。
 
@@ -33,7 +33,7 @@ Android的RadioGroup是控件, 并没有单独抽象出“可选组”的逻辑�
 - 循环切换
 - 弃选
 
-![alt text](../../assets/images/09WidgetGroup_image-1.png)
+![alt text](../../assets/images/09WidgetGroup_image-1.webp)
 
 
 #### 由于是纯逻辑对象，布局操作交给开发者自定义实现
@@ -52,7 +52,7 @@ Android的RadioGroup是控件, 并没有单独抽象出“可选组”的逻辑�
 
 UI蓝图里，需要自己指定Button的布局容器。这里的 Add Tab用了 Horizon Box 来布局
 
-![alt text](../../assets/images/09WidgetGroup_image-2.png)
+![alt text](../../assets/images/09WidgetGroup_image-2.webp)
 
 
 
@@ -67,4 +67,4 @@ UI蓝图里，需要自己指定Button的布局容器。这里的 Add Tab用了 
 所以第一个add进来的widget，默认是一定会选中的，除非不满足 相关条件。
 
 
-![alt text](../../assets/images/commonui_image.png)
+![alt text](../../assets/images/commonui_image.webp)

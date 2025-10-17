@@ -18,7 +18,7 @@ Lyra Game Dialog 的代码设计上看，它是一个为多人同屏设计的，
 ### 1. UCommonGameInstance
 
 - 通过CommonGame 的 CommonGameInstance 通知新LocalPlayer 加入
-  ![alt text](../assets/images/LyraDialog_image.png)
+  ![alt text](../assets/images/LyraDialog_image.webp)
 - 告知 UGameUIManagerSubsystem  
 
 ### 2. UGameUIManagerSubsystem
@@ -26,20 +26,20 @@ Lyra Game Dialog 的代码设计上看，它是一个为多人同屏设计的，
 这个类目前在我看来，有些鸡肋。可能需要一个管理全部布局的“层”做准备。
 
 - UGameUIManagerSubsystem 用于管理 新的 LocalPlayer 的 UI
-  ![alt text](../assets/images/LyraDialog_image-1.png)
+  ![alt text](../assets/images/LyraDialog_image-1.webp)
 - 但它只负责管理，不负责实现，具体功能都在 UGameUIPolicy 里面。
 - 需要配置 UGameUIPolicy 的蓝图子类。
 
 ### 3. UGameUIPolicy
 
 - UGameUIPolicy 会给 LocalPlayer 注册一个OnPlayerControllerSet监听
-  ![alt text](../assets/images/LyraDialog_image-2.png)
+  ![alt text](../assets/images/LyraDialog_image-2.webp)
 - NotifyPlayerAdded 的意思是，新的LocalPlayer 加入，会去RootViewportLayouts数组里查找，没有就创建一个。
 - FindByKey的原理是：`bool operator==(const ULocalPlayer* OtherLocalPlayer) const { return LocalPlayer == OtherLocalPlayer; }`
 - PlayerController 接收到控制器时：
-  ![alt text](../assets/images/LyraDialog_image-4.png)
+  ![alt text](../assets/images/LyraDialog_image-4.webp)
 - 最终，创建的Widget一定是`UPrimaryGameLayout`的子类，这里的LayoutClass是需要配置的项。
-  ![alt text](../assets/images/LyraDialog_image-3.png)
+  ![alt text](../assets/images/LyraDialog_image-3.webp)
 
 ### 4. UPrimaryGameLayout
 
@@ -65,7 +65,7 @@ Lyra 的弹窗是通过异步Action 来进行的。。
 - 这个异步里，会用各种方式尝试获得对应的LocalPlayer
 - 然后通过LocalPlayer获得UCommonMessagingSubsystem
 - 最终调用UCommonMessagingSubsystem的ShowConfirmation
-  ![alt text](../assets/images/LyraDialog_image-5.png)
+  ![alt text](../assets/images/LyraDialog_image-5.webp)
 
 ### 2. UCommonMessagingSubsystem
 
@@ -74,7 +74,7 @@ Lyra 的弹窗是通过异步Action 来进行的。。
 - 子系统是最外层自动实例化的，所以不需要手动实例化。
 - 需要开发者配置 弹窗的Widget的class，必须继承于`UCommonGameDialog`.
 - 获取根布局，并传入Dialog构造器`UCommonGameDialogDescriptor`和委托：
-  ![alt text](../assets/images/LyraDialog_image-6.png)
+  ![alt text](../assets/images/LyraDialog_image-6.webp)
 
 
 ### 3. UCommonGameDialogDescriptor

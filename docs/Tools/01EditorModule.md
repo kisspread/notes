@@ -7,7 +7,7 @@ Most skill cooldowns are quite simple to configure, and I don't want to manually
 
 The code is about 200 lines long and can serve as a template for other actions. Throughout this process, I learned a lot, and I will provide the complete code for this tools, hoping it will help you as well.
 
-![alt text](../assets/images/01EditorModule_image-4.png)
+![alt text](../assets/images/01EditorModule_image-4.webp)
 
 ---
 
@@ -24,10 +24,10 @@ In the Gameplay Ability, define a cooldown time field, then right-click to find 
 Since asset operations belong to the Editor Module, we need to create the Editor Module first.
 
 - Using Rider can greatly assist us in creating this.
-  ![alt text](../assets/images/01EditorModule_image.png)
+  ![alt text](../assets/images/01EditorModule_image.webp)
 
 - Add dependencies.
-  ![alt text](../assets/images/01EditorModule_image-5.png)
+  ![alt text](../assets/images/01EditorModule_image-5.webp)
 
 ### Custom AssetDefinition
 Originally, I used `UAssetDefinitionDefault` to implement the asset action, but comments indicated that this class is deprecated, and we need to use `AssetDefinition`.
@@ -106,11 +106,11 @@ You need to use `IGameplayTagsEditorModule`, so you must add dependencies. The u
 
 #### Blueprint Editor Script
 
-![alt text](../assets/images/01EditorModule_image-3.png)
+![alt text](../assets/images/01EditorModule_image-3.webp)
 
 I can create a GE asset file, but I have not yet found a way to assign values. I don’t know how to use Set Editor Property; if anyone knows, please leave a comment.
 
-![alt text](../assets/images/01EditorModule_image-2.png)
+![alt text](../assets/images/01EditorModule_image-2.webp)
 
 
 

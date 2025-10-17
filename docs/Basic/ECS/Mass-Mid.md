@@ -21,7 +21,7 @@ We’ve streamlined the way you build Mass processors by introducing a new query
 
 原型这个词，非常容易带偏思维，容易误解成“类”，既对事物的抽象，实际上它是对数据运行逻辑的抽象。
 
-![alt text](../../assets/images/Mass-Mid_image.png)
+![alt text](../../assets/images/Mass-Mid_image.webp)
 如图，速度和位置，就是执行运动逻辑的最小数据集，每次遍历，都要计算这两个变量。不带入其他数据，遍历就是高效的。
 
 综上，原型的真正意思是：**驱动特定逻辑所需的最小数据集合**
@@ -152,7 +152,7 @@ UE::Editor::DataStorage::TableHandle UEditorDataStorage::RegisterTable(TConstArr
 
 #### Chunk和CPU缓存
 我的电脑16核心，L1总大小1MB，L2总大小8MB:
-![alt text](../../assets/images/cacheline_image.png)
+![alt text](../../assets/images/cacheline_image.webp)
 
 也就是，每个核心分配到64KB。
 ```sh
@@ -182,11 +182,11 @@ Chunk 就像一辆高速列车，满载率非常重要，如果经常装不满�
 
 使用Mass Debugger 可以查看到Chunk的内存浪费以及entity大小等信息，如图所示:
 - entity数量太少，大量内存浪费：
- ![alt text](../../assets/images/Mass-Advanced_image-3.png)
+ ![alt text](../../assets/images/Mass-Advanced_image-3.webp)
 - entity本身太大（280B），一个chunk 只能装下467个。
- ![alt text](../../assets/images/Mass-Advanced_image-2.png)
+ ![alt text](../../assets/images/Mass-Advanced_image-2.webp)
 - entity体积适中，一次遍历就是3000多个，非常高效：
- ![alt text](../../assets/images/Mass-Mid_image-2.png)
+ ![alt text](../../assets/images/Mass-Mid_image-2.webp)
 
 
 
@@ -200,7 +200,7 @@ FMassEntityHandle 是一个指向Chunk内存中实体数据的指针，它的作
 
 #### FEntityData
 它的真身在这里，`FEntityData`:
-![alt text](../../assets/images/Mass-Mid_image-1.png){width=50%}
+![alt text](../../assets/images/Mass-Mid_image-1.webp){width=50%}
 
 之所以还要一个序列号，是为了区分 新老entities
 
@@ -916,7 +916,7 @@ void ProcessEntities()
 ```
 
 ##### `ParallelForEachEntityChunk` 内部实现
-![alt text](../../assets/images/Mass-Mid_image-3.png)
+![alt text](../../assets/images/Mass-Mid_image-3.webp)
 看出两个点：
 1. AllowQueryParallelFor 会控制是否退回普通for循环
 2. `ParallelFor` 和`ParallelForWithTaskContext` 这两个引擎内置的并行函数，是Mass内部并行的一种方式。

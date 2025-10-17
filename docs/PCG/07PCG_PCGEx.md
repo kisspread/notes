@@ -3,7 +3,7 @@ title: PCG 扩展插件 PCGEx
 comments:  true
 ---
 # PCG 扩展插件 PCGEx
-![alt text](../assets/images/07PCG_PCGEx_image.png)
+![alt text](../assets/images/07PCG_PCGEx_image.webp)
 
 https://github.com/Nebukam/PCGExtendedToolkit
 

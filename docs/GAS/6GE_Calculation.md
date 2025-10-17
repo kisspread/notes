@@ -6,7 +6,7 @@ comments:  true
 
 # GAS GE 自定义计算过程
 
-![alt text](../assets/images/6GE_Calculation_image-1.png)
+![alt text](../assets/images/6GE_Calculation_image-1.webp)
 
 目前，UE源码提供两个父类用于自定义GE的计算过程，分别是`UGameplayModMagnitudeCalculation`和`UGameplayEffectExecutionCalculation`
 
@@ -64,7 +64,7 @@ MMCs can be used in any duration of GameplayEffects - Instant, Duration, Infinit
 
 #### 补充 EXecutionCalculation 还有自己的Modifier
 
-![alt text](../assets/images/6GE_Calculation_image.png)
+![alt text](../assets/images/6GE_Calculation_image.webp)
 
 作用和UGameplayModMagnitudeCalculation是一样的，对自定义的CalculationClass的结果，进一步修改。
 

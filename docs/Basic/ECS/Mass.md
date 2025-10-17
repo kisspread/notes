@@ -5,7 +5,7 @@ comments: true
 
 # MassEntity 入门
 
-![alt text](../../assets/images/Mass_image-1.png)
+![alt text](../../assets/images/Mass_image-1.webp)
 
 (只针对源码里的MassEntity模块，不包括MassGamePlay的内容，比如UMassEntityTraitBase)
 
@@ -214,7 +214,7 @@ EntityManager
 ``` 
 
 借用Unity的图：
-![alt text](../../assets/images/Mass_image-2.png)
+![alt text](../../assets/images/Mass_image-2.webp)
 
 
 ### 1. 为什么需要Fragment？
@@ -371,7 +371,7 @@ void UMSObserverOnAdd::Execute(FMassEntityManager& EntityManager, FMassExecution
 架构图：
 
 借用xianlongok大佬的图：
-![alt text](../../assets/images/Mass_image.png)
+![alt text](../../assets/images/Mass_image.webp)
 
 详情可以看他的的文章：https://www.xianlongok.site/post/ea92a01c/
 

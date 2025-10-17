@@ -10,7 +10,7 @@ comments:  true
 
 其中，执行一个叫做“GitDependences.exe” 的程序,并把它加入到git hooks里面。
 
-![alt text](../assets/images/02GitDependences_image.png)
+![alt text](../assets/images/02GitDependences_image.webp)
 
 - 这些hooks会在git checkout或merge操作后自动运行GitDependencies.exe
 
@@ -31,7 +31,7 @@ GitDependencies 是一个将近1600多行的.NET程序，用于从epic的cdn下�
 #### GitDependences 细节
 
 - 缓存目录:`.git/ue-gitdeps`
-  ![alt text](../assets/images/02GitDependences_image-1.png) 
+  ![alt text](../assets/images/02GitDependences_image-1.webp) 
 - 文件哈希表:`UnrealEngine\Engine\Build\Commit.gitdeps.xml` 高达27MB，感觉这里面有历史遗留问题，很多文件没有整合成pack.
 - 哈希表格式：
   ```xml
@@ -76,7 +76,7 @@ GitDependencies 是一个将近1600多行的.NET程序，用于从epic的cdn下�
 - 可以学习epic这套工作流，release的时候把文件打包上传到自己的存储服务（如 S3、Azure Blob Storage），只需配置文件哈希表即可，BaseUrl是可以自定义的。
 - 构建一个上传到CDN的工作流，（git commit前更新文件哈希表），完全可以取代 git lfs。
 - 内部命令：
-  ![alt text](../assets/images/02GitDependences_image-2.png)
+  ![alt text](../assets/images/02GitDependences_image-2.webp)
 - 命令行测试:
   ```bash
   Engine\Binaries\DotNET\GitDependencies\win-x64\GitDependencies.exe --help

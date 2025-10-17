@@ -32,7 +32,7 @@ this is the most common way
 - then reopen Unreal Editor, the BP will be fixed
 - open the BP and save it, now we can remove the [CoreRedirects]
 - or just using "Update Redirector References" button
-  ![alt text](../assets/images/03ReparentcorruptedBP_image.png)
+  ![alt text](../assets/images/03ReparentcorruptedBP_image.webp)
 
 #### Solution 2
 
@@ -44,7 +44,7 @@ This solution allows you to reparent a corrupted BP to a new parent without rest
 
 ::: code-group
 
-  ![alt text](../assets/images/03ReparentCrouptedBP_image.png)
+  ![alt text](../assets/images/03ReparentCrouptedBP_image.webp)
   ```uebp height="400"
       Begin Object Class=/Script/BlueprintGraph.K2Node_FunctionEntry Name="K2Node_FunctionEntry_0" ExportPath="/Script/BlueprintGraph.K2Node_FunctionEntry'/Game/YMyth/Scripts/EUB_Reparent.EUB_Reparent:Reparent.K2Node_FunctionEntry_0'"
     MetaData=(Category=NSLOCTEXT("", "0BB938DA40D01C31C087C781AA32C359", "AssetsTools"),bCallInEditor=True)
@@ -145,7 +145,7 @@ This solution allows you to reparent a corrupted BP to a new parent without rest
   :::
   <!-- - [or visit here](https://dev.epicgames.com/community/snippets/xrmR/unreal-engine-reparent-bp-assets) -->
 - select the BP you want to fix, click the "Reparent" button at `Scripted Asset Actions`
-  ![alt text](../assets/images/03ReparentcorruptedBP_image-1.png)
+  ![alt text](../assets/images/03ReparentcorruptedBP_image-1.webp)
   
 
 ### Reference

@@ -1,4 +1,4 @@
-![alt text](../../assets/images/Transform_image.png)
+![alt text](../../assets/images/Transform_image.webp)
 
 在 3D 计算中，**Transform 乘法（TTransform 相乘）**和**矩阵乘法**都是用来**合并多个变换（旋转、缩放、平移）**的，但它们的**数据结构和计算方式不同**。  
 

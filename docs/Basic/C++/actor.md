@@ -6,7 +6,7 @@ comments: true
 ### Actor Lifecycle
 
 来自官网生命周期区别图：
-![alt text](../../assets/images/actor_image.png)
+![alt text](../../assets/images/actor_image.webp)
 
 总得来说，不同方式创建的actor，会经历不太相同的生命周期。
 

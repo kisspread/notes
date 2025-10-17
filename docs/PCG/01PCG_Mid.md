@@ -21,15 +21,15 @@ comments: true
 
 ### 固有属性
 使用Create Points创建一个点,点击A查看到的全部属性，我称这些为固有属性
-![alt text](../assets/images/01PCG_Mid_image.png){width=80%}
-![alt text](../assets/images/01PCG_Mid_image-1.png){width=80%}
+![alt text](../assets/images/01PCG_Mid_image.webp){width=80%}
+![alt text](../assets/images/01PCG_Mid_image-1.webp){width=80%}
 PCG Graph里点数据默认只有以上这些。
 
 ### 动态属性（计算属性）
 调试时看到的只有上图这些属性，
 但能访问的，其实不止上述这些固有属性。比如：
 `ScaledLocalSize.X`
-![alt text](../assets/images/01PCG_Mid_image-2.png){width=70%}
+![alt text](../assets/images/01PCG_Mid_image-2.webp){width=70%}
 
 动态属性（或者说‘计算属性’), 必须用`$` 来进行访问或者设置，如`$LocalSize`
 
@@ -67,17 +67,17 @@ PCG Graph里点数据默认只有以上这些。
 
 ### 自定义属性
 上面的固有属性和动态属性，引擎都贴心的在编辑器做了个小按钮，可用通过点击添加：
-![alt text](../assets/images/01PCG_Mid_image-5.png){width=40%}
+![alt text](../assets/images/01PCG_Mid_image-5.webp){width=40%}
 但是，自定义属性就没有这种待遇。
 
 自定义属性的Color，不需要用美元符号获取：
-![alt text](../assets/images/01PCG_Mid_image-6.png){width=40%}
+![alt text](../assets/images/01PCG_Mid_image-6.webp){width=40%}
 
 新增自定义属性：
-![alt text](../assets/images/01PCG_Mid_image-8.png){width=40%}
+![alt text](../assets/images/01PCG_Mid_image-8.webp){width=40%}
 
 使用示例：
-![alt text](../assets/images/01PCG_Mid_image-7.png){width=50%}
+![alt text](../assets/images/01PCG_Mid_image-7.webp){width=50%}
 
 :::details 属性代码相关
 ### 属性关系
@@ -107,7 +107,7 @@ PCG Graph里点数据默认只有以上这些。
 目前主要作用于样条线，把样条线看成产生点的路径序列，而 Grammar 就是用来约束 点的分布。不同标记的点，可能有不同的size和生成频率，以此来控制点的分布规则。
 
 ### **形状语法（Grammar Syntax）** {#grammar-anchor}
-![alt text](../assets/images/CassiniPCG_image-5.png)
+![alt text](../assets/images/CassiniPCG_image-5.webp)
  
 有点类似基础的正则表达式用法。
 
@@ -183,13 +183,13 @@ PCG Graph里点数据默认只有以上这些。
 ### Subdivide Spline 细分样条
 （简单理解为，指定重复规则，比如围栏，围墙, Subdivide Segment类似效果）
 
-![alt text](../assets/images/PCGNode_image-7.png){width=70%}
+![alt text](../assets/images/PCGNode_image-7.webp){width=70%}
 给样条线制定撒点规则（让参数的点根据规则分布，或者说带上“标签”），规则来自 [Grammar 字符串](#grammar-anchor)。
 - 需要配置模块数据，供 Grammar 解析使用
-  ![alt text](../assets/images/PCGNode_image-8.png){width=70%}
+  ![alt text](../assets/images/PCGNode_image-8.webp){width=70%}
 
 模块数据可以作为GraphSettings进行配置：
-![alt text](../assets/images/01PCG_Mid_image-13.png)  
+![alt text](../assets/images/01PCG_Mid_image-13.webp)  
 类名是 PCGSubdivide Module 或者 PCGSubdivide SubModule, 一个是数组，一个单元素
 
 模块数据：  
@@ -201,15 +201,15 @@ PCG Graph里点数据默认只有以上这些。
 需要注意的是，Module里并没有Mesh相关的配置，后续需要自己根据Symbol去获取对应的Mesh。
 
 调试颜色目前是使用 额外的Remap节点来实现：
-![alt text](../assets/images/01PCG_Mid_image-3.png){width=50%}
+![alt text](../assets/images/01PCG_Mid_image-3.webp){width=50%}
 调试过程中发现，必须进行ToPoint操作才能正常修改颜色，不然100%引擎崩溃。
 
 每个module都能设置调试颜色，效果如图：
-![alt text](../assets/images/01PCG_Mid_image-4.png){width=50%}
+![alt text](../assets/images/01PCG_Mid_image-4.webp){width=50%}
 
 Subdivide Spline生成的线段，也是用点表示：
 - 点的位置在线段的中心点，使用时候，通常要结合`Reset Point Center` 来将点移动到线段的起点上 
- ![alt text](../assets/images/01PCG_Mid_image-14.png)
+ ![alt text](../assets/images/01PCG_Mid_image-14.webp)
  
 
 
@@ -219,7 +219,7 @@ Subdivide Spline生成的线段，也是用点表示：
 ### Primitive Cross-section 图元横截面
 大多数时候，拖动样条线来生成一块不规则的面积，在UE并不好操作，非常难拖出好看的形状。于是UE推出了使用基础图形，来拼图的方式来实现。（拼好面）
 
-![alt text](../assets/images/PCGNode_image-9.png){width=70%}
+![alt text](../assets/images/PCGNode_image-9.webp){width=70%}
 图元是指简单的几何体，比如最常见的长方体。主要功能是：根据特定的切割方向，构建几何体之间形成的横截面。
 
 如图，默认沿着Z轴往上切（0，0，1），切的方向垂直于Z轴。切出来的面，就作为 横截面。对于面都一致的几何体，比如图中的圆柱体和长方体，只会切出一个“底面”作为横截面。而对于面随着Z轴变化的几何体，则切出多个横截面。测试发现并没有特别的规律来解释多个横截面的规律。
@@ -227,7 +227,7 @@ Subdivide Spline生成的线段，也是用点表示：
 
 - 垂直方向规则的物体，只有一个横截面，比如长方体。
 - 垂直方向不规则的物体，可以有多个横截面，比如圆锥体。
-![alt text](../assets/images/PCGNode_image-10.png){width=50%}
+![alt text](../assets/images/PCGNode_image-10.webp){width=50%}
 
 
 不过，该节点提供了调整横截面数量的办法。
@@ -236,26 +236,26 @@ Subdivide Spline生成的线段，也是用点表示：
 - 单位是 m^2
 
 如图，默认情况下，倒立的圆锥会产生两个横截面。
-![alt text](../assets/images/PCGNode_image-11.png){width=50%}
+![alt text](../assets/images/PCGNode_image-11.webp){width=50%}
 尖端的横截面特别小，可以 开启 Min Area Culling Threshold 来剔除，1 m^2 即可剔除它。
-![alt text](../assets/images/PCGNode_image-12.png){width=50%}
+![alt text](../assets/images/PCGNode_image-12.webp){width=50%}
 
 #### Tier 合并阈值 Tier Merge Threshold
 这是另一个剔除多余横截面的方式。
 - 单位是 cm
 
 如图，球体产生的横截面，像个打开的碗
-![alt text](../assets/images/PCGNode_image-13.png){width=30%}
-![alt text](../assets/images/PCGNode_image-14.png){width=30%}
+![alt text](../assets/images/PCGNode_image-13.webp){width=30%}
+![alt text](../assets/images/PCGNode_image-14.webp){width=30%}
 
 可以看出球体的面与面之间间距很小，更适合 Tier 合并阈值来剔除。
 调整为300厘米后，成功只剩下一个横截面
-![alt text](../assets/images/PCGNode_image-15.png){width=50%}
+![alt text](../assets/images/PCGNode_image-15.webp){width=50%}
 
 此时，球还是用上图的剔除配置：
 
 让球和其他图元接触，也会立即产生新的横截面
-![{alt text}](../assets/images/PCGNode_image-21.png){width=75%}
+![{alt text}](../assets/images/PCGNode_image-21.webp){width=75%}
 如上图，产生了两个横截面。（当接触面积很大，再把融合阈值调小，就会出现更多的横截面）
 
 #### Remove Redundant Sections 
@@ -264,7 +264,7 @@ Subdivide Spline生成的线段，也是用点表示：
 （如果没有和其他图元交叉，开启了能够移除多余的横截面。）
 
 最好的实践方式还是让图元本身“对齐”，如图:两个长方体底部位置“平齐”，产生的横截面一定稳定。
-![alt text](../assets/images/01PCG_Mid_image-11.png){width=50%}
+![alt text](../assets/images/01PCG_Mid_image-11.webp){width=50%}
 
 使用总结
 - 图元互相接触的位置，大概率会产生新的横截面
@@ -276,7 +276,7 @@ Subdivide Spline生成的线段，也是用点表示：
 挤出向量是个重要属性，但本身不影响横截面的产生。是供给后续节点使用的。
 - 挤出向量的大小只和自身大小有关，等于 Slice 方向 * 这个方向的长度（高度）
 - 需要配置它的key，后续节点根据它查找
-  ![alt text](../assets/images/PCGNode_image-16.png){width=70%}
+  ![alt text](../assets/images/PCGNode_image-16.webp){width=70%}
 
 
 举例说明：
@@ -339,7 +339,7 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
 （简单理解为，多层次的时候使用，比如盖房子）
 
 该节点和`Subdivide Spline`节点，有共同父类`public UPCGSubdivisionBaseSettings`, 它们都是使用grammar来规划线段上点的生成规则。不同的是，`Duplicate Cross-sections` “通常”需要配合上面的 图元横截面`Primitive Cross-section`的一同使用。
-![alt text](../assets/images/PCGNode_image-17.png){width=50%}
+![alt text](../assets/images/PCGNode_image-17.webp){width=50%}
 
 这里细说一下刚刚的挤出向量：
 
@@ -348,14 +348,14 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
 它定义了横截面的"生长"方向和距离， `Duplicate Cross-sections`需要知道，新延展的横截面往哪个方向生长，以及距离多远。
 
 如果使用了上一个节点传递过来的`ExtrusionVector`，假如是（0，0，200），但是`Duplicate Cross-sections`模块里定义的距离超过了200，就会报错。
-![alt text](../assets/images/PCGNode_image-18.png){width=50%}
+![alt text](../assets/images/PCGNode_image-18.webp){width=50%}
 
 两种解决办法：
 1. 调整图元的尺寸，让它满足`Duplicate Cross-sections`模块的需要。
 2. 不使用上个节点传递过来的`ExtrusionVector`，让`Duplicate Cross-sections`自定义一个，比如（0，0，6000），可用让延展面远远超出图元的大小
-  ![alt text](../assets/images/PCGNode_image-19.png){width=80%}
+  ![alt text](../assets/images/PCGNode_image-19.webp){width=80%}
   （另外，球体调试的时候，不管拉伸多少，都是球体，应该是BUG，但横截面是正确的）
-  ![alt text](../assets/images/PCGNode_image-20.png){width=80%}
+  ![alt text](../assets/images/PCGNode_image-20.webp){width=80%}
 
 
 :::warning 精度bug
@@ -371,7 +371,7 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
 
 ### Select Grammar 条件语法
 通常作用于线段，对不同长度的线段使用不同的匹配语法(也可以用于选择不同的index)。比如在生成建筑时，某面墙过短，那就应该使用不包含大门的语法规则。
-![alt text](../assets/images/01PCG_Mid_image-10.png){width=70%}
+![alt text](../assets/images/01PCG_Mid_image-10.webp){width=70%}
 
 上面的延展样条线节点更像是复制本身，并指定每个副本的Grammar，而 Select Grammar 节点则针对线段本身。Select Grammar 的输入是Points数据，而它拥有匹配并设置数据的能力，其实不一定要用来设置Grammar，还能当做条件赋值。
 
@@ -393,12 +393,12 @@ CurrentTier.Height = FMath::IsNearlyEqual(Height, RoundedHeight) ? RoundedHeight
 基于线段长度定制规则的小案例：
 
 - 使用Spline to Segment 节点将Spline分割成线段，可以看到点变成了线段，X的方向上的边界之差就是线段的长度。
-  ![alt text](../assets/images/01PCG_Mid_image-9.png){width=70%}
+  ![alt text](../assets/images/01PCG_Mid_image-9.webp){width=70%}
 
 - 线段传入Select Grammar 节点后，开始根据条件规则，给属性附加上一个 grammar 字符串。
 
   为了方便调试，把它需要关注的3个值，复制到结尾，方便对比。可以看到，由于长度都超过了条件里写的768，所以都使用了默认复杂规则。
-![alt text](../assets/images/01PCG_Mid_image-12.png){width=70%}
+![alt text](../assets/images/01PCG_Mid_image-12.webp){width=70%}
 
 - 最终，图中“Main Floor” 这一层，所有的线段，都有了自己的规则。
 

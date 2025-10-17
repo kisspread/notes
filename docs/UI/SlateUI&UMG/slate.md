@@ -3,12 +3,12 @@ title: slate 入门
 comments:  true
 ---
 
-![alt text](../../assets/images/Pasted%20image%2020241011175926.png)
+![alt text](../../assets/images/Pasted%20image%2020241011175926.webp)
 
 
 ### 3个必须了解的基础布局
 继承于Swidget的控件有很多，但注释里建议开发者继承的只有3个。
-![alt text](../../assets/images/slate_image-1.png)
+![alt text](../../assets/images/slate_image-1.webp)
 Swidget的注释告诉我们它只提供基础实现，按照slate的设计意图，我们自定义的Widget最好不要直接继承于SWidget，而是需要继承于SCompoundWidget，SLeafWidget，SPanel。这种“分类”，可以让slate框架更好地优化布局绘制，控件排列效率。
 
 - **SLeafWidget** 叶控件，没有子控件，也不应该支持添加子控件，相当于“元控件”。
@@ -37,7 +37,7 @@ Swidget的注释告诉我们它只提供基础实现，按照slate的设计意�
 	class SPanel: public SWidget
 	```	
 	派生于SPanel的多达216个。
-	![alt text](../../assets/images/slate_image-3.png)
+	![alt text](../../assets/images/slate_image-3.webp)
 
 
 
@@ -53,16 +53,16 @@ Swidget的注释告诉我们它只提供基础实现，按照slate的设计意�
 
 	其中，Rider显示，派生于SCompoundWidget的类多达3000多个：
 
-	![alt text](../../assets/images/slate_image-2.png)
+	![alt text](../../assets/images/slate_image-2.webp)
 
 
 #### SCompoundWidget 和 SPanel 的区别
 
-![alt text](../../assets/images/slate_image-4.png)
+![alt text](../../assets/images/slate_image-4.webp)
 
 通过理解 STableViewBase 来理解他们的区别，STableViewBase继承于 SCompoundWidget 而不是 SPanel。因为表格控件是由多个控件组合而成，由固定表头，表项，滚动条等，它的职责就是负责如何组装布局，规划布局。
 
-![alt text](../../assets/images/slate_image-5.png)
+![alt text](../../assets/images/slate_image-5.webp)
 通过阅读STableViewBase构造子不控件方式，可以发现它的**根布局**是基于SVerticalBox的，最后通过this->ChildSlot 的中括号操作符添加成为自己的子控件。 
 
 STableViewBase的列表是SListPanel控件，这个控件继承于SPanel，它实现了自己的Slot，用来约定布局规则，就是一个一个排列添加。SPanel比SCompoundWidget更需要重写OnArrangeChildren 和 ComputeDesiredSize 方法。
@@ -114,7 +114,7 @@ slate是声明式语法，类似DSL，groovy 和 kotlin 都非常支持这种写
 ```
 
 这个图也很好懂：
-![alt text](../../assets/images/slate_image.png)
+![alt text](../../assets/images/slate_image.webp)
 
 #### 语法解析
 

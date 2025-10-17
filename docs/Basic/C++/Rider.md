@@ -13,7 +13,7 @@ comments: true
 {,,UnrealEditor-Engine.dll}::GPlayInEditorContextString 
 ```
 
-![alt text](../../assets/images/Rider_image.png)
+![alt text](../../assets/images/Rider_image.webp)
 
 - 把`{,,UnrealEditor-Engine.dll}::GPlayInEditorContextString `添加到rider watch即可,以后每次能用。
 
@@ -29,7 +29,7 @@ comments: true
 
 ### Rider plugin创建Module
 
-![alt text](../../assets/images/Rider_image-1.png)
+![alt text](../../assets/images/Rider_image-1.webp)
 
 右键源码目录，可以看到可以创建的Module。但是，对于Plugin的source目录，缺无法创建Module，需要手动创建。
 

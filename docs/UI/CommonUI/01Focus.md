@@ -20,7 +20,7 @@ comments:  true
 
 commonUI 有两个“Focus”, 一个是Widget的Focus，另一个是Input Mode 的Focus。
 
-- 如果当前屏幕里有 focus的widget，那么导航键 就有可能被 CommonUI 吃掉，尤其是 Input Mode是All的情况。取消勾选 Focusable 即可：![alt text](../../assets/images/01Focus_image.png)
+- 如果当前屏幕里有 focus的widget，那么导航键 就有可能被 CommonUI 吃掉，尤其是 Input Mode是All的情况。取消勾选 Focusable 即可：![alt text](../../assets/images/01Focus_image.webp)
 或者，在 OnFocusReceived里面，手动调用	Set Focus to Game Viewport
 
 - CommonUI 没有自动激活相应的 Input Mode，勾选Supports Activation Focus 即可。
@@ -172,7 +172,7 @@ void FCommonAnalogCursor::Tick(const float DeltaTime, FSlateApplication& SlateAp
 
 
  大致了解FReply，在看官方这个图，就好理解很多。
-![alt text](../../assets/images/01Focus_image-1.png)
+![alt text](../../assets/images/01Focus_image-1.webp)
 
 ### 官方说明
 

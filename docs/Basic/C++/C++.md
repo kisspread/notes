@@ -159,14 +159,14 @@ Delegate就是回调， Event是订阅者-观察者模型，支持多个观察�
 普通无参动态Delegate 和函数绑定，使用 BindDynamic，当作回调用
 `UDELEGATE()
 DECLARE_DYNAMIC_DELEGATE(FWidgetAnimationDynamicEvent);`
-![alt text](../../assets/images/C++_image.png)
+![alt text](../../assets/images/C++_image.webp)
 
 多播Delegate 和函数绑定, 使用 AddDynamic 
 `DECLARE_DYNAMIC_MULTICAST_DELEGATE(FMontageWaitSimpleDelegate);`
-![alt text](../../assets/images/C++_image-1.png)
+![alt text](../../assets/images/C++_image-1.webp)
 
 `DECLARE_EVENT(MyClass, FMyEvent)`，第一个参数要指定给哪个类使用
-![alt text](../../assets/images/C++_image-2.png)
+![alt text](../../assets/images/C++_image-2.webp)
 
 
 ## UE constants

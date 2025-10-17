@@ -24,19 +24,19 @@ Union在中文里常见的翻译为并集，或者联合。无论中英文，名
 而密度函数有3个模式：
 
 - Clamped Addition: 钳制加法, 就是相加，超过1设置为1
-  ![alt text](../assets/images/04PCGNode2_Diff_image.png)
+  ![alt text](../assets/images/04PCGNode2_Diff_image.webp)
   如图，创建两个有重叠部分的点，两个点的密度都是0.3，所以最终密度为0.6；钳制加法就是把两者的密度相加，但钳制在0-1之间。公式:
   
   `FMath::Min(InDensityToUpdate + InOtherDensity, 1.0f);`
 
 - Maximum: 取最大值
-  ![alt text](../assets/images/04PCGNode2_Diff_image-1.png)
+  ![alt text](../assets/images/04PCGNode2_Diff_image-1.webp)
   如图，此时保留的是密度较大的点 0.5，公式:
   
   `FMath::Max(InDensityToUpdate, InOtherDensity);`
 
 - Binary: 二进制，非黑即白
-  ![alt text](../assets/images/04PCGNode2_Diff_image-2.png)
+  ![alt text](../assets/images/04PCGNode2_Diff_image-2.webp)
   此时，只要密度大于零，就都设置为1，否则设置为0。公式:
 
   `(InOtherDensity > 0) ? 1.0f : InDensityToUpdate;`
@@ -44,9 +44,9 @@ Union在中文里常见的翻译为并集，或者联合。无论中英文，名
 :::warning 注意1
 ### Binary 模式对未重叠的数据也进行修改
 没有重叠部分时， Union节点的输出：
-![alt text](../assets/images/04PCGNode2_Diff_image-3.png)
+![alt text](../assets/images/04PCGNode2_Diff_image-3.webp)
 可以看到融并没有发生，数据原封不动。但此时改成 Binary 模式，数据还是会被改变的：
-![alt text](../assets/images/04PCGNode2_Diff_image-4.png)  
+![alt text](../assets/images/04PCGNode2_Diff_image-4.webp)  
 :::
 
 :::warning 注意2
@@ -68,7 +68,7 @@ OutPoint.Color = FVector4(
 					FMath::Max(OutPoint.Color.W, PointInData.Color.W));
 ```
 测试案例里蓝 + 绿 变成了 这个颜色：
-![alt text](../assets/images/04PCGNode2_Diff_image-5.png)
+![alt text](../assets/images/04PCGNode2_Diff_image-5.webp)
 
 ### 修改其他元数据
 同样是取最大值或者直接赋值，无法配置其他操作，贴代码供参考：
@@ -94,7 +94,7 @@ OutPoint.Color = FVector4(
 要理解Difference，需要先理解Union， 因为它是在Union的基础上做进一步计算的。 默认行为是排除重叠部分，和数学上的差集A-B有点像了，但还要有非常多的细节。
 
 ### Difference 的两个PIN
-![alt text](../assets/images/04PCGNode2_Diff_image-6.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-6.webp){width=60%}
 
 Source Pin 就是准备被减去的源，设为A；Difference Pin 其实就是一个内置的Union节点， 设为B。
 
@@ -131,24 +131,24 @@ namespace PCGDifferenceDataUtils
 
 看图说话：
 创建一排点，作为“B”：
-![alt text](../assets/images/04PCGNode2_Diff_image-7.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-7.webp){width=60%}
 
 创建一堆点，作为源“A”， 并设置一点点噪声方便查看位置：
-![alt text](../assets/images/04PCGNode2_Diff_image-8.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-8.webp){width=60%}
 
 大致如下， 为了好查看勾选Keep Zero Density Points：
-![alt text](../assets/images/04PCGNode2_Diff_image-9.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-9.webp){width=60%}
 
 结果：
-![alt text](../assets/images/04PCGNode2_Diff_image-10.png){width=60%} 
+![alt text](../assets/images/04PCGNode2_Diff_image-10.webp){width=60%} 
 
 可以看到，红色的部分是“雷”，灰色的程度表达出附近雷的数量，黑色的部分就是与雷直接覆盖的点，密度是0；
 
 改变一下 雷是数量试试：
-![alt text](../assets/images/04PCGNode2_Diff_image-11.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-11.webp){width=60%}
 
 这样呢，为何看起来有重叠的部分，密度不是0？：
-![alt text](../assets/images/04PCGNode2_Diff_image-12.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-12.webp){width=60%}
 这里需要说明一下，最终结果是用B的质点来判断是不是在A的范围（Bounds）内，这里B的质点刚好在A的边上，所以密度不为0
 
 ### Difference 各种空间数据之间的区别
@@ -157,30 +157,30 @@ namespace PCGDifferenceDataUtils
 
 #### Point vs Volume
 找来一个体积，作为B，依附在A的表面上，A上的点没有产生任何密度变化，猜测体积是被当成了质点（没有边界）：
-![alt text](../assets/images/04PCGNode2_Diff_image-14.png){width=60%}
-![alt text](../assets/images/04PCGNode2_Diff_image-13.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-14.webp){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-13.webp){width=60%}
 把体积转为点，手动调用ToPoint节点，成功引起了密度变化，类似扫雷：
-![alt text](../assets/images/04PCGNode2_Diff_image-15.png){width=60%}
- ![alt text](../assets/images/04PCGNode2_Diff_image-16.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-15.webp){width=60%}
+ ![alt text](../assets/images/04PCGNode2_Diff_image-16.webp){width=60%}
 验证体积是否被当成了质点，把轴点沉入A里面，成功触发密度变化，且不是扫雷模式：
-![alt text](../assets/images/04PCGNode2_Diff_image-17.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-17.webp){width=60%}
 体积在数据上是有边界的，只是被当成质点处理了：
-![alt text](../assets/images/04PCGNode2_Diff_image-18.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-18.webp){width=60%}
 
 #### Point vs Primitive
 找来一个图元，作为B，依附在A的表面上，居然染黑了全部和它有接触的点！
-![alt text](../assets/images/04PCGNode2_Diff_image-19.png){width=60%}
-![alt text](../assets/images/04PCGNode2_Diff_image-20.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-19.webp){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-20.webp){width=60%}
 再试试图元的to Points会怎样，发现在正中间是正常的，和本体重合。
-![alt text](../assets/images/04PCGNode2_Diff_image-21.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-21.webp){width=60%}
 但不在正中间，位置和本体居然不一致！
-![alt text](../assets/images/04PCGNode2_Diff_image-22.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-22.webp){width=60%}
 
 总之，图元的怪事挺多，小心为好。
 
 #### Point vs Spline
 Spline也是当做质点处理的，但凡偏移1个单位，密度就不为0了，即使它看起来穿过了A：
-![alt text](../assets/images/04PCGNode2_Diff_image-23.png){width=60%}
+![alt text](../assets/images/04PCGNode2_Diff_image-23.webp){width=60%}
 
 #### Spline vs Spline
 好像没啥，都是质点，当在0-1的位置上偏移时，密度是会变化的。

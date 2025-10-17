@@ -5,7 +5,7 @@ comments: true
 
 # PCG 基础篇：概念浅析
 
-![alt text](../assets/images/PCG_Base_image.png)
+![alt text](../assets/images/PCG_Base_image.webp)
 
 此前写过一篇[常用类浅析](./Old/UE5_4PCGWithCPP_zh.md)，但过于简单，写一篇细致一点的，重新温习一下。
 
@@ -58,7 +58,7 @@ UPCGSpatialData (抽象基类)
 数据类型主要在节点的输入输出PIN上面体现
 
 ##### **点类型（UPCGPointData）**
-![alt text](../assets/images/PCG_Base_image-4.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-4.webp){width=50%}
 PCG中最常见的类型，最频繁交互的类型，如图，到处都是这种浅蓝色的连接点。
 
 - 目录：Concrete ([分类细节:高级类型](#pcg类型-bitmask))
@@ -66,25 +66,25 @@ PCG中最常见的类型，最频繁交互的类型，如图，到处都是这�
 - 淡蓝色的连线来表示
 
 ##### 任意 Any
-![alt text](../assets/images/PCG_Base_image-5.png){width=30%}
+![alt text](../assets/images/PCG_Base_image-5.webp){width=30%}
 - 灰色是Any的类型的标识
 - 根据输入，自动匹配输出类型：下图的RandomChoice节点会自动匹配输出类型
-  ![alt text](../assets/images/PCG_Base_image-6.png){width=50%}
+  ![alt text](../assets/images/PCG_Base_image-6.webp){width=50%}
 
 ##### 具象类型（Concrete分类，点，样条，体积等）
-![alt text](../assets/images/PCG_Base_image-1.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-1.webp){width=50%}
 - 都能提供 自身的具体数据， 可以看到它们的输出图标都一样，都是一根竖线上的3个小点，只是颜色不同
 - PIN的颜色代表不同类型的数据
 - PIN上面的三个小点，代表它们输出是“一排数据”，或者说，有提供**具体子项**类型的能力。
 
 ##### Spatial Data，父类类型
-![alt text](../assets/images/PCG_Base_image-3.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-3.webp){width=50%}
 - PIN就会变成一个大矩形叠加一个小圆点
 - 因为不针对特定的子类型，所以不会有颜色，只用黑白表示连接状态。
 - 空间类型能够输出自己特化的“Point Data”列表（ToPoint ）
 
 空间类型，调用 ToPoint 节点 即可获得点数据
-![alt text](../assets/images/PCG_Base_image-2.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-2.webp){width=50%}
 
 #### 复合数据 (Composite Data)
 
@@ -102,11 +102,11 @@ PCG中最常见的类型，最频繁交互的类型，如图，到处都是这�
 
 ##### 查看`输入/输出`的MetaData数据
 选中节点，按A即可查看
-![alt text](../assets/images/PCG_Base_image-7.png){width=80%}
+![alt text](../assets/images/PCG_Base_image-7.webp){width=80%}
 
 ##### 修改属性集 MetaData
 可以手动给输出数据，增加一些自定义属性
-![alt text](../assets/images/PCG_Base_image-8.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-8.webp){width=50%}
 内部是使用了 UPCGParamData 传递参数到metadata
 
 >参数数据（`UPCGParamData`）是一个特殊的数据类型，用于在PCG图中存储和传递执行参数。它直接继承自`UPCGData`，主要用于节点间的参数传递。
@@ -708,7 +708,7 @@ else if (NumOfElementsToKeep == NumElements)
 ## 节点分析
 
 如图，Difference节点的连接点（Pin） 和其他节点很不一样，前面讨论过，这种类型的输入节点类型，是个UPCGSpatialData父类, 他处理数据的方式，值得探究。
-![alt text](../assets/images/PCG_Base_image-9.png){width=50%}
+![alt text](../assets/images/PCG_Base_image-9.webp){width=50%}
 ### Difference
 
 Difference节点是PCG系统中的一个空间操作类型节点，其主要功能是从源数据中空间性地减去目标差异数据。它的特别之处在于对输入数据的处理方式：源数据支持多输入迭代，而差异数据会被自动合并（Union）后再进行减法操作。
@@ -814,7 +814,7 @@ ParallelFor(AttributeCountInCurrentDispatch, [&](int32 WorkerIndex) {
 });
 ```
 如图，调用的地方还挺多，但不是主要用法。
-![alt text](../assets/images/00PCG_Base_image.png)
+![alt text](../assets/images/00PCG_Base_image.webp)
 
 最主要的并行方法，是由PCGAsync来实现的:
 - `\UnrealEngine\Engine\Plugins\PCG\Source\PCG\Private\Helpers\PCGAsync.cpp`

@@ -9,7 +9,7 @@ comments: true
 
 ## 闭合样条线判断内角外角
 闭合的直线样条线，形成的凸包有时需要判断拐角使用内角还是外角，因为拐角模型也是存在“手性”的， 内外需要区别判断或者使用不同模型。这个问题可以转换为，样条线的下一个点是左拐还是右拐。左右问题，可以使用`Cross Product`来判断。
-![alt text](../assets/images/03PCG_Advanced_image-24.png)
+![alt text](../assets/images/03PCG_Advanced_image-24.webp)
 
 
 ## PCG Spawn Mesh 时假装指定Pivot点
@@ -39,10 +39,10 @@ $$
 
 #### 任意位置的Pivot居中调整
 - 使用`$LocalCenter`记录Mesh的几何中心，如果是0代表没有任何偏移，如果是其他值，说明是乱七八糟的Pivot点
-  ![alt text](../assets/images/03PCG_Advanced_image-14.png)
+  ![alt text](../assets/images/03PCG_Advanced_image-14.webp)
 
 - 由于偏移量是个本地向量，而PCG点的位置是世界位置，还不能直接减去PivotOffset，先使用`Transform.TransformDirection`来换算 
-  ![alt text](../assets/images/03PCG_Advanced_image-15.png)
+  ![alt text](../assets/images/03PCG_Advanced_image-15.webp)
 
 #### 任意位置的Pivot，调整到X方向最边界，Y方向居中
 
@@ -64,31 +64,31 @@ $$
    调整向量 = 目标向量 - LocalCenter
    ```
    其中，目标向量可以是左边界向量或右边界向量，取决于我们想要将Pivot调整到哪一侧。
-![alt text](../assets/images/03PCG_Advanced_image-16.png){width=80%}
+![alt text](../assets/images/03PCG_Advanced_image-16.webp){width=80%}
 最终，这个调整向量是本地坐标系下的，需要使用Transform.TransformDirection转换到世界坐标系，然后`+`到PCG点的Position。
 
 
 ## PCG自适应铺地板
-![alt text](../assets/images/03PCG_Advanced_image-8.png)
+![alt text](../assets/images/03PCG_Advanced_image-8.webp)
 地板宽度通常是固定，所以对应输入的样条线区域，还需进行调整，有以下步骤：
 
 #### 获取全部楼层(poly line 类型), 传入子图，在子图执行全部逻辑
-![alt text](../assets/images/03PCG_Advanced_image.png){width=60%}
-![alt text](../assets/images/03PCG_Advanced_image-2.png){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image.webp){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-2.webp){width=60%}
 
 #### 使用 `Filter data by index` 筛选出需要地板的楼层
-![alt text](../assets/images/03PCG_Advanced_image-1.png){width=60%}
-![alt text](../assets/images/03PCG_Advanced_image-3.png){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-1.webp){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-3.webp){width=60%}
 
 #### 把点映射到世界零点，方便后续计算：
-![alt text](../assets/images/03PCG_Advanced_image-4.png){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-4.webp){width=60%}
 1. 创建一个原点
 2. 每个点减去原点，就映射回世界零点。
 3. 对每个点 使用 `abs` 取绝对值，全部射到第一象限。
 
 
 #### 根据长度，计算地板数量
-![alt text](../assets/images/03PCG_Advanced_image-5.png){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-5.webp){width=60%}
 
 1. 假如地板宽度为500，那么这里的分段可以取500的倍数，这里写1000就是每段至少2个地板
 2. 除出来后，如果2.3个地板，必须向上取整变成3，才能符合“容纳”的要求。
@@ -97,18 +97,18 @@ $$
 
 
 #### 输出地板数据
-![alt text](../assets/images/03PCG_Advanced_image-6.png){width=60%}
+![alt text](../assets/images/03PCG_Advanced_image-6.webp){width=60%}
 
 1. 创建新的，大小已经合适的Spline ，选择在内部模式且无边际必须打勾
 2. 采样距离设置为500（会报错但不影响使用，不必理会，应该是bug）
 
 
 ## PCG 自动样条线Mesh
-![alt text](../assets/images/03PCG_Advanced_image-7.png)
+![alt text](../assets/images/03PCG_Advanced_image-7.webp)
 主要都是 Attract节点的用法， Attract的主要功能的搜索和关联
 
 #### 用2个Attract 配合，创建起点和终点
-![alt text](../assets/images/03PCG_Advanced_image-9.png){width=75%}
+![alt text](../assets/images/03PCG_Advanced_image-9.webp){width=75%}
 1. 让球面点，搜索半径1200范围内，可以关联的点，模式为 最近点
 2. 能搜索到的“关联点”的球面点，会被attract节点输出，对于关联点来说，形成了1对多的关系
 3. 把第一个 Attract节点的权重设置为0，输出的就是源点的位置（图里就是球面点）
@@ -116,18 +116,18 @@ $$
 5. 第二个 Attract节点的的搜索模式，改成`from index`模式 来获取即可，不用搜索，加快速度
 
 #### 计算指向终点的向量
-![alt text](../assets/images/03PCG_Advanced_image-10.png){width=75%}
+![alt text](../assets/images/03PCG_Advanced_image-10.webp){width=75%}
 1. 这里的离开方向没用上，可以忽略
 
 #### 分别计算终点和起点对应的俯仰角度
-![alt text](../assets/images/03PCG_Advanced_image-12.png){width=45%}
-![alt text](../assets/images/03PCG_Advanced_image-11.png){width=75%}
+![alt text](../assets/images/03PCG_Advanced_image-12.webp){width=45%}
+![alt text](../assets/images/03PCG_Advanced_image-11.webp){width=75%}
 
 1. 如果某些关联点存在放大，就用reduce节点来获取放大值最大的值，作为基准。越大的点，偏转角度越大，体现“电线”越重。
 2. 因此，这里的Angle 是一个比例值，在和和定义的最大角度80相乘，让每条线都有自己的偏转角度
 
 #### 连接起点和终点，生成样条线Mesh
-![alt text](../assets/images/03PCG_Advanced_image-13.png){width=75%}
+![alt text](../assets/images/03PCG_Advanced_image-13.webp){width=75%}
 1. 先根据关联点归组，关联点是1对多的关系，归组后，每一列输出的就是拥有共同关联点的的球面点。
 2. 由于之前合并过起点和终点，所以此时的数据，index相同的已经两两成对。（ 到了这里会发现其实第一步不需要也可以）
 3. 因此，再次根据index归组，归组后面跟着另一个归组，这是一个类似flatmap的操作，把每一列的产生两两成对都输出到主序列。
@@ -163,10 +163,10 @@ println(list.flatMap { it.toList() }) // [1, 2, 3, 4, 5]
    
 
 ### 不生成，缓存错误，可以试试按住 Ctrl + 再点击 重新生成。
-![alt text](../assets/images/03PCG_Advanced_image-18.png)
+![alt text](../assets/images/03PCG_Advanced_image-18.webp)
 
 ### 尽量使用PCG Stamp, 而不是PCG 原始 Actor，否则可能存在潜在的崩溃问题。
-![alt text](../assets/images/03PCG_Advanced_image-23.png)
+![alt text](../assets/images/03PCG_Advanced_image-23.webp)
 
 
 
@@ -178,7 +178,7 @@ println(list.flatMap { it.toList() }) // [1, 2, 3, 4, 5]
 一种解决方案是：手动绑定Event，而不是通过编辑器详情页面创建。
 
 ### PCG 样条线采样器的一些说明
-![alt text](../assets/images/blueprints_image.png){width=80%}
+![alt text](../assets/images/blueprints_image.webp){width=80%}
 
 NextDirectionDelta： 是用当前点，来记录它的下一个点的方向变化增量，对比的轴是UpVector, 增量是用本地坐标系来对比（），增量被归一化为-1到1
 
@@ -204,32 +204,32 @@ NextDirectionDelta： 是用当前点，来记录它的下一个点的方向变�
 ### 一些运行时PCG遇到的问题记录
 
 #### 1. 部分LevelStream 关卡重新加载，需要刷新PCG缓存，否则生成的数据会出错
-![alt text](../assets/images/03PCG_Advanced_image-17.png)
+![alt text](../assets/images/03PCG_Advanced_image-17.webp)
 
 #### 2. 运行时PCG和编辑器PCG 存在不同逻辑，如运行时int32类型其实是按float类型处理的，导致精度问题。
-![alt text](../assets/images/03PCG_Advanced_image-19.png)
+![alt text](../assets/images/03PCG_Advanced_image-19.webp)
 
 编辑器时，显示的数据，全是int32类型：
-![alt text](../assets/images/03PCG_Advanced_image-20.png)
+![alt text](../assets/images/03PCG_Advanced_image-20.webp)
 
 运行时，显示的数据，全是float类型，导致运行时生成结果和编辑器存在严重偏差：
- ![alt text](../assets/images/03PCG_Advanced_image-21.png)
+ ![alt text](../assets/images/03PCG_Advanced_image-21.webp)
 
 最终附加一个round节点，可以解决这个问题：
-![alt text](../assets/images/03PCG_Advanced_image-22.png)
+![alt text](../assets/images/03PCG_Advanced_image-22.webp)
 
 
 ## PCG 5.6 之前创建 spline 数据丢失的问题
 5.5 bug 重现如下：
 1. 创建多组数据（多张表），查看Symbol，Size 数据 添加正常
-![alt text](../assets/images/03PCG_Advanced_image-25.png)
+![alt text](../assets/images/03PCG_Advanced_image-25.webp)
 
 2. 从点里面创建spline，刚刚添加的自定义数据全部丢失
-![alt text](../assets/images/03PCG_Advanced_image-26.png)
+![alt text](../assets/images/03PCG_Advanced_image-26.webp)
 
 5.6 正常：
 自定义数据没有丢失，也无需复制
-![alt text](../assets/images/03PCG_Advanced_image-27.png)
+![alt text](../assets/images/03PCG_Advanced_image-27.webp)
 
 但下一步 Sline line to Segments，自定义数据会丢失, 使用 copy all domain 可以解决
-![alt text](../assets/images/03PCG_Advanced_image-28.png)
+![alt text](../assets/images/03PCG_Advanced_image-28.webp)

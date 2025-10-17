@@ -7,7 +7,7 @@ comments:  true
 
 大概200多行代码，可以作为其他Action的模板，过程中我学到了很多东西，我会附上这个功能的完整代码，希望它对你也有帮助。
 
-![alt text](../assets/images/01EditorModule_image-4.png)
+![alt text](../assets/images/01EditorModule_image-4.webp)
 
 ---
 
@@ -24,10 +24,10 @@ comments:  true
 由于对 Asset经常操作，是属于 Editor Module的内容，所以需要先创建一个 Editor Module，
 
 - 使用Rider可以很好地帮我们创建
-  ![alt text](../assets/images/01EditorModule_image.png)
+  ![alt text](../assets/images/01EditorModule_image.webp)
 
 - 添加依赖 (private 还是 public 写的过程中Rider自动添加我没去管)
-  ![alt text](../assets/images/01EditorModule.zh_image.png)
+  ![alt text](../assets/images/01EditorModule.zh_image.webp)
 
 ### 自定义AssetDefinition
  原本是使用 UAssetDefinitionDefault 来实现 asset action的，但注释提示说，这个类已经过时了，需要用AssetDefinition
@@ -108,9 +108,9 @@ UGameplayEffect* NewGE = Cast<UGameplayEffect>(GeneratedClass->GetDefaultObject(
 
 #### blueprint editor script
 
-![alt text](../assets/images/01EditorModule_image-3.png)
+![alt text](../assets/images/01EditorModule_image-3.webp)
 
 我进行过尝试，但只能创建GE文件，赋值部分暂时没找到方法。
 Set Editor Property 我不知道如何操作，如果有人知道，请留言。
 
-![alt text](../assets/images/01EditorModule_image-2.png)
+![alt text](../assets/images/01EditorModule_image-2.webp)

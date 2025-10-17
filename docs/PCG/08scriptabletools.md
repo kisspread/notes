@@ -1,4 +1,4 @@
-![alt text](../assets/images/08scriptabletools_image.png)
+![alt text](../assets/images/08scriptabletools_image.webp)
 
 Scriptable Tools System 学习资源，
 

@@ -7,7 +7,7 @@ comments:  true
 I have been trying to make it work without success, but after debugging layer by layer, I finally found the reason.
 
 - Make sure that "held" and "UIHold Data" are configured correctly.
-    ![alt text](../../assets/images/CommonActionWidget_image.png)
+    ![alt text](../../assets/images/CommonActionWidget_image.webp)
 - Only actions with trigger types that support "held" can bind to the "held" action.
 
     ```cpp
@@ -39,4 +39,4 @@ I have been trying to make it work without success, but after debugging layer by
             }
     ```
     Therefore, open the corresponding InputAction and add support for "Hold":
-    ![alt text](../../assets/images/CommonActionWidget_image-1.png)
+    ![alt text](../../assets/images/CommonActionWidget_image-1.webp)

@@ -4,7 +4,7 @@ comments: true
 ---
 
  # MassEntity 高级篇
- ![alt text](../../assets/images/Mass-Advanced_image.png){width=320px}
+ ![alt text](../../assets/images/Mass-Advanced_image.webp){width=320px}
 
 （并非有多高级，主要是涉及实际应用场景，模块代码众多，如 MassGamePlay 的使用）
 
@@ -14,7 +14,7 @@ comments: true
 
 ### FMassDebugger
 ::: warning 5.6 重新设计了MassDebugger 界面更好看了
-![alt text](../../assets/images/Mass-Advanced_image-4.png){width=50%}
+![alt text](../../assets/images/Mass-Advanced_image-4.webp){width=50%}
 :::
 
 `\Engine\Source\Runtime\MassEntity\Private\MassDebugger.cpp`
@@ -151,7 +151,7 @@ MassGameplay中，最重要的概念就是`Traits`, 通过Traits 可以在UE编�
 
 一些系列AI功能的总称
 
-![alt text](../../assets/images/Mass-Advanced_image-1.png)
+![alt text](../../assets/images/Mass-Advanced_image-1.webp)
 （Mass AI和 Mass Crowd是两个模块， Mass Crowd 内部引入了 Mass AI 和 ）
 
 | 插件名 | 描述 | 路径 |

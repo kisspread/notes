@@ -32,10 +32,10 @@ Script Stack (0 frames) :
 全局搜索相关信息，发现两个线索：
 
 - 报错发生在UObject的MakrASGarbage() 
-  ![alt text](../assets/images/Debug_image-1.png)
+  ![alt text](../assets/images/Debug_image-1.webp)
 
 - 以上log出自于GatherTextCommandlet 这样的命令行小程序
-  ![alt text](../assets/images/Debug_image-3.png)
+  ![alt text](../assets/images/Debug_image-3.webp)
 
 但无法调试MakrASGarbage，因为 多语言工具的GatherTextCommandlet 是一个独立进程，无法在Rider当前attach的编辑器里打断点。
 
@@ -76,14 +76,14 @@ const FString UGatherTextCommandlet::UsageText
 ```  
 
 多年的Android开发经验告诉我，可以在rider的Run configuration里增加一个配置:
-![alt text](../assets/images/Debug_image-2.png)
+![alt text](../assets/images/Debug_image-2.webp)
 把上面使用说明的命令行参数填进去，并附加 **-waitforattach**, 最好把运行前 build project的步骤去掉，不然每次都会build一次，这个configuration 不进行编译，编译选择当前的项目，这里的目的仅仅是为了调试。（如果改了代码，还是需要build一下）
 
 打好断点，运行。
-成功跳转到了报错的地方：![alt text](../assets/images/Debug_image.png)
+成功跳转到了报错的地方：![alt text](../assets/images/Debug_image.webp)
 
 理论上，这里不可能在命令行模式得到执行，但实际上它执行了，我怀疑是CDO的自动销毁。
-![alt text](../assets/images/Debug_image-4.png)  
+![alt text](../assets/images/Debug_image-4.webp)  
 
 为了跳过这个错误，一种解决办法：
 
@@ -101,7 +101,7 @@ if (!IsRooted())
 Assertion failed: IsValid()
 
 解决了上面IsRooted()的问题，依然有别的错误，还好这题我会，之前遇到过。 
-![alt text](../assets/images/Debug_image-5.png)
+![alt text](../assets/images/Debug_image-5.webp)
 
 这是因为很多第三方插件没有判断 当前是否是命令行模式，只要是命令行模式里设计到UI相关的操作，一定会报错。
 
@@ -129,8 +129,8 @@ void FGASAttachEditorModule::ShutdownModule()
 
 重新编译
 
-![alt text](../assets/images/Debug_image-6.png)
+![alt text](../assets/images/Debug_image-6.webp)
 
 终于正常了
 
-![alt text](../assets/images/Debug_image-7.png)
+![alt text](../assets/images/Debug_image-7.webp)

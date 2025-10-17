@@ -21,7 +21,7 @@ comments:  true
 [/Script/Engine.Engine]
 GameViewportClientClassName=/Script/CommonUI.CommonGameViewportClient  
 ```
-![alt text](../../assets/images/000CommonUI_image-1.png)
+![alt text](../../assets/images/000CommonUI_image-1.webp)
 
 3. 启用EnhancedInput支持
 ```ini
@@ -37,7 +37,7 @@ InputData=/Game/Blueprints/Inputs/CommonInput/B_CommonUI_DefaultAction.B_CommonU
 bAllowOutOfFocusDeviceInput=True
 ```
 创建两个InputAction，默认的前进后退
-![alt text](../../assets/images/000CommonUI_image-2.png){width=70%}
+![alt text](../../assets/images/000CommonUI_image-2.webp){width=70%}
 
 5. 配置CommonUI 平台相关的图标
 ```ini
@@ -53,10 +53,10 @@ bCanChangeGamepadType=True
 +ControllerData=/Game/Blueprints/Inputs/Platform/KeyboardMouse/CommonInput_KeyboardMouse.CommonInput_KeyboardMouse_C
 ```
 注意：DefaultGamepadName=XSX 和这里的名字要对应
-![alt text](../../assets/images/000CommonUI_image-5.png){width=40%}
+![alt text](../../assets/images/000CommonUI_image-5.webp){width=40%}
 
 4-5 都在这里配置：
-![alt text](../../assets/images/000CommonUI_image.png){width=75%}
+![alt text](../../assets/images/000CommonUI_image.webp){width=75%}
 
 
 ## 配置自响应输入模式
@@ -91,7 +91,7 @@ CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00
 - 派生自 `Activatable Widget`
 - “Support Activation Focus”设置为true。
 - 支持回退响应 和 自动激活
-  ![alt text](../../assets/images/000CommonUI_image-3.png)
+  ![alt text](../../assets/images/000CommonUI_image-3.webp)
 - 有必要的话，可以重写回退方法，如弹窗暂停窗口，默认的回退方法就是“出栈”  
 
 
@@ -102,7 +102,7 @@ CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00
 明明配置了 全局的 InputMapping Config, 发现一旦回退过一次，输入配置被卸载，按键不响应了。
 
 原因：CommonUI 可响应页面 取消激活时，也会把输入配置卸载，内部是一个Map结构，如果key相同，也会把全局的输入配置里面的相同的key，也一起卸载。
-![alt text](../../assets/images/000CommonUI_image-4.png){width=70%}
+![alt text](../../assets/images/000CommonUI_image-4.webp){width=70%}
 
 解决方法 : 
 - 全局配置不要和CommonUI配置重复，否则会导致输入配置被卸载。 

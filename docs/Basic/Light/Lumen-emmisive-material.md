@@ -40,7 +40,7 @@ comments: true
 
 - 调整后处理的Final Gather Quality
 如果还有阴影问题，可以调整后处理的Final Gather Quality，这个值越高越好，但会增加计算开销。我测试5左右就适合我的场景，看情况可以调高。
-![alt text](../../assets/images/Lumen-emmisive-material_image.png)
+![alt text](../../assets/images/Lumen-emmisive-material_image.webp)
 
 - Temporal AA 关闭
 TAA 可能加剧 emissive materials 的 flickering, 尝试其他anti-aliasing方法

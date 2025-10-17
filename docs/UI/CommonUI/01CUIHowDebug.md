@@ -9,10 +9,10 @@ common UI 经常遇到 绑定好了按键后，手柄无效，键盘有效，或
 
 ### 控制台
 - ShowDebug EnhancedInput 这个命令可以实时看到key触发的到底是哪个action，以及用灰色表示被覆盖的action
-![alt text](../../assets/images/01CUIHowDebug_image-1.png)
+![alt text](../../assets/images/01CUIHowDebug_image-1.webp)
 
 - `CommonUI.Debug.TraceConfigOnScreen true` 和 `CommonUI.Debug.TraceConfigChanges true`
-![alt text](../../assets/images/01EnhancedInput_image-9.png)
+![alt text](../../assets/images/01EnhancedInput_image-9.webp)
  
 （上面的调试信息，是通过控制台打开的。这两个都要设置为true）
  
@@ -27,7 +27,7 @@ common UI 经常遇到 绑定好了按键后，手柄无效，键盘有效，或
 解决方案：
 - 修改源码，把lambda用函数代替，然后用git 保存临时提交备用。（推荐）
 - 编译方案使用 Debug 而不是 DebugGame 这种方案的好处是不用修改源码，代价是帧率特别低。（不推荐）
-  ![alt text](../../assets/images/01CUIHowDebug_image-2.png)
+  ![alt text](../../assets/images/01CUIHowDebug_image-2.webp)
 
 
 ### 调试案例
@@ -40,7 +40,7 @@ common UI 经常遇到 绑定好了按键后，手柄无效，键盘有效，或
   
 - 手柄扳机键没反应
   调试后发现原因，录制按键时只会把扳机键录制为 RightTriggerAxis
-  ![alt text](../../assets/images/01CUIHowDebug_image.png)
+  ![alt text](../../assets/images/01CUIHowDebug_image.webp)
   而游戏过程种，得到的值却是RightTrigger，导致无法触发action。
   
   根本原因是，对于Enhanced Input来说，就不应该存在 axis （轴映射）这种东西，它只有action。但编辑器在开启 enhanced input 时，还是录制到了 legacy的axis 键位，其实是引擎的BUG 

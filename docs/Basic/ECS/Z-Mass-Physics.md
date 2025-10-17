@@ -11,7 +11,7 @@ MassSample 中的实现思路非常清晰，但MassSample是基于MassGamePlay�
 ## MassSample 存在的一个BUG
 如图，当entities数量超过64个时（不同配置的电脑不一致），Niagara渲染的Mesh会出现频繁的闪烁问题。这个问题导致我研究了好久，因为MassSample里面运行这个个项目是“没有BUG”的。
 而自己的项目却有。
-![alt text](../../assets/images/Z-Mass-Physics_image-2.png)
+![alt text](../../assets/images/Z-Mass-Physics_image-2.webp)
 
 当在自己项目里面，使用相同配置的Niagara发射器却出现了疯狂闪烁问题。即使只是设置了一次数据，Niagara的GPU模拟依旧一直在闪烁。
 
@@ -31,10 +31,10 @@ https://github.com/Megafunk/MassSample/issues/48
 我选择了第二种，偶然发现的，不清楚有没有更加简洁的解决办法。
 
 因为默认的NiagaraID无法设置，在粒子spawn阶段自己定义一个新的：
-![alt text](../../assets/images/Z-Mass-Physics_image-3.png){width=70%}
+![alt text](../../assets/images/Z-Mass-Physics_image-3.webp){width=70%}
 
 在粒子的update阶段：使用自己的NiagaraID，弃用exec index：
-![alt text](../../assets/images/Z-Mass-Physics_image-5.png){width=70%}
+![alt text](../../assets/images/Z-Mass-Physics_image-5.webp){width=70%}
 
 
 
@@ -42,11 +42,11 @@ https://github.com/Megafunk/MassSample/issues/48
 ## Niagara的局限性
 Niagara自碰撞的实现方式大概有两种，PBD 或者 RBD，PBD的密度约束方程适合任何物体，而RBD是对PBD的刚体实现，计算更加简单。UE5 ContentSample 自带一些 PBD 的实现。
 
-![alt text](../../assets/images/Z-Mass-Physics_image-1.png){width=50%}
+![alt text](../../assets/images/Z-Mass-Physics_image-1.webp){width=50%}
 
-![alt text](../../assets/images/Z-Mass-Physics_image-4.png){width=50%}
+![alt text](../../assets/images/Z-Mass-Physics_image-4.webp){width=50%}
 
-![alt text](../../assets/images/Z-Mass-Physics_image.png){width=30%}
+![alt text](../../assets/images/Z-Mass-Physics_image.webp){width=30%}
 
 参考：
 - https://zhuanlan.zhihu.com/p/48737753

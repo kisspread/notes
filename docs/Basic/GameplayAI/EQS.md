@@ -52,7 +52,7 @@ UEnvQueryContext_BlueprintBase::UEnvQueryContext_BlueprintBase(const FObjectInit
 - `UEnvQueryItemType_Actor::SetContextHelper(ContextData, ActorSet);`
 
 `FEnvQueryContextData` 维护一个类型擦除的指针数组RawData，让它支持多种数据类型， 并且提供了一系列的GetValue/SetValue接口来访问这些数据：
-![alt text](../../assets/images/EQS_image-3.png){width=30%}
+![alt text](../../assets/images/EQS_image-3.webp){width=30%}
 
 ### EQS 各种Test
 有了生成器，和上下文提供者，就可以配置各种Test了。比如距离测试：`UEnvQueryTest_Distance`，
@@ -110,17 +110,17 @@ ProjectAndFilterNavPoints(NavLocations, QueryInstance);
 StoreNavPoints(NavLocations, QueryInstance);
 ```
 图里这些子类型，如`UEnvQueryGenerator_OnCircle`，必须基于NavMesh来做
-![alt text](../../assets/images/EQS_image.png)
+![alt text](../../assets/images/EQS_image.webp)
 
 如果游戏不是基于NavMesh做导航，图里这些的Generator全部没法用
 
 ## EQS的Graph
 
 这个Graph有些迷惑，根本算不上Graph，几乎没有图该有的特征。
-![alt text](../../assets/images/EQS_image-1.png)
+![alt text](../../assets/images/EQS_image-1.webp)
 最应该加的功能，类似PCG的按D调试，它却没有。
 
-![alt text](../../assets/images/EQS_image-2.png)
+![alt text](../../assets/images/EQS_image-2.webp)
 只有一个作用，打草稿+注释，白线相当于enable，直观些。
 
 ## EQS生成器的蓝图子类存在悬垂指针 (Dangling Pointer)

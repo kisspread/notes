@@ -9,7 +9,7 @@ comments:  true
 source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 ## **Attributes（属性）** 
-![alt text](../assets/images/CassiniPCG_image.png)
+![alt text](../assets/images/CassiniPCG_image.webp)
 1. **Attributes 作为任意元数据（Attributes as arbitrary metadata）**  
    - 属性可以存储简单数据类型，如整数、浮点数、字符串等。  
    - 通过引用（references）和间接访问（indirection），可以增加灵活性，意味着可以通过更复杂的数据结构或动态引用来使用属性。
@@ -24,7 +24,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
    - 该节点支持 **随机选择、加权选择、最近搜索** 等功能，使得程序化内容的生成更加智能化。
  
 ## **多数据（Multi-data）、分区（Partitions）、循环（Loops）和递归（Recursion）** 
-![alt text](../assets/images/CassiniPCG_image-1.png)
+![alt text](../assets/images/CassiniPCG_image-1.webp)
 1. **多数据支持和主引脚循环（Multi-data & loops on primary pins）**  
    - 大多数 PCG 节点现在支持多数据输入，并且在主引脚（required pins）上具有循环能力。  
    - UE5.5 为此新增了 **每数据缓存（per-data caching）**，提高性能。
@@ -43,7 +43,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 ## **用户参数（User Parameters）、数据表（Data Tables）和对象引用（Object References）**
- ![alt text](../assets/images/CassiniPCG_image-2.png)
+ ![alt text](../assets/images/CassiniPCG_image-2.webp)
 1. **用户参数（User Parameters）**  
    - 允许终端用户或子图（Subgraph）进行控制，提高可操作性。
 
@@ -60,7 +60,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
  
 ## **运行时分层生成（Runtime Hierarchical Generation）**
-![alt text](../assets/images/CassiniPCG_image-3.png)
+![alt text](../assets/images/CassiniPCG_image-3.webp)
 1. **按需生成，适应所需分辨率（Generate what you need at the resolution needed）**  
    - 影响其他系统或用于较低层级生成的元素可以提前在远距离生成，优化性能。
 
@@ -76,7 +76,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 ## **形状语法节点（Shape Grammar Nodes）**
-![alt text](../assets/images/CassiniPCG_image-4.png)
+![alt text](../assets/images/CassiniPCG_image-4.webp)
 1. **分割段/样条线（Subdivide segment/spline）**  
    - 根据指定的 **语法（Grammar）** 和 **模块（Modules）** 对段（Segment）或样条线（Spline）进行细分。
 
@@ -90,7 +90,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 ## **Interops（交互操作）** 
-![alt text](../assets/images/CassiniPCG_image-6.png)
+![alt text](../assets/images/CassiniPCG_image-6.webp)
  
 ### **1. Spline Meshes（样条网格）**
 - 允许从 **PCG 生成的样条（Spline）** 创建网格对象。  
@@ -116,7 +116,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 ## **GPU 支持（GPU Support）** 
- ![alt text](../assets/images/CassiniPCG_image-7.png)
+ ![alt text](../assets/images/CassiniPCG_image-7.webp)
 - **Custom HLSL** → 允许开发者用 HLSL **编写自定义 PCG 逻辑**，控制 **地形、纹理、点数据**。  
 - **Native GPU Nodes** → 未来 **PCG 计算逐步迁移到 GPU**，减少 CPU 负担，提高生成速度。  
 - **GPU Instancing (Experimental)** → **实验性 GPU 实例化**，适用于 **大规模对象生成**，如森林、建筑等。  
@@ -150,7 +150,7 @@ source: https://www.youtube.com/watch?v=j3ke6MmcaeY
 
 
 ## More
- ![alt text](../assets/images/CassiniPCG_image-9.png)
+ ![alt text](../assets/images/CassiniPCG_image-9.webp)
 
 - **Raycasting** → **增强光线投射**，可用于检测环境、改进点生成规则。  
 - **Data Layers** → **数据层继承机制**，未来可 **更灵活地控制数据层目标**。  

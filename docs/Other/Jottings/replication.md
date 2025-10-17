@@ -6,7 +6,7 @@ comments:  true
 ## 资料搜集
 
 ### Network Prediction plugin
-![alt text](../../assets/images/jottings_image.png)
+![alt text](../../assets/images/jottings_image.webp)
 从提交记录上看，该插件2021年已经停更，后面的都是小改动。主程序员(Dave Ratti)已经离职epic.
 
 NP插件需要和Mover 2.0 配合使用会比较好。

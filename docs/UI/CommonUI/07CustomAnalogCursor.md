@@ -25,7 +25,7 @@ Here is my solution:
 
 - Create those classes:
 
-    ![alt text](../../assets/images/07CustomAnalogCursor_image-1.png)
+    ![alt text](../../assets/images/07CustomAnalogCursor_image-1.webp)
 
 - like so:
 
@@ -81,7 +81,7 @@ Here is my solution:
     ```
 
 - Only when the Active Input Mode is Menu Mode, should it simulate the Mouse Left Click.
-    ![alt text](../../assets/images/07CustomAnalogCursor_image.png)
+    ![alt text](../../assets/images/07CustomAnalogCursor_image.webp)
 
 
 ## Other Problem
@@ -90,4 +90,4 @@ At this moment, the FaceButton-Bottom doesn't simulate a Left Mouse Click in "Ga
 
 ## Doc
 文档还告诉我们，光标的可见性，是否居中，都可以重写这个类来自定义自己要的行为。
-![alt text](../../assets/images/07CustomAnalogCursor_image-2.png)
+![alt text](../../assets/images/07CustomAnalogCursor_image-2.webp)
