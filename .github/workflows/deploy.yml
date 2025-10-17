@@ -32,6 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+          lfs: true  # 添加这行来启用 LFS
       - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
         with:
           version: 9
