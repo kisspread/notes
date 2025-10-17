@@ -79,30 +79,30 @@ Similar to mobile apps, the stack in CommonUI is the effect of stacking interfac
 some config if not setup correctly, it will not work.
 
 - Player Controller: Make sure "Block Input" is unchecked.
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image.png>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image.webp>)
 - Create a HUD or Menu widget derived from CommonActivatable Widget.
 - Ensure that your HUD or Menu Widget set "supports Activation Focus" to **true**.
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-1.png>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-1.webp>)
 - Create a specific UI InputConfig for your menu widget. Avoid using `Setup Input Mode Game & UI` as it is not suitable for CommonUI!
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.png>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.webp>)
 - If your game is a TopDown Game and you want to retain Mouse Capture, in your HUD Widget, set the input config Mouse Capture Mode to "Capture Permanently including Initial Mouse Down." Otherwise, your game will require a double-click to trigger a single mouse click.
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.png>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.webp>)
 
 
 ### Enhanced Input and Automatic Button Icon Display
 
 - In `Game->CommonInputSetting`, add your platform icon data and set "Enable Enhanced Input Support" to true.
 
-    ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-4.png>)
+    ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-4.webp>)
 
 - Create a `CommonBaseButton`, place a `CommonActionWidget` inside it, and rename it to `InputActionWidget`. **It must be named this way, otherwise it will not display.**
 
 - Configure the `CommonBaseButton` input action, setting an `InputAction` for it. Here, an 'E' key is set, and the `CommonActionWidget` inside the button will display the corresponding icon.
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-5.png>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-5.webp>)
 
 - If no `InputAction` is specified for the above `CommonBaseButton`, the system will automatically set the relevant action icon based on the platform when it is in focus. For example, the Xbox's down button icon is usually the gamepad face button down, so it will display an 'A' icon.
 - This 'A' icon can be specified through configuring `CommonUIInputData`.
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image.png>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image.webp>)
 - You can change the `ForwardAction` from the 'A' button to the 'X' button. However, this only modifies the icon, as the platform still passes the 'A' button's `InputAction`. Visually, it will show the 'X' icon, but the key binding remains 'A'. I can only consider this a bug. If you know the correct approach, please let me know.
 
 ### Gamepad Navigation Configuration
@@ -112,4 +112,4 @@ You only need to override `GetDesiredFocusTarget` to let the system know which C
 
 - This only works for gamepads; keyboard navigation is very cumbersome now, presumably due to the mouse capture. The Lyra project disables keyboard navigation. If you know simeple way to setup keyboard navigation , please let me konw. :)
 
- ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image-1.png>)
+ ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image-1.webp>)

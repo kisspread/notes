@@ -57,7 +57,7 @@ private:
 UAbilitySystemComponent 内部对Ability列表的操作，全部是添加到 pending列表里。所以有AbilityPendingAdds 和 AbilityPendingRemoves，他们只进行add即可。因为锁的作用域结束后，会来这里“用完”pending，并清空他们。
 
 当 AbilityScopeLockCount 为0时的部分关键代码：
-![alt text](<../../assets/images/Programming idiom_image.png>)
+![alt text](<../../assets/images/Programming idiom_image.webp>)
 
 所以，FScopedAbilityListLock 作用
 - 防止在遍历 Ability 列表时移除 Ability
