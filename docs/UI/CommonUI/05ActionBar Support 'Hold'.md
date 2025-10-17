@@ -10,15 +10,15 @@ So, I implemented a widget that allows dynamically adding buttons to the ActionB
 
 ---
 
-![alt text](<../../assets/images/ActionBar Support Hold_image.png>)
+![alt text](<../../assets/images/ActionBar Support Hold_image.webp>)
 
 ### Blueprint Setup
 
 - Supports a default action:
-    ![alt text](<../../assets/images/ActionBar Support Hold_image-1.png>)
+    ![alt text](<../../assets/images/ActionBar Support Hold_image-1.webp>)
 
 - Allows adding actions dynamically:
-    ![alt text](<../../assets/images/ActionBar Support Hold_image-2.png>)
+    ![alt text](<../../assets/images/ActionBar Support Hold_image-2.webp>)
 
 ### Code
 
