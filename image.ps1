@@ -1,19 +1,13 @@
-
-$RootDir = "E:\git\notes\notes\docs\assets\test"
+$RootDir = "E:\git\notes\notes\docs\assets\images"
 
 # 配置
-$MinMB = 0
-$MaxMB = 1
-$WebpQuality = 95           
+$MinMB = 2
+$MaxMB = 5
+$WebpQuality = 50           
 $UseLossless = $false
 $KeepBackup = $false
 $MagickCmd = "magick"
 $HeaderReadBytes = 4096
-
-if (-not (Get-Command $MagickCmd -ErrorAction SilentlyContinue)) {
-    Write-Error "找不到 ImageMagick 可执行: $MagickCmd。"
-    return
-}
 
 $extensions = @("*.png","*.jpg","*.jpeg")
 
@@ -22,22 +16,19 @@ Get-ChildItem -Path $RootDir -Recurse -File -Include $extensions | ForEach-Objec
     try {
         if ($file.Extension -ieq ".webp") { return }
 
-        # $sizeMB = [math]::Round($file.Length / 1MB, 2)
+        $sizeMB = [math]::Round($file.Length / 1MB, 2)
+        # 取消注释下面这行来启用文件大小过滤
         # if ($sizeMB -lt $MinMB -or $sizeMB -gt $MaxMB) { return }
 
-        # $ext = $file.Extension.ToLower()
-        # if ($ext -notin ".png", ".jpg", ".jpeg") { return }
-
-
-        Write-Host ("Compressing: {0} ({1} MB) -> WebP (quality={2}, lossless={3})" -f $file.FullName, $sizeMB, $WebpQuality, $UseLossless)
+        Write-Host "Compressing: $($file.FullName) ($sizeMB MB) -> WebP (quality=$WebpQuality, lossless=$UseLossless)"
 
         # 确保临时输出文件以 .webp 结尾
         $tempWebp = Join-Path $file.DirectoryName ("{0}.{1}.webp" -f $file.BaseName, [guid]::NewGuid().ToString("N"))
         $finalWebp = [System.IO.Path]::ChangeExtension($file.FullName, ".webp")
 
-        # 组装参数
+        # 组装参数 - 使用转义引号
         $args = @()
-        $args += $file.FullName
+        $args += "`"$($file.FullName)`""  # 用引号包裹输入文件路径
         if ($UseLossless) {
             $args += "-define"
             $args += "webp:lossless=true"
@@ -45,10 +36,28 @@ Get-ChildItem -Path $RootDir -Recurse -File -Include $extensions | ForEach-Objec
             $args += "-quality"
             $args += $WebpQuality.ToString()
         }
-        $args += $tempWebp
-        Write-Host ("args={0}" -f $file.FullName, $sizeMB, $WebpQuality, $UseLossless)
+        $args += "`"$tempWebp`""  # 用引号包裹输出文件路径
+        
         # 运行 magick
-        $proc = Start-Process -FilePath $MagickCmd -ArgumentList $args -NoNewWindow -Wait -PassThru -ErrorAction Stop
+        $processInfo = New-Object System.Diagnostics.ProcessStartInfo
+        $processInfo.FileName = $MagickCmd
+        $processInfo.Arguments = $args -join " "
+        $processInfo.RedirectStandardError = $true
+        $processInfo.RedirectStandardOutput = $true
+        $processInfo.UseShellExecute = $false
+        $processInfo.CreateNoWindow = $true
+        
+        $process = New-Object System.Diagnostics.Process
+        $process.StartInfo = $processInfo
+        $process.Start() | Out-Null
+        $process.WaitForExit()
+        
+        $stdout = $process.StandardOutput.ReadToEnd()
+        $stderr = $process.StandardError.ReadToEnd()
+
+        if ($process.ExitCode -ne 0) {
+            throw "ImageMagick return error code: $($process.ExitCode). Error: $stderr"
+        }
 
         if (Test-Path $tempWebp) {
             if ($KeepBackup) {
@@ -60,13 +69,12 @@ Get-ChildItem -Path $RootDir -Recurse -File -Include $extensions | ForEach-Objec
             }
 
             Rename-Item -Path $tempWebp -NewName (Split-Path $finalWebp -Leaf) -Force
-            Write-Host "✔ Done: $finalWebp"
+            Write-Host "Done: $finalWebp"
         } else {
-            Write-Warning "转换失败，未生成临时文件: $tempWebp"
+            Write-Warning "failed to generate temp file: $tempWebp"
         }
     }
     catch {
-        Write-Warning ("Failed processing {0}: {1}" -f $file.FullName, $_.Exception.Message)
+        Write-Warning "Failed processing $($file.FullName): $($_.Exception.Message)"
     }
 }
- 
