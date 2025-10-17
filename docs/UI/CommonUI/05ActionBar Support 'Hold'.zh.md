@@ -11,15 +11,15 @@ comments:  true
 
 ---
 
-![alt text](<../../assets/images/ActionBar Support Hold_image.webp>)
+![alt text](<../../assets/images/ActionBar Support Hold_image.png>)
 
 ### 蓝图配置
 
 - 支持一个默认动作：
-    ![alt text](<../../assets/images/ActionBar Support Hold_image-1.webp>)
+    ![alt text](<../../assets/images/ActionBar Support Hold_image-1.png>)
 
 - 支持动态添加动作：
-    ![alt text](<../../assets/images/ActionBar Support Hold_image-2.webp>)
+    ![alt text](<../../assets/images/ActionBar Support Hold_image-2.png>)
 
 ### 代码
 

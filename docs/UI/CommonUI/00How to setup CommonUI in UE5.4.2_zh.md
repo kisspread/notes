@@ -79,29 +79,29 @@ Activatable Widget是 Common UI 的重要概念。 这里可以简单地理解�
 - 参考官方文档 [开启commonUI](https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-quickstart-guide-for-unreal-engine)
 
 - 玩家控制器：确保“block input”未被选中。
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image.png>)
 - 创建一个从CommonActivatable Widget派生的HUD或Menu Widget。
 - 确保您的HUD或Menu Widget将“Support Activation Focus”设置为**true**。
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-1.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-1.png>)
 - 为Menu Widget创建特定的UI输入配置。避免使用`设置输入模式为游戏和UI`，因为这对CommonUI不适用！
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.png>)
 - 如果您的游戏是Top Down 类型的游戏，并且希望保留鼠标捕获，请在HUD widget中将InputConfig的鼠标捕获模式设置为“永久捕获，包括初始鼠标按下”。否则，您的游戏将需要双击才能触发单击鼠标。
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.png>)
 
 ### 增强输入和按钮自动显示图标
 
 - 在Game->CommonInputSetting中，添加您的平台图标数据。并将“启用增强输入支持”设置为true。
 
-  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-4.webp>)
+  ![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-4.png>)
 
 - 创建一个CommonBaseButton，在里面放置一个CommonActionWidget，**并且重命名为InputActionWidget，必须是这个名字，否则不显示。**
 
 - 配置CommonBaseButton输入操作，给他设置一个InputAction。这里设置了按键E，按钮里的CommonActionWidget就会显示对应的图标。
-![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2_image-5.webp>)
+![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2_image-5.png>)
 
 - 不给上面的CommonBaseButton指定InputAction，系统就会自动在它**focus**的时候，根据平台自动给它设置相关操作的图标。比如Xbox的按下图标通常是gamepad face button down, 就会显示一个A图标
 - 这个A的图标可以通过配置CommonUIInputData来指定
-  ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image.webp>)
+  ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image.png>)
 - 可以把ForwardAction 从A键 改成 X键。但这只能修改图标，因为平台的传递过来的还是A键的InputAction。表现上看就是，显示的图标是X，但按键绑定的依然是A。我只能把它当作一个bug，如果你知道正确做法，请告诉我。
 
 ### 手柄导航配置
@@ -110,4 +110,4 @@ Activatable Widget是 Common UI 的重要概念。 这里可以简单地理解�
 只需重写`GetDesiredFocusTarget`，让系统知道默认哪个Common BaseButon需要focus即可。
 
  - 以上只针对手柄有效，键盘导航很麻烦，猜测是因为鼠标的存在。Lyra项目是禁用键盘导航的。如果你知道简单的方式，请告诉我。:)
- ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image-1.webp>)
+ ![alt text](<../../assets/images/How to setup CommonUI in UE5.4.2.zh_image-1.png>)

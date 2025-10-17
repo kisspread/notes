@@ -79,11 +79,11 @@ CommonUI 使用 `Activatable Widget` 来自动响应输入模式。[详细](./00
 
 ### HUB 页面配置
 - 需要的话，还可以勾选隐藏鼠标
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-3.png>)
 
 ### Menu 页面配置
 - 需要注意，Menu模式的页面 必须选择 NO Capture, 否则有点小问题
-![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.webp>)
+![image](<../../assets/images/How to setup CommonUI in UE5.4.2_image-2.png>)
 
 ### 自动响应的前提
 也就是在stack的栈顶的时候 自动激活。
