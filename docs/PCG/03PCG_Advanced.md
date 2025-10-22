@@ -5,14 +5,163 @@ comments: true
 
 # PCG 高级篇 运用案例
 
-记录以下相关应用
+## 蓝图自定义节点
 
-## 闭合样条线判断内角外角
+蓝图节点可以用于处理PCG Graph中不方便操作的数据。
+
+主要分为3个步骤：获取数据，处理数据，输出数据。
+
+节点的输入输出的**数据包装类型都是`TaggedData`**，带标签的数据，数据可能有多种类型，可能是 点类型，参数类型，设置类型等，所以需要判断到底是哪种类型。
+
+默认输入输出的Pin 分别是 `In` 和 `Out`，但可以定义更多的Pin，所以需要用Pin的Label来获取特定的数据。
+
+Pin、Label、Tags 在中文里都容易翻译为**标签**，所以很容易造成混淆。
+
+Pin的和Tags 不是同个东西，Pin是**键**，Data是**值**，而Tags则是可选的**标签**。
+
+Pin 和 Data 也不是 一一对应的关系，因为节点里，一个pin可以连入多份数据，所以各种`GetXX`,`GetInputsByXX`的接口返回的都是`TaggedData`的数组。
+
+```cpp
+// 创建TaggedData
+FPCGTaggedData TaggedData;
+TaggedData.Data = Data;
+TaggedData.Tags = Tags;
+TaggedData.Pin = Pin;
+```
+
+这些`TaggedData` 最终会被打包放进去`FPCGDataCollection`里面， 交给蓝图节点处理。
+
+
+
+### 获取数据
+
+实现`execute`函数，获取输入数据
+![alt text](../assets/images/03PCG_Advanced_image.png)
+
+如果只有一个输入Pin,直接调用
+
+输入的`Input` 是一个`FPCGDataCollection`类型，提供了一系列的接口来获取输入数据，这些方法本质都是过滤出想要的`TaggedData`：
+
+:::details `FPCGDataCollection`接口
+```cpp
+/** Returns all spatial data in the collection */
+	UE_DEPRECATED(5.6, "Use GetAllSpatialInputs for only spatial inputs, or use GetAllInputs.")
+	UE_API TArray<FPCGTaggedData> GetInputs() const;
+
+	/** Returns all spatial data in the collection. */
+	UE_API TArray<FPCGTaggedData> GetAllSpatialInputs() const;
+
+	/** Returns all inputs in the collection. */
+	const TArray<FPCGTaggedData>& GetAllInputs() const { return TaggedData; }
+
+	/** Returns all data on a given pin. */
+	UE_API TArray<FPCGTaggedData> GetInputsByPin(const FName& InPinLabel) const;
+	/** Returns all spatial data on a given pin */
+	UE_API TArray<FPCGTaggedData> GetSpatialInputsByPin(const FName& InPinLabel) const;
+
+ // 具体实现
+
+TArray<FPCGTaggedData> FPCGDataCollection::GetTaggedInputs(const FString& InTag) const
+{
+	return GetTaggedTypedInputs<UPCGSpatialData>(InTag);
+}
+
+TArray<FPCGTaggedData> FPCGDataCollection::GetAllSettings() const
+{
+	return TaggedData.FilterByPredicate([](const FPCGTaggedData& Data) {
+		return Cast<UPCGSettings>(Data.Data) != nullptr;
+		});
+}
+
+TArray<FPCGTaggedData> FPCGDataCollection::GetAllParams() const
+{
+	return TaggedData.FilterByPredicate([](const FPCGTaggedData& Data) {
+		return Cast<UPCGParamData>(Data.Data) != nullptr;
+	});
+}
+
+TArray<FPCGTaggedData> FPCGDataCollection::GetParamsByPin(const FName& InPinLabel) const
+{
+	return TaggedData.FilterByPredicate([&InPinLabel](const FPCGTaggedData& Data) {
+		return Data.Pin == InPinLabel && Cast<UPCGParamData>(Data.Data);
+		});
+}
+
+TArray<FPCGTaggedData> FPCGDataCollection::GetTaggedParams(const FString& InTag) const
+{
+	return TaggedData.FilterByPredicate([&InTag](const FPCGTaggedData& Data) {
+		return Data.Tags.Contains(InTag) && Cast<UPCGParamData>(Data.Data) != nullptr;
+		});
+}
+```
+:::
+
+骚操作：把输入的数据合并到一起（没什么意义，方便理解）：
+![alt text](../assets/images/03PCG_Advanced_image-2.png)
+于是结果里面既有Point Data，又有Attribute Data
+![alt text](../assets/images/03PCG_Advanced_image-1.png){width=40%}
+
+### 处理数据
+
+如果是简单的运算，在`Execute`函数中，直接计算然后调用`MakePCGDataCollection`输出即可。
+需要注意，最好不能把输入的数据直接输出，而是要重新创建TaggedData一份， 否则会破坏上游节点的输出数据。
+
+#### 给数据增加属性`Metadata`
+构造 `MutableMetadata`, 持有Metadata, 调用 `AddEntry` 并持有 Entry的Key
+![alt text](../assets/images/03PCG_Advanced_image-3.png)
+
+填充原本的输入数据的属性，再用上一步的EntryKey 添加新的属性
+![alt text](../assets/images/03PCG_Advanced_image-4.png)
+这个图展示创建具体的属性类型：
+![alt text](../assets/images/03PCG_Advanced_image-5.png)
+
+
+#### 循环处理点数据
+
+普通数据使用蓝图的`For Each`节点问题不大，但点数据通常非常多，PCG提供了特殊的并发循环节点，它们被设计为在后台线程中并行执行 (multi-threaded / 并行化)，以极高的效率处理大量数据。
+![alt text](../assets/images/03PCG_Advanced_image-6.png){width=50%}
+
+一个最简单的例子，给全部点设置一个统一的颜色，并全部保留：
+![alt text](../assets/images/03PCG_Advanced_image-7.png)
+
+通常只需要用到`PointLoopBody`，即可；其他都是补充用法。
+
+| 函数 (Function) | 核心思想 | 输入 -\> 输出  | 类比 |
+| :--- | :--- | :--- | :--- |
+| **`PointLoopBody`** | 变换 / 过滤 | 1 : 1 (或 1 : 0) | `map` + `filter` |
+| **`VariableLoopBody`** | 扩展 / 生成 | 1 : N | `flatMap` / `SelectMany` |
+| **`NestedLoopBody`** | 组合 / 关系 | (M x N) : 1 (或 0) | 双层 `for` 循环 |
+| **`IterationLoopBody`** | 创造 / 迭代 | 0 : N | 单个 `for (i=0; i<N; i++)` |
+
+（1:1是一份对一份的意思，如果存在filter，依旧当作一份。）
+（1：N,每棵树生成随机个果实）
+
+需要注意的是，这些循环都是并发的，无法进行类似`Reduce`的累积、求平均操作，这些依旧要使用蓝图的`For Each`节点。
+
+### 输出数据
+
+输出到多个Pin：
+![alt text](../assets/images/03PCG_Advanced_image-8.png)
+
+最终输出的Collection:
+![alt text](../assets/images/03PCG_Advanced_image-9.png)
+
+
+
+
+
+---
+---
+## PCG 案例
+
+记录一些PCG的细节使用
+
+### 闭合样条线判断内角外角
 闭合的直线样条线，形成的凸包有时需要判断拐角使用内角还是外角，因为拐角模型也是存在“手性”的， 内外需要区别判断或者使用不同模型。这个问题可以转换为，样条线的下一个点是左拐还是右拐。左右问题，可以使用`Cross Product`来判断。
 ![alt text](../assets/images/03PCG_Advanced_image-24.webp)
 
 
-## PCG Spawn Mesh 时假装指定Pivot点
+### PCG Spawn Mesh 时假装指定Pivot点
 PCG Spawn Mesh的时，Mesh的的pivot点是会和PCG的Position重合。但Mesh的Pivot多种多样，有的在中心，有的在边界，有的在角落，总之乱七八糟的，重新修改Mesh又费时费力，所以应该想办法在直接在PCG中调整。
 
 那么，只要知道Mesh的Bound 和 它当前的Pivot，只要能根据目标位置，计算出一个偏移量，就能假装调整了Mesh 的Pivot
@@ -68,7 +217,7 @@ $$
 最终，这个调整向量是本地坐标系下的，需要使用Transform.TransformDirection转换到世界坐标系，然后`+`到PCG点的Position。
 
 
-## PCG自适应铺地板
+### PCG自适应铺地板
 ![alt text](../assets/images/03PCG_Advanced_image-8.webp)
 地板宽度通常是固定，所以对应输入的样条线区域，还需进行调整，有以下步骤：
 
