@@ -31,6 +31,17 @@ TaggedData.Pin = Pin;
 
 这些`TaggedData` 最终会被打包放进去`FPCGDataCollection`里面， 交给蓝图节点处理。
 
+一下Pin有默认值：
+```cpp
+namespace PCGPinConstants
+{
+	const FName DefaultInputLabel = TEXT("In");
+	const FName DefaultOutputLabel = TEXT("Out");
+	const FName DefaultParamsLabel = TEXT("Overrides");
+	//省略后续
+}
+```
+
 
 
 ### 获取数据
@@ -107,13 +118,30 @@ TArray<FPCGTaggedData> FPCGDataCollection::GetTaggedParams(const FString& InTag)
 需要注意，最好不能把输入的数据直接输出，而是要重新创建TaggedData一份， 否则会破坏上游节点的输出数据。
 
 #### 给数据增加属性`Metadata`
-构造 `MutableMetadata`, 持有Metadata, 调用 `AddEntry` 并持有 Entry的Key
+
+在调试面版看到的一行行数据：
+- 每一行就是一个`Entry`
+- 如果是Point Data，每个Point都持有一个`MetadataEntryKey`
+  ```cpp
+  UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "Properties|Metadata")
+  int64 MetadataEntry = -1;
+  ```
+
+所以，对于`非Point Data`，需要构造 `MutableMetadata`, 持有Metadata, 调用 `AddEntry` 并持有 Entry的Key
 ![alt text](../assets/images/03PCG_Advanced_image-3.png)
 
-填充原本的输入数据的属性，再用上一步的EntryKey 添加新的属性
+下图展示填充原本的输入数据的属性，再用上一步的EntryKey 进行默认赋值，这里是AddAttributes相当于创建表头（方法注释：Creates missing attribute from another metadata），SetAttributes就是拷贝默认值。
 ![alt text](../assets/images/03PCG_Advanced_image-4.png)
-这个图展示创建具体的属性类型：
+
+下图展示使用EntryKey创建具体的属性类型的例子，更好懂也很常用，Create是创建表头，Set才是赋值：
 ![alt text](../assets/images/03PCG_Advanced_image-5.png)
+
+对于具体的某一个`Point Data`，因为`FPCGPoint`已经持有了EntryKey，所以直接`CreateXXAttribute`创建表头
+![alt text](../assets/images/03PCG_Advanced_image-10.png)
+
+再使用Point作为参数的的方法，进行赋值即可：
+![alt text](../assets/images/03PCG_Advanced_image-13.png)
+
 
 
 #### 循环处理点数据
@@ -124,19 +152,24 @@ TArray<FPCGTaggedData> FPCGDataCollection::GetTaggedParams(const FString& InTag)
 一个最简单的例子，给全部点设置一个统一的颜色，并全部保留：
 ![alt text](../assets/images/03PCG_Advanced_image-7.png)
 
-通常只需要用到`PointLoopBody`，即可；其他都是补充用法。
+下图展示启动一个`PointLoop`的例子，该函数立即返回Data引用，但并发完成后Data里面才会有数据：
+![alt text](../assets/images/03PCG_Advanced_image-12.png)
 
-| 函数 (Function) | 核心思想 | 输入 -\> 输出  | 类比 |
-| :--- | :--- | :--- | :--- |
-| **`PointLoopBody`** | 变换 / 过滤 | 1 : 1 (或 1 : 0) | `map` + `filter` |
-| **`VariableLoopBody`** | 扩展 / 生成 | 1 : N | `flatMap` / `SelectMany` |
-| **`NestedLoopBody`** | 组合 / 关系 | (M x N) : 1 (或 0) | 双层 `for` 循环 |
-| **`IterationLoopBody`** | 创造 / 迭代 | 0 : N | 单个 `for (i=0; i<N; i++)` |
+下图展示启动一个`IterationLoop`的例子：
+![alt text](../assets/images/03PCG_Advanced_image-11.png)
 
-（1:1是一份对一份的意思，如果存在filter，依旧当作一份。）
-（1：N,每棵树生成随机个果实）
+通常只需要用到`PointLoopBody`即可；其他都是补充用法。
 
-需要注意的是，这些循环都是并发的，无法进行类似`Reduce`的累积、求平均操作，这些依旧要使用蓝图的`For Each`节点。
+| 函数 (Function) | 核心思想 | 输入 -\> 输出  | 类比 | 补充说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| **`PointLoopBody`** | 变换 / 过滤 | 1 : 1 (或 1 : 0) | `map` + `filter` | 用点数据来驱动，1:1是一份对一份的意思，如果存在filter，依旧当作一份。 |
+| **`VariableLoopBody`** | 扩展 / 生成 | 1 : N | `flatMap` / `SelectMany` | 例如对于输入的每棵树生成随机数量的果实，N在每个并发里可以不同 |
+| **`NestedLoopBody`** | 组合 / 关系 | (M x N) : 1 (或 0) | 双层 `for` 循环 | 排列组合 ，笛卡尔积 |
+| **`IterationLoopBody`** | 创造 / 迭代 | 0 : N | 单个 `for (i=0; i<N; i++)` | 用指定的数量驱动 |
+
+ 
+
+需要注意的是，这些循环都是多线程/并发的，无法进行类似`Reduce`的累积、求平均操作，这些依旧要使用蓝图的`For Each`节点。
 
 ### 输出数据
 
@@ -147,8 +180,29 @@ TArray<FPCGTaggedData> FPCGDataCollection::GetTaggedParams(const FString& InTag)
 ![alt text](../assets/images/03PCG_Advanced_image-9.png)
 
 
+### 综合案例
 
+参数计算案例： 自定义节点计算两个向量的`Cross Product`，并输出结果。
 
+#### 定义Pin
+由于是都是参数类型，所以Pin的类型是`UPCGParamData`，蓝图这里显示了它的用于阅读的名字`PCG Attribute Set`，其实是别名。
+![alt text](../assets/images/03PCG_Advanced_image-14.png){width=20%}
+
+#### 取出参数类型
+- 根据索引获取输入的参数 
+ ![alt text](../assets/images/03PCG_Advanced_image-15.png)  
+
+- 参数的默认EntryKey 用0即可，用它取出向量A和B（这个其实不需要用MutableMetadata，用ConstMetadata更加合适）
+  ![alt text](../assets/images/03PCG_Advanced_image-16.png)
+
+#### 构建输出
+- 创建`PCGParamData`,这里搜索`PCGParamData`是可以出现它的别名`PCG Attribute Set`的
+- 作为Data输入构建出`PCGTaggedData`，并打包到`PCGDataCollection`作为最终输出
+![alt text](../assets/images/03PCG_Advanced_image-17.png)  
+
+#### 完成业务逻辑
+- 计算Cross Product
+![alt text](../assets/images/03PCG_Advanced_image-18.png)
 
 ---
 ---
@@ -252,7 +306,7 @@ $$
 2. 采样距离设置为500（会报错但不影响使用，不必理会，应该是bug）
 
 
-## PCG 自动样条线Mesh
+### PCG 自动样条线Mesh
 ![alt text](../assets/images/03PCG_Advanced_image-7.webp)
 主要都是 Attract节点的用法， Attract的主要功能的搜索和关联
 
