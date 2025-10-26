@@ -132,9 +132,10 @@ Including open source and non-open source, commercial and non-commercial.
 ### **Shader**
 | 地址名字 | 原项目说明 | Note | img |
 | :--- | :--- | :--- | :--- |
+| [CompushadyUnreal](https://github.com/rdeioris/CompushadyUnreal) | Compushady is an Unreal Engine 5 plugin aimed at easily (and quickly) executing GPU shaders. | 简化HLSL绑定, 更容易使用的Compute Shader for UE5 | ![CompushadyUnreal](./docs/assets/images/00_image.png) |
 | [RTMSDF](https://github.com/rtm223/RTMSDF) | 2D signed distance field generators & importers for Unreal Engine 5. | 提供导入器，用于从.svg和各种纹理源文件生成2D SDF。 | ![RTMSDF](./docs/assets/images/00_image-81.webp) |
 | [SceneViewExtensionTemplate](https://github.com/A57R4L/SceneViewExtensionTemplate) | Unreal Engine 5 plugin template for adding a custom rending pass into the engine with a SceneViewExtension. | 在不改引擎源码的前提下，向渲染管线里注入自定义渲染pass的插件模板。 | |
-| [UE5_Tut_5_Custom_Material_Node](https://github.com/RyanSweeney987/UE5_Tut_5_Custom_Material_Node) | Tutorial code for how you can create your own material nodes for use in any material. | 创建自定义材质节点的教程代码，示例是一个简单的去饱和度节点。 | |
+| [UE5_Tut_5_Custom_Material_Node](https://github.com/RyanSweeney987/UE5_Tut_5_Custom_Material_Node) | Tutorial code for how you can create your own material nodes for use in any material. | 创建自定义材质节点的教程代码，示示例是一个简单的去饱和度节点。 | |
 | [MaterialMaker](https://github.com/RodZill4/material-maker) | A procedural textures authoring and 3D model painting tool based on the Godot game engine. | 虽然说支持 Unreal Engine，但是测试发现生成的hlsl 依然代码存在很多报错 (2025.7.30)。 | ![MaterialMaker](./docs/assets/images/00_image-58.webp) |
 | [ProceduralDrawingMaterialSamples](https://github.com/EmbarrassingMoment/ProceduralDrawingMaterialSamples) | A collection of procedural drawing material samples for Unreal Engine (UE5). | UE5的程序化绘制材质示例集合，可用于学习技术美术和项目参考。 | ![Snow](https://github.com/EmbarrassingMoment/ProceduralDrawingMaterialSamples/raw/master/gif/Snow.gif)<br>![Animation](https://github.com/EmbarrassingMoment/ProceduralDrawingMaterialSamples/raw/master/gif/Animation.gif) |
 | [DarknessFX/UEMaterials](https://github.com/DarknessFX/UEMaterials) | DarknessFX Collection of Unreal Engine Materials. | DarknessFX的UE材质集合。 | ![UEMaterials](./docs/assets/images/00_image-32.webp) |

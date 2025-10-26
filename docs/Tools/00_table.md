@@ -135,6 +135,7 @@ Including open source and non-open source, commercial and non-commercial.
 ### **Shader**
 | 地址名字 | 原项目说明 | Note | img |
 | :--- | :--- | :--- | :--- |
+| [CompushadyUnreal](https://github.com/rdeioris/CompushadyUnreal) | Compushady is an Unreal Engine 5 plugin aimed at easily (and quickly) executing GPU shaders. | 简化HLSL绑定, 更容易使用的Compute Shader for UE5 | ![CompushadyUnreal](../assets/images/00_image.png) |
 | [RTMSDF](https://github.com/rtm223/RTMSDF) | 2D signed distance field generators & importers for Unreal Engine 5. | 提供导入器，用于从.svg和各种纹理源文件生成2D SDF。 | ![RTMSDF](../assets/images/00_image-81.webp) |
 | [SceneViewExtensionTemplate](https://github.com/A57R4L/SceneViewExtensionTemplate) | Unreal Engine 5 plugin template for adding a custom rending pass into the engine with a SceneViewExtension. | 在不改引擎源码的前提下，向渲染管线里注入自定义渲染pass的插件模板。 | |
 | [UE5_Tut_5_Custom_Material_Node](https://github.com/RyanSweeney987/UE5_Tut_5_Custom_Material_Node) | Tutorial code for how you can create your own material nodes for use in any material. | 创建自定义材质节点的教程代码，示例是一个简单的去饱和度节点。 | |
