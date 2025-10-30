@@ -86,6 +86,7 @@ Including open source and non-open source, commercial and non-commercial.
 ### **Gameplay**
 | 地址名字 | 原项目说明 | Note | img |
 | :--- | :--- | :--- | :--- |
+| [HeartGraph](https://github.com/Drakynfly/HeartGraph) | A generic runtime node graph editor and viewer for Unreal Engine. Supports versions 5.3 and 5.4, with legacy branch for 5.2 with a limited feature set. Compiles on Windows and macOS. | 在运行时给玩家提供蓝图编辑器！ | ![HeartGraph](./docs/assets/webp/00_image-1.webp) |
 | [GameItemsPlugin](https://github.com/bohdon/GameItemsPlugin) | An Unreal plugin with classes and tools for creating gameplay items, inventories and equipment. | Lyra 的扩展，GAS相关，MVVM，可以学习一下相关写法。 | |
 | [GameExperiencesPlugin](https://github.com/bohdon/GameExperiencesPlugin) | An Unreal plugin for defining modular extensions to game modes that leverage the GameFeatures plugin. Based on Lyra experiences. | 一系列游戏功能操作，用于模块化添加技能、控件等。 | |
 | [ExtendedGameplayAbilitiesPlugin](https://github.com/bohdon/ExtendedGameplayAbilitiesPlugin) | Unreal plugins that extend gameplay abilities and related systems. | GAS的一些扩展，可以参考学习一下。 | |
