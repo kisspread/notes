@@ -1,20 +1,57 @@
-$RootDir = "E:\git\notes\notes\docs\assets\images"
+param(
+    [Parameter(Mandatory=$true, HelpMessage="请输入要处理的图片文件或目录路径")]
+    [string]$Path,
+    
+    [int]$MinMB = 2,
+    [int]$MaxMB = 5,
+    [int]$WebpQuality = 50,
+    [bool]$UseLossless = $false,
+    [bool]$KeepBackup = $false,
+    [string]$MagickCmd = "magick",
+    [int]$HeaderReadBytes = 4096
+)
 
-# 配置
-$MinMB = 2
-$MaxMB = 5
-$WebpQuality = 50           
-$UseLossless = $false
-$KeepBackup = $false
-$MagickCmd = "magick"
-$HeaderReadBytes = 4096
+# 验证路径是否存在
+if (-not (Test-Path $Path)) {
+    Write-Error "路径不存在: $Path"
+    exit 1
+}
 
 $extensions = @("*.png","*.jpg","*.jpeg")
 
-Get-ChildItem -Path $RootDir -Recurse -File -Include $extensions | ForEach-Object {
+# 确定要处理的文件列表
+$filesToProcess = @()
+
+if (Test-Path $Path -PathType Container) {
+    # 如果是目录，递归获取所有图片文件
+    Write-Host "处理目录: $Path" -ForegroundColor Green
+    $filesToProcess = Get-ChildItem -Path $Path -Recurse -File -Include $extensions
+} else {
+    # 如果是单个文件，检查扩展名
+    $file = Get-Item $Path
+    if ($extensions -contains "*$($file.Extension)" -or $file.Extension -ieq ".webp") {
+        $filesToProcess = @($file)
+        Write-Host "处理单个文件: $Path" -ForegroundColor Green
+    } else {
+        Write-Error "不支持的文件类型: $($file.Extension)"
+        exit 1
+    }
+}
+
+if ($filesToProcess.Count -eq 0) {
+    Write-Host "没有找到可处理的图片文件" -ForegroundColor Yellow
+    exit 0
+}
+
+Write-Host "找到 $($filesToProcess.Count) 个文件待处理" -ForegroundColor Green
+
+$filesToProcess | ForEach-Object {
     $file = $_
     try {
-        if ($file.Extension -ieq ".webp") { return }
+        if ($file.Extension -ieq ".webp") { 
+            Write-Host "跳过 WebP 文件: $($file.FullName)" -ForegroundColor Yellow
+            return 
+        }
 
         $sizeMB = [math]::Round($file.Length / 1MB, 2)
         # 取消注释下面这行来启用文件大小过滤
@@ -69,12 +106,14 @@ Get-ChildItem -Path $RootDir -Recurse -File -Include $extensions | ForEach-Objec
             }
 
             Rename-Item -Path $tempWebp -NewName (Split-Path $finalWebp -Leaf) -Force
-            Write-Host "Done: $finalWebp"
+            Write-Host "完成: $finalWebp" -ForegroundColor Green
         } else {
-            Write-Warning "failed to generate temp file: $tempWebp"
+            Write-Warning "生成临时文件失败: $tempWebp"
         }
     }
     catch {
-        Write-Warning "Failed processing $($file.FullName): $($_.Exception.Message)"
+        Write-Warning "处理 $($file.FullName) 失败: $($_.Exception.Message)"
     }
 }
+
+Write-Host "所有文件处理完成!" -ForegroundColor Green
