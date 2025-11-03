@@ -1,0 +1,3 @@
+[submodule "ue-cpp-init"]
+	path = ue-cpp-init
+	url = https://github.com/kisspread/ue-cpp-init.git
