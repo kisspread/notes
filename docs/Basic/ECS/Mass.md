@@ -1090,3 +1090,4 @@ sequenceDiagram
 - [quabqi: UE5的MASS框架-1](https://zhuanlan.zhihu.com/p/441773595)
 - [quabqi: UE5的MASS框架-2](https://zhuanlan.zhihu.com/p/446937133)
 - [xianlongok: UE5 Mass 框架介绍](https://www.xianlongok.site/post/ea92a01c/)
+- [ECS 另类网络同步实现 ](https://zhuanlan.zhihu.com/p/1922800792835957678)
