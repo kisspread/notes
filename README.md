@@ -4,7 +4,9 @@ Including open source and non-open source, commercial and non-commercial.
 
 > 是否awesome，需要根据个人需求来判断。另外，第三方工具选择需要慎重~
 
- 
+## UE开源库收录
+
+UE开源库收录不再这里更新，单独维护在 [UE-Book](https://kisspread.github.io/UE-Book/libraries/) 项目中。
 
 ### **目录**
 *   [Editor Tools](#editor-tools)
